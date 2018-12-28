@@ -1,11 +1,31 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/mine/index",
+    "pages/index/index",
+    "pages/pt/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "开心工作",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#169BD5",
+    "color": "#333",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/pt/index",
+        "text": "拼团上班"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的"
+      }
+    ]
   }
 }

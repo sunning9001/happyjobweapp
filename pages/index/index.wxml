@@ -1,2 +1,52 @@
-<!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<view class='app-header'>
+  <view class='area'>
+    <text>无锡</text>
+    <i-icon class="arrow-down" type="play_fill" />
+  </view>
+  <view class='search' bindtap='search'>
+    <i-icon type="search" />
+    <text class='search-input'>点击搜索</text>
+  </view>
+</view>
+
+<!-- 轮播 -->
+<view class="">
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff">
+    <block wx:for="{{1}}">
+      <swiper-item>
+        <image src="http://jc.yugyg.com/uploadFiles/uploadImgs/index/banners/201809121307020mkh85p.jpg" class="slide-image" mode='widthFix'/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class="activity-box">
+  <view class="activity">
+    <block wx:for="{{activity}}">
+      <view class="activity-item">
+        <image src="{{item.src}}" mode="scaleToFill"></image>
+        <text>{{item.text}}</text>
+      </view>
+    </block>
+  </view>
+</view>
+
+<i-notice-bar icon="systemprompt" loop>
+    2018年世界杯,将于6月14日至7月15日举行;2018年世界杯,将于6月14日至7月15日举行;
+</i-notice-bar>
+
+<view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
+  <view class='box-item' wx:for="{{3}}" wx:key="key">
+    <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
+    <view class='box-item-info'>
+      <view class='one'><text class='job'>三星电子作业员</text>  <text class='fan'>返1800元</text></view>
+      <view class='two'>3500-5500元/月</view>
+      <view class='three'>
+        <view class='limit'>18-30岁 长白班 男女不限</view>
+        <view class='area'>新区</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<image id='kefu' src='/images/kefu.png'></image>

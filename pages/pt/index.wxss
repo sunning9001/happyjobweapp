@@ -1,0 +1,82 @@
+/* 轮播图 */
+.slide-image{
+  width:100%;
+}
+/* 列表 */
+.box{
+  background: #f9f9f9;
+  border-bottom: 2px solid #fff;
+}
+.box-body{
+  margin-top: 2rpx;
+  width: 100%;  
+  overflow: hidden;
+}
+.box-item{
+  display: flex;
+  padding: 20rpx 0 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+.box-item .box-item-img{
+  display: flex;
+  flex: 0 0 auto;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 6rpx;
+  background: #fff;
+}
+.box-item .box-item-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow:1;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.box-item .fan{
+  color: #AD3F3E;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+.box-item .two{
+  color: #AD3F3E;
+}
+.box-item .three{
+  display: flex;
+  justify-content: space-between;
+}
+.box-item .limit{
+  font-size: 24rpx;
+}
+.box-footer{
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.box-footer .box-footer-content{
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  font-size: 28rpx;
+  border-top: 1px solid #ccc;
+  padding: 10rpx 0;
+}
+.box-footer .endTime{
+  color: #009999;
+  font-size: 24rpx;
+}
+/* 我的拼团 */
+.myPT{
+  margin-top: 30rpx;
+}
+.myPT .box{
+  background: #b0aabb;
+}
+.myPT .box-item{
+  color: #fff;
+}
+.djs{
+  font-size: 24rpx;
+}

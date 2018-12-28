@@ -1,0 +1,49 @@
+<!-- 轮播 -->
+<view class="">
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff">
+    <block wx:for="{{1}}">
+      <swiper-item>
+        <image src="http://jc.yugyg.com/uploadFiles/uploadImgs/index/banners/201809121307020mkh85p.jpg" class="slide-image" mode='widthFix'/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class="box" wx:for="{{3}}" wx:key="key">
+  <view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
+    <view class='box-item'>
+      <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
+      <view class='box-item-info'>
+        <view class='one'><text class='job'>三星电子作业员</text><text class='fan'>返1800元</text><text class='fan'>拼团多返1000元</text></view>
+        <view class='two'>3500-5500元/月</view>
+        <view class='three'>
+          <view class='limit'>18-30岁 长白班 男女不限</view>
+          <view class='area'>新区</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='box-footer'>
+    <view class='box-footer-content'>
+      <view class='member'>已有212人拼团成功</view>
+      <view class='endTime'>结束时间 2018-12-31</view>
+    </view>
+  </view>
+</view>
+
+<view class='myPT'>
+  <view class="box" wx:for="{{3}}" wx:key="key">
+    <view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
+      <view class='box-item'>
+        <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
+        <view class='box-item-info'>
+          <view class='one'><text class='job'>三星电子作业员</text></view>
+          <view class='three'>
+            <view class='limit'>天涯此时 还差1人</view>
+            <view class='djs'>剩余23:36:58</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

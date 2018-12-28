@@ -1,1 +1,124 @@
-/* pages/index/index.wxss */
+/* 顶部 */
+.app-header{
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  box-shadow: 0 0 10rpx 10rpx #eaeaea;
+  border-top: 1rpx solid #f5f5f5;
+  box-sizing: border-box;
+  background: #fff;
+}
+.area{
+  display: flex;
+  white-space: nowrap;
+  font-size: 14px;
+  padding-left:10rpx;
+}
+.arrow-down{
+  transform: rotate(90deg)
+}
+.search{
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  height: 54rpx;
+  margin: 0 20rpx 0 10rpx;
+  padding: 0 20rpx;
+  background:#f5f5f5;
+  border-radius: 27rpx;
+  line-height: 54rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.search-input{
+  margin-left: 10rpx;
+}
+/* 轮播图 */
+.slide-image{
+  width:100%;
+}
+/* 活动 */
+.activity-box{
+  padding:20rpx 0;
+}
+.activity{
+  display: flex;  
+}
+.activity-item{
+  position: relative;
+  flex:1 0 auto;
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  font-size:28rpx;
+  color: #575757;
+}
+.activity-item image{
+  width:90rpx;
+  height:90rpx;
+}
+.activity-item text{
+  line-height: 52rpx;
+}
+/* 公告 */
+/* 列表 */
+.box-body{
+  margin-top: 10rpx;
+  width: 100%;
+  background: #f9f9f9;
+  overflow: hidden;
+}
+.box-item{
+  display: flex;
+  padding: 20rpx 0 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #999;
+  box-sizing: border-box;
+  border-bottom: 2px solid #fff;
+}
+.box-item .box-item-img{
+  display: flex;
+  flex: 0 0 auto;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 6rpx;
+  background: #fff;
+}
+.box-item .box-item-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow:1;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.box-item .one{
+  color: #333;
+}
+.box-item .fan{
+  color: #AD3F3E;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+.box-item .two{
+  color: #AD3F3E;
+}
+.box-item .three{
+  display: flex;
+  justify-content: space-between;
+}
+.box-item .limit{
+  color: #333;
+  font-size: 24rpx;
+}
+/* 客服 */
+#kefu{
+  position: fixed;
+  bottom: 60rpx;
+  right: 30rpx;
+  width: 124rpx;
+  height: 124rpx;
+}
