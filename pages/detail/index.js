@@ -1,33 +1,12 @@
-// pages/index/index.js
+// pages/detail/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 活动入口数据
-    activity: [
-      {
-        src: "/images/home/jifen.png",
-        text: "全职工作"
-      },
-      {
-        src: "/images/home/kanjia.png",
-        text: "兼职工作"
-      },
-      {
-        src: "/images/home/pingtuan.png",
-        text: "入职返现"
-      },
-      {
-        src: "/images/home/lingquan.png",
-        text: "爆品岗位"
-      },
-      {
-        src: "/images/home/lingquan.png",
-        text: "高薪急聘"
-      },
-    ],
+    current: 'tab1',
+    current_scroll: 'tab1'
   },
 
   /**
@@ -85,9 +64,15 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toSearch(){
-    wx.navigateTo({
-      url: '../search/index',
-    })
+  handleChange({ detail }) {
+    this.setData({
+      current: detail.key
+    });
+  },
+
+  handleChangeScroll({ detail }) {
+    this.setData({
+      current_scroll: detail.key
+    });
   }
 })

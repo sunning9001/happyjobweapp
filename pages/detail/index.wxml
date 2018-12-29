@@ -1,0 +1,142 @@
+
+ <image src="http://jc.yugyg.com/uploadFiles/uploadImgs/index/banners/201809121307020mkh85p.jpg" class="slide-image" mode='widthFix'/>
+
+<view class='panel'>
+  <view class='row company'>三星（无锡）电子材料有限公司</view>
+  <view class='row salary red'>3500-5500元/月</view>
+  <view class='row award'>
+    <view class='award-left'>
+      <text class='award-label'>奖励</text>
+      <text class='award-info'>入职最高返费奖励<text class='red'>2500元</text></text>
+    </view>
+    <view class='rule'>说明</view>
+  </view>
+  <view class='row pt-award'>
+    <text>参团上班奖励1000元</text>
+    <view class='toTuan'>去参团></view>
+  </view>
+</view>
+
+<i-tabs current="{{ current_scroll }}" bindchange="handleChangeScroll">
+    <i-tab key="tab1" title="基本信息"></i-tab>
+    <i-tab key="tab2" title="岗位要求"></i-tab>
+    <i-tab key="tab3" title="其他福利"></i-tab>
+    <i-tab key="tab4" title="公司介绍"></i-tab>
+</i-tabs>
+
+<view class='tabs-container'>
+
+  <view class='' hidden="{{ current_scroll !=='tab1'}}">
+    <i-divider content="基本信息"></i-divider>
+    <view class='info-row'>
+      <view class='info-title'>基本工资</view>
+      <view class='info-content'>3500元</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>其他补贴</view>
+      <view class='info-content'>夜班津贴：上夜班加发津贴8元/天 环境津贴：300元/月（限无尘室车间）</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>加班费</view>
+      <view class='info-content'>平时加班1.5倍，双休加班2倍，法定节假日3倍</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>发工资日</view>
+      <view class='info-content'>每月10日发放上月工资</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>工作时间</view>
+      <view class='info-content'>上六休一，8小时，三班倒</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>工作环境</view>
+      <view class='info-content'>穿防尘服</view>
+    </view>
+  </view>
+
+  <view class='' hidden="{{ current_scroll !=='tab2'}}">
+    <i-divider content="岗位要求"></i-divider>
+    <view class='info-row'>
+      <view class='info-title'>性别</view>
+      <view class='info-content'>男女不限</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>年龄</view>
+      <view class='info-content'>18-45周岁</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>学历要求</view>
+      <view class='info-content'>初中以上</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>面试要求</view>
+      <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>身份证</view>
+      <view class='info-content'>二代身份证</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>纹身烟疤</view>
+      <view class='info-content'>无纹身烟疤</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>视力要求</view>
+      <view class='info-content'>无</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title'>色盲色弱</view>
+      <view class='info-content'>无</view>
+    </view>
+  </view>
+
+  <view class='' hidden="{{ current_scroll !=='tab3'}}">
+    <i-divider content="其他福利"></i-divider>
+    <view class='info-row'>
+      <view class='info-title-mini'>面试</view>
+      <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title-mini'>面试</view>
+      <view class='info-content'>26个英文字母  简单算术 简单个英文字母  简单算术 简单个英文字母  简单算术 简单汉字</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title-mini'>面试</view>
+      <view class='info-content'>26个英文字母  </view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title-mini'>面试</view>
+      <view class='info-content'>26个英文字字</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title-mini'>面试</view>
+      <view class='info-content'>26个英文简单汉字</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title-mini'>面试</view>
+      <view class='info-content'>26个英文字母字</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title-mini'>面试</view>
+      <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
+    </view>
+    <view class='info-row'>
+      <view class='info-title-mini'>面试</view>
+      <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
+    </view>
+
+      
+    <view class='path-route'>
+      <text class='path-title'>查看厂车线路详情</text>
+      <i-icon type="enter" />
+    </view>
+  </view>
+
+  <view class='' hidden="{{ current_scroll !=='tab4'}}">
+    <i-divider content="公司介绍"></i-divider>
+    <view class='text-indent word-break'>三星（无锡）电子有限公司，主要XXXXXXXXXXXXXXXXXX</view>
+  </view>
+
+</view>
+
+<i-button bind:click="handleClick" type="primary" shape="circle" size="default" class='pt_btn'>申请开团</i-button>

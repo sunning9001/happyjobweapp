@@ -1,0 +1,36 @@
+<view class="header">
+  <view class='search'>
+    <image class='search-icon' src='{{searchIcon}}' mode='aspectFit'></image>
+    <input class='search-input' confirm-type="search" value="{{inputValue}}" bindinput='bindKeyInput' bindconfirm="toPath" placeholder="搜索" auto-focus/>
+  </view>
+  <navigator open-type='navigateBack'>
+    <view class='cancel'>搜索</view>
+  </navigator>
+</view>
+
+<block wx:if="{{!isOpen}}">
+  <view class='history topic bot-dist' wx:if="{{historyList.length}}">
+    <view class='topic-header'>
+      <view class='history-title'>历史记录</view>
+      <image class='trash' src='{{trashImg}}' mode='aspectFit' bindtap='clearHistory'></image>
+    </view>
+    <view class='record-list'>
+      <view class='record' wx:for="{{historyList}}" data-value="{{item.wordName}}" bindtap='selectMsg'>{{item.wordName}}</view>
+    </view>
+  </view>
+
+  <view class='hot topic'>
+    <view class='topic-header'>
+      <view class='history-title'>热门搜索</view>
+    </view>
+    <view class='record-list'>
+      <view class='record' wx:for="{{hotList}}" data-value="{{item.wordName}}" bindtap='selectMsg'>{{item.wordName}}</view>
+    </view>
+  </view>
+</block>
+
+<block wx:else>
+   <view class='search-list'>
+    <view class='li' wx:for="{{filterWordList}}" data-value="{{item}}" bindtap='selectMsg'>{{item}}</view>
+   </view>
+</block>

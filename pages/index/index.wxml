@@ -3,7 +3,7 @@
     <text>无锡</text>
     <i-icon class="arrow-down" type="play_fill" />
   </view>
-  <view class='search' bindtap='search'>
+  <view class='search' bindtap='toSearch'>
     <i-icon type="search" />
     <text class='search-input'>点击搜索</text>
   </view>

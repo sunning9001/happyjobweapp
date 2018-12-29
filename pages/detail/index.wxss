@@ -1,0 +1,89 @@
+
+page{
+  margin-bottom: 64px;
+}
+.slide-image{
+  width: 100%;
+}
+.panel{
+  padding: 0 30rpx;
+  color: #1E1E1E;
+  font-size: 28rpx;
+}
+.panel .row{
+  margin-bottom: 8rpx;
+}
+.company{
+  font-size: 32rpx;
+}
+.red{
+  color: #FF0000;
+  font-size: 28rpx;
+}
+.award{
+  display: flex;
+  justify-content: space-between;
+}
+.award-info{
+  padding: 4rpx 15rpx;
+  margin-left: 10rpx;
+  color: #333;
+  font-size: 22rpx;
+  background: rgba(102, 204, 204,.3)
+}
+.award .rule{
+  color: #169BD5;
+}
+.pt-award{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ccf;
+  color: #fff;
+  padding: 10rpx 20rpx;
+}
+.toTuan{
+  padding: 5rpx 20rpx;
+  background: #FF0000;
+  border-radius: 8rpx;
+}
+/* tabs */
+.tabs-container{
+  padding: 0 30rpx;
+}
+.pt_btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+/* 信息面板 */
+.info-row{
+  display: flex;
+  font-size: 28rpx;
+  margin: 10rpx 0;
+}
+.info-title{
+  min-width:65px;
+}
+.info-title-mini{
+  min-width:45px;
+}
+.path-route{
+  display: flex;
+  justify-content: space-between;
+  padding:6px 10rpx;
+  background: #f2f2f2;
+  font-size: 28rpx;
+}
+.path-title{
+  color: #33F;
+}
+.text-indent{
+  text-indent:2em;
+  font-size:28rpx;
+}
+.word-break{
+  overflow-wrap: break-word;
+  word-break:break-all;
+}

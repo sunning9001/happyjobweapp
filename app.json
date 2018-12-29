@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/pt/index",
-    "pages/mine/index"
+    "pages/mine/index",
+    "pages/detail/index",
+    "pages/search/index",
+    "pages/location/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
