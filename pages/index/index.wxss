@@ -115,6 +115,10 @@
   font-size: 24rpx;
 }
 /* 客服 */
+.kefu-button::after{
+  border:0;
+  border-radius: 0;
+}
 #kefu{
   position: fixed;
   bottom: 60rpx;

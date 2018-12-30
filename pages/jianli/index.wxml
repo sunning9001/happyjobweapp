@@ -1,0 +1,97 @@
+<view class="contanier">
+  <!-- 基本信息 -->
+  <view class='card'>
+    <view class='card-hd'>
+      <view class='card-hd-title'>
+        <image class='icon' src='../../images/jianli/createtask.png' mode='widthFix'></image>
+        <text class='card-title'>基本信息</text>
+      </view>
+      <view class='extra' bindtap='toUserInfo'>
+        <image class='icon' src='../../images/jianli/pen.png' mode='widthFix'></image>
+      </view>
+    </view>
+
+    <view class='card-bd'>
+      <view class='form'>
+        <view class='row'>姓名： 张晓凤</view>
+        <view class='row'>学历： 中专</view>
+        <view class='row'>年龄： 20</view>
+        <view class='row'>性别： 男</view>
+        <view class='row'>联系电话： 15180289136</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 求职意向 -->
+  <view class='card'>
+    <view class='card-hd'>
+      <view class='card-hd-title'>
+        <image class='icon' src='../../images/jianli/quare.png' mode='widthFix'></image>
+        <text class='card-title'>求职意向</text>
+      </view>
+      <view class='extra' bindtap='toUserJob'>
+        <image class='icon' src='../../images/jianli/pen.png' mode='widthFix'></image>
+      </view>
+    </view>
+
+    <view class='card-bd'>
+      <view class='form'>
+        <view class='row'>期望行业： 工厂</view>
+        <view class='row'>期望薪资：2000-3000</view>
+        <view class='row'>期望地址：无锡滨湖区</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 工作经验 -->
+  <view class='card'>
+    <view class='card-hd'>
+      <view class='card-hd-title'>
+        <image class='icon' src='../../images/jianli/page.png' mode='widthFix'></image>
+        <text class='card-title'>工作经验</text>
+      </view>
+      <view class='extra' bindtap='toUserWorks'>
+        <image class='icon' src='../../images/jianli/add.png' mode='widthFix'></image>
+      </view>
+    </view>
+
+    <view class='card-bd'>
+      <i-steps  direction="vertical">
+        <i-step icon="collection">
+            <view slot="content">
+                <view class='row'>2017/03-2018/04</view>
+                <view class='row strong'>三星电子信息有限公司</view>
+                <view class='row'>操作工</view>
+            </view>
+        </i-step>
+      </i-steps>
+    </view>
+  </view>
+
+  <!-- 教育背景 -->
+  <view class='card'>
+    <view class='card-hd'>
+      <view class='card-hd-title'>
+        <image class='icon' src='../../images/jianli/page.png' mode='widthFix'></image>
+        <text class='card-title'>教育背景</text>
+      </view>
+      <view class='extra' bindtap='toUserEdu'>
+        <image class='icon' src='../../images/jianli/add.png' mode='widthFix'></image>
+      </view>
+    </view>
+
+    <view class='card-bd'>
+      <i-steps  direction="vertical">
+        <i-step icon="collection">
+            <view slot="content">
+                <view class='row'>2017/03-2018/04</view>
+                <view class='row strong'>XXXX学校</view>
+                <view class='row'>中专</view>
+            </view>
+        </i-step>
+      </i-steps>
+    </view>
+  </view>
+
+
+</view>

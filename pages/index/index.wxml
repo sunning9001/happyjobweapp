@@ -1,5 +1,5 @@
 <view class='app-header'>
-  <view class='area'>
+  <view class='area' bindtap='toCity'>
     <text>无锡</text>
     <i-icon class="arrow-down" type="play_fill" />
   </view>
@@ -36,7 +36,7 @@
 </i-notice-bar>
 
 <view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
-  <view class='box-item' wx:for="{{3}}" wx:key="key">
+  <view class='box-item' wx:for="{{3}}" wx:key="key" bindtap='toDetail'>
     <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
     <view class='box-item-info'>
       <view class='one'><text class='job'>三星电子作业员</text>  <text class='fan'>返1800元</text></view>
@@ -49,4 +49,6 @@
   </view>
 </view>
 
-<image id='kefu' src='/images/kefu.png'></image>
+<button open-type="contact" bindcontact="handleContact" class='kefu-button'>
+  <image id='kefu' src='/images/kefu.png'></image>
+</button>

@@ -1,0 +1,18 @@
+<view class="box" wx:for="{{3}}" wx:key="key">
+  <view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
+    <view class='box-item'>
+      <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
+      <view class='box-item-info'>
+        <view class='one'><text class='job'>三星电子作业员</text><text class='fan'>返1800元</text><text class='fan'>拼团多返1000元</text></view>
+        <view class='two'>
+          <view class='salary'>3500-5500元/月</view>
+          <view class='area'>新区</view>
+        </view>
+        <view class='three'>
+          <view class='limit'>18-30岁 长白班 男女不限</view>
+          <view class='time'>申请日期：11/8</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

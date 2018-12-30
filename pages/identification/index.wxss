@@ -1,0 +1,31 @@
+page{
+  background: #f5f5f5;
+  font-size: 28rpx;
+}
+.process{
+  padding: 30px 15px 0;
+}
+.process .row{
+  margin-bottom: 20px;
+}
+.id-container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap:wrap;
+  padding:30rpx;
+}
+.idBox{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+}
+.idCard{
+  width: 65%;
+}
+.save{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width:100%;
+}

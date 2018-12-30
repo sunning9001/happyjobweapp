@@ -1,0 +1,27 @@
+.banner{
+  width: 100%;
+}
+.box{
+  border-radius: 16rpx;
+  margin: 30rpx 20rpx;
+  border: 1px solid #ddd;
+  padding: 20rpx 20rpx 60rpx 0;
+}
+.box .box-title{
+  text-align: center;
+  font-size: 30rpx;
+  margin: 20rpx 0 30rpx;
+  color: #333;
+}
+.explain{
+  margin: 60rpx 0;
+  font-size: 24rpx;
+  text-align: center;
+  color: #169bd5;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}

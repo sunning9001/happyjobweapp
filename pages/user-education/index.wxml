@@ -1,0 +1,43 @@
+<view class='title'>教育背景</view>
+
+<view class="container">
+  <view class='row'>
+    <i-input class="row" value="{{ value1 }}" title="学校名称" placeholder="请输入学校名称" maxlength="50"/>
+  </view>
+
+  <view class='group row'>
+    <view class='label'>学历</view>
+    <view class='select'>
+      <picker bindchange="bindPickerChange" value="{{education_index}}" range="{{education}}">
+        <view class="picker">
+          {{education[education_index]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class='group row'>
+    <view class='label'>入学时间</view>
+    <view class='select'>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class='group row'>
+    <view class='label'>毕业时间</view>
+    <view class='select'>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+</view>
+
+<i-button class="save" bind:click="handleClick" type="info" shape="circle">保存</i-button>

@@ -1,0 +1,38 @@
+.card{
+  margin: 30rpx;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.card-hd{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  border-bottom: 1px solid #eaeaea;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}
+.card-hd-title{
+  display: flex;
+  align-items: center;
+}
+.card-hd-title .icon{
+  margin-right: 5px;
+}
+.icon{
+  width: 20px;
+}
+.extra{
+  float: right
+}
+.card-bd{
+  padding: 20rpx;
+  font-size: 14px;
+}
+.row{
+  padding: 4px 0;
+}
+.strong{
+  color: #333;
+}

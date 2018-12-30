@@ -1,0 +1,58 @@
+/* 列表 */
+.box{
+  background: #f9f9f9;
+  border-bottom: 2px solid #fff;
+}
+.box-body{
+  margin-top: 2rpx;
+  width: 100%;  
+  overflow: hidden;
+}
+.box-item{
+  display: flex;
+  padding: 20rpx 0 20rpx 30rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+.box-item .box-item-img{
+  display: flex;
+  flex: 0 0 auto;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 6rpx;
+  background: #fff;
+}
+.box-item .box-item-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow:1;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.box-item .fan{
+  color: #AD3F3E;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+.box-item .two{
+  display: flex;
+  justify-content: space-between;
+  color: #AD3F3E;
+}
+.area{
+  color: #333;
+}
+.box-item .three{
+  display: flex;
+  justify-content: space-between;
+}
+.box-item .limit{
+  font-size: 24rpx;
+}
+.time{
+  color: #999;
+  font-size: 24rpx;
+}

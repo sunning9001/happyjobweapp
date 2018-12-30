@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "搜索",
-  "usingComponents": {}
+  "usingComponents": {
+    "i-icon": "../../ui/icon/index"
+  }
 }

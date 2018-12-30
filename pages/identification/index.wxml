@@ -1,0 +1,32 @@
+<view class='process'>
+  <view class="row">申请身份认证流程流程：</view>
+  <view class="row">上传身份证正反面——手拿身份证拍照——等待审核——审核通过</view>
+</view>
+
+<view class='input'>
+  <view class='row'>
+    <i-input class="row" value="{{ value1 }}" title="姓名" placeholder="请输入姓名" />
+  </view>
+
+  <view class='row'>
+    <i-input class="row" value="{{ value1 }}" title="身份证号码" placeholder="请输入身份证号码" />
+  </view>
+</view>
+
+<view class='id-container'>
+  <view class='idBox'>
+    <image class="idCard" src="../../images/identification/ID1.png" mode='widthFix' />
+    <text>上传身份证正面</text>
+  </view>
+  <view class='idBox'>
+    <image class="idCard" src="../../images/identification/ID2.png" mode='widthFix' />
+    <text>上传身份证正面</text>
+  </view>
+  <view class='idBox'>
+    <image class="idCard" src="../../images/identification/ID1.png" mode='widthFix' />
+    <text>手持身份证拍照</text>
+  </view>
+</view>
+
+
+<i-button class="save" bind:click="handleClick" type="info" shape="circle">确认提交</i-button>

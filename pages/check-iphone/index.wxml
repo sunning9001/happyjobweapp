@@ -1,0 +1,14 @@
+<view class='input'>
+  <view class='row'>
+    <i-input class="row" value="{{ value1 }}" title="姓名" placeholder="请输入姓名" />
+  </view>
+
+  <view class='row'>
+    <i-input class="row" value="{{ value1 }}" title="身份证号码" placeholder="请输入身份证号码" />
+  </view>
+</view>
+
+
+<i-button class="save" bind:click="handleClick" type="info" shape="circle">下一步</i-button>
+
+<view class='explain'>本活动最终解释权归开心工作</view>

@@ -1,6 +1,6 @@
 <view class="header">
   <view class='search'>
-    <image class='search-icon' src='{{searchIcon}}' mode='aspectFit'></image>
+    <i-icon type="search" />
     <input class='search-input' confirm-type="search" value="{{inputValue}}" bindinput='bindKeyInput' bindconfirm="toPath" placeholder="搜索" auto-focus/>
   </view>
   <navigator open-type='navigateBack'>

@@ -5,7 +5,20 @@
     "pages/mine/index",
     "pages/detail/index",
     "pages/search/index",
-    "pages/location/index"
+    "pages/location/index",
+    "pages/user-form/index",
+    "pages/jianli/index",
+    "pages/user-info/user-info",
+    "pages/user-education/index",
+    "pages/user-job/index",
+    "pages/user-works/index",
+    "pages/apply-list/index",
+    "pages/recommend/index",
+    "pages/about/index",
+    "pages/share/index",
+    "pages/wallet/index",
+    "pages/identification/index",
+    "pages/check-iphone/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

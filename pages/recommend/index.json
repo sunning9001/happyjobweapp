@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "推荐有奖",
+  "usingComponents": {
+    "i-notice-bar": "../../ui/notice-bar/index",
+    "i-steps": "../../ui/steps/index",
+    "i-step": "../../ui/step/index",
+    "i-button": "../../ui/button/index"
+  }
+}

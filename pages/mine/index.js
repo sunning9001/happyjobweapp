@@ -62,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toAuth(){
+    wx.navigateTo({
+      url: '../identification/index',
+    })
   }
 })

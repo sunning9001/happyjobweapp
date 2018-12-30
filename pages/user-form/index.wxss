@@ -1,0 +1,68 @@
+/* 头像 */
+.user-panel{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-bg{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.user-avatar{
+  margin-top: 60rpx;
+  width: 150rpx;
+  z-index: 3;
+}
+.desc{
+  font-size: 28rpx;
+  color: #0099FF;
+  text-align: center;
+  margin:20rpx 0;
+}
+/* 信息 */
+.group{
+  display: flex;
+  padding:7px 15px;
+  color:#495060;
+}
+.group .label{
+  color:#495060;
+  min-width:65px;
+  line-height: 1.6;
+  padding:4px 0;
+  padding-right:10px;
+  min-height:22px;
+  height:auto;
+  font-size:14px;
+}
+.select{
+  flex:1;
+  line-height:1.6;
+  padding:4px 0;
+  min-height:22px;
+  height:auto;
+  font-size:14px;
+}
+.row{
+  position: relative;
+}
+.row::after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width:100%;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* 按钮 */
+.save{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}

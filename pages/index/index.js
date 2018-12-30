@@ -85,9 +85,22 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 去搜索页
   toSearch(){
     wx.navigateTo({
       url: '../search/index',
+    })
+  },
+  // 去城市选择页
+  toCity(){
+    wx.navigateTo({
+      url: '../location/index',
+    })
+  },
+  //去详情页
+  toDetail(){
+    wx.navigateTo({
+      url: '../detail/index',
     })
   }
 })

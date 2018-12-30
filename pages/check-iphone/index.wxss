@@ -1,0 +1,12 @@
+.explain{
+  margin: 60rpx 0;
+  font-size: 24rpx;
+  text-align: center;
+  color: #169bd5;
+}
+.input{
+  margin-bottom: 60px;
+}
+.save{
+  margin: 0 60px;
+}

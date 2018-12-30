@@ -1,0 +1,36 @@
+<view class='title'>工作经历</view>
+
+<view class="container">
+  <view class='row'>
+    <i-input class="row" value="{{ value1 }}" title="公司名称" placeholder="请输入公司名称" maxlength="50"/>
+  </view>
+
+  <view class='row'>
+    <i-input class="row" value="{{ value1 }}" title="工作职位" placeholder="请输入工作职位" maxlength="50"/>
+  </view>
+
+  <view class='group row'>
+    <view class='label'>入职时间</view>
+    <view class='select'>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class='group row'>
+    <view class='label'>离职时间</view>
+    <view class='select'>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+</view>
+
+<i-button class="save" bind:click="handleClick" type="info" shape="circle">保存</i-button>

@@ -1,0 +1,33 @@
+<image class='banner' src='http://pic.yugyg.com/uploadFiles/uploadImgs/activity/201812142143047ezkzrw.jpg'  mode="widthFix"></image>
+
+<i-notice-bar icon="systemprompt" loop background-color="#ffc" color="#169bd5">
+  <text style='color:#333'>恭喜XXX邀请2名好友，获得<text style='color:red'>10</text>元红包</text>
+</i-notice-bar>
+
+<view class='box'>
+  <view class='box-title'>邀请攻略</view>
+  <i-steps>
+    <i-step status="finish">
+        <view slot="content">
+            发送邀请给好友
+        </view>
+    </i-step>
+    <i-step status="finish">
+        <view slot="content">
+            好友注册app并填写简历
+        </view>
+    </i-step>
+    <i-step status="finish">
+        <view slot="content">
+            审核通过红包到账
+        </view>
+    </i-step>
+  </i-steps>
+</view>
+
+<view class='explain'>本活动最终解释权归开心工作</view>
+
+<view class='footer'>
+  <i-button bind:click="handleClick" type="info"  shape="circle">邀请好友参加</i-button>
+  <i-button bind:click="" type="info"  shape="circle">生成分享图片</i-button>
+</view>
