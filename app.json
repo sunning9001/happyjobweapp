@@ -18,7 +18,11 @@
     "pages/share/index",
     "pages/wallet/index",
     "pages/identification/index",
-    "pages/check-iphone/index"
+    "pages/check-iphone/index",
+    "pages/wages/index",
+    "pages/pt-detail/index",
+    "pages/bind-iphone/index",
+    "pages/bind-pt/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

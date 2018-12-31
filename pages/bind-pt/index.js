@@ -1,11 +1,12 @@
-// pages/identification/index.js
+// pages/bind-pt/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    sex: ["男", "女"],
+    sex_index: 0,
   },
 
   /**
@@ -62,19 +63,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  takePhoto() {
-    const ctx = wx.createCameraContext()
-    ctx.takePhoto({
-      quality: 'high',
-      success: (res) => {
-        this.setData({
-          src: res.tempImagePath
-        })
-      }
-    })
-  },
-  error(e) {
-    console.log(e.detail)
-  },
+  }
 })

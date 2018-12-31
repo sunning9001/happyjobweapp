@@ -1,11 +1,15 @@
-// pages/identification/index.js
+// pages/wages/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    multiIndex: [0, 0],
+    multiArray: [
+      [2018,'无脊柱动物', '脊柱动物'], 
+      [1,'扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物']
+    ],
   },
 
   /**
@@ -62,19 +66,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  takePhoto() {
-    const ctx = wx.createCameraContext()
-    ctx.takePhoto({
-      quality: 'high',
-      success: (res) => {
-        this.setData({
-          src: res.tempImagePath
-        })
-      }
-    })
-  },
-  error(e) {
-    console.log(e.detail)
-  },
+  }
 })

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    iphone:"",
+    yzm:'',   
   },
 
   /**
@@ -62,5 +63,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  next(){
+    wx.navigateTo({
+      url: '../wages/index',
+    })
   }
 })

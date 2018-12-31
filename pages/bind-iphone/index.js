@@ -1,4 +1,4 @@
-// pages/identification/index.js
+// pages/bind-iphone/index.js
 Page({
 
   /**
@@ -62,19 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  takePhoto() {
-    const ctx = wx.createCameraContext()
-    ctx.takePhoto({
-      quality: 'high',
-      success: (res) => {
-        this.setData({
-          src: res.tempImagePath
-        })
-      }
-    })
-  },
-  error(e) {
-    console.log(e.detail)
-  },
+  }
 })

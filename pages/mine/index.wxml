@@ -23,7 +23,7 @@
     <i-cell i-class="item" title="推荐有奖" is-link url="../recommend/index">
       <i-icon type="like_fill" slot="icon" />
     </i-cell>
-    <i-cell i-class="item" title="薪资查询" is-link>
+    <i-cell i-class="item" title="薪资查询" is-link url="../check-iphone/index">
       <i-icon type="like_fill" slot="icon" />
     </i-cell>
     <i-cell i-class="item" title="我的申请" is-link url="../apply-list/index">

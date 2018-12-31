@@ -1,0 +1,32 @@
+<view class='title'>基本信息</view>
+
+<view class="container">
+  <view class='block'>
+    <view class='row'>
+      <i-input class="row" value="{{ value1 }}" title="姓名" placeholder="请输入姓名" />
+    </view>
+
+    
+    <view class='row'>
+      <i-input value="{{ value3 }}" type="number" title="年龄" placeholder="年龄" />
+    </view>
+
+    <view class='group row'>
+      <view class='label'>性别</view>
+      <view class='select'>
+        <picker bindchange="bindPickerChange" value="{{sex_index}}" range="{{sex}}">
+          <view class="picker">
+            {{sex[sex_index]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+
+    <view class='row'>
+      <i-input class="row" value="{{ value2 }}" type="number" title="手机号码" placeholder="请输入手机号" />
+    </view>
+  </view>
+
+  <i-button class="save" bind:click="handleClick" type="info" shape="circle" long>提交</i-button>
+</view>

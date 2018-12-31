@@ -1,0 +1,12 @@
+.block{
+  position: fixed;
+  top: 35%;
+  left: 0;
+  width: 100%;
+  padding: 0 100rpx;
+  box-sizing: border-box;
+}
+.iphone{
+  border: 1px solid #ddd;
+  margin-bottom: 30px;
+}

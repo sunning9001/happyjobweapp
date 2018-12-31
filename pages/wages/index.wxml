@@ -1,0 +1,49 @@
+<view class="container">
+  <view class='row'>
+    <i-input class="row" i-class="self" value="XXX" title="姓名：" disabled/>
+  </view>
+  <view class='row'>
+    <i-input class="row" i-class="self" value="3656584123123540" title="身份证号码：" disabled/>
+  </view>
+
+  <view class='group row'>
+    <view class='label'>工资详情：</view>
+    <view class='select'>
+      <picker
+        mode="multiSelector"
+        value="{{multiIndex}}"
+        range="{{multiArray}}"
+        bindchange="bindMultiPickerChange"
+        bindcolumnchange="bindMultiPickerColumnChange"
+      >
+        <view class="picker">{{multiArray[0][multiIndex[0]]}}年{{multiArray[1][multiIndex[1]]}}月</view>
+      </picker>
+      <i-icon type="unfold" class='select-arrow'/>
+    </view>
+  </view>
+  <view class='table-container'> 
+    <view class='table'>
+      <view class='table-tr'>
+        <view class='table-td'>姓名</view>
+        <view class='table-td'>丁辉阳</view>
+        <view class='table-td'>身份证号</view>
+        <view class='table-td'>142729197212131818</view>
+      </view>
+      <view class='table-tr'>
+        <view class='table-td'>工号</view>
+        <view class='table-td'>P18661</view>
+        <view class='table-td'>公司名称</view>
+        <view class='table-td'>凡润</view>
+      </view>
+      <view class='table-tr' wx:for="{{10}}">
+        <view class='table-td'>工资月份</view>
+        <view class='table-td'>2018-11</view>
+        <view class='table-td'>应发合计</view>
+        <view class='table-td'>5094.48</view>
+      </view>
+      
+    </view>
+  </view>
+
+  <view class='remarks'>备注： 若未查到您的工资信息，可能工资条尚未上传</view>
+</view>
