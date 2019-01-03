@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-icon": "../../ui/icon/index",
+    "i-tag": "../../ui/tag/index"
+  }
 }

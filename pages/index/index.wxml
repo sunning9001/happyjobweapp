@@ -1,11 +1,12 @@
 <view class='app-header'>
-  <view class='area' bindtap='toCity'>
+  <view class='map' bindtap='toCity'>
+    <i-icon type="coordinates_fill" />
     <text>无锡</text>
     <i-icon class="arrow-down" type="play_fill" />
   </view>
   <view class='search' bindtap='toSearch'>
     <i-icon type="search" />
-    <text class='search-input'>点击搜索</text>
+    <text class='search-input'>请输入您要找的职位</text>
   </view>
 </view>
 
@@ -36,19 +37,39 @@
 </i-notice-bar>
 
 <view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
-  <view class='box-item' wx:for="{{3}}" wx:key="key" bindtap='toDetail'>
-    <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
+  <view class='box-item' wx:for="{{3}}" wx:key="key" bindtap='toDetail' hover-class="item-hover">
+    
     <view class='box-item-info'>
-      <view class='one'><text class='job'>三星电子作业员</text>  <text class='fan'>返1800元</text></view>
-      <view class='two'>3500-5500元/月</view>
+      <view class='one'>
+        <view class='left'>
+          <text class='job'>三星电子作业员</text>
+          <text class='fan'>返1800元</text>
+        </view>
+        <view class='salary'>3500-5500 <text class="danwei">元</text></view>
+      </view>
+      <view class='two'>
+        <view class='commpany'>无锡先导自动化设备股份有限公司</view>
+        <view class='area'>
+          <i-icon type="coordinates_fill" />
+          <text class='area-name'>无锡-新区</text>
+        </view>
+      </view>
       <view class='three'>
-        <view class='limit'>18-30岁 长白班 男女不限</view>
-        <view class='area'>新区</view>
+        <view class='limit'>
+          <i-tag 
+            wx:for="{{tags}}" 
+            wx:key="{{index}}"
+            i-class="tag-class"
+            name="{{index}}" 
+            color="{{item.color}}" 
+            >
+            {{item.name}}
+        </i-tag>
+        </view>
+        <view class='time'>09.18</view>
       </view>
     </view>
   </view>
 </view>
 
-<button open-type="contact" bindcontact="handleContact" class='kefu-button'>
-  <image id='kefu' src='/images/kefu.png'></image>
-</button>
+<button id="kefu" open-type="contact" bindcontact="handleContact" hover-class='kefu-hover'></button>

@@ -9,24 +9,42 @@
   </swiper>
 </view>
 
-<view class="box" wx:for="{{3}}" wx:key="key">
-  <view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
-    <view class='box-item'>
-      <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
-      <view class='box-item-info'>
-        <view class='one'><text class='job'>三星电子作业员</text><text class='fan'>返1800元</text><text class='fan'>拼团多返1000元</text></view>
-        <view class='two'>3500-5500元/月</view>
-        <view class='three'>
-          <view class='limit'>18-30岁 长白班 男女不限</view>
-          <view class='area'>新区</view>
+<view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
+  <view class='box-item fixedH' wx:for="{{3}}" wx:key="key" bindtap='toDetail' hover-class="item-hover">
+    
+    <view class='box-item-info'>
+      <view class='one'>
+        <view class='left'>
+          <text class='job'>三星电子作业员</text>
+          <text class='fan'>拼团多返1800元</text>
+        </view>
+        <view class='salary'>3500-5500 <text class="danwei">元</text></view>
+      </view>
+      <view class='two'>
+        <view class='commpany'>无锡先导自动化设备股份有限公司</view>
+        <view class='area'>
+          <i-icon type="coordinates_fill" />
+          <text class='area-name'>无锡-新区</text>
         </view>
       </view>
-    </view>
-  </view>
-  <view class='box-footer'>
-    <view class='box-footer-content'>
-      <view class='member'>已有212人拼团成功</view>
-      <view class='endTime'>结束时间 2018-12-31</view>
+      <view class='three'>
+        <view class='limit'>
+          <i-tag 
+            wx:for="{{tags}}" 
+            wx:key="{{index}}"
+            i-class="tag-class"
+            name="{{index}}" 
+            color="{{item.color}}" 
+            >
+            {{item.name}}
+        </i-tag>
+        </view>
+        <view class='time'>09.18</view>
+      </view>
+      <view class="four">
+        <text class="pt-member">已有<text class="number">212</text>人拼团成功</text>
+        <text class="endtime">结束时间：2018-12-31</text>
+      </view>
     </view>
   </view>
 </view>
@@ -37,9 +55,9 @@
       <view class='box-item'>
         <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
         <view class='box-item-info'>
-          <view class='one'><text class='job'>三星电子作业员</text></view>
+          <view class='one'><text class='job'>机电维修售后调试</text><text class='componey'>无锡先导自动化设备股份有限公司</text></view>
           <view class='three'>
-            <view class='limit'>天涯此时 还差1人</view>
+            <view class='limit'>还差<text class='number'>1</text>人成团</view>
             <view class='djs'>剩余23:36:58</view>
           </view>
         </view>

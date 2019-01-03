@@ -1,36 +1,51 @@
 <view class='panel-container'>
-  <image class='my-bg' src='../../images/my-bg.png'></image>
   <view class="panel">
-    <image class='avatar' src='http://jc.yugyg.com/uploadFiles/appImgs/header/201809191708034nfxjvh.jpg'></image>
+    <image class='avatar' src='http://jc.yugyg.com/uploadFiles/images/temp/men.png'></image>
     <view class='person-info'>
-        <view class='name'>XXXX</view>
-        <view class='iphone'>15286532145</view>    
+        <view class='name'>
+          <text class="">哆来咪</text>
+          <image class="auth" src="http://jc.yugyg.com/uploadFiles/images/mine/auth.png" mode="widthFix" />
+        </view>    
+        <view class="enter">
+          <text class="">进入个人主页</text>
+          <image class="edit" src="http://jc.yugyg.com/uploadFiles/images/mine/edit.jpg" mode="widthFix"/>
+        </view>
     </view>
-    <view class='auth' bindtap='toAuth'>认证</view>
+   <image class="qycode" src="http://jc.yugyg.com/uploadFiles/images/mine/qycode.jpg" mode="widthFix" />
+   <i-icon type="enter" />
   </view>
 </view>
 
-<image class='banner' src='http://pic.yugyg.com/uploadFiles/uploadImgs/activity/201812142143047ezkzrw.jpg'  mode="widthFix"></image>
+<view class="banner">
+  <image class='banner-img' src='http://jc.yugyg.com/uploadFiles/images/mine/title.png'  mode="widthFix"></image>
+</view>
+
+<!-- url="../jianli/index" -->
+<view class="jian-box">
+  <image class="jianli-pic" src="http://jc.yugyg.com/uploadFiles/images/mine/jianli_pic.jpg" mode="widthFix" />
+  <view class="jianli-info">
+    <view class="jianli-title">我的简历</view>
+    <view class="jianli-title">完善简历提高您的录取率</view>
+  </view>
+  <image class="edit-jianli" src="http://jc.yugyg.com/uploadFiles/images/mine/jianli.png" mode="widthFix" />
+</view>
 
 <view class='list'>
   <i-cell-group>
-    <i-cell i-class="item" title="我的简历" is-link url="../jianli/index">
-      <i-icon type="like_fill" slot="icon" />
-    </i-cell>
     <i-cell i-class="item" title="我的钱包" is-link url="../wallet/index">
-      <i-icon type="推荐有奖" slot="icon" />
+      <image class="item-icon" src="http://jc.yugyg.com/uploadFiles/images/mine/money.png" mode="widthFix" slot="icon" />
     </i-cell>
     <i-cell i-class="item" title="推荐有奖" is-link url="../recommend/index">
-      <i-icon type="like_fill" slot="icon" />
+      <image class="item-icon" src="http://jc.yugyg.com/uploadFiles/images/mine/tuijian.png" mode="widthFix" slot="icon" />
     </i-cell>
     <i-cell i-class="item" title="薪资查询" is-link url="../check-iphone/index">
-      <i-icon type="like_fill" slot="icon" />
+      <image class="item-icon" src="http://jc.yugyg.com/uploadFiles/images/mine/salary.png" mode="widthFix" slot="icon" />
     </i-cell>
     <i-cell i-class="item" title="我的申请" is-link url="../apply-list/index">
-      <i-icon type="like_fill" slot="icon" />
+      <image class="item-icon" src="http://jc.yugyg.com/uploadFiles/images/mine/apply.png" mode="widthFix" slot="icon" />
     </i-cell>
     <i-cell i-class="item" title="关于我们" is-link url="../about/index">
-      <i-icon type="like_fill" slot="icon" />
+      <image class="item-icon" src="http://jc.yugyg.com/uploadFiles/images/mine/about.png" mode="widthFix" slot="icon" />
     </i-cell>
   </i-cell-group>
 </view>

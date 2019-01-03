@@ -1,4 +1,4 @@
-// pages/index/index.js
+const app = getApp();
 Page({
 
   /**
@@ -6,35 +6,54 @@ Page({
    */
   data: {
     // 活动入口数据
-    activity: [
+    activity: [],
+    tags : [
       {
-        src: "/images/home/jifen.png",
-        text: "全职工作"
+          name : '班车'
       },
       {
-        src: "/images/home/kanjia.png",
-        text: "兼职工作"
+          name : '工作餐'
       },
       {
-        src: "/images/home/pingtuan.png",
-        text: "入职返现"
+          name : '节日福利'
       },
       {
-        src: "/images/home/lingquan.png",
-        text: "爆品岗位"
+          name : '五险一金'
       },
       {
-        src: "/images/home/lingquan.png",
-        text: "高薪急聘"
-      },
-    ],
+          name : '加班补助'
+      }
+  ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      activity:[
+        {
+          src: app.globalData.imgHost+"/images/home/quanzhi.png",
+          text: "全职工作"
+        },
+        {
+          src: app.globalData.imgHost+"/images/home/jianzhi.png",
+          text: "兼职工作"
+        },
+        {
+          src: app.globalData.imgHost+"/images/home/fanxian.png",
+          text: "入职返现"
+        },
+        {
+          src: app.globalData.imgHost+"/images/home/gangwei.png",
+          text: "爆品岗位"
+        },
+        {
+          src: app.globalData.imgHost+"/images/home/jipin.png",
+          text: "高薪急聘"
+        }
+      ]
+    })
   },
 
   /**
