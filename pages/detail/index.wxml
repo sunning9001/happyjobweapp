@@ -1,33 +1,49 @@
-
- <image src="http://jc.yugyg.com/uploadFiles/uploadImgs/index/banners/201809121307020mkh85p.jpg" class="slide-image" mode='widthFix'/>
-
 <view class='panel'>
-  <view class='row company'>三星（无锡）电子材料有限公司</view>
-  <view class='row salary red'>3500-5500元/月</view>
-  <view class='row award'>
-    <view class='award-left'>
-      <text class='award-label'>奖励</text>
-      <text class='award-info'>入职最高返费奖励<text class='red'>2500元</text></text>
-    </view>
-    <view class='rule'>说明</view>
+  <!-- <image src="../../images/detail/detail-bg.jpg" class="bg" mode='widthFix'/> -->
+  <view class='row job'>卡斯大家看法萨克
+    <image class="auth" src="../../images/detail/auth-has.png" mode="widthFix"/>
   </view>
-  <view class='row pt-award'>
-    <text>参团上班奖励1000元</text>
-    <view class='toTuan'>去参团></view>
+  <view class='row award'>
+    <text class='award-info'>入职奖励最高<text class='money'>2500元</text></text>
+    <view class="rule">拼团规则</view>
+  </view>
+  <view class='row pt-award' wx:if="{{false}}">
+    <text>参团上班奖励<text class="num">1000元</text></text>
+    <view class='toTuan'>去参团 <i-icon type="enter"></i-icon> </view>
   </view>
 </view>
 
-<i-tabs current="{{ current_scroll }}" bindchange="handleChangeScroll">
-    <i-tab key="tab1" title="基本信息"></i-tab>
-    <i-tab key="tab2" title="岗位要求"></i-tab>
-    <i-tab key="tab3" title="其他福利"></i-tab>
-    <i-tab key="tab4" title="公司介绍"></i-tab>
-</i-tabs>
+<view class="card" wx:if="{{true}}">
+  <view class="card-title">
+    <image class="card-title-icon" src="../../images/detail/icon-box.png" mode="widthFix"></image>
+    公司信息
+  </view>
+  <view class="card-content">
+    <image class="company-logo" src="../../images/temp/men.png"  mode="widthFix"/>
+    <view class="company-info">
+      <view class="company-name">无锡先导自动化设备股份有限公司</view>
+      <view class="color99">100-1999人 | 民营 | 加工制造...</view>
+    </view>
+  </view>
+  <view class="card-footer">
+    <view class="address">
+      <image class="map-icon" src="../../images/detail/map-icon.png"  mode="widthFix"/>
+      <text class="">身价翻垃圾法师骷髅法师发生了口角风沙口</text>
+    </view>
+    <image class="map" src="../../images/detail/map.png" mode="widthFix" />
+  </view>
+</view>
 
-<view class='tabs-container'>
+<view class="box">
+  <view class="tabs">
+    <view class="tab">基本信息</view>
+    <view class="tab">岗位要求</view>
+    <view class="tab">其他福利</view>
+    <!-- <view class="tab">公司详情</view> -->
+  </view>
 
-  <view class='' hidden="{{ current_scroll !=='tab1'}}">
-    <i-divider content="基本信息"></i-divider>
+  <!-- 基本信息 -->
+  <view class="info-box">
     <view class='info-row'>
       <view class='info-title'>基本工资</view>
       <view class='info-content'>3500元</view>
@@ -53,46 +69,21 @@
       <view class='info-content'>穿防尘服</view>
     </view>
   </view>
-
-  <view class='' hidden="{{ current_scroll !=='tab2'}}">
-    <i-divider content="岗位要求"></i-divider>
-    <view class='info-row'>
-      <view class='info-title'>性别</view>
-      <view class='info-content'>男女不限</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title'>年龄</view>
-      <view class='info-content'>18-45周岁</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title'>学历要求</view>
-      <view class='info-content'>初中以上</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title'>面试要求</view>
-      <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title'>身份证</view>
-      <view class='info-content'>二代身份证</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title'>纹身烟疤</view>
-      <view class='info-content'>无纹身烟疤</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title'>视力要求</view>
-      <view class='info-content'>无</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title'>色盲色弱</view>
-      <view class='info-content'>无</view>
+  <!-- 岗位要求 -->
+  <view class="info-box">
+    <view class="tags">
+      <view class="tag">男女不限</view>
+      <view class="tag">男女不限</view>
+      <view class="tag">男女5不限</view>
+      <view class="tag">男女是不限</view>
+      <view class="tag">男女到手不限</view>
+      <view class="tag">男女不限</view>
+      <view class="tag">男女不限</view>
     </view>
   </view>
-
-  <view class='' hidden="{{ current_scroll !=='tab3'}}">
-    <i-divider content="其他福利"></i-divider>
-    <view class='info-row'>
+  <!-- 其他福利 -->
+  <view class="info-box">
+      <view class='info-row'>
       <view class='info-title-mini'>面试</view>
       <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
     </view>
@@ -124,19 +115,43 @@
       <view class='info-title-mini'>面试</view>
       <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
     </view>
-
-      
-    <view class='path-route'>
-      <text class='path-title'>查看厂车线路详情</text>
-      <i-icon type="enter" />
-    </view>
   </view>
-
-  <view class='' hidden="{{ current_scroll !=='tab4'}}">
-    <i-divider content="公司介绍"></i-divider>
-    <view class='text-indent word-break'>三星（无锡）电子有限公司，主要XXXXXXXXXXXXXXXXXX</view>
-  </view>
-
+  
 </view>
+<!-- 路线图 -->
+  <view class='path-route'>
+    <text class='path-title'>查看厂车线路详情</text>
+    <i-icon type="enter" />
+  </view>
+  <!-- 公司介绍 -->
+  <view class='word-break com-desc'>三星（无锡）电子有限公司，主要XXXXXXXXXXXXXXXXXX</view>
 
-<i-button bind:click="handleClick" type="primary" shape="circle" size="default" class='pt_btn'>申请开团</i-button>
+  <view class="address-box">
+      <view class="address">
+        <image class="map-icon" src="../../images/detail/map-icon.png"  mode="widthFix"/>
+        <text class="">身价翻垃圾法师骷髅法师发生了口角风沙口</text>
+      </view>
+      <image class="map" src="../../images/detail/map.png" mode="widthFix" />
+  </view>
+      
+  <!-- 客服 -->
+  <view class="kefu-box">
+    <view class="kefu-info">
+      <image class="kefu-icon" src="../../images/detail/kefu.png" mode="widthFix"/>
+      <view class="kefu-content">
+        <view class="kefu-title">开心客服电话：</view>
+        <view class="kefu-iphone">400692099</view>
+      </view>
+    </view>
+    <image class="icon-iphone" src="../../images/detail/iphone.png" mode="widthFix"/>
+  </view>
+
+  <!-- tips -->
+  <view class="tips">
+    <image class="icon-tips" src="../../images/detail/kefu.png" mode="widthFix"/>
+    <text>以担保或任何理由索取财务，扣押证照，均涉嫌违法，请提高警惕</text>
+  </view>
+  <!-- btn -->
+  <view class="btn-group">
+    <i-button bind:click="handleClick" type="primary" shape="circle" i-class="distance">申请开团</i-button>
+  </view>

@@ -1,0 +1,10 @@
+<view class="pt-status">
+    <image class="pt-bg" src="../../images/pt/pt-fail.png" mode="widthFix"/>
+</view>
+<view class="box">
+    <view class="title">抱歉，您的申请未通过</view>
+    <view class="text">抱歉，您的资料信息存在不符，</view>
+    <view class="text">请重新核实后再注册。</view>   
+</view>
+
+<button class="btn-fail" bindtap="">重新申请</button>

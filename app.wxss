@@ -1,0 +1,10 @@
+.noborder::after{
+    border: 0!important;
+}
+.radius{
+    border-radius: 8px!important;
+} 
+.distance{
+    margin: 0 30px!important;
+    box-sizing: border-box;
+}

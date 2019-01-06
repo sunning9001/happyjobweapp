@@ -67,5 +67,10 @@ Page({
     wx.navigateTo({
       url: '../identification/index',
     })
+  },
+  toform(){
+    wx.navigateTo({
+      url: '../user-form/index',
+    })
   }
 })

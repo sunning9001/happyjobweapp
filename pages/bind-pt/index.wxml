@@ -1,4 +1,4 @@
-<view class='title'>基本信息</view>
+<!-- <view class='title'>基本信息</view>
 
 <view class="container">
   <view class='block'>
@@ -28,5 +28,49 @@
     </view>
   </view>
 
-  <i-button class="save" bind:click="handleClick" type="info" shape="circle" long>提交</i-button>
+  <i-button class="save" bind:click="handleClick" type="info" shape="circle" long>保存</i-button>
+</view> -->
+
+
+<view class="page">
+  <view class='title'>参团信息</view>
+
+  <view class='group'>
+
+    <view class='list'>
+      <view class='list-title'>姓名</view>
+      <view class='list-content border'>
+        <i-input class="row" value="{{ value1 }}" placeholder="请输入姓名" i-class="input"/>
+      </view>
+    </view>
+
+    <view class='list'>
+      <view class='list-title'>年龄</view>
+      <view class='list-content border'>
+        <i-input value="{{ value3 }}" type="number" placeholder="1998.1" i-class="input"/>
+      </view>
+    </view>
+
+    <view class='list'>
+      <view class='list-title'>性别</view>
+      <view class='list-content border'>
+        <picker bindchange="bindPickerChange" value="{{sex_index}}" range="{{sex}}">
+          <view class="picker">
+            {{sex[sex_index]}}
+          </view>
+        </picker>
+      </view>
+    </view>    
+
+    <view class='list'>
+      <view class='list-title'>手机号码</view>
+      <view class='list-content border'>
+        <i-input value="{{ value2 }}" type="number" maxlength="11" placeholder="请输入手机号" i-class="input"/>
+      </view>
+    </view>
+
+  </view>
+
+  <i-button i-class="radius distance primary" bind:click="handleClick" type="primary" shape="circle">保存</i-button>
+
 </view>

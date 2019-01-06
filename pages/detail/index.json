@@ -1,8 +1,5 @@
 {
   "usingComponents": {
-    "i-tabs": "../../ui/tabs/index",
-    "i-tab": "../../ui/tab/index",
-    "i-divider": "../../ui/divider/index",
     "i-toast": "../../ui/toast/index",
     "i-modal": "../../ui/modal/index",
     "i-button": "../../ui/button/index",

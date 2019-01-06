@@ -1,40 +1,57 @@
-<view class='title'>基本信息</view>
 
-<view class="container">
-  <view class='row'>
-    <i-input class="row" value="{{ value1 }}" title="姓名" placeholder="请输入姓名" />
+<view class="page">
+  <view class='title'>
+    <image class='icon-box' src='../../images/jianli/icon-box.png' mode='widthFix'></image>
+    <text class='card-title'>基本信息</text>
   </view>
 
-  <view class='group row'>
-    <view class='label'>性别</view>
-    <view class='select'>
-      <picker bindchange="bindPickerChange" value="{{sex_index}}" range="{{sex}}">
-        <view class="picker">
-          {{sex[sex_index]}}
-        </view>
-      </picker>
+  <view class='group'>
+
+    <view class='list'>
+      <view class='list-title'>姓名</view>
+      <view class='list-content border'>
+        <i-input class="row" value="{{ value1 }}" placeholder="请输入姓名" i-class="input"/>
+      </view>
     </view>
-  </view>
 
-  <view class='row'>
-    <i-input value="{{ value3 }}" type="number" title="出生年份" placeholder="如：1998" />
-  </view>
-
-  <view class='row'>
-    <i-input class="row" value="{{ value2 }}" type="number" title="手机号码" placeholder="请输入手机号" />
-  </view>
-
-  <view class='group row'>
-    <view class='label'>学历</view>
-    <view class='select'>
-      <picker bindchange="bindPickerChange" value="{{education_index}}" range="{{education}}">
-        <view class="picker">
-          {{education[education_index]}}
-        </view>
-      </picker>
+    <view class='list'>
+      <view class='list-title'>性别</view>
+      <view class='list-content border'>
+        <picker bindchange="bindPickerChange" value="{{sex_index}}" range="{{sex}}">
+          <view class="picker">
+            {{sex[sex_index]}}
+          </view>
+        </picker>
+      </view>
     </view>
+
+    <view class='list'>
+      <view class='list-title'>年龄</view>
+      <view class='list-content border'>
+        <i-input value="{{ value3 }}" type="number" placeholder="1998.1" i-class="input"/>
+      </view>
+    </view>
+
+    <view class='list'>
+      <view class='list-title'>手机号码</view>
+      <view class='list-content border'>
+        <i-input value="{{ value2 }}" type="number" maxlength="11" placeholder="请输入手机号" i-class="input"/>
+      </view>
+    </view>
+
+    <view class='list'>
+      <view class='list-title'>学历</view>
+      <view class='list-content border'>
+        <picker bindchange="bindPickerChange" value="{{sex_index}}" range="{{sex}}">
+          <view class="picker">
+            {{sex[sex_index]}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
   </view>
+
+  <i-button i-class="radius distance" bind:click="handleClick" type="primary" shape="circle">保存</i-button>
 
 </view>
-
-<i-button class="save" bind:click="handleClick" type="info" shape="circle">保存</i-button>

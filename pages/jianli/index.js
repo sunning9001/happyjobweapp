@@ -66,7 +66,7 @@ Page({
   // 修改基本信息
   toUserInfo(){
     wx.navigateTo({
-      url: '../user-info/index',
+      url: '../user-info/user-info',
     })
   },
   // 修改求职意向

@@ -8,26 +8,27 @@
         </view>    
         <view class="enter">
           <text class="">进入个人主页</text>
-          <image class="edit" src="http://jc.yugyg.com/uploadFiles/images/mine/edit.jpg" mode="widthFix"/>
+          <image class="edit" src="http://jc.yugyg.com/uploadFiles/images/mine/edit.jpg" mode="widthFix" bindtap="toform"/>
         </view>
     </view>
    <image class="qycode" src="http://jc.yugyg.com/uploadFiles/images/mine/qycode.jpg" mode="widthFix" />
-   <i-icon type="enter" />
+   <i-icon type="enter" size="24" color="#ddd" bindtap="toAuth"/>
   </view>
 </view>
 
 <view class="banner">
-  <image class='banner-img' src='http://jc.yugyg.com/uploadFiles/images/mine/title.png'  mode="widthFix"></image>
+  <image class='banner-img' src='http://jc.yugyg.com/uploadFiles/images/mine/banner.png'  mode="widthFix"></image>
 </view>
 
-<!-- url="../jianli/index" -->
 <view class="jian-box">
   <image class="jianli-pic" src="http://jc.yugyg.com/uploadFiles/images/mine/jianli_pic.jpg" mode="widthFix" />
   <view class="jianli-info">
     <view class="jianli-title">我的简历</view>
-    <view class="jianli-title">完善简历提高您的录取率</view>
+    <view class="jianli-desc">完善简历提高您的录取率</view>
   </view>
-  <image class="edit-jianli" src="http://jc.yugyg.com/uploadFiles/images/mine/jianli.png" mode="widthFix" />
+  <navigator url="../jianli/index">
+    <image class="edit-jianli" src="http://jc.yugyg.com/uploadFiles/images/mine/jianli.png" mode="widthFix" />
+  </navigator>
 </view>
 
 <view class='list'>

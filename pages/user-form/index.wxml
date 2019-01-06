@@ -1,31 +1,44 @@
-<view class='user-panel'>
-  <image class='user-bg' src='../../images/user-bg.png'/>
-  <!-- TODO:调用摄像头或相册 -->
-  <image class='user-avatar' src='../../images/user-avatar-default.png' mode='widthFix'/>
-</view>
-<view class='desc'>添 加 靓 照，机 会 更 多</view>
-
-<view class='row'>
-  <i-input class="row" value="{{ value1 }}" title="姓名" placeholder="请输入姓名" />
-</view>
-
-<view class='group row'>
-  <view class='label'>性别</view>
-  <view class='select'>
-    <picker bindchange="bindPickerChange" value="{{sex_index}}" range="{{sex}}">
-      <view class="picker">
-        {{sex[sex_index]}}
+<view class='group'>
+  <view class='list'>
+    <view class='list-title required'>头像</view>
+    <view class='list-content'>
+      <view class='extra'>
+        <image class='avatar' src='//jc.yugyg.com/uploadFiles/images/avatar/man.png' mode='widthFix'></image>
+        <i-icon type='enter' size='28' color='#999'/>
       </view>
-    </picker>
+    </view>
   </view>
+
+  <view class='list'>
+    <view class='list-title required'>姓名</view>
+    <view class='list-content'>
+      <i-input class="row" value="{{ value1 }}" placeholder="请输入姓名" />
+    </view>
+  </view>
+
+  <view class='list'>
+    <view class='list-title required'>性别</view>
+    <view class='list-content'>
+     <i-radio-group current="{{sex_index}}" bindchange="handleFruitChange"  color="#2db7f5" i-class="flex">
+        <i-radio wx:for="{{sex}}" wx:key="*this" value="{{item}}" color="#2db7f5" i-class="flex"></i-radio>
+    </i-radio-group>
+    </view>
+  </view>
+
+  <view class='list'>
+    <view class='list-title required'>出生年份</view>
+    <view class='list-content'>
+      <i-input value="{{ value3 }}" type="number" placeholder="1998.1" i-class="noborder"/>
+    </view>
+  </view>
+
+  <view class='list'>
+    <view class='list-title required'>手机号码</view>
+    <view class='list-content'>
+      <i-input value="{{ value2 }}" type="number" maxlength="11" placeholder="请输入手机号" />
+    </view>
+  </view>
+
 </view>
 
-<view class='row'>
-  <i-input value="{{ value3 }}" type="number" title="出生年份" placeholder="如：1998" />
-</view>
-
-<view class='row'>
-  <i-input class="row" value="{{ value2 }}" type="number" title="手机号码" placeholder="请输入手机号" />
-</view>
-
-<i-button class="save" bind:click="handleClick" type="error" shape="circle">保存</i-button>
+<i-button i-class="radius distance" bind:click="handleClick" type="info" shape="circle">保存</i-button>

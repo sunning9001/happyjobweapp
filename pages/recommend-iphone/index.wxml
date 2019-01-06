@@ -1,0 +1,9 @@
+<view class="box">
+    <image class="logo" src="../../images/recommend/logo.png" mode="widthFix"/>
+    <i-input value="{{ value5 }}" placeholder="请输入11位手机号" mode="number" mode="wrapped" i-class="input" maxlength="11"/>
+    <button class="submit">确认</button>
+</view>
+
+<view class="">
+    
+</view>

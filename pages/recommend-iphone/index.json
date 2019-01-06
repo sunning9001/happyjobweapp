@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "推荐有奖",
+  "usingComponents": {
+    "i-input": "../../ui/input/index"
+  }
+}

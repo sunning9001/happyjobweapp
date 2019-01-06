@@ -1,9 +1,8 @@
 const app = getApp();
-Page({
+// import { banner, position } from '../../utils/api'
+// import { fetchPost,fetchGet } from '../../utils/request'
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
     // 活动入口数据
     activity: [],
@@ -54,6 +53,7 @@ Page({
         }
       ]
     })
+    this.fetchData()
   },
 
   /**
@@ -104,6 +104,20 @@ Page({
   onShareAppMessage: function (e) {
     console.log(e)
   },  
+  fetchData(){
+    // let bannerData = {
+    //   useOn:1,
+    //   delOn:0,
+    //   state:1,
+    //   isPage:0
+    // }
+    // fetchGet(banner, bannerData,(err,res)=>{
+    //   console.log(res)
+    //   this.setData({
+    //     bannerList:res.list
+    //   })
+    // })
+  },
   // 去搜索页
   toSearch(){
     wx.navigateTo({

@@ -3,8 +3,8 @@
 	"packOptions": {
 		"ignore": [
 			{
-			"type": "suffix",
-			"value": ".less"
+				"type": "suffix",
+				"value": ".less"
 			},
 			{
 				"type": "suffix",
@@ -18,7 +18,8 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": true,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.3",
