@@ -4,6 +4,21 @@
     <button class="submit">确认</button>
 </view>
 
-<view class="">
-    
+<view class="mask">
+    <view class="tip-box" wx:if="{{true}}">
+        <image class="topbg" src="../../images/recommend/success.png" mode="widthFix"/>
+        <view class="tip-box-body">
+            <view class="p">恭喜您</view>
+            <view class="p">赶快叫好友下载注册 写个简历吧</view>
+            <button class="sure">确认</button>
+        </view>
+    </view>
+    <view class="tip-box" wx:else>
+        <image class="topbg" src="../../images/recommend/error.png" mode="widthFix"/>
+        <view class="tip-box-body">
+            <view class="p">您注册过咯</view>
+            <view class="p">分享给好友 才能继续领红包</view>
+            <button class="back">返回</button>
+        </view>
+    </view>
 </view>

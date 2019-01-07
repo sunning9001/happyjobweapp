@@ -1,11 +1,13 @@
-// pages/search/index.js
+import { searchHistory } from '../../services/index.js'
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    historyList:["收到货","身份","啥的方式","沙发沙发撒撒旦撒旦法","发射点法"]
   },
 
   /**
@@ -26,7 +28,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.fetchData()
+  },
 
+  fetchData(){
+    searchHistory().then(data=>{
+      console.log(data)
+    })
   },
 
   /**

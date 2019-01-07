@@ -1,14 +1,14 @@
 {
   "pages": [
-    "pages/mine/index",
     "pages/recommend-iphone/index",
     "pages/index/index",
+    "pages/search/index",
     "pages/pt/index",
+    "pages/mine/index",
     "pages/pt-detail/index",
     "pages/pt-result/success",
     "pages/pt-result/fail",
     "pages/detail/index",
-    "pages/search/index",
     "pages/location/index",
     "pages/jianli/index",
     "pages/user-form/index",

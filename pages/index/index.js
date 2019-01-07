@@ -1,11 +1,8 @@
+import { getBanner, getIndexList } from '../../services/index.js'
 const app = getApp();
-// import { banner, position } from '../../utils/api'
-// import { fetchPost,fetchGet } from '../../utils/request'
 
 Page({
   data: {
-    // 活动入口数据
-    activity: [],
     tags : [
       {
           name : '班车'
@@ -22,7 +19,17 @@ Page({
       {
           name : '加班补助'
       }
-  ]
+    ],
+    cityName:'无锡',
+    keyWord:'',
+    posNature: 0,//职位性质（1、实习，2、兼职，3、全职）
+    retOn: 0,//是否入职返现
+    hotOn: 1,//是否热门
+    welfareOn: 0,//是否福利岗位
+    urgentOn: 0,//是否高薪急聘
+    groupOn: 0,//是否是拼团岗位
+    currentPage: 1,//当前分页
+    showCount: 10,//单页展示记录数
   },
 
   /**
@@ -53,7 +60,8 @@ Page({
         }
       ]
     })
-    this.fetchData()
+    this.fetchBanner()
+    this.fetchList()
   },
 
   /**
@@ -67,20 +75,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
 
   },
 
@@ -104,19 +98,28 @@ Page({
   onShareAppMessage: function (e) {
     console.log(e)
   },  
-  fetchData(){
-    // let bannerData = {
-    //   useOn:1,
-    //   delOn:0,
-    //   state:1,
-    //   isPage:0
-    // }
-    // fetchGet(banner, bannerData,(err,res)=>{
-    //   console.log(res)
-    //   this.setData({
-    //     bannerList:res.list
-    //   })
-    // })
+  // 获取banner图
+  fetchBanner(){
+    getBanner().then(data=>{
+      console.log(data)
+    })   
+  },
+  //获取列表数据
+  fetchList(){
+    getIndexList({
+      cityName: this.data.cityName,
+      keyWord: this.data.keyWord,
+      posNature: this.data.posNature,
+      retOn: this.data.retOn,
+      hotOn: this.data.hotOn,
+      welfareOn: this.data.welfareOn,
+      urgentOn: this.data.urgentOn,
+      groupOn: this.data.groupOn,
+      currentPage: this.data.currentPage,
+      showCount: this.data.showCount
+    }).then(data => {
+      console.log(data)
+    })
   },
   // 去搜索页
   toSearch(){
