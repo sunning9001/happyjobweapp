@@ -128,5 +128,89 @@ module.exports={
         hpPositionGroupId: id
       }
     })
+  },
+
+  //post 用户认证信息提交,图片先上传获取连接
+  postApprove(params){
+    return http({
+      url: url.approve,
+      method: 'POST',
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+      data: params
+    })
+  },
+
+  //get 用户简历：用户简历详情信息
+  getJianli(){
+    return http({
+      url: url.resume,
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      }
+    })
+  },
+
+  //post 用户简历基本信息添加、修改：第一次创建简历、简历基本信息编辑，hpUserResumeId存在编辑、否新增
+  resumeBase(params){
+    return http({
+      url: url.resumeBase,
+      method: 'POST',
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+      data: {
+        data: params
+      }
+    })
+  },
+  
+  //post 用户简历：用户求职意向编辑、新增
+  resumeIntent(params){
+    return http({
+      url: url.resumeIntent,
+      method: 'POST',
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+      data: {
+        data: params
+      }
+    })
+  },
+
+  //post 用户简历：用户工作经验编辑、新增
+  resumeExp(params){
+    return http({
+      url: url.resumeExp,
+      method: 'POST',
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+      data: {
+        data: params
+      }
+    })
+  },
+
+  //post 用户简历：用户教育背景编辑、新增
+  resumeEdu(params){
+    return http({
+      url: url.resumeEdu,
+      method: 'POST',
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+      data: {
+        data: params
+      }
+    })
   }
 }

@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/recommend-iphone/index",
     "pages/index/index",
     "pages/search/index",
     "pages/pt/index",
@@ -26,7 +25,8 @@
     "pages/bind-pt/index",
     "pages/bind-iphone/index",
     "pages/recommend/index",
-    "pages/recommend-share/index"
+    "pages/recommend-share/index",
+    "pages/recommend-iphone/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

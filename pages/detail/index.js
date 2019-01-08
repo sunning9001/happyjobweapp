@@ -3,11 +3,17 @@ const app = getApp();
 
 Page({
   data: {
+    host:app.globalData.host,
     current: 'tab1',
     current_scroll: 'tab1',
     hpPositionId:0,
+    posName: '',
+    approveState: '',
+    reTotalMoney: '',
+    comName: '',
   },
   onLoad: function (options) {
+    this.data.hpPositionId = options.hpPositionId
     this.fetchData()
   },
   onShow: function () {
@@ -21,6 +27,14 @@ Page({
   fetchData(){
     getPositionDetail(this.data.hpPositionId).then(data=>{
       console.log(data)
+      let { posName, approveState, reTotalMoney, comName} = data.data
+      let datas = data.data
+      this.setData({
+        posName,
+        approveState,
+        reTotalMoney,
+        comName,
+      })
     })
   },  
   //申请开团

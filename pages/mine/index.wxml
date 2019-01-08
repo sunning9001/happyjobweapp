@@ -1,5 +1,5 @@
 <view class='panel-container'>
-  <view class="panel">
+  <view class="panel" bindtap="toform">
     <image class='avatar' src='http://jc.yugyg.com/uploadFiles/images/temp/men.png'></image>
     <view class='person-info'>
         <view class='name'>
@@ -12,7 +12,7 @@
         </view>
     </view>
    <image class="qycode" src="http://jc.yugyg.com/uploadFiles/images/mine/qycode.jpg" mode="widthFix" />
-   <i-icon type="enter" size="24" color="#ddd" bindtap="toAuth"/>
+   <i-icon type="enter" size="24" color="#ddd"/>
   </view>
 </view>
 

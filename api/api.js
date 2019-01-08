@@ -11,6 +11,12 @@ const url ={
   groupApply: "/frontUser/groupApply",//post岗位申请：用户申请参与职位拼团
   centerInfo: "/frontUser/centerInfo",//get 我的页面进入后获取个人信息
   searchHistory: "/frontIndex/searchHistory",//get 岗位搜索记录查询
+  approve: "/frontUser/approve",//post 用户认证信息提交,图片先上传获取连接
+  resume: "/frontUser/resume",//get 用户简历：用户简历详情信息
+  resumeBase: "/frontUser/resumeBase",//post 用户简历基本信息添加、修改：第一次创建简历、简历基本信息编辑，hpUserResumeId存在编辑、否新增
+  resumeIntent: "/frontUser/resumeIntent",//post 用户简历：用户求职意向编辑、新增
+  resumeExp: "/frontUser/resumeExp",//post 用户简历：用户工作经验编辑、新增
+  resumeEdu: "/frontUser/resumeEdu",//post 用户简历：用户教育背景编辑、新增
 }
 
 module.exports = {

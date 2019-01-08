@@ -1,3 +1,6 @@
+<wxs src="./tools.wxs" module="tools" />
+<wxs src="../tools.wxs" module="globalTools" />
+
 <view class='app-header'>
   <view class='map' bindtap='toCity'>
     <i-icon type="coordinates_fill" />
@@ -13,9 +16,9 @@
 <!-- 轮播 -->
 <view class="">
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff">
-    <block wx:for="{{1}}">
+    <block wx:for="{{imgList}}" wx:key="picUrl">
       <swiper-item>
-        <image src="http://jc.yugyg.com/uploadFiles/uploadImgs/index/banners/201809121307020mkh85p.jpg" class="slide-image" mode='widthFix'/>
+        <image src="{{item.picUrl}}" class="slide-image" mode='widthFix'/>
       </swiper-item>
     </block>
   </swiper>
@@ -23,8 +26,8 @@
 
 <view class="activity-box">
   <view class="activity">
-    <block wx:for="{{activity}}">
-      <view class="activity-item">
+    <block wx:for="{{activity}}" wx:key="text">
+      <view class="activity-item" bindtap='changeList' data-index="{{index}}">
         <image src="{{item.src}}" mode="scaleToFill"></image>
         <text>{{item.text}}</text>
       </view>
@@ -32,41 +35,39 @@
   </view>
 </view>
 
-<i-notice-bar icon="systemprompt" loop>
+<!-- <i-notice-bar icon="systemprompt" loop>
     2018年世界杯,将于6月14日至7月15日举行;2018年世界杯,将于6月14日至7月15日举行;
-</i-notice-bar>
+</i-notice-bar> -->
 
 <view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
-  <view class='box-item' wx:for="{{3}}" wx:key="key" bindtap='toDetail' hover-class="item-hover">
+  <view class='box-item' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" hover-class="item-hover">
     
     <view class='box-item-info'>
       <view class='one'>
         <view class='left'>
-          <text class='job'>三星电子作业员</text>
-          <text class='fan'>返1800元</text>
+          <text class='job'>{{item.posName}}</text>
+          <text class='fan' wx:if="{{item.reTotalMoney}}">返{{item.reTotalMoney}}元</text>
         </view>
-        <view class='salary'>3500-5500 <text class="danwei">元</text></view>
+        <view class='salary'>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
       </view>
       <view class='two'>
-        <view class='commpany'>无锡先导自动化设备股份有限公司</view>
+        <view class='commpany'>{{item.comName}}</view>
         <view class='area'>
           <i-icon type="coordinates_fill" />
-          <text class='area-name'>无锡-新区</text>
+          <text class='area-name'>{{item.cityName}}-{{item.countyName}}</text>
         </view>
       </view>
       <view class='three'>
         <view class='limit'>
           <i-tag 
-            wx:for="{{tags}}" 
-            wx:key="{{index}}"
+            wx:for="{{tools.splitStr(item.welfareArr)}}" 
+            wx:key="*this"
             i-class="tag-class"
-            name="{{index}}" 
-            color="{{item.color}}" 
             >
             {{item.name}}
         </i-tag>
         </view>
-        <view class='time'>09.18</view>
+        <view class='time'>{{globalTools.formatemd(item.startTime)}}</view>
       </view>
     </view>
   </view>
