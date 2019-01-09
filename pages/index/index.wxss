@@ -140,13 +140,20 @@
   align-items: center;
   font-size: 20rpx;
 }
-.limit {
+.three .limit {
   display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+  margin-right: 10rpx;
+}
+.three .time {
+  flex: 0 0 auto;
 }
 .tag-class {
   color: #37aceb;
   background: #e2f4fe!important;
   margin-right: 10rpx;
+  white-space: nowrap;
 }
 /* 客服 */
 .kefu-button::after {

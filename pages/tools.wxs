@@ -16,6 +16,12 @@ function formatemd(date) {
 
 }
 
+//逗号分隔字符串
+function splitStr(strArr,separator) {
+  return strArr.split(separator+'')
+}
+
 module.exports = {
   formatemd: formatemd,
+  splitStr: splitStr
 };

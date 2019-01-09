@@ -44,14 +44,17 @@ Page({
     ],
     cityName:'',
     keyWord:'',
-    posNature: 0,//职位性质（1、实习，2、兼职，3、全职）
-    retOn: 0,//是否入职返现
-    hotOn: 1,//是否热门
-    welfareOn: 0,//是否福利岗位
-    urgentOn: 0,//是否高薪急聘
-    groupOn: 0,//是否是拼团岗位
+    // posNature: 0,//职位性质（1、实习，2、兼职，3、全职）
+    // retOn: 0,//是否入职返现
+    // hotOn: 1,//是否热门
+    // welfareOn: 0,//是否福利岗位
+    // urgentOn: 0,//是否高薪急聘
+    // groupOn: 0,//是否是拼团岗位
     currentPage: 1,//当前分页
-    showCount: 10,//单页展示记录数
+    totalPage:1,//总页数
+    isScroll:true,//是否可以滚动
+    showCount: 3,//单页展示记录数
+    index:3,//岗位类型
   },
 
   /**
@@ -66,11 +69,13 @@ Page({
   onShow: function () {
 
   },
-  onPullDownRefresh: function () {
-
-  },
   onReachBottom: function () {
-
+    var currentPage = this.data.currentPage+1;
+    this.setData({
+      currentPage
+    })
+    let data = this.workType(this.data.index)
+    this.fetchList(data)
   },
   onShareAppMessage: function (e) {
     console.log(e)
@@ -86,17 +91,40 @@ Page({
   },
   //获取列表数据
   fetchList(params){
+    if(!this.data.isScroll){
+      return false
+    }
     let paramsObj = {
       cityName: this.data.cityName,
       showCount: this.data.showCount,
+      currentPage:this.data.currentPage
     }
     Object.assign(paramsObj, params)
 
     getIndexList(paramsObj).then(data => {
       console.log(data)
+      let { currentPage,totalPage } = data.page
+      let setData={
+        currentPage,
+        totalPage,
+      }
+      // 是否可以滚动加载数据
+      if( currentPage==totalPage) {
+        setData.isScroll=false
+      }
+      if (totalPage==0 ){
+        setData.list=[]
+      }
+      if(currentPage == 1){
+        setData.list = data.list
+      } else if (totalPage && currentPage<=totalPage){
+        setData.list= this.data.list.concat(data.list)
+      }
+      console.log(...setData)
       this.setData({
-        list:data.list
+        ...setData
       })
+      
     })
   },
 
@@ -125,20 +153,25 @@ Page({
   //改变列表
   changeList(e){
     const { index } = e.currentTarget.dataset
-    this.setData({currentPage:1})
-    let data ={      
-      currentPage: 1,
-    }
-    if(index==0){}
-    switch(index){
-      case 0: data.posNature = 3;break;        
-      case 1: data.posNature = 2; break;
-      case 2: data.retOn = 1; break;
-      case 3: data.hotOn = 1; break;
-      case 4: data.urgentOn = 1;break;
-    }
+    this.setData({
+      currentPage:1,
+      index:index,
+      isScroll:true
+    })
+    let data = this.workType(index)
     this.fetchList(data)
   },
 
-  //TODO:分页加载
+  //判断当前工作类型
+  workType(index){
+    var data = {}
+    switch (index) {
+      case 0: data.posNature = 3; break;
+      case 1: data.posNature = 2; break;
+      case 2: data.retOn = 1; break;
+      case 3: data.hotOn = 1; break;
+      case 4: data.urgentOn = 1; break;
+    }
+    return data
+  }
 })

@@ -115,6 +115,35 @@ module.exports={
     })
   },
 
+  //get 岗位拼团详情
+  group(id){
+    return http({
+      url: url.positionApply,
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+      data: {
+        hpPositionGroupId: id
+      }
+    })
+  },
+
+  //get 岗位拼团：拼团岗位详情页面获取正在进行的拼团列表
+  groupList(id){
+    return http({
+      url: url.groupList,
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+      data: {
+        hpPositionId: id,
+        isPage:0
+      }
+    })
+  },
+
   //post 岗位申请：用户申请参与职位拼团
   groupApply(id){
     return http({

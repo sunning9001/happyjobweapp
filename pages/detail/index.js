@@ -1,18 +1,19 @@
-import { getPositionDetail, positionApply, groupApply } from '../../services/index.js'
+import { getPositionDetail, positionApply, groupApply, groupList } from '../../services/index.js'
+const WxParse = require('../../plugins/wxParse/wxParse.js');
 const app = getApp();
 
 Page({
   data: {
     host:app.globalData.host,
-    current: 'tab1',
-    current_scroll: 'tab1',
     hpPositionId:0,
-    posName: '',
-    approveState: '',
-    reTotalMoney: '',
-    comName: '',
+    type:1,//1：正常 2：拼团
+    isShowList:false
   },
   onLoad: function (options) {
+    console.log(options)
+    this.setData({
+      type: options.type || 1
+    })
     this.data.hpPositionId = options.hpPositionId
     this.fetchData()
   },
@@ -23,41 +24,107 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  //获取岗位详情
   fetchData(){
     getPositionDetail(this.data.hpPositionId).then(data=>{
       console.log(data)
-      let { posName, approveState, reTotalMoney, comName} = data.data
+      let { 
+        posName, //职位名称
+        approveState,//是否认证
+        comName, //公司名
+        reqAge, //年龄要求 
+        reqEducation,//学历要求
+        reqExp, // 工作经验要求
+        reqGender, //性别要求
+        reqSkill, //专业技能要求 ,
+        reqWorkYears, //工作年限要求
+        reqOther, // 其他要求
+        posComDesc, //公司介绍
+        comCustPhone, //公司客服电话
+        posDetail, //基本信息 
+        otherWelfare, // 其他福利
+        retManMoney, //入职返现金额男
+        fiveMoney, //五人团及以上奖励金额 
+        comApplyNum, //用户正在进行的非拼团申请数
+        groupApplyNum, //用户正在进行的拼团申请数
+        carDesc,
+      } = data.data
       let datas = data.data
       this.setData({
         posName,
         approveState,
-        reTotalMoney,
         comName,
+        reqAge, reqEducation, reqExp, reqGender, reqSkill, reqWorkYears, reqOther,
+        posComDesc,
+        comCustPhone,
+        retManMoney,
+        fiveMoney,
+        comApplyNum,
+        groupApplyNum
       })
+
+      //存储厂车路线
+      wx.setStorage({
+        key: 'carDesc',
+        data: carDesc 
+      })
+      
+      WxParse.wxParse('base', 'html', posDetail, this);
+      WxParse.wxParse('otherWelfare', 'html', otherWelfare, this);
     })
   },  
-  //申请开团
-  tuan(){
+  //获取拼团列表
+  fetchPtList(){
+    groupList(this.data.hpPositionId).then(data=>{
+      console.log(data)
+      this.setData({
+        isShowList:true,
+        ptList:data.list
+      })
+    })
+  },
+  //TODO:申请开团
+  applyPt(){
     positionApply(this.data.hpPositionId).then(data=>{
       console.log(data)
     })
   },
-  //参与拼团
+  //TODO:参与拼团
   joinTuan() {
     groupApply(this.data.hpPositionGroupId).then(data => {
       console.log(data)
     })
   },
-  handleChange({ detail }) {
-    this.setData({
-      current: detail.key
-    });
+  //TODO:申请职位
+  applyJob(){
+    positionApply(this.data.hpPositionId).then(data => {
+      console.log(data)
+    })
   },
-
-  handleChangeScroll({ detail }) {
-    this.setData({
-      current_scroll: detail.key
-    });
-  }
+  //TODO:查看申请
+  catJob(){
+    console.log("查看申请")
+  },
+  //TODO:查看拼团
+  catPt(){
+    console.log("查看拼团")
+  },
+  //拨打手机号
+  phoneCall(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.comCustPhone,
+      success:function(data){
+        console.log(data)
+      },
+      fail:function(data){
+        console.log(data)
+      }
+    })
+  },
+  //查看线路
+  toRoadsLine(){
+    wx.navigateTo({
+      url: '../roadsLine/index',
+    })
+  },
 })

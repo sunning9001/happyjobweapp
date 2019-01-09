@@ -1,19 +1,25 @@
+<wxs src="../tools.wxs" module="globalTools" />
+<import src="../../plugins/wxParse/wxParse.wxml"/>
+
 <view class='panel'>
   <!-- <image src="../../images/detail/detail-bg.jpg" class="bg" mode='widthFix'/> -->
   <view class='row job'>{{posName}}
     <image class="auth" wx:if="{{approveState }}" src="{{host}}/images/detail/auth-has.png" mode="widthFix"/>
   </view>
   <view class='row award'>
-    <text class='award-info'>入职奖励最高<text class='money'>{{reTotalMoney}}元</text></text>
-    <view class="rule">拼团规则</view>
+    <text class='award-info' wx:if="{{type==1}}">入职奖励最高<text class='money'>{{retManMoney}}元</text></text>
+    <text class='award-info' wx:if="{{type==2}}">入职奖励最高<text class='money'>{{fiveMoney+retManMoney}}元</text></text>
+    <navigator url='' wx:if="{{type==2}}"><view class="rule">拼团规则</view></navigator>
+    <navigator url='' wx:else><view class="rule">说明</view></navigator>
+    
   </view>
-  <view class='row pt-award' wx:if="{{false}}">
-    <text>参团上班奖励<text class="num">1000元</text></text>
-    <view class='toTuan'>去参团 <i-icon type="enter"></i-icon> </view>
+  <view class='row pt-award' wx:if="{{type==2}}">
+    <text>参团上班奖励<text class="num">{{fiveMoney}}元</text></text>
+    <view class='toTuan' bindtap='fetchPtList'>去参团 <i-icon type="enter"></i-icon> </view>
   </view>
 </view>
 
-<view class="card" wx:if="{{true}}">
+<view class="card"  wx:if="{{type==1}}">
   <view class="card-title">
     <image class="card-title-icon" src="{{host}}/images/detail/icon-box.png" mode="widthFix"></image>
     公司信息
@@ -25,7 +31,7 @@
       <view class="color99">100-1999人 | 民营 | 加工制造...</view>
     </view>
   </view>
-  <view class="card-footer">
+  <view class="card-footer" wx:if="{{false}}">
     <view class="address">
       <image class="map-icon" src="../../images/detail/map-icon.png"  mode="widthFix"/>
       <text class="">身价翻垃圾法师骷髅法师发生了口角风沙口</text>
@@ -39,12 +45,13 @@
     <view class="tab">基本信息</view>
     <view class="tab">岗位要求</view>
     <view class="tab">其他福利</view>
-    <!-- <view class="tab">公司详情</view> -->
+    <view class="tab" wx:if="{{type==2}}">公司详情</view>
   </view>
 
   <!-- 基本信息 -->
-  <view class="info-box">
-    <view class='info-row'>
+  <view class="info-box" id="base">
+    <template is="wxParse" data="{{wxParseData:base.nodes}}"/>
+    <!-- <view class='info-row'>
       <view class='info-title'>基本工资</view>
       <view class='info-content'>3500元</view>
     </view>
@@ -67,66 +74,39 @@
     <view class='info-row'>
       <view class='info-title'>工作环境</view>
       <view class='info-content'>穿防尘服</view>
-    </view>
+    </view> -->
   </view>
   <!-- 岗位要求 -->
   <view class="info-box">
     <view class="tags">
-      <view class="tag">男女不限</view>
-      <view class="tag">男女不限</view>
-      <view class="tag">男女5不限</view>
-      <view class="tag">男女是不限</view>
-      <view class="tag">男女到手不限</view>
-      <view class="tag">男女不限</view>
-      <view class="tag">男女不限</view>
+      <view class="tag" wx:if="{{reqAge}}">{{reqAge}}</view>
+      <view class="tag" wx:if="{{reqEducation}}">{{reqEducation}}</view>
+      <view class="tag" wx:if="{{reqExp}}">{{reqExp}}</view>
+      <view class="tag" wx:if="{{reqGender}}">{{reqGender}}</view>
+      <view class="tag" wx:if="{{reqSkill}}">{{reqSkill}}</view>
+      <view class="tag" wx:if="{{reqWorkYears}}">{{reqWorkYears}}</view>
+      <view class="tag" wx:for="{{globalTools.splitStr(reqOther,',')}}" wx:key="*this">{{item}}</view>
     </view>
   </view>
   <!-- 其他福利 -->
-  <view class="info-box">
-      <view class='info-row'>
+  <view class="info-box" id="otherWelfare">
+    <template is="wxParse" data="{{wxParseData:otherWelfare.nodes}}"/>
+    <!-- <view class='info-row'>
       <view class='info-title-mini'>面试</view>
       <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title-mini'>面试</view>
-      <view class='info-content'>26个英文字母  简单算术 简单个英文字母  简单算术 简单个英文字母  简单算术 简单汉字</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title-mini'>面试</view>
-      <view class='info-content'>26个英文字母  </view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title-mini'>面试</view>
-      <view class='info-content'>26个英文字字</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title-mini'>面试</view>
-      <view class='info-content'>26个英文简单汉字</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title-mini'>面试</view>
-      <view class='info-content'>26个英文字母字</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title-mini'>面试</view>
-      <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
-    </view>
-    <view class='info-row'>
-      <view class='info-title-mini'>面试</view>
-      <view class='info-content'>26个英文字母  简单算术 简单汉字</view>
-    </view>
+    </view> -->
   </view>
   
 </view>
 <!-- 路线图 -->
   <view class='path-route'>
-    <text class='path-title'>查看厂车线路详情</text>
+    <text class='path-title' bindtap='toRoadsLine'>查看厂车线路详情</text>
     <i-icon type="enter" />
   </view>
   <!-- 公司介绍 -->
-  <view class='word-break com-desc'>三星（无锡）电子有限公司，主要XXXXXXXXXXXXXXXXXX</view>
+  <view class='word-break com-desc'  wx:if="{{type==1 && posComDesc}}">{{posComDesc}}</view>
 
-  <view class="address-box">
+  <view class="address-box" wx:if="{{type==2 && false}}">
       <view class="address">
         <image class="map-icon" src="../../images/detail/map-icon.png"  mode="widthFix"/>
         <text class="">身价翻垃圾法师骷髅法师发生了口角风沙口</text>
@@ -140,10 +120,10 @@
       <image class="kefu-icon" src="../../images/detail/kefu.png" mode="widthFix"/>
       <view class="kefu-content">
         <view class="kefu-title">开心客服电话：</view>
-        <view class="kefu-iphone">400692099</view>
+        <view class="kefu-iphone">{{comCustPhone}}</view>
       </view>
     </view>
-    <image class="icon-iphone" src="../../images/detail/iphone.png" mode="widthFix"/>
+    <image class="icon-iphone" src="../../images/detail/iphone.png" bindtap='phoneCall' mode="widthFix"/>
   </view>
 
   <!-- tips -->
@@ -153,5 +133,9 @@
   </view>
   <!-- btn -->
   <view class="btn-group">
-    <i-button bind:click="handleClick" type="primary" shape="circle" i-class="distance">申请开团</i-button>
+    <!--TODO: 需要绑定手机号 -->
+    <i-button bind:click="applyJob" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && !comApplyNum}}">申请职位</i-button>
+    <i-button bind:click="catJob" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && comApplyNum}}">查看申请</i-button>
+    <i-button bind:click="applyPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==2 && !groupApplyNum}}">申请开团</i-button>
+    <i-button bind:click="catPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==2 && groupApplyNum}}">查看拼团</i-button>
   </view>

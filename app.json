@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/detail/index",
     "pages/search/index",
     "pages/pt/index",
     "pages/mine/index",
     "pages/pt-detail/index",
     "pages/pt-result/success",
     "pages/pt-result/fail",
-    "pages/detail/index",
     "pages/location/index",
     "pages/jianli/index",
     "pages/user-form/index",
@@ -26,7 +26,8 @@
     "pages/bind-iphone/index",
     "pages/recommend/index",
     "pages/recommend-share/index",
-    "pages/recommend-iphone/index"
+    "pages/recommend-iphone/index",
+    "pages/roadsLine/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

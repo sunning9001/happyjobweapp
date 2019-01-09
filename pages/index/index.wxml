@@ -1,4 +1,3 @@
-<wxs src="./tools.wxs" module="tools" />
 <wxs src="../tools.wxs" module="globalTools" />
 
 <view class='app-header'>
@@ -39,7 +38,7 @@
     2018年世界杯,将于6月14日至7月15日举行;2018年世界杯,将于6月14日至7月15日举行;
 </i-notice-bar> -->
 
-<view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
+<view class='box-body'>
   <view class='box-item' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" hover-class="item-hover">
     
     <view class='box-item-info'>
@@ -59,13 +58,16 @@
       </view>
       <view class='three'>
         <view class='limit'>
-          <i-tag 
-            wx:for="{{tools.splitStr(item.welfareArr)}}" 
-            wx:key="*this"
-            i-class="tag-class"
-            >
-            {{item.name}}
-        </i-tag>
+          <block wx:if="{{item.welfareArr}}">
+            <i-tag 
+              wx:for="{{globalTools.splitStr(item.welfareArr,',')}}" 
+              wx:key="*this"
+              wx:for-item="tag"
+              i-class="tag-class"
+              >
+              {{tag}}
+            </i-tag>
+          </block>
         </view>
         <view class='time'>{{globalTools.formatemd(item.startTime)}}</view>
       </view>

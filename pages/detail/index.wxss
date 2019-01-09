@@ -157,6 +157,7 @@ page {
   background: #36a0db;
 }
 .info-box {
+  font-size: 28rpx;
   color: #828282;
   padding: 40rpx 0;
   border-bottom: 1px solid #eee;
