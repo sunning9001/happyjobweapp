@@ -1,3 +1,5 @@
+@import "/plugins/wxParse/wxParse.wxss";
+
 .panel {
   position: relative;
   padding: 0 30rpx 50rpx;

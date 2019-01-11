@@ -1,6 +1,8 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/identification/index",
     "pages/detail/index",
     "pages/search/index",
     "pages/pt/index",
@@ -19,7 +21,6 @@
     "pages/about/index",
     "pages/share/index",
     "pages/wallet/index",
-    "pages/identification/index",
     "pages/check-iphone/index",
     "pages/wages/index",
     "pages/bind-pt/index",

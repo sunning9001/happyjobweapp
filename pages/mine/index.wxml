@@ -1,10 +1,13 @@
 <view class='panel-container'>
-  <view class="panel" bindtap="toform">
-    <image class='avatar' src='http://jc.yugyg.com/uploadFiles/images/temp/men.png'></image>
+  <view class="panel" bindtap="toAuth">
+    <image class='avatar' src='{{headerPic}}'></image>
     <view class='person-info'>
         <view class='name'>
-          <text class="">哆来咪</text>
-          <image class="auth" src="http://jc.yugyg.com/uploadFiles/images/mine/auth.png" mode="widthFix" />
+          <text class="">{{userName}}</text>
+          <!-- TODO:不用图片改成view -->
+          <image class="auth" wx:if="{{approveState==1}}" src="http://jc.yugyg.com/uploadFiles/images/mine/auth-has.png" mode="widthFix" />
+          <image class="auth" wx:if="{{approveState!=1}}" src="http://jc.yugyg.com/uploadFiles/images/mine/auth.png" mode="widthFix" />
+          
         </view>    
         <view class="enter">
           <text class="">进入个人主页</text>

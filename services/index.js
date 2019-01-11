@@ -241,5 +241,19 @@ module.exports={
         data: params
       }
     })
+  },
+
+  //上传图片
+  uploadFile(filePath){
+    return wx.uploadFile({
+      url: url.imgUpOne,
+      filePath: filePath,
+      name: 'file',
+      header: {},
+      formData: {},
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 }

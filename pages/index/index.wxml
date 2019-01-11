@@ -39,13 +39,13 @@
 </i-notice-bar> -->
 
 <view class='box-body'>
-  <view class='box-item' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" hover-class="item-hover">
+  <view class='box-item' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" data-type="{{item.groupOn}}" hover-class="item-hover">
     
     <view class='box-item-info'>
       <view class='one'>
         <view class='left'>
           <text class='job'>{{item.posName}}</text>
-          <text class='fan' wx:if="{{item.reTotalMoney}}">返{{item.reTotalMoney}}元</text>
+          <text class='fan' wx:if="{{item.retManMoney}}">返{{item.retManMoney}}元</text>
         </view>
         <view class='salary'>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
       </view>

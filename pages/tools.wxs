@@ -15,6 +15,15 @@ function formatemd(date) {
   return formatNumber(month) + "." + formatNumber(day)
 
 }
+// 时间戳转成年月日
+function formateDay(date) {
+  date = getDate(date)
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return date.getFullYear() + "-" + formatNumber(date.getMonth() + 1) + "-" + formatNumber(date.getDate())
+
+}
 
 //逗号分隔字符串
 function splitStr(strArr,separator) {

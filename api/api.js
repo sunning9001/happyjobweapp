@@ -19,6 +19,7 @@ const url ={
   resumeIntent: "/frontUser/resumeIntent",//post 用户简历：用户求职意向编辑、新增
   resumeExp: "/frontUser/resumeExp",//post 用户简历：用户工作经验编辑、新增
   resumeEdu: "/frontUser/resumeEdu",//post 用户简历：用户教育背景编辑、新增
+  imgUpOne:"/wxAppletsLogin/imgUpOne",//post 上传图片
 }
 
 module.exports = {

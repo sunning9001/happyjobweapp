@@ -25,23 +25,6 @@ Page({
         text: "高薪急聘"
       }
     ],
-    tags : [
-      {
-          name : '班车'
-      },
-      {
-          name : '工作餐'
-      },
-      {
-          name : '节日福利'
-      },
-      {
-          name : '五险一金'
-      },
-      {
-          name : '加班补助'
-      }
-    ],
     cityName:'',
     keyWord:'',
     // posNature: 0,//职位性质（1、实习，2、兼职，3、全职）
@@ -56,10 +39,6 @@ Page({
     showCount: 3,//单页展示记录数
     index:3,//岗位类型
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this.fetchBanner()
     this.fetchList({     
@@ -109,16 +88,15 @@ Page({
         totalPage,
       }
       // 是否可以滚动加载数据
-      if( currentPage==totalPage) {
+      if ( totalPage==0 || currentPage==totalPage) {
         setData.isScroll=false
-      }
-      if (totalPage==0 ){
-        setData.list=[]
       }
       if(currentPage == 1){
         setData.list = data.list
       } else if (totalPage && currentPage<=totalPage){
         setData.list= this.data.list.concat(data.list)
+      }else{
+        setData.list = []
       }
       console.log(...setData)
       this.setData({
@@ -144,9 +122,9 @@ Page({
 
   //去详情页
   toDetail(e){
-    let id = e.currentTarget.dataset.id
+    const { id, type } = e.currentTarget.dataset
     wx.navigateTo({
-      url: '../detail/index?hpPositionId=' + id,
+      url: '../detail/index?hpPositionId=' + id+"&type="+type,
     })
   },
 

@@ -9,37 +9,40 @@
 <view class='input-box'>
   <view class='row'>
     <image class="user" src="../../images/identification/user.png" mode="widthFix"/>
-    <i-input class="input" value="{{ value1 }}" placeholder="请输入姓名" />
+    <i-input class="input" value="{{ realName }}" placeholder="请输入姓名" bind:blur="changeName" maxlength="6"/>
   </view>
 
   <view class='row'>
     <image class="idcode" src="../../images/identification/idcard.png" mode="widthFix"/>
-    <i-input class="input" value="{{ value1 }}" placeholder="请输入身份证号码" />
+    <i-input class="input" value="{{ idNum }}" placeholder="请输入身份证号码" bind:blur="changeId" maxlength="18"/>
   </view>
 </view>
 
 <view class='id-container'>
   <view class='idBox'>
     <view class="card-box">
-      <image class="addImg" src="../../images/identification/camera.png" mode='widthFix'/>
-      <image class="idCard" src="../../images/identification/id_front.png" mode='widthFix' />
+      <image class="addImg" src="../../images/identification/camera.png" mode='widthFix' data-index="{{1}}" bindtap='chooseImage'/>
+      <image class="idCard" wx:if="{{idFrontPic}}" src="{{idFrontPic}}" />
+      <image class="idCard" wx:else src="../../images/identification/id_front.png" />
     </view>
     <view class="text"><text class="circle left">1</text> 上传身份证正面</view>
   </view>
   <view class='idBox'>
     <view class="text"><text class="circle">2</text> 上传身份证反面</view>
     <view class="card-box">
-      <image class="addImg" src="../../images/identification/camera.png" mode='widthFix'/>
-      <image class="idCard" src="../../images/identification/id_back.png" mode='widthFix' />
+      <image class="addImg" src="../../images/identification/camera.png" mode='widthFix' data-index="{{2}}" bindtap='chooseImage'/>
+      <image class="idCard" wx:if="{{idBackPic}}" src="{{idBackPic}}"/>
+      <image class="idCard" wx:else src="../../images/identification/id_back.png" />
     </view>
   </view>
   <view class='idBox'>
     <view class="card-box">
-      <image class="addImg" src="../../images/identification/camera.png" mode='widthFix'/>
-      <image class="idCard" src="../../images/identification/id_face.png" mode='widthFix' />
+      <image class="addImg" src="../../images/identification/camera.png" mode='widthFix' data-index="{{3}}" bindtap='chooseImage'/>
+      <image class="idCard" wx:if="{{idPersonPic}}" src="{{idPersonPic}}"/>
+      <image class="idCard" wx:else src="../../images/identification/id_face.png" />
     </view>
     <view class="text"><text class="circle left">3</text> 手持身份证拍照</view>
   </view>
 </view>
 
-<button class="save">确认提交</button>
+<button class="save" bindtap='submit'>确认提交</button>

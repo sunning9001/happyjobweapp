@@ -1,4 +1,3 @@
-@import "/plugins/wxParse/wxParse.wxss";
 
 .noborder::after{
     border: 0!important;

@@ -6,13 +6,13 @@ Page({
   data: {
     host:app.globalData.host,
     hpPositionId:0,
-    type:1,//1：正常 2：拼团
+    type:0,//0：正常 1：拼团
     isShowList:false
   },
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      type: options.type || 1
+      type: options.type || 0
     })
     this.data.hpPositionId = options.hpPositionId
     this.fetchData()
@@ -84,6 +84,7 @@ Page({
     })
   },
   //TODO:申请开团
+  //是否绑定过手机号 是否有简历，
   applyPt(){
     positionApply(this.data.hpPositionId).then(data=>{
       console.log(data)
