@@ -34,8 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
-    imgHost:"//jc.yugyg.com/uploadFiles",
+    userInfo: null,    
     oid:'baf941d9cd92428b9cc1aeb0e6a33e',
     sid:'6f54c1f9174b4f49a0d98f16447655d7'
   }

@@ -1,36 +1,21 @@
+import { imgServerUrl } from '../../config/config.js'
 import { getIndexList, getPositionList } from '../../services/index.js'
 const app = getApp();
 
 Page({
   data: {
-    tags : [
-        {
-            name : '班车'
-        },
-        {
-            name : '工作餐'
-        },
-        {
-            name : '节日福利'
-        },
-        {
-            name : '五险一金'
-        },
-        {
-            name : '加班补助'
-        }
-    ],
     cityName: '无锡',
     currentPage: 1,//当前分页
-    showCount: 50,//单页展示记录数
+    showCount: 50,//单页展示记录数,
+    clearTimer:false
   },
 
   onLoad: function (options) {
-    this.fetchList()
-    this.fetchPt()
+    
   },
   onReady: function () {
-
+    this.fetchList()
+    this.fetchPt()
   },
   onShow: function () {
 
@@ -56,10 +41,13 @@ Page({
       groupOn: 1,
       currentPage: 1,
       showCount: 1
-    }).then(data => {
+    }).then(data => {      
       console.log(data)
       this.setData({
-        myList:data.list
+        myList: data.list.map(item => {
+          item.groupLeftTime = new Date().getTime() + item.groupLeftTime*1000
+          return item
+        })
       })
     })
   },
@@ -70,7 +58,10 @@ Page({
       url: '../detail/index?hpPositionId=' + id + "&type=" + type,
     })
   },
-
+  //倒计时结束回调
+  myLinsterner(){
+    this.fetchPt()
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

@@ -107,6 +107,7 @@
   width: 84rpx;
   height: 84rpx;
   margin-right: 40rpx;
+  border-radius: 50%;
 }
 .name {
   font-size: 30rpx;

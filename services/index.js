@@ -173,7 +173,7 @@ module.exports={
   },
 
   //get 用户简历：用户简历详情信息
-  getJianli(){
+  getResume(){
     return http({
       url: url.resume,
       header: {
@@ -191,9 +191,10 @@ module.exports={
       header: {
         oid: app.globalData.oid,
         sid: app.globalData.sid,
+        "Content-Type":"application/json"
       },
       data: {
-        data: params
+        data: JSON.stringify(params)
       }
     })
   },
@@ -206,9 +207,10 @@ module.exports={
       header: {
         oid: app.globalData.oid,
         sid: app.globalData.sid,
+        "Content-Type": "application/json"
       },
       data: {
-        data: params
+        data: JSON.stringify(params)
       }
     })
   },
@@ -221,9 +223,10 @@ module.exports={
       header: {
         oid: app.globalData.oid,
         sid: app.globalData.sid,
+        "Content-Type": "application/json"
       },
       data: {
-        data: params
+        data: JSON.stringify(params)
       }
     })
   },
@@ -243,17 +246,17 @@ module.exports={
     })
   },
 
-  //上传图片
-  uploadFile(filePath){
-    return wx.uploadFile({
-      url: url.imgUpOne,
-      filePath: filePath,
-      name: 'file',
-      header: {},
-      formData: {},
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+  //get: 获取教育水平选项
+  eduList(){
+    return http({
+      url: url.eduList,
+    })
+  },
+
+  //get:获取薪资水平选项列表
+  getSalaryList(){
+    return http({
+      url: url.salaryList,
     })
   }
 }

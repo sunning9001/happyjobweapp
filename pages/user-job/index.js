@@ -1,25 +1,54 @@
-import { resumeIntent } from '../../services/index.js'
-const app = getApp();
+import { resumeIntent, getSalaryList} from '../../services/index.js'
+import { imgServerUrl } from '../../config/config.js'
+import { showToast } from '../../utils/tips.js'
 
 Page({
   data: {
-    sex: ["初中", "中专", "高职"],
-    sex_index: 0,
-    region: ['广东省', '广州市', '海珠区'],
-    customItem: '全部'
+    region: [],
+    name:'',
+    salaryIndex:0
   },
 
   onLoad: function (options) {
+    this.fetchSalaryList()
+    //TODO:修改 获取已有的信息
   },
-  fetchData(){
+  //获取薪资水平
+  fetchSalaryList(){
+    getSalaryList().then(data=>{
+      this.setData({
+        salaryList: data.list
+      })
+    })
+  },
+  //改变薪资水平
+  bindSalaryChange(e){
+    this.setData({
+      salaryIndex:e.detail.value
+    })
+  },
+  changeName(e){
+    //TODO:排除数字，特殊字符，空格
+    this.setData({
+      name:e.detail.detail.value.trim()
+    })
+  },
+  submit(){
+    let flag = this.check()
+    if(!flag){
+      return
+    }
+    let { name,salaryList,salaryIndex,region} = this.data
     resumeIntent({
-      hpPositionSalaryId:'',
+      hpPositionSalaryId: salaryList[salaryIndex].hpPositionSalaryId,
       hpUserIntentionId :'',
       hpUserResumeId :'',
-      posType:'',
-      workArea:''
+      posType:name,
+      workArea:region.join(",")
     }).then(data=>{
       console.log(data)
+      showToast('保存成功','success')
+      wx.navigateBack()
     })
 
   },
@@ -28,5 +57,18 @@ Page({
     this.setData({
       region: e.detail.value
     })
+  },
+  //验证
+  check(){
+    let { name,region}=this.data
+    if (name.trim()==""){
+      showToast('请填写期望行业')
+      return false
+    }
+    if (region.length==0){
+      showToast('请选择期望地点')
+      return false
+    }
+    return true
   }
 })

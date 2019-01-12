@@ -129,7 +129,7 @@
   flex: 0 0 auto;
   width: 110rpx;
   height: 110rpx;
-  border-radius: 6rpx;
+  border-radius: 50%;
   background: #fff;
 }
 .box .box-item .box-item-info {
@@ -191,6 +191,8 @@
   margin-top: 30rpx;
 }
 .box .djs {
+  display: flex;
+  align-items: flex-end;
   font-size: 24rpx;
   color: #bcedfd;
 }

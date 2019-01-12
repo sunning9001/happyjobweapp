@@ -1,27 +1,28 @@
 import { getBanner, getIndexList } from '../../services/index.js'
+import { imgServerUrl } from '../../config/config.js'
 const app = getApp();
 
 Page({
   data: {
     activity: [
       {
-        src: app.globalData.imgHost + "/images/home/quanzhi.png",
+        src: imgServerUrl + "/images/home/quanzhi.png",
         text: "全职工作"
       },
       {
-        src: app.globalData.imgHost + "/images/home/jianzhi.png",
+        src: imgServerUrl + "/images/home/jianzhi.png",
         text: "兼职工作"
       },
       {
-        src: app.globalData.imgHost + "/images/home/fanxian.png",
+        src: imgServerUrl + "/images/home/fanxian.png",
         text: "入职返现"
       },
       {
-        src: app.globalData.imgHost + "/images/home/gangwei.png",
+        src: imgServerUrl + "/images/home/gangwei.png",
         text: "爆品岗位"
       },
       {
-        src: app.globalData.imgHost + "/images/home/jipin.png",
+        src: imgServerUrl + "/images/home/jipin.png",
         text: "高薪急聘"
       }
     ],

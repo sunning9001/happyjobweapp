@@ -22,7 +22,14 @@ function formateDay(date) {
   var month = date.getMonth() + 1
   var day = date.getDate()
   return date.getFullYear() + "-" + formatNumber(date.getMonth() + 1) + "-" + formatNumber(date.getDate())
-
+}
+// 时间戳转成年月
+function formateym(date,split) {
+  date = getDate(date)
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return date.getFullYear() + split + formatNumber(date.getMonth() + 1)
 }
 
 //逗号分隔字符串
@@ -32,5 +39,6 @@ function splitStr(strArr,separator) {
 
 module.exports = {
   formatemd: formatemd,
-  splitStr: splitStr
+  splitStr: splitStr,
+  formateym: formateym,
 };

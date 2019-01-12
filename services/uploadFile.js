@@ -5,28 +5,35 @@ var app = getApp()
 
 module.exports={
   //图片上传
-  uploadImg(options){
+  uploadImg(){
     return new Promise((resolve,reject)=>{
-      wx.uploadFile({
-        url: apiUrl + imgUpOne,
-        filePath: options.filePath,
-        name: 'file',
-        header: {
-          oid: app.globalData.oid
-        },
-        formData: {
-          code: options.code
-        },
-        success: function (res) {
-          console.log(res)
-          let data = JSON.parse(res.data)
-          //TODO:数据状态处理
-          resolve(data)
-        },
-        fail: function (res) {
-          console.log(res)
-          reject(res)
-        },
+      wx.chooseImage({
+        sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
+        sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
+        success: res => {
+          const image = res.tempFilePaths[0]
+          wx.uploadFile({
+            url: apiUrl + imgUpOne,
+            filePath: image,
+            name: 'file',
+            header: {
+              oid: app.globalData.oid
+            },
+            formData: {
+              code: 'user'
+            },
+            success: function (res) {
+              console.log(res)
+              let data = JSON.parse(res.data)
+              //TODO:数据状态处理
+              resolve(data)
+            },
+            fail: function (res) {
+              console.log(res)
+              reject(res)
+            },
+          })
+        }
       })
     })    
   }

@@ -1,8 +1,6 @@
 {
-  "pages": [
-    
+  "pages": [    
     "pages/index/index",
-    "pages/identification/index",
     "pages/detail/index",
     "pages/search/index",
     "pages/pt/index",
@@ -11,6 +9,7 @@
     "pages/pt-result/success",
     "pages/pt-result/fail",
     "pages/location/index",
+    "pages/identification/index",
     "pages/jianli/index",
     "pages/user-form/index",
     "pages/user-info/user-info",

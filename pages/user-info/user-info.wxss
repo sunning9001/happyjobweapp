@@ -30,7 +30,7 @@
   width: 100%;
   font-size: 14px;
   padding: 20rpx 0 20rpx 30rpx;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eaeaea;
   box-sizing: border-box;
 }
 .list-title {
@@ -51,12 +51,17 @@
   align-items: center;
   margin-right: 10px;
 }
+.avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
 .i-cell-group,
 .flex {
   display: flex!important;
 }
 .border {
-  border: 1px solid #eaeaea;
+  border: 1px solid #bbb;
   height: 73rpx;
 }
 .select {

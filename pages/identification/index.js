@@ -14,33 +14,21 @@ Page({
 
   },
   chooseImage(e) {
-    let index = e.currentTarget.dataset.index
-    console.log(index)
-    wx.chooseImage({
-      sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
-      sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
-      success: res => {
-        console.log(res)
-        const image = res.tempFilePaths[0]
-        uploadImg({
-          code:'user',
-          filePath:image
-        }).then(res=>{
-          console.log(res.data)
-          let image = res.data.imgUrl
-          if (index == 1) {
-            this.setData({
-              idFrontPic: image
-            })
-          } else if (index == 2) {
-            this.setData({
-              idBackPic: image
-            })
-          } else if (index == 3) {
-            this.setData({
-              idPersonPic: image
-            })
-          }
+    let index = e.currentTarget.dataset.index        
+    uploadImg().then(res=>{
+      console.log(res.data)
+      let image = res.data.imgUrl
+      if (index == 1) {
+        this.setData({
+          idFrontPic: image
+        })
+      } else if (index == 2) {
+        this.setData({
+          idBackPic: image
+        })
+      } else if (index == 3) {
+        this.setData({
+          idPersonPic: image
         })
       }
     })

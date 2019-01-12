@@ -56,12 +56,19 @@
   <view class="box" wx:for="{{myList}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" data-type="{{item.groupOn}}">
     <view class='box-body'>
       <view class='box-item'>
-        <image class='box-item-img' src='http://pic.yugyg.com/uploadFiles/uploadImgs/goodsPic/goodsPic/2c998cd1c2ed463aab1b9819d0f341e2-thumbnail.jpg' mode='aspectFit'></image>
+        <image class='box-item-img' src='{{item.leaderPic}}' mode='aspectFit'></image>
         <view class='box-item-info'>
           <view class='one'><text class='job'>{{item.posName}}</text><text class='componey'>{{item.comName}}</text></view>
           <view class='three'>
-            <view class='limit'>还差<text class='number'>1</text>人成团</view>
-            <view class='djs'>剩余23:36:58</view>
+            <view class='limit'>还差<text class='number'>{{3-item.groupPartNum}}</text>人成团</view>
+            <view class='djs'>
+              <text>剩余</text>
+              <i-count-down
+                target="{{item.groupLeftTime}}"
+                bindcallback="myLinsterner"
+                clear-timer="{{clearTimer}}"
+              ></i-count-down>
+            </view>
           </view>
         </view>
       </view>
