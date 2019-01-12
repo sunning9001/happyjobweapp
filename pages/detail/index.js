@@ -30,6 +30,9 @@ Page({
   fetchData(){
     getPositionDetail(this.data.hpPositionId).then(data=>{
       console.log(data)
+      console.log(data.data.reqOther)
+      // data.data.reqOther = data.data.reqOther ? data.data.reqOther.split(",") : []
+
       let { 
         posName, //职位名称
         approveState,//是否认证
@@ -52,6 +55,8 @@ Page({
         carDesc,
       } = data.data
       let datas = data.data
+
+      
       this.setData({
         posName,
         approveState,
@@ -113,6 +118,9 @@ Page({
   },
   //TODO:查看拼团
   catPt(){
+    wx.navigateTo({
+      url: '../pt-detail/index?hpPositionGroupId=' + this.data.hpPositionGroupId,
+    })
     console.log("查看拼团")
   },
   //隐藏拼团列表模态框

@@ -34,6 +34,9 @@ function formateym(date,split) {
 
 //逗号分隔字符串
 function splitStr(strArr,separator) {
+  if (!strArr || !separator){
+    return '';
+  }
   return strArr.split(separator+'')
 }
 
