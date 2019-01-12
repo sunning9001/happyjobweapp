@@ -47,7 +47,7 @@ Page({
     })
   },
   onShow: function () {
-
+    //TODO:获取城市
   },
   onReachBottom: function () {
     var currentPage = this.data.currentPage+1;

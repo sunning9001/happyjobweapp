@@ -32,7 +32,7 @@ Page({
     } else if (approveState == 1){
       //个人信息页面
       wx.navigateTo({
-        url: '../user-form/index',
+        url: '../user-info/user-info',
       })
     } else if (approveState == 2) {
       return

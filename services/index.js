@@ -81,7 +81,23 @@ module.exports={
       },
       data:{
         delOn: 0,
-        isPage: 0
+        isPage: 1,
+        currentPage:1,
+        showCount:10
+      }
+    })
+  },
+
+  //delete: 刪除搜索记录
+  deleteHistory(id){
+    return http({
+      url: url.searchHistory,
+      mode:'DELETE',
+      header: {
+        oid: app.globalData.oid
+      },
+      data: {
+        hpUserSearchId:id
       }
     })
   },

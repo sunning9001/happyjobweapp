@@ -11,10 +11,10 @@
   <view class='history topic'>
     <view class='topic-header'>
       <view class='history-title'>搜索历史</view>
-       <i-icon class='trash' type="trash" size='24' color='#999' bindtap='clearHistory'/>
+       <i-icon class='trash' type="trash" size='24' color='#999' bindtap='delHistory' data-id=""/>
     </view>
     <view class='record-list'>
-      <view class='record' wx:for="{{historyList}}" data-value="{{item}}" bindtap='selectMsg'>{{item}}</view>
+      <view class='record' wx:for="{{historyList}}" wx:key="{{item.hpUserSearchId}}" data-value="{{item.content}}" bindtap='selectMsg' longpress="delHistory" >{{item.content}}</view>
     </view>
   </view>
 
