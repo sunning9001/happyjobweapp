@@ -92,7 +92,7 @@ module.exports={
   deleteHistory(id){
     return http({
       url: url.searchHistory,
-      mode:'DELETE',
+      method:'DELETE',
       header: {
         oid: app.globalData.oid
       },
@@ -274,5 +274,5 @@ module.exports={
     return http({
       url: url.salaryList,
     })
-  }
+  },
 }
