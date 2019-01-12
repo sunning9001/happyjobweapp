@@ -1,13 +1,9 @@
-// pages/recommend-share/index.js
+import { imgServerUrl } from '../../config/config.js'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    imgServerUrl: imgServerUrl,
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

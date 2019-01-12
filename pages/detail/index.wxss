@@ -1,5 +1,3 @@
-@import "/plugins/wxParse/wxParse.wxss";
-
 .panel {
   position: relative;
   padding: 0 30rpx 50rpx;
@@ -278,4 +276,122 @@ page {
   margin-bottom: 40rpx;
   padding: 40rpx;
   box-sizing: border-box;
+}
+/* 模态框 */
+.pt-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+.pt-mask.nobg {
+  background: transparent;
+}
+.pt-modal {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 520rpx;
+  box-shadow: 0px 12px 59px 3px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  border: 1px solid #17a9ff;
+  background: #fff;
+  transform: translateX(-50%);
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  z-index: 99;
+}
+.pt-modal-header {
+  position: relative;
+  height: 101rpx;
+  line-height: 101rpx;
+  border-bottom: 1px solid #eaeaea;
+}
+.pt-modal-title {
+  font-size: 28rpx;
+  color: #323232;
+  text-align: center;
+}
+.pt-modal-cancle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 24rpx;
+  color: #4498e8;
+}
+.pt-modal-body {
+  max-height: 436rpx;
+  overflow-y: auto;
+}
+.pt-modal .pt-list {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25rpx 0;
+  border-bottom: 1px solid #eaeaea;
+}
+.pt-modal .pt-list:last-child {
+  border-bottom: none;
+}
+.pt-modal .pt-list .pt-avatar {
+  flex: 0 0 auto;
+  flex-shrink: 0;
+  width: 95rpx;
+  height: 95prx;
+  border-radius: 50%;
+  border: 1px solid #e2e2e2;
+  background-color: #f1f1f1;
+}
+.pt-modal .pt-list .pt-info {
+  flex-grow: 1;
+  color: #323232;
+  margin-left: 50rpx;
+}
+.pt-modal .pt-list .pt-info .row {
+  display: flex;
+}
+.pt-modal .pt-list .pt-info .name {
+  font-size: 33rpx;
+  margin-right: 30rpx;
+  font-weight: 700;
+}
+.pt-modal .pt-list .pt-info .small {
+  font-size: 20rpx;
+}
+.pt-modal .pt-list .pt-info .small .num {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+.pt-modal .pt-list .pt-info .djs {
+  margin-top: 20rpx;
+  font-size: 20rpx;
+  color: #58a8ff;
+}
+.pt-modal .pt-list .pt-info .djs .label {
+  margin-right: 20rpx;
+}
+.pt-modal .pt-list .btn {
+  flex: 0 0 auto;
+  width: 82rpx;
+  height: 40rpx;
+  background-image: linear-gradient(87deg, #ffc466 0%, #f94f28 100%), linear-gradient(#36a0db, #36a0db);
+  background-blend-mode: normal, normal;
+  border-radius: 10rpx;
+  color: #fff;
+  line-height: 40rpx;
+  font-size: 22rpx;
+  text-align: center;
+}
+.pt-modal .pt-null {
+  text-align: center;
+  line-height: 180rpx;
+}
+.pt-modal-footer {
+  height: 120rpx;
+  background: #fff;
+  border-top: 1px solid #eaeaee;
 }
