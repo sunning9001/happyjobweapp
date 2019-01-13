@@ -223,9 +223,7 @@ module.exports={
         sid: app.globalData.sid,
         "Content-Type": "application/json"
       },
-      data: {
-        data: JSON.stringify(params)
-      }
+      data: JSON.stringify(params)
     })
   },
 
@@ -239,9 +237,7 @@ module.exports={
         sid: app.globalData.sid,
         "Content-Type": "application/json"
       },
-      data: {
-        data: JSON.stringify(params)
-      }
+      data: JSON.stringify(params)
     })
   },
 
@@ -253,10 +249,9 @@ module.exports={
       header: {
         oid: app.globalData.oid,
         sid: app.globalData.sid,
+        "Content-Type": "application/json"
       },
-      data: {
-        data: params
-      }
+      data: JSON.stringify(params)
     })
   },
 
