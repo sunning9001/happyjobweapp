@@ -1,9 +1,9 @@
 <view class='panel'>
-  <view class='row job'>卡斯大家看法萨克
-    <image class="auth" src="../../images/detail/auth-has.png" mode="widthFix"/>
+  <view class='row job'>{{data.comName}}
+    <image wx:if="{{data.comApproveState==1}}" class="auth" src="../../images/detail/auth-has.png" mode="widthFix"/>
   </view>
   <view class='row award'>
-    <text class='award-info'>入职奖励最高<text class='money'>2500元</text></text>
+    <text class='award-info'><text class='money'>{{data.lowerNum}}-{{data.hightNum}}元/月</text></text>
     <view class="rule">说明</view>
   </view>
   <view class='row pt-award' wx:if="{{false}}">
@@ -17,37 +17,28 @@
     <image class="card-title-icon" src="../../images/detail/icon-box.png" mode="widthFix"></image>
     参团人员
   </view>
-  <view class="card-content">
-    <view class="avatar-box">
+  <view class="card-content" >
+    
+    <view class="avatar-box" wx:for='{{data.userList}}' wx:for-item="item" >
       <view class="avatar-img">
-        <image class='avatar' src='../../images/avatar/1.png'></image>
+        <image class='avatar' src='{{item.headerPic}}'></image>
       </view>
     </view>
-    <view class="avatar-box">
-      <view class="avatar-img">
-        <image class='avatar' src='../../images/avatar/1.png'></image>
-      </view>
-    </view>
-    <view class="avatar-box">
-      <view class="avatar-img">
-        <image class='avatar' src='../../images/avatar/1.png'></image>
-      </view>
-    </view>
-    <view class="avatar-box">
-      <view class="avatar-img">
-        <image class='avatar' src='../../images/avatar/1.png'></image>
-      </view>
-    </view>
+
+   
   </view>
   <view class="card-footer">
-    <view class='djs'>倒计时：23：38：18</view>
+    <view class='djs' data-val="{{data.leftTime}}" >倒计时：
+      <i-count-down target="{{data.leftTime}}" bindcallback="myLinsterner" clear-timer="{{clearTimer}}"></i-count-down>
+    </view>
   </view>
 </view>
 
 <view class="btn-group">
-  <i-button bind:click="handleClick" type="success" shape="circle" i-class="primay">邀请朋友参团</i-button>
-  <!-- <i-button bind:click="handleClick" type="success" shape="circle" i-class="primay">一键参团</i-button> -->
-  <i-button bind:click="handleClick" type="info" shape="circle" i-class="info">生成分享图片</i-button>
+  <i-button wx:if="{{data.groupStatus==0 && data.userIsPart==1}}" bind:click="handleClick" type="success" shape="circle" i-class="primay">邀请朋友参团</i-button>
+  <i-button wx:if="{{data.groupStatus==0 && data.userIsPart!=1}}" bind:click="joinGroup" type="success" shape="circle" i-class="primay">一键参团</i-button>
+  <i-button wx:if="{{data.groupStatus==0 && data.userIsPart==1}}" bind:click="handleClick" type="info" shape="circle" i-class="info">生成分享图片</i-button>
+  <i-button wx:if="{{data.groupStatus==1}}" type="success" shape="circle" i-class="info">拼团成功</i-button>
 </view>
 <view class="card">
   <view class="card-title">
@@ -55,6 +46,6 @@
     招聘简章
   </view>
   <view class='card-content'>
-    <view class="desc">三星电子有限公司成立于1995年，总投资3.3亿美元。主要生产销售电冰箱、洗衣机、空调器、压缩机和配套零部件。目前拥有10000余名员工，产品除了在国内市场热销，还出口至全球60多个国家和地区。公司现有2个厂区，分别位于园区苏虹东路501号和园区综合保税区界浦路。 三星的经营理念是“以人才和技术为基础，创造最佳产品和服务，为人类社会做出贡献”，三星精神是“与顾客共存，向世界挑战，创造出未来”。公司始终坚持“人才第一”的经营理念，通过选人、育人、用人、留人等优化机制充分体现人尽其才原则。公司近年来，连续多次被政府部门评为劳动保障示范企业、劳动关系和谐企业。</view> 
+    <view class="desc">{{data.posComDesc}}</view> 
   </view>
 </view>

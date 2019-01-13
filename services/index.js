@@ -275,4 +275,56 @@ module.exports={
       url: url.salaryList,
     })
   },
+
+  //get:获取拼团详情信息
+  getGroupDetail(params) {
+    return http({
+      url: url.group,
+      data:params,
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+    })
+  },
+  // 发送手机短信验证码 
+  sendPhoneCode(params){
+    
+    let data = http({
+      url: url.phoneCode,
+      data: params,
+      method:"POST",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+    })
+    
+    return data;
+  },
+  //  薪资查询：根据手机号码，短信验证码获取身份信息
+  getPayrollId(params) {
+    return http({
+      url: url.payrollId,
+      data: params,
+      method: "GET",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+        sessionId: wx.getStorageSync('sessionid'),
+      },
+    })
+  },
+  //  薪资查询：获取工资条信息
+  getPayroll(params) {
+    return http({
+      url: url.payroll,
+      data: params,
+      method: "GET",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+    })
+  },
 }

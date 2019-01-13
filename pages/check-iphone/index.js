@@ -1,3 +1,6 @@
+
+import { sendPhoneCode, getPayrollId } from '../../services/index.js'
+import { showToast } from '../../utils/tips.js'
 // pages/check-iphone/index.js
 Page({
 
@@ -6,7 +9,9 @@ Page({
    */
   data: {
     iphone:"",
-    yzm:'',   
+    yzm:'',  
+    leftTime:0,
+    // timeFormat: ['秒'],
   },
 
   /**
@@ -64,9 +69,61 @@ Page({
   onShareAppMessage: function () {
 
   },
-  next(){
-    wx.navigateTo({
-      url: '../wages/index',
+
+  //下一步提交
+  next(e){
+    // let idNum = '410325200103299938';
+    // let realName = '党俊良';
+    // wx.navigateTo({
+    //   url: '../wages/index?idNum=' + idNum + "&realName=" + realName,
+    // })
+    if (this.data.iphone.length != 11) {
+      showToast('请输入11位手机号码！')
+      return
+    }
+    if (this.data.yzm.length != 4) {
+      showToast('请输入4位手机号码！')
+      return
+    }
+    getPayrollId({
+      phoneNo:this.data.iphone,
+      phoneCode:this.data.yzm
+    }).then(data=>{
+      
+      wx.navigateTo({
+        url: '../wages/index?idNum='+data.data.idNum+"&realName="+data.data.realName,
+      })
     })
-  }
+    
+  },
+  // 手机号输入
+  bindPhoneInput(e){
+    this.data.iphone = e.detail.detail.value
+  },
+  // 验证码号输入
+  bindCodeInput(e) {
+    this.data.yzm = e.detail.detail.value
+  },
+  timeLinsterner(e){
+    this.setData({
+      leftTime: 0
+    })
+  },
+// 验证码发送
+  sendCode(e){
+    if(this.data.iphone.length != 11){
+      showToast('请输入11位手机号码！')
+      return
+    }
+    sendPhoneCode({
+      phoneNo:this.data.iphone
+    }).then(data =>{
+      this.setData({
+        leftTime: new Date().getTime() + 59 * 1000
+      })
+    })
+  },
+
+
+    // TODO 请仔细阅读说明
 })
