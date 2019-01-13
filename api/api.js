@@ -13,6 +13,7 @@ const url ={
   groupList: "/frontIndex/groupList",//get 岗位拼团：拼团岗位详情页面获取正在进行的拼团列表
   eduList: "/frontIndex/eduList",//get 获取教育水平选项
   salaryList: "/frontIndex/salaryList",//get 获取薪资水平选项
+  bindPhone: '/frontIndex/phone',//用户手机号码绑定、更换
   phoneCode : "/frontIndex/phoneSms",// 薪资查询：发送手机验证码
   payrollId: "/frontIndex/payrollId",// 薪资查询：根据手机号码，短信验证码获取身份信息
   payroll: "/frontIndex/payroll",// 薪资查询：根据手机号码，短信验证码获取身份信息

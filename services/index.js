@@ -327,4 +327,17 @@ module.exports={
       },
     })
   },
+  // 用户手机号码绑定、更换
+  bindPhone(params){
+    return http({
+      url: url.bindPhone,
+      data: params,
+      method: "POST",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+        sessionId: wx.getStorageSync('sessionid'),
+      },
+    })
+  }
 }

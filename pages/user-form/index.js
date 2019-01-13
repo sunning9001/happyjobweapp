@@ -1,33 +1,61 @@
-import { resumeBase } from '../../services/index.js'
+import { getCenterInfo, sendPhoneCode, bindPhone } from '../../services/index.js'
+import { imgServerUrl } from '../../config/config.js'
+import { showToast } from '../../utils/tips.js'
 const app = getApp();
 Page({
   data: {
-    sex: ["男", "女"],
-    sex_index: 0,
+    imgServerUrl: imgServerUrl,
+    bornYear:'',
+    gender:'',
+    realName:'',
+    zym:'',
+    phone:'',
+    isShowYzm:false,
   },
   onLoad: function (options) {
+    this.fetchData()
   },
   fetchData(){
-    resumeBase({  
-      hpEducationId :'',
-      hpUserId :'',
-      hpUserResumeId :'',
-      resBornTime :'',
-      resGender :'',
-      resName :'',
-      resPhone :'',
-      resPic :'',
-      resTime :''
-    }).then(data=>{
+    getCenterInfo().then(data=>{
       console.log(data)
-      }).catch(err => {
-        console.log(err)
+      let { bornYear, gender, realName } = data.data
+      bornYear = Date.parse(new Date())
+      this.setData({
+        bornYear, gender, realName
       })
-  },
-  bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      index: e.detail.value
     })
   },
+  //TODO:倒计时
+
+  sendCode(){
+    if (this.data.phone.lenght!=11 ){
+      showToast("请输入11位手机号")
+      return false
+    }
+    this.setData({
+      isShowYzm:true
+    })
+    sendPhoneCode({
+      phoneNo:this.data.phone
+    }).then(data=>{
+      console.log(data)
+    })
+  },
+  save(){
+    let { phone,yzm } = this.data
+    if( phone.lenght!=11){
+      showToast("请输入手机号")
+      return false
+    }
+    if(yzm.lenght!=4){
+      showToast("请输入验证码")
+      return false
+    }
+    bindPhone({
+      phoneNo: phone,
+      msgCode: yzm
+    }).then(data=>{
+      console.log(data)
+    })
+  }
 })

@@ -1,35 +1,47 @@
+<wxs src="../tools.wxs" module="globalTools" />
 <view class='group'>
 
   <view class='list'>
     <view class='list-title required'>姓名</view>
     <view class='list-content'>
-      <i-input class="row" value="{{ value1 }}" placeholder="请输入姓名" disabled/>
+      <view class='input-text'>{{realName}}</view>
+      <image class="auth" src="{{imgServerUrl}}/images/mine/auth-has.png" mode="widthFix" />
     </view>
   </view>
 
   <view class='list'>
     <view class='list-title required'>性别</view>
     <view class='list-content'>
-     <i-radio-group current="{{sex_index}}" bindchange="handleFruitChange"  color="#2db7f5" i-class="flex">
-        <i-radio wx:for="{{sex}}" wx:key="*this" value="{{item}}" color="#2db7f5" i-class="flex"></i-radio>
-    </i-radio-group>
+      <view class='input-text'>{{gender==1?"男":"女"}}</view>
     </view>
   </view>
 
   <view class='list'>
-    <view class='list-title required'>出生年份</view>
+    <view class='list-title required'>出生年月</view>
     <view class='list-content'>
-      <i-input value="{{ value3 }}" type="number" placeholder="1998.1" i-class="noborder"/>
+      <view class='input-text'>{{globalTools.formateym(bornYear)}}</view>
     </view>
   </view>
 
   <view class='list'>
     <view class='list-title required'>手机号码</view>
     <view class='list-content'>
-      <i-input value="{{ value2 }}" type="number" maxlength="11" placeholder="请输入手机号" />
+      <view class='input-box'>
+        <input value="{{ value2 }}" type="number" maxlength="11" placeholder="请输入手机号" />
+        <button bindtap="sendCode" class='label yzm' disabled="{{false}}">重新发送（59秒）</button>
+      </view>
+    </view>
+  </view>
+
+   <view class='list' wx:if="{{isShowYzm}}">
+    <view class='list-title required'>验证码</view>
+    <view class='list-content'>
+      <view class='input-box'>
+        <input value="{{ value2 }}" type="number" maxlength="4" placeholder="请输入验证码" />
+      </view>
     </view>
   </view>
 
 </view>
 
-<i-button i-class="radius distance" bind:click="handleClick" type="info" shape="circle">保存</i-button>
+<i-button i-class="radius distance" bind:click="save" type="info" shape="circle">保存</i-button>
