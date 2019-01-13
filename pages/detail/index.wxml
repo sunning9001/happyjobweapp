@@ -9,8 +9,8 @@
   <view class='row award'>
     <text class='award-info' wx:if="{{type==0}}">入职奖励最高<text class='money'>{{retManMoney}}元</text></text>
     <text class='award-info' wx:if="{{type==1}}">入职奖励最高<text class='money'>{{fiveMoney+retManMoney}}元</text></text>
-    <navigator url='' wx:if="{{type==1}}"><view class="rule">拼团规则</view></navigator>
-    <navigator url='' wx:else><view class="rule">说明</view></navigator>
+    <navigator url='../document/pt' wx:if="{{type==1}}"><view class="rule">拼团规则</view></navigator>
+    <navigator url='../document/fanxian' wx:else><view class="rule">说明</view></navigator>
     
   </view>
   <view class='row pt-award' wx:if="{{type==1}}">
