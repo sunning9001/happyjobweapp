@@ -9,3 +9,6 @@
     margin: 0 30px!important;
     box-sizing: border-box;
 }
+.primary{
+  background: #2278a8!important;
+}

@@ -6,7 +6,6 @@ Page({
     sex_index: 0,
   },
   onLoad: function (options) {
-
   },
   fetchData(){
     resumeBase({  
@@ -21,7 +20,9 @@ Page({
       resTime :''
     }).then(data=>{
       console.log(data)
-    })
+      }).catch(err => {
+        console.log(err)
+      })
   },
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)

@@ -1,18 +1,9 @@
 <view class='group'>
-  <view class='list'>
-    <view class='list-title required'>头像</view>
-    <view class='list-content'>
-      <view class='extra'>
-        <image class='avatar' src='//jc.yugyg.com/uploadFiles/images/avatar/man.png' mode='widthFix'></image>
-        <i-icon type='enter' size='28' color='#999'/>
-      </view>
-    </view>
-  </view>
 
   <view class='list'>
     <view class='list-title required'>姓名</view>
     <view class='list-content'>
-      <i-input class="row" value="{{ value1 }}" placeholder="请输入姓名" />
+      <i-input class="row" value="{{ value1 }}" placeholder="请输入姓名" disabled/>
     </view>
   </view>
 

@@ -34,19 +34,19 @@ const http = (params) => {
               icon: "none",
               title: res.data.message
             })
-            console.log(res.data)
+            reject(res.data)
           }
         } else {
           //2. 操作不成功返回数据，以toast方式弹出响应信息，如后端未格式化非操作成功异常信息，则可以统一定义异常提示
           wx.showToast({
             icon: "none",
-            title: "数据异常"
+            title: "网络异常"
           })
           console.log(res)
         }
       },
-      fail: function (e) {
-        reject(e)
+      fail: function (e) {   
+        console.log(e)     
         wx.showToast({
           icon: "none",
           title: "网络异常"
