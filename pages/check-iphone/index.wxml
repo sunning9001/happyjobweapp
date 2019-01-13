@@ -1,11 +1,16 @@
+
+<view class='imgBox'>
+  <image class='logo' src='{{imgServerUrl}}/images/recommend/logo.png' mode='widthFix'></image>
+</view>
+
 <view class='input-area'>
   <view class='row'>
     <view class='label'>+86</view>
-    <i-input class='input' value="{{ iphone }}" type="number" maxlength="11" bind:blur='bindPhoneInput' />
+    <i-input class='input' value="{{ iphone }}" type="number" placeholder="请输入11位手机号码" maxlength="11" bind:blur='bindPhoneInput' />
   </view>
 
   <view class='row'>
-    <i-input class='input' value="{{ yzm }}" placeholder="验证码"  type="number" maxlength="4" bind:blur='bindCodeInput'/>
+    <i-input class='input' value="{{ yzm }}" placeholder="请输入验证码"  type="number" maxlength="4" bind:blur='bindCodeInput'/>
 
     <view bindtap="sendCode" class='label yzm' wx:if='{{leftTime<=0}}' >获取验证码</view>
     <view wx:if='{{leftTime>0}}' class='label yzm active'>重新发送

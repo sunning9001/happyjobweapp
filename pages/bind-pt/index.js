@@ -1,13 +1,8 @@
-// pages/bind-pt/index.js
 import { sendPhoneCode, usePhoneBound, resumeBase, groupApply } from '../../services/index.js'
 import { showToast } from '../../utils/tips.js'
 import { formatTime, argusToTimestamp } from '../../utils/util.js'
 var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     sex: ["男", "女"],
     sex_index: 0,
@@ -18,65 +13,11 @@ Page({
     age:'',
     realName:'',
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-// 姓名输入
+  // 姓名输入
   bindNameChange(e){
-    console.log(e)
     this.data.realName = e.detail.detail.value
   },
   // 年龄输入
@@ -85,8 +26,10 @@ Page({
   },
   // 性别输入
   bindSexChange(e) {
-    console.log(e)
     this.data.sex_index = e.detail.value
+    this.setData({
+      sex_index:this.data.sex_index
+    })
   },
   // 手机号输入
   bindPhoneInput(e) {

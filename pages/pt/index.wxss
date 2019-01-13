@@ -105,6 +105,7 @@
   color: #37aceb;
   background: #e2f4fe!important;
   margin-right: 10rpx;
+  white-space: nowrap;
 }
 /* 我的拼团 */
 .box {
@@ -163,9 +164,9 @@
 }
 .box .box-item .limit {
   display: flex;
-  align-items: flex-end;
-  font-size: 30rpx;
-  letter-spacing: 4px;
+  flex-grow: 1;
+  overflow: hidden;
+  margin-right: 10rpx;
 }
 .box .box-item .number {
   font-size: 46rpx;

@@ -1,3 +1,12 @@
+page{
+  padding: 48rpx 44rpx 0;
+  box-sizing: border-box;
+  color: #7d7d7d;
+  border-top: 1px solid #f4f4f4;
+}
+.bd-bottom{
+  border-bottom: 1px solid #eaeaea;
+}
 .row .self{
   position: static;
 }
@@ -48,4 +57,14 @@
   text-align: center;
   font-size: 28rpx;
   margin: 40rpx;
+}
+.nullpage{
+  margin: 50rpx 0;
+  color: #7d7d7d;
+  letter-spacing: 2px;
+  font-size: 30rpx;
+  text-align:center;
+}
+.nullpage .row{
+  margin-bottom: 18rpx;
 }

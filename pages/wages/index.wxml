@@ -1,8 +1,8 @@
 <view class="container">
-  <view class='row'>
+  <view class='row bd-bottom'>
     <i-input class="row" i-class="self" value="{{realName}}" title="姓名：" disabled/>
   </view>
-  <view class='row'>
+  <view class='row bd-bottom'>
     <i-input class="row" i-class="self" value="{{idNum}}" title="身份证号码：" disabled/>
   </view>
 
@@ -63,6 +63,12 @@
       </view>
       
     </view>
+  </view>
+
+  <view class='nullpage' wx:if="!detailFlag">
+    <view class='row'>未查到您的工资条</view>
+    <view class='row'>请在发薪日2日后查询</view>
+    <view class='row'>给您带来不便，敬请谅解</view>
   </view>
 
   <view class='remarks'>备注： 若未查到您的工资信息，可能工资条尚未上传</view>

@@ -40,8 +40,7 @@
       <view class='list-title'>
         <view bindtap="sendCode" class='label yzm' wx:if='{{leftTime<=0}}' >获取验证码</view>
           <view wx:if='{{leftTime>0}}' class='label yzm active'>重新发送
-            <i-count-down target="{{leftTime}}" bindcallback="timeLinsterner" clear-timer="{{clearTimer}}"></i-count-down>
-            
+            <i-count-down target="{{leftTime}}" bindcallback="timeLinsterner" clear-timer="{{clearTimer}}"></i-count-down>  
         </view>
       </view>
       <view class='list-content border'>

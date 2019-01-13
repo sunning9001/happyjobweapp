@@ -1,6 +1,5 @@
 import { postApprove } from '../../services/index.js'
 import { uploadImg } from '../../services/uploadFile.js'
-const app = getApp();
 
 Page({
   data: {
@@ -102,8 +101,9 @@ Page({
       wx.showToast({
         title: '提交成功',
       })
-      //TODO:跳转到申请审核中页面
-      console.log("跳转到申请审核中页面")
+      wx.redirectTo({
+        url: '../result/index?type=auth&status=2',
+      })
     })
   },  
 })

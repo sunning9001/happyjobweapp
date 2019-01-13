@@ -1,5 +1,5 @@
 import { getPositionList } from '../../services/index.js'
-const app = getApp();
+
 Page({
   data: {
     currentPage: 1,//当前分页
@@ -10,9 +10,6 @@ Page({
   },
   onLoad: function (options) {
     this.fetchData()
-  },
-  onPullDownRefresh: function () {
-
   },
   onReachBottom: function () {
     var currentPage = this.data.currentPage + 1;

@@ -98,8 +98,6 @@ Page({
   //是否绑定过手机号 是否有简历，
   applyPt(){
     positionApply(this.data.hpPositionId).then(data=>{
-      console.log(data)
-      //TODO:没测过hpPositionGroupId是否存在
       var hpPositionGroupId = data.data.hpPositionGroupId
       wx.navigateTo({
         url: '../result/index?type=pt&status=1&hpPositionGroupId=' + hpPositionGroupId,
@@ -122,13 +120,11 @@ Page({
   catJob(){
     console.log("查看申请")
   },
-  //TODO:查看拼团
+  //查看拼团
   catPt(){
-    console.log(this.data.hpPositionGroupId)
     wx.navigateTo({
       url: '../pt-detail/index?hpPositionGroupId=' + this.data.hpPositionGroupId,
     })
-    console.log("查看拼团")
   },
   //隐藏拼团列表模态框
   hideModal(){
