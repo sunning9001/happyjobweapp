@@ -1,13 +1,15 @@
 import { getPositionDetail, positionApply, groupApply, groupList } from '../../services/index.js'
+import { imgServerUrl } from '../../config/config.js'
 const WxParse = require('../../plugins/wxParse/wxParse.js');
 const app = getApp();
 
 Page({
   data: {
-    host:app.globalData.host,
+    imgServerUrl: imgServerUrl,
     hpPositionId:0,
     type:0,//0：正常 1：拼团
-    isShowList:false
+    isShowList:false,
+    clearTimer:false
   },
   onLoad: function (options) {
     console.log(options)
@@ -86,7 +88,10 @@ Page({
       console.log(data)
       this.setData({
         isShowList:true,
-        ptList:data.list
+        ptList: data.list.map(item => {
+          item.leftTime = new Date().getTime() + item.leftTime  * 1000
+          return item
+        })
       })
     })
   },
@@ -121,6 +126,12 @@ Page({
     })
     console.log("查看拼团")
   },
+  //隐藏拼团列表模态框
+  hideModal(){
+    this.setData({
+      isShowList:false
+    })
+  },
   //拨打手机号
   phoneCall(){
     wx.makePhoneCall({
@@ -138,5 +149,9 @@ Page({
     wx.navigateTo({
       url: '../roadsLine/index',
     })
+  },
+  //倒计时回调
+  myLinsterner() {
+    this.fetchPtList()
   },
 })

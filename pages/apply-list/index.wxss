@@ -65,6 +65,14 @@ page {
   padding: 4rpx 20rpx;
   color: #fff;
 }
+.one {
+  display: flex;
+  justify-content: space-between;
+}
+.one .pt-duofan {
+  color: #f95028;
+  font-size: 24rpx;
+}
 .two {
   display: flex;
   justify-content: space-between;

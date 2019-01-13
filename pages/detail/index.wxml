@@ -2,9 +2,9 @@
 <import src="../../plugins/wxParse/wxParse.wxml"/>
 
 <view class='panel'>
-  <!-- <image src="../../images/detail/detail-bg.jpg" class="bg" mode='widthFix'/> -->
+  <!-- <image src="{{imgServerUrl}}/images/detail/detail-bg.jpg" class="bg" mode='widthFix'/> -->
   <view class='row job'>{{posName}}
-    <image class="auth" wx:if="{{approveState }}" src="{{host}}/images/detail/auth-has.png" mode="widthFix"/>
+    <image class="auth" wx:if="{{approveState }}" src="{{imgServerUrl}}/images/detail/auth-has.png" mode="widthFix"/>
   </view>
   <view class='row award'>
     <text class='award-info' wx:if="{{type==0}}">入职奖励最高<text class='money'>{{retManMoney}}元</text></text>
@@ -21,11 +21,11 @@
 
 <view class="card"  wx:if="{{type==0}}">
   <view class="card-title">
-    <image class="card-title-icon" src="{{host}}/images/detail/icon-box.png" mode="widthFix"></image>
+    <image class="card-title-icon" src="{{imgServerUrl}}/images/detail/icon-box.png" mode="widthFix"></image>
     公司信息
   </view>
   <view class="card-content">
-    <image class="company-logo" src="{{host}}/images/temp/men.png"  mode="widthFix"/>
+    <image class="company-logo" src="{{imgServerUrl}}/images/temp/men.png"  mode="widthFix"/>
     <view class="company-info">
       <view class="company-name">{{comName}}</view>
       <view class="color99">100-1999人 | 民营 | 加工制造...</view>
@@ -33,10 +33,10 @@
   </view>
   <view class="card-footer" wx:if="{{false}}">
     <view class="address">
-      <image class="map-icon" src="../../images/detail/map-icon.png"  mode="widthFix"/>
-      <text class="">身价翻垃圾法师骷髅法师发生了口角风沙口</text>
+      <image class="map-icon" src="{{imgServerUrl}}/images/detail/map-icon.png"  mode="widthFix"/>
+      <text class="">具体地址</text>
     </view>
-    <image class="map" src="../../images/detail/map.png" mode="widthFix" />
+    <image class="map" src="{{imgServerUrl}}/images/detail/map.png" mode="widthFix" />
   </view>
 </view>
 
@@ -109,27 +109,27 @@
 
   <view class="address-box" wx:if="{{type==1 && false}}">
       <view class="address">
-        <image class="map-icon" src="../../images/detail/map-icon.png"  mode="widthFix"/>
+        <image class="map-icon" src="{{imgServerUrl}}/images/detail/map-icon.png"  mode="widthFix"/>
         <text class="">身价翻垃圾法师骷髅法师发生了口角风沙口</text>
       </view>
-      <image class="map" src="../../images/detail/map.png" mode="widthFix" />
+      <image class="map" src="{{imgServerUrl}}/images/detail/map.png" mode="widthFix" />
   </view>
       
   <!-- 客服 -->
   <view class="kefu-box">
     <view class="kefu-info">
-      <image class="kefu-icon" src="../../images/detail/kefu.png" mode="widthFix"/>
+      <image class="kefu-icon" src="{{imgServerUrl}}/images/detail/kefu.png" mode="widthFix"/>
       <view class="kefu-content">
         <view class="kefu-title">开心客服电话：</view>
         <view class="kefu-iphone">{{comCustPhone}}</view>
       </view>
     </view>
-    <image class="icon-iphone" src="../../images/detail/iphone.png" bindtap='phoneCall' mode="widthFix"/>
+    <image class="icon-iphone" src="{{imgServerUrl}}/images/detail/iphone.png" bindtap='phoneCall' mode="widthFix"/>
   </view>
 
   <!-- tips -->
   <view class="tips">
-    <image class="icon-tips" src="../../images/detail/kefu.png" mode="widthFix"/>
+    <image class="icon-tips" src="{{imgServerUrl}}/images/detail/kefu.png" mode="widthFix"/>
     <text>以担保或任何理由索取财务，扣押证照，均涉嫌违法，请提高警惕</text>
   </view>
   <!-- btn -->
@@ -140,3 +140,36 @@
     <i-button bind:click="applyPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && !groupApplyNum}}">申请开团</i-button>
     <i-button bind:click="catPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && groupApplyNum}}">查看拼团</i-button>
   </view>
+
+<view class='pt-mask nobg' wx:if="{{isShowList}}">
+  <view class='pt-modal'>
+    <view class='pt-modal-header'>
+      <view class='pt-modal-title'>正在拼团</view>
+      <view class='pt-modal-cancle' bindtap='hideModal'>取消</view>
+    </view>
+    <view class='pt-modal-body'>
+      <view class='pt-list' wx:for="{{ptList}}" wx:key="hpUserId">
+        <image class='pt-avatar' src='{{item.leaderPic}}' mode='widthFix'></image>
+        <view class='pt-info'>
+          <view class='row'>
+            <view class='name'>{{item.leaderName}}</view>
+            <view class='small'>还差<text class='num'>{{3-item.partNum}}</text>人</view>
+          </view>
+          <view class='row'>
+            <view class='djs'>
+              <text class='label'>倒计时</text>
+              <text><i-count-down
+                target="{{item.leftTime}}"
+                bindcallback="myLinsterner"
+                clear-timer="{{clearTimer}}"
+              ></i-count-down></text>
+            </view>
+          </view>
+        </view>
+        <view class='btn'>参团</view>
+      </view>
+      <view class='pt-null' wx:if="{{ptList.length==0}}">暂无拼团</view>
+    </view>
+    <view class='pt-modal-footer'></view>
+  </view>
+</view>

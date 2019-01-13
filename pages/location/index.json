@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "城市选择",
-  "usingComponents": {
-    "i-index": "../../ui/index/index",
-    "i-index-item": "../../ui/index-item/index",
-    "i-icon": "../../ui/icon/index",
-    "i-panel": "../../ui/panel/index"
-  }
-}

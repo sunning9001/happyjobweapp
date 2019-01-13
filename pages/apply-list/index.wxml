@@ -7,7 +7,8 @@
         <view class='left'>
           <text class='job'>{{item.posName}}</text>
           <text class='fan' wx:if="{{item.retManMoney}}">返{{item.retManMoney}}元</text>
-        </view>        
+        </view>
+        <view class='right pt-duofan' wx:if="{{item.groupOn && (item.fiveMoney || item.threeMoney)}}">拼团多返{{item.fiveMoney||item.threeMoney}}元</view>        
       </view>
       <view class='two'>
         <view class='commpany'>{{item.comName}}</view>

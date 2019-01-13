@@ -1,7 +1,0 @@
-<view class="pt-status">
-    <image class="pt-bg" src="../../images/pt/pt-success.png" mode="widthFix"/>
-</view>
-<view class="box">
-    <view class="title">恭喜您开团成功</view>
-    <view class="title">快邀请好友一起拼团上班吧</view>
-</view>

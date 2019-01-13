@@ -117,7 +117,7 @@ Page({
   // 去城市选择页
   toCity(){
     wx.navigateTo({
-      url: '../location/index',
+      url: '../city/index',
     })
   },
 
