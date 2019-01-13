@@ -35,7 +35,7 @@ App({
   },
   globalData: {
     userInfo: null,    
-    oid:'baf941d9cd92428b9cc1aeb0e6a33e',
-    sid:'6f54c1f9174b4f49a0d98f16447655d7'
+    oid:'773d8ad1ad9540fc804389a973a54d',
+    sid:'15e5d36a68034a1d8793e5fb76e3ac76'
   }
 })

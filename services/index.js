@@ -209,9 +209,7 @@ module.exports={
         sid: app.globalData.sid,
         "Content-Type":"application/json"
       },
-      data: {
-        data: JSON.stringify(params)
-      }
+      data:JSON.stringify(params)
     })
   },
   
@@ -324,6 +322,19 @@ module.exports={
       header: {
         oid: app.globalData.oid,
         sid: app.globalData.sid,
+      },
+    })
+  },
+  //  手机号：用户手机号码绑定、更换
+  usePhoneBound(params) {
+    return http({
+      url: url.phoneBound,
+      data: params,
+      method: "POST",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+        sessionId: wx.getStorageSync('sessionid'),
       },
     })
   },
