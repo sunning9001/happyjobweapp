@@ -31,6 +31,13 @@
         <text>{{item.text}}</text>
       </view>
     </block>
+
+    <block wx:if="{{true}}" >
+      <view class="activity-item" bindtap='goTestUrl' >
+        <image src="" mode="scaleToFill"></image>
+        <text>测试按钮</text>
+      </view>
+    </block>
   </view>
 </view>
 

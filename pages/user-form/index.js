@@ -1,4 +1,4 @@
-import { getCenterInfo, sendPhoneCode, bindPhone } from '../../services/index.js'
+import { getCenterInfo, sendPhoneCode, usePhoneBound } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
 const app = getApp();
@@ -51,7 +51,7 @@ Page({
       showToast("请输入验证码")
       return false
     }
-    bindPhone({
+    usePhoneBound({
       phoneNo: phone,
       msgCode: yzm
     }).then(data=>{

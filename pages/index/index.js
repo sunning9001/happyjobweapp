@@ -152,5 +152,13 @@ Page({
       case 4: data.urgentOn = 1; break;
     }
     return data
+  },
+
+  // 页面测试入口
+  goTestUrl(){
+    wx.navigateTo({
+      url: '../bind-pt/index?hpPositionGroupId=' + 1,
+    })
   }
+  
 })
