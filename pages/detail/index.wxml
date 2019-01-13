@@ -137,8 +137,8 @@
     <!--TODO: 需要绑定手机号 -->
     <i-button bind:click="applyJob" type="primary" shape="circle" i-class="distance" wx:if="{{type==0 && !comApplyNum}}">申请职位</i-button>
     <i-button bind:click="catJob" type="primary" shape="circle" i-class="distance" wx:if="{{type==0 && comApplyNum}}">已申请</i-button>
-    <i-button bind:click="applyPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && !groupApplyNum}}">申请开团</i-button>
-    <i-button bind:click="catPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && groupApplyNum}}">查看拼团</i-button>
+    <i-button bind:click="applyPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && !hpPositionGroupId}}">申请开团</i-button>
+    <i-button bind:click="catPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && hpPositionGroupId}}">查看拼团</i-button>
   </view>
 
 <view class='pt-mask nobg' wx:if="{{isShowList}}">

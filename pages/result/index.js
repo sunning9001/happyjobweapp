@@ -8,6 +8,7 @@ Page({
   onLoad: function (options) {
     console.log(options)
     let { type='auth',status=0 } = options 
+    let { hpPositionGroupId =""} = options//拼团成功 拼团id
     /**
      * Region:
      * 
@@ -23,18 +24,16 @@ Page({
      * 3、身份认证失败 type:auth     status: 0
      * 
      * */
-
-     //TODO: 拼团成功跳转参团详情
-     //TODO: 身份认证失败重新认证
     this.setData({
       type,
       status
     })
 
+    //拼团成功跳转参团详情
     if (type == 'pt' && status==1){
       setTimeout(()=>{
         wx.redirectTo({
-          url: '../pt-detail/index',
+          url: '../pt-detail/index?hpPositionGroupId=' + hpPositionGroupId,
         })
       },2000)
     }

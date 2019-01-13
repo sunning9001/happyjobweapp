@@ -11,7 +11,6 @@
   flex: 0 0 auto;
 }
 .cancel{
-  flex-grow: 1;
   padding-left: 30rpx;
   padding-right: 30rpx;
   color: #333 ;

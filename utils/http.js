@@ -20,7 +20,6 @@ const http = (params) => {
       dataType: params.dataType,//返回的数据格式,默认为JSON，特殊格式可以在调用的时候传入参数
       responseType: params.responseType,//响应的数据类型
       success: function (res) {
-        console.log(res.data)
         if (res.statusCode == 200) {
           if (res.data.errorCode == 0) {
             if (res.data.data && res.data.data.sessionId){
@@ -41,17 +40,18 @@ const http = (params) => {
               icon: "none",
               title: res.data.message
             })
+            reject(res.data)
           }
         } else {
           //2. 操作不成功返回数据，以toast方式弹出响应信息，如后端未格式化非操作成功异常信息，则可以统一定义异常提示
           wx.showToast({
             icon: "none",
-            title: "数据异常"
+            title: "网络异常"
           })
         }
       },
-      fail: function (e) {
-        reject(e)
+      fail: function (e) {   
+        console.log(e)     
         wx.showToast({
           icon: "none",
           title: "网络异常"

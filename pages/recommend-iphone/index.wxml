@@ -1,5 +1,5 @@
 <view class="box">
-    <image class="logo" src="../../images/recommend/logo.png" mode="widthFix"/>
+    <image class="logo" src="{{imgServerUrl}}/images/recommend/logo.png" mode="widthFix"/>
     <i-input wx:if="{{true}}" value="{{ value5 }}" placeholder="请输入11位手机号" mode="number" mode="wrapped" i-class="input" maxlength="11"/>
     <view wx:else class="input-view">{{value5}}</view>
     <button class="submit">确认</button>
@@ -7,7 +7,7 @@
 
 <view class="mask" wx:if="{{false}}">
     <view class="tip-box" wx:if="{{false}}">
-        <image class="topbg" src="../../images/recommend/success.png" mode="widthFix"/>
+        <image class="topbg" src="{{imgServerUrl}}/images/recommend/success.png" mode="widthFix"/>
         <view class="tip-box-body">
             <view class="p">恭喜您</view>
             <view class="p">赶快叫好友下载注册 写个简历吧</view>
@@ -15,7 +15,7 @@
         </view>
     </view>
     <view class="tip-box" wx:else>
-        <image class="topbg" src="../../images/recommend/error.png" mode="widthFix"/>
+        <image class="topbg" src="{{imgServerUrl}}/images/recommend/error.png" mode="widthFix"/>
         <view class="tip-box-body">
             <view class="p">您注册过咯</view>
             <view class="p">分享给好友 才能继续领红包</view>

@@ -17,10 +17,9 @@ Page({
       type: options.type || 0
     })
     this.data.hpPositionId = options.hpPositionId
-    this.fetchData()
   },
   onShow: function () {
-
+    this.fetchData()
   },
 
   onShareAppMessage: function () {
@@ -100,6 +99,11 @@ Page({
   applyPt(){
     positionApply(this.data.hpPositionId).then(data=>{
       console.log(data)
+      //TODO:没测过hpPositionGroupId是否存在
+      var hpPositionGroupId = data.data.hpPositionGroupId
+      wx.navigateTo({
+        url: '../result/index?type=pt&status=1&hpPositionGroupId=' + hpPositionGroupId,
+      })
     })
   },
   //TODO:参与拼团
