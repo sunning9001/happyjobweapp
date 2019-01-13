@@ -1,7 +1,6 @@
 
 import { sendPhoneCode, getPayrollId } from '../../services/index.js'
 import { showToast } from '../../utils/tips.js'
-// pages/check-iphone/index.js
 Page({
 
   /**
