@@ -1,5 +1,3 @@
-//index.js
-//获取应用实例
 var city = require('./city.js');
 Page({
     data: {
@@ -10,24 +8,27 @@ Page({
         bHeight:0,
         startPageY:0,
         cityList:[],
+        cityNameList:[],
         isShowLetter:false,
         scrollTop:0,
         city:"",
-        cityArr:[],
-        src:'./dw.png'
+        hotList:[],
+        inputValue:"",
+        searchList:[]
     },
     onLoad: function (options) {
-        //历史选择，应该在缓存中记录，或者在在app中全局记录
-        //当前城市通过之前的页面穿过来或者调用定位
-        var c = '北京'
-        var cityArr = ['上海','北京']
+        //TODO:当前城市通过之前的页面穿过来或者调用定位
+        var c = '无锡'
+        var hotList = ['北京','上海','南京','杭州','厦门','南昌','武汉']
         this.setData({
-            cityArr: cityArr,
-            city:c
+          city:c,
+          hotList: hotList
         })
         // 生命周期函数--监听页面加载
         var searchLetter = city.searchLetter;
         var cityList=city.cityList();
+        this.data.cityNameList = city.cityNameList();
+
         // console.log(cityInfo);
 
         var sysInfo = wx.getSystemInfoSync();
@@ -47,14 +48,14 @@ Page({
             tempObj.push(temp)
         }
 
+
         this.setData({
             winHeight: winHeight,
             itemH: itemH,
             searchLetter: tempObj,
-            cityList:cityList
+            cityList:cityList,
         })
 
-        console.log(this.data.cityInfo);
     },
     searchStart: function (e) {
         var showLetter = e.currentTarget.dataset.letter;
@@ -73,7 +74,7 @@ Page({
         var tHeight=this.data.tHeight;
         var bHeight=this.data.bHeight;
         var showLetter = 0;
-        console.log(pageY);
+        // console.log(pageY);
         if(startPageY-pageY>0){ //向上移动
             if(pageY<tHeight){
                 // showLetter=this.mateLetter(pageY,this);
@@ -121,7 +122,7 @@ Page({
         })
     },
     bindScroll:function(e){
-        console.log(e.detail)
+        // console.log(e.detail)
     },
     setScrollTop:function(that,showLetter){
         var scrollTop=0;
@@ -147,7 +148,7 @@ Page({
     },
     wxSortPickerViewItemTap: function(e){
         var  city = e.target.dataset.text;
-        //可以跳转了
+        //TODO:选择城市
         console.log('选择了城市：',city);
     },
     cxgps: function (e) {
@@ -155,10 +156,12 @@ Page({
         wx.getLocation({
             type: 'wgs84',
             success: function(res) {
+              console.log(res)
                 var latitude = res.latitude;
                 var longitude = res.longitude;
                 ajaxGes(latitude,longitude)
                     .then(function (data) {
+                        console.log(data)
                         if(data.status === 'success'){
                                 that.setData({
 
@@ -176,12 +179,36 @@ Page({
                 })
             }
         })
-    }
+    },
+    bindKeyInput(e){
+      var value = e.detail.value.trim()
+      if(value==""){
+        this.setData({
+          inputValue: value,
+          searchList:[]
+        })
+        return '';
+      }    
+      this.setData({
+        inputValue: value
+      })
+      this.serach(value)
+    },
+    serach(text){
+      var searchList = this.data.cityNameList.filter(function(name){
+        // console.log(name)
+        return name.indexOf(text) !== -1
+      })
+      console.log(searchList)
+      this.setData({
+        searchList: searchList
+      })       
+    },
 })
 
 //经纬度定位获取站点
 function ajaxGes(lat, lng) {
-    //自己的定位接口
+    //TODO:自己的定位接口
     var url = '';
 
     return new Promise(function (resolve, reject) {

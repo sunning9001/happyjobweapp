@@ -33,7 +33,17 @@ function pushCity() {
 
 }
 
+//对城市名进行处理
+function cityNameList(){
+  var tempObj = [];
+  for (var i = 0; i < cityObj.length;i++){
+    tempObj.push(cityObj[i].city)
+  }
+  return tempObj
+}
+
 module.exports = {
     searchLetter: searchLetter,
-    cityList: cityList
+    cityList: cityList,
+    cityNameList: cityNameList
 }
