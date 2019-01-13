@@ -20,14 +20,16 @@
     "pages/check-iphone/index",
     "pages/wages/index",
     "pages/bind-pt/index",
-    "pages/bind-iphone/index",
     "pages/recommend/index",
     "pages/recommend-share/index",
     "pages/recommend-iphone/index",
     "pages/result/index",
     "pages/roadsLine/index",
     "pages/city/index",
-    "pages/search-result/search-result"
+    "pages/search-result/search-result",
+    "pages/document/fanxian",
+    "pages/document/salary",
+    "pages/document/pt"    
   ],
   "window": {
     "backgroundTextStyle": "light",

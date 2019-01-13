@@ -1,6 +1,0 @@
-<view class="block">
-  <view class='iphone'>
-    <i-input value="{{ value5 }}" placeholder="请输入手机号" type='number'/>
-  </view>
-  <i-button bind:click="handleClick" type="info" shape="circle">确认</i-button>
-</view>

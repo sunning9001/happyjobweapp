@@ -4,7 +4,7 @@
   </view>
   <view class='row award'>
     <text class='award-info'><text class='money'>{{data.lowerNum}}-{{data.hightNum}}元/月</text></text>
-    <view class="rule">说明</view>
+    <navigator url='../document/pt' wx:if="{{type==1}}"><view class="rule">说明</view></navigator>
   </view>
   <view class='row pt-award' wx:if="{{false}}">
     <text>参团上班奖励<text class="num">1000元</text></text>

@@ -1,25 +1,47 @@
 .container{
-  padding: 60rpx 40rpx 0;
+  padding: 63rpx 95rpx 0;
   color: #333;
   font-size: 28rpx;
+  box-sizing: border-box;
+}
+.logoBox{
+  text-align: center;
+  margin-bottom: 41rpx;
+}
+.logo{
+  width: 184rpx;
 }
 .title{
-  font-size: 32rpx;
+  font-size: 20rpx;
   line-height: 32rpx;
   text-align: center;
   margin-bottom: 20rpx;
 }
-.p{
-  text-indent: 2em;
-  line-height: 48rpx;
+.desc{
+  margin-bottom: 54rpx;
 }
-.shows{
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.row{
+  text-indent: 2em;
+  line-height: 38rpx;
 }
 .pic{
-  width: 320rpx;
-  height: 200rpx;
+  display: inline-block;
+  font-size: 0;
   margin-bottom: 20rpx;
+}
+.pic1{
+  width: 223rpx;
+  height: 232rpx;
+}
+.pic2{
+  width: 326rpx;
+  height: 232rpx;
+}
+.pic3{
+  width: 276rpx;
+  height: 182rpx;
+}
+.pic4{
+  width: 282rpx;
+  height: 182rpx;
 }

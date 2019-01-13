@@ -16,5 +16,6 @@
 </view>
 
 <i-button class="save" i-class="block-btn" bind:click="next" type="info" shape="circle">下一步</i-button>
-
+<navigator url="../document/salary">
 <view class='explain'>请仔细阅读说明</view>
+</navigator>
