@@ -10,6 +10,7 @@ const apiUrl = config.apiUrl;
 const http = (params) => {
   //返回promise 对象
   return new Promise((resolve, reject) => {
+    
     wx.request({
       url: apiUrl + params.url,//服务器url+参数中携带的接口具体地址
       data: params.data,//请求参数
@@ -20,6 +21,7 @@ const http = (params) => {
       dataType: params.dataType,//返回的数据格式,默认为JSON，特殊格式可以在调用的时候传入参数
       responseType: params.responseType,//响应的数据类型
       success: function (res) {
+        console.log(res.data)
         if (res.statusCode == 200) {
           if (res.data.errorCode == 0) {
             if (res.data.data && res.data.data.sessionId){
