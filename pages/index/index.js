@@ -157,7 +157,7 @@ Page({
   // 页面测试入口
   goTestUrl(){
     wx.navigateTo({
-      url: '../bind-pt/index?hpPositionGroupId=' + 2,
+      url: '../bind-pt/index?hpPositionGroupId=' + 1,
     })
   },
   // TODO 验证码倒计时样式

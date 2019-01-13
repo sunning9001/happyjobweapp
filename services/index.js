@@ -338,4 +338,17 @@ module.exports={
       },
     })
   },
+  //  手机号：用户手机号码绑定、更换
+  shareBound(params) {
+    return http({
+      url: url.shareBound,
+      data: params,
+      method: "POST",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+        shareToken: params.shareToken,
+      },
+    })
+  },
 }

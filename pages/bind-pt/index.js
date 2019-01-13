@@ -161,7 +161,7 @@ Page({
     }).then(data=>{
       this.goGroupApply(this.options.hpPositionGroupId)
     }).catch(err=>{
-      if(err.data.errorCode == 2){
+      if(err.errorCode == 2){
         this.goGroupApply()
       }
     })
