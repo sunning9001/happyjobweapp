@@ -25,6 +25,8 @@
 }
 .list-content {
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 .list-content .extra {
   display: flex;
@@ -32,10 +34,38 @@
   align-items: center;
   margin-right: 10px;
 }
+.list-content .input-text {
+  height: 90rpx;
+  line-height: 90rpx;
+  box-sizing: border-box;
+}
 .avatar {
   width: 100rpx;
 }
 .i-cell-group,
 .flex {
   display: flex!important;
+}
+.input-box {
+  display: flex;
+  align-items: center;
+  padding: 15rpx 0;
+}
+.auth {
+  width: 78rpx;
+  height: 37rpx;
+  margin-left: 20rpx;
+}
+.yzm {
+  height: 64rpx;
+  padding: 0 15rpx;
+  line-height: 64rpx;
+  background: #31a0db;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  border-radius: 4px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  margin-right: 10rpx;
 }
