@@ -37,7 +37,7 @@ Page({
     currentPage: 1,//当前分页
     totalPage:1,//总页数
     isScroll:true,//是否可以滚动
-    showCount: 3,//单页展示记录数
+    showCount: 10,//单页展示记录数
     index:3,//岗位类型
   },
   onLoad: function (options) {

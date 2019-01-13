@@ -1,9 +1,9 @@
 import { searchHistory, deleteHistory, getIndexList } from '../../services/index.js'
-const app = getApp();
 
 Page({
   data: {
-    historyList:[]
+    historyList:[],
+    searchVal:''
   },
   onLoad: function (options) {
 
@@ -30,9 +30,9 @@ Page({
     let content= ""
     if (id == 'all'){
       id = null
-      content: "是否清除全部记录"
+      content= "是否清除全部记录"
     }else{
-      content: "是否清除选中记录"
+      content= "是否清除选中记录"
     }
     wx.showModal({
       title: title,
@@ -54,22 +54,15 @@ Page({
     this.data.searchVal = e.detail.value;
   },
 
-// TODO 搜索页面未添加
   // 点击搜索记录
   selectMsg(e){
-    this.data.searchVal = e.currentTarget.value
-    this.toSearchPage(e)
+    this.data.searchVal = e.currentTarget.dataset.value
+    this.toSearchPage()
   },
-  toSearchPage(e) {
-    console.log(this.data.searchVal);
-    // wx.navigateTo({
-    //   url: '../roadsLine/index?searchVal'+=this.data.searchVal,
-    // })
-    getIndexList({
-      'keyWord': this.data.searchVal
-    }).then(data => {
-      console.log(data)
-      this.fetchData()
-    })
+  
+  toSearchPage() {
+    wx.navigateTo({
+      url: '../search-result/search-result?searchVal='+this.data.searchVal,
+    })    
   },
 })

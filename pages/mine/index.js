@@ -24,6 +24,7 @@ Page({
   //去认证页面
   toAuth(){
     let approveState = this.data.approveState
+    console.log(approveState)
     if (approveState==0){
       //身份认证
       wx.navigateTo({
@@ -32,19 +33,17 @@ Page({
     } else if (approveState == 1){
       //个人信息页面
       wx.navigateTo({
-        url: '../user-info/user-info',
+        url: '../user-form/index',
       })
     } else if (approveState == 2) {
-      return
-      //TODO:认证不通过
+      //认证不通过
       wx.navigateTo({
-        url: '../identification/index',
+        url: '../result/index?type=auth&status=0',
       })
     } else if (approveState == 3) {
-      return 
-      //TODO:待审核
+      //待审核
       wx.navigateTo({
-        url: '../identification/index',
+        url: '../result/index?type=auth&status=2',
       })
     }
   },  
