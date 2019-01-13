@@ -161,15 +161,17 @@ Page({
     }).then(data=>{
       this.goGroupApply(this.options.hpPositionGroupId)
     }).catch(err=>{
-      this.goGroupApply(this.options.hpPositionGroupId)
+      if(err.data.errorCode == 2){
+        this.goGroupApply()
+      }
     })
   },
   // 参与拼团
-  goGroupApply(hpPositionGroupId){
-    groupApply(hpPositionGroupId).then(data=>{
+  goGroupApply(){
+    groupApply(this.options.hpPositionGroupId).then(data=>{
       console.log('拼团参与成功')
       wx.navigateTo({
-        url: '../pt-detail/index?hpPositionGroupId' + hpPositionGroupId,
+        url: '../pt-detail/index?hpPositionGroupId=' + this.options.hpPositionGroupId,
       })
     })
   },
