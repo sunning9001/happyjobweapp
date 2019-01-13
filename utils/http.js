@@ -20,8 +20,14 @@ const http = (params) => {
       dataType: params.dataType,//返回的数据格式,默认为JSON，特殊格式可以在调用的时候传入参数
       responseType: params.responseType,//响应的数据类型
       success: function (res) {
+        console.log(res.data)
         if (res.statusCode == 200) {
           if (res.data.errorCode == 0) {
+            if (res.data.data && res.data.data.sessionId){
+              wx.setStorageSync('sessionid', res.data.data.sessionId);
+              console.log(res.data.data.sessionId)
+              console.log(wx.getStorageSync('sessionid'));
+            }
             resolve(res.data)
           } 
           // else if (params.url == "/order/result" && res.data.errorCode == "800020") {//支付结果未知      
@@ -29,6 +35,7 @@ const http = (params) => {
           //   resolve(res.data)
           // } 
           // {"errorCode":40001,"message":"未获取到用户信息"}
+
           else {
             wx.showToast({
               icon: "none",
@@ -42,7 +49,6 @@ const http = (params) => {
             icon: "none",
             title: "网络异常"
           })
-          console.log(res)
         }
       },
       fail: function (e) {   

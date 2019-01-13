@@ -54,6 +54,7 @@ Page({
     this.data.searchVal = e.detail.value;
   },
 
+// TODO 搜索页面未添加
   // 点击搜索记录
   selectMsg(e){
     this.data.searchVal = e.currentTarget.value

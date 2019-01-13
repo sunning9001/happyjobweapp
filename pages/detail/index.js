@@ -53,6 +53,7 @@ Page({
         comApplyNum, //用户正在进行的非拼团申请数
         groupApplyNum, //用户正在进行的拼团申请数
         carDesc,
+        hpPositionGroupId,
       } = data.data
       let datas = data.data
 
@@ -67,7 +68,8 @@ Page({
         retManMoney,
         fiveMoney,
         comApplyNum,
-        groupApplyNum
+        groupApplyNum,
+        hpPositionGroupId
       })
 
       //存储厂车路线
@@ -118,6 +120,7 @@ Page({
   },
   //TODO:查看拼团
   catPt(){
+    console.log(this.data.hpPositionGroupId)
     wx.navigateTo({
       url: '../pt-detail/index?hpPositionGroupId=' + this.data.hpPositionGroupId,
     })
