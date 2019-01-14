@@ -22,9 +22,9 @@
             <image class="icon-sex" wx:else src="{{imgServerUrl}}/images/jianli/sex-woman.png" mode="widthFix"/>
           </view>
           <view class="tags">
-            <text class="tag">{{globalTools.formateym(resumeBase.resBornTime,".")}}</text>
-            <text class="tag">学历{{eduName}}</text>
-            <text class="tag">经验{{expYear}}年</text>
+            <text class="tag" wx:if="{{resumeBase.resBornTime}}">{{globalTools.formateym(resumeBase.resBornTime,".")}}</text>
+            <text class="tag" wx:if="{{eduName}}">学历{{eduName}}</text>
+            <text class="tag" wx:if="{{expYear}}">经验{{expYear}}年</text>
           </view>
         </view>
       </view>
@@ -49,12 +49,12 @@
         <image class='icon-box' src='{{imgServerUrl}}/images/jianli/icon-box.png' mode='widthFix'></image>
         <text class='card-title'>求职意向</text>
       </view>
-      <view class='extra' bindtap='toUserJob'>
+      <view class='extra' bindtap='toUserJob' data-type="new">
         <image class='icon-edit' src='{{imgServerUrl}}/images/jianli/edit.png' mode='widthFix'></image>
       </view>
     </view>
     <block wx:if="{{intentionList.length}}">
-      <view class='card-bd' wx:for="{{intentionList}}" wx:key="hpUserIntentionId">
+      <view class='card-bd' wx:for="{{intentionList}}" wx:key="hpUserIntentionId" bindtap='toUserJob' data-type="edit" data-index="{{index}}">
         <view class='form qiuzhi'>
           <view class='row'><text class="label">期望行业</text>{{item.posType}}</view>
           <view class='row'><text class="label">期望地址</text>{{item.workArea}}</view>
@@ -71,7 +71,7 @@
         <image class='icon-box' src='{{imgServerUrl}}/images/jianli/icon-box.png' mode='widthFix'></image>
         <text class='card-title'>工作经验</text>
       </view>
-      <view class='extra' bindtap='toUserWorks'>
+      <view class='extra' bindtap='toUserWorks' data-type="new">
         <image class='icon-edit' src='{{imgServerUrl}}/images/jianli/edit.png' mode='widthFix'></image>
       </view>
     </view>
@@ -79,7 +79,7 @@
     <view class='card-bd padLeft' wx:if="{{expList.length}}">
       <i-steps  direction="vertical">
       <!-- TODO:图标要换 -->
-        <i-step icon="collection" wx:for="{{expList}}" wx:key="hpUserResumeId">
+        <i-step icon="collection" wx:for="{{expList}}" wx:key="hpUserResumeId" bindtap="toUserWorks" data-type="edit" data-index="{{index}}">
             <view slot="content">
                 <view class='row color90'>{{globalTools.formateym(item.startTime,".")}} - {{globalTools.formateym(item.endTime,".")}}</view>
                 <view class='row strong'>{{item.comName}}</view>
@@ -102,14 +102,14 @@
         <image class='icon-box' src='{{imgServerUrl}}/images/jianli/icon-box.png' mode='widthFix'></image>
         <text class='card-title'>教育背景</text>
       </view>
-      <view class='extra' bindtap='toUserEdu'>
+      <view class='extra' bindtap='toUserEdu' data-type="new">
         <image class='icon-edit' src='{{imgServerUrl}}/images/jianli/edit.png' mode='widthFix'></image>
       </view>
     </view>
 
     <view class='card-bd padLeft' wx:if="{{eduList.length}}">
       <i-steps  direction="vertical">
-        <i-step icon="collection" wx:for="{{eduList}}" wx:key="hpEducationId">
+        <i-step icon="collection" wx:for="{{eduList}}" wx:key="hpEducationId"  bindtap='toUserEdu' data-type="edit" data-index="{{index}}">
             <view slot="content">
                 <view class='row color90'>{{globalTools.formateym(item.startTime,".")}} - {{globalTools.formateym(item.endTime,".")}}</view>
                 <view class='row strong'>{{item.schName}}</view>

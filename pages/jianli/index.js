@@ -35,9 +35,20 @@ Page({
         })
       }
       let { eduList, expList, intentionList, resumeBase }= data.data
-      let eduName = eduList[eduList.length - 1].eduName
-      let diff = expList[expList.length - 1].startTime - expList[0].startTime
-      let expYear = Math.floor(diff / 60 / 60 / 24 / 365)
+      var eduName = '', expYear=''
+      if (eduList.length){
+        eduName = eduList[eduList.length - 1].eduName
+      }
+      if (expList.length){
+        let diff = expList[expList.length - 1].startTime - expList[0].startTime
+        expYear = Math.floor(diff / 60 / 60 / 24 / 365)
+      }
+      if (!resumeBase.resPic){
+        resumeBase.resPic = app.globalData.userInfo.avatarUrl
+      }
+      if (resumeBase.resBornTime && resumeBase.resBornTime.toString().length==9){
+        resumeBase.resBornTime = Number(resumeBase.resBornTime)*1000
+      }
       this.setData({
         eduList,
         expList,
@@ -47,6 +58,10 @@ Page({
         expYear,
         hpUserResumeId: resumeBase.hpUserResumeId
       })
+      wx.setStorageSync('eduList', eduList)
+      wx.setStorageSync('expList', expList)
+      wx.setStorageSync('intentionList', intentionList)
+      wx.setStorageSync('resumeBase', resumeBase)
     })
   },
   
@@ -57,21 +72,42 @@ Page({
     })
   },
   // 修改求职意向
-  toUserJob(){
-    wx.navigateTo({
-      url: '../user-job/index?hpUserResumeId=' + this.data.hpUserResumeId,
-    })
+  toUserJob(e){
+    let { type, index } = e.currentTarget.dataset
+    if(type=="edit"){
+      wx.navigateTo({
+        url: '../user-job/index?hpUserResumeId=' + this.data.hpUserResumeId+"&index="+index,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../user-job/index?hpUserResumeId=' + this.data.hpUserResumeId,
+      })
+    }
   },
   // 修改工作经验
-  toUserWorks(){
-    wx.navigateTo({
-      url: '../user-works/index?hpUserResumeId=' + this.data.hpUserResumeId,
-    })
+  toUserWorks(e){
+    let { type, index } = e.currentTarget.dataset
+    if (type == "edit") {
+      wx.navigateTo({
+        url: '../user-works/index?hpUserResumeId=' + this.data.hpUserResumeId + "&index=" + index,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../user-works/index?hpUserResumeId=' + this.data.hpUserResumeId
+      })
+    }
   },
   //修改教育背景
-  toUserEdu(){
-    wx.navigateTo({
-      url: '../user-education/index?hpUserResumeId=' + this.data.hpUserResumeId,
-    })
+  toUserEdu(e){
+    let { type, index } = e.currentTarget.dataset
+    if (type == "edit") {
+      wx.navigateTo({
+        url: '../user-education/index?hpUserResumeId=' + this.data.hpUserResumeId + "&index=" + index,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../user-education/index?hpUserResumeId=' + this.data.hpUserResumeId,
+      })
+    }
   }
 })

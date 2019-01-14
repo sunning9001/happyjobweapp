@@ -37,6 +37,15 @@ const argusToTimestamp = arr => {
   return Date.parse(new Date(arr.join("/")))
 }
 
+// 时间戳转成年月
+function formateym(dates, split = ".") {
+  var date = new Date(dates)
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return date.getFullYear() + split + formatNumber(date.getMonth() + 1)
+}
+
 module.exports = {
   formatTime: formatTime,
   formatNumber,

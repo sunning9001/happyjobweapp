@@ -4,14 +4,32 @@ import { showToast } from '../../utils/tips.js'
 
 Page({
   data: {
+    imgServerUrl: imgServerUrl,
     region: [],
     name:'',
-    salaryIndex:0
+    salaryIndex:0,
+    hpUserIntentionId:'',
+    hpUserResumeId:''
   },
 
   onLoad: function (options) {
     this.fetchSalaryList()
-    //TODO:修改 获取已有的信息
+    console.log(options)
+    let { hpUserResumeId, index } = options
+    if (typeof index != "undefined") {
+      let intentionList = wx.getStorageSync('intentionList')[index]
+      this.setData({
+        name: intentionList.posType,
+        salaryIndex: intentionList.hpPositionSalaryId-1,
+        hpUserResumeId: intentionList.hpUserResumeId,
+        hpUserIntentionId: intentionList.hpUserIntentionId,
+        region: intentionList.workArea.split(",")
+      })
+    } else {
+      this.setData({
+        hpUserResumeId: hpUserResumeId
+      })
+    }
   },
   //获取薪资水平
   fetchSalaryList(){
@@ -41,8 +59,8 @@ Page({
     let { name,salaryList,salaryIndex,region} = this.data
     resumeIntent({
       hpPositionSalaryId: salaryList[salaryIndex].hpPositionSalaryId,
-      hpUserIntentionId :'',
-      hpUserResumeId :'',
+      hpUserIntentionId: this.data.hpUserIntentionId,
+      hpUserResumeId: this.data.hpUserResumeId,
       posType:name,
       workArea:region.join(",")
     }).then(data=>{

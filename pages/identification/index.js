@@ -1,8 +1,10 @@
 import { postApprove } from '../../services/index.js'
 import { uploadImg } from '../../services/uploadFile.js'
-
+import { imgServerUrl } from '../../config/config.js'
+   
 Page({
   data: {
+    imgServerUrl: imgServerUrl,
     realName:'',
     idNum:'',
     idFrontPic:'',
