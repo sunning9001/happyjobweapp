@@ -1,4 +1,5 @@
 var city = require('./city.js');
+var app = getApp()
 Page({
     data: {
         searchLetter: [],
@@ -17,11 +18,10 @@ Page({
         searchList:[]
     },
     onLoad: function (options) {
-        //TODO:当前城市通过之前的页面穿过来或者调用定位
-        var c = '无锡'
+        var pcity = wx.getStorageSync('city')
         var hotList = ['北京','上海','南京','杭州','厦门','南昌','武汉']
         this.setData({
-          city:c,
+          city: pcity,
           hotList: hotList
         })
         // 生命周期函数--监听页面加载
@@ -148,37 +148,19 @@ Page({
     },
     wxSortPickerViewItemTap: function(e){
         var  city = e.target.dataset.text;
-        //TODO:选择城市
         console.log('选择了城市：',city);
+        wx.setStorageSync('city', city)
+        this.setData({
+          city: city
+        })
+        wx.navigateBack()
     },
     cxgps: function (e) {
         var that = this;
-        wx.getLocation({
-            type: 'wgs84',
-            success: function(res) {
-              console.log(res)
-                var latitude = res.latitude;
-                var longitude = res.longitude;
-                ajaxGes(latitude,longitude)
-                    .then(function (data) {
-                        console.log(data)
-                        if(data.status === 'success'){
-                                that.setData({
-
-                                })
-                        }else{
-                            that.setData({
-                                city: '定位失败'
-                            })
-                        }
-                    })
-            },
-            fail:function (res) {
-                that.setData({
-                    city: '定位失败'
-                })
-            }
+        this.setData({
+          city:app.globalData.userInfo.city
         })
+      wx.setStorageSync('city', app.globalData.userInfo.city)
     },
     bindKeyInput(e){
       var value = e.detail.value.trim()

@@ -1,20 +1,20 @@
-var Api = require('../../utils/api.js');
-var request = require('../../utils/request.js');
-var tools = require('../../utils/util.js');
+import { imgServerUrl } from '../../config/config.js'
+import { wxLogin, saveLogin} from '../../services/wx.js'
 var app = getApp();
 
 Page({
   data: {
-    //判断小程序的API，回调，参数，组件等是否在当前版本可用。
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    imgServerUrl: imgServerUrl,
+    isShow: false
   },
   onLoad: function () {
-    this.getWXInfo();
+    this.start()
   },
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      this.getWXInfo();    
+      this.start()
     } else {
       //用户按了拒绝按钮
       wx.showModal({
@@ -30,72 +30,101 @@ Page({
       })
     }
   },
-  login() {
-    // 登录
-    wx.login({
-      success: res => {
-        console.log(res)
-        const code = res.code;
-        //小程序登录
-        request.fetchGet(Api.wxMallLogin, {
-          code: code,
-          rd: tools.getRandom(10)
-        }, (err, res) => {
-          console.log(res)
-          app.globalData.oid = res.oid;
-          app.globalData.sid = res.sid;
-          app.globalData.userToken = res.userToken;
-          app.globalData.sessionKey = res.sessionKey;
-
-          this.getUserInfo();
-        })
+  start() {
+    let enterOptions = wx.getStorageSync("enterOptions")
+    let switchTabs = ["pages/index/index", "pages/pt/index", 'pages/mine/index']
+    let sceneArr = [1007,1008,1044,1011,1012,1013,1047,1048,1049]
+    this.authorize('scope.userInfo').then(data => {
+      if (sceneArr.indexOf(enterOptions.scene)!==-1){
+        return this.login(enterOptions.query.storeToken)
+      }else{
+        return this.login()
       }
-    })
-  },
-  getWXInfo() {
-    //获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          this.login();          
-        }
-      }
-    })
-  },
-  getUserInfo(){
-    wx.getUserInfo({
-      success: res => {
-        console.log(res)
-        // 可以将 res 发送给后台解码出 unionId
-        app.globalData.userInfo = res.userInfo;
-        this.saveWXInfo();        
-      }
-    })
-  },
-  saveWXInfo() {
-    wx.request({
-      method:'POST',
-      url: Api.wxLogin,
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        "oid": app.globalData.oid
-      },
-      data: {
-        headerUrl: app.globalData.userInfo.avatarUrl,
-        nickName: app.globalData.userInfo.nickName,
-        gender: app.globalData.userInfo.gender
-      },
-      success(res) {
-        console.log(res)
+    }).then(data => {
+      this.saveWXInfo()      
+      if (switchTabs.indexOf(enterOptions.path) !== -1) {
         wx.switchTab({
-          url: '../home/home',
+          url: "/" + enterOptions.path,
         })
-      },
-      fail(e) {
-        console.error(e)
+      } else {
+        let arr = []
+        for (var key in enterOptions.query) {
+          arr.push(key + "=" + enterOptions.query[key])
+        }
+        wx.redirectTo({
+          url: "/" + enterOptions.path + "?" + arr.join("&"),
+        })
       }
+    }).catch(err => {
+      console.log(err)
+      this.setData({
+        isShow: true
+      })
     })
-  }
+  },
+  //用户注册登录
+  login(storeToken) {
+    return new Promise((resolve, reject) => {
+      wx.login({
+        success: res => {
+          const code = res.code
+          wxLogin({
+            code:code,
+            storeToken: storeToken || null
+          }).then(res=>{
+            app.globalData.oid = res.oid;
+            app.globalData.sid = res.sid;
+            app.globalData.userToken = res.userToken;
+            app.globalData.sessionKey = res.sessionKey;
+            wx.setStorageSync('shareToken', res.shareToken)
+            app.callback && app.callback()
+            resolve(true)
+          })
+        }
+      })
 
+    })
+  },
+  //获取用户信息 判断授权
+  authorize(setting) {
+    return new Promise((resolve, reject) => {
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting[setting]) {
+            wx.getUserInfo({
+              lang: 'zh_CN',
+              success: res => {
+                console.log(res)
+                app.globalData.userInfo = res.userInfo;
+                wx.setStorageSync('city', res.userInfo.city )
+                resolve(res)
+              }
+            })
+          } else {
+            // 未授权            
+            reject(false)
+          }
+        }
+      })
+    })
+  },
+  //保存用户信息到后台
+  saveWXInfo() {
+    return new Promise((resolve, reject) => {
+      let gender = app.globalData.userInfo.gender
+      if(gender==0){
+        gender=3
+      }
+      saveLogin({
+        header:{
+          oid:app.globalData.oid
+        },
+        data:{
+          headerUrl: app.globalData.userInfo.avatarUrl,
+          nickName: app.globalData.userInfo.nickName,
+          gender: gender,
+        }
+      })
+    })
+  },
 })

@@ -7,22 +7,6 @@ const url = api.url;
 
 module.exports={
 
-  //GET:商城小程序，根据微信CODE获取微信用户信息
-  wxMallLogin(code) {
-    return http({
-      url: url.wxMallLogin,
-      data: { code: code },
-    })
-  },
-
-  //GET:用户微信信息存入
-  wxLogin(params) {
-    return http({
-      url: url.wxLogin,
-      data: params
-    })
-  },
-
   //GET:首页轮播图列表获取
   getBanner(){
     return http({

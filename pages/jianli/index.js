@@ -24,7 +24,6 @@ Page({
     }
   },
   onShow:function(options){
-    //是否有简历
     this.fetchData()
   },
   fetchData(){
