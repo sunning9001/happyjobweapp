@@ -1,5 +1,5 @@
-const formatTime = (date,formatStr) => {
-  var fmt = '';
+const formatTime = (date, fmt) => {
+
   if (!date) {
     return fmt;
   }

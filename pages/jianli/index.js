@@ -1,6 +1,7 @@
 import { getResume } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
+import { formatTime } from '../../utils/util.js'
 const app = getApp();
 
 Page({
@@ -36,9 +37,8 @@ Page({
       }
       let { eduList, expList, intentionList, resumeBase }= data.data
       var eduName = '', expYear=''
-      if (eduList.length){
-        eduName = eduList[eduList.length - 1].eduName
-      }
+      eduName = resumeBase.eduName
+      
       if (expList.length){
         let diff = expList[expList.length - 1].startTime - expList[0].startTime
         expYear = Math.floor(diff / 60 / 60 / 24 / 365)
@@ -46,8 +46,9 @@ Page({
       if (!resumeBase.resPic){
         resumeBase.resPic = app.globalData.userInfo.avatarUrl
       }
-      if (resumeBase.resBornTime && resumeBase.resBornTime.toString().length==9){
-        resumeBase.resBornTime = Number(resumeBase.resBornTime)*1000
+      
+      if (resumeBase.resBornTime){
+        resumeBase.resBornTime = formatTime(new Date(resumeBase.resBornTime),'yyyy')
       }
       this.setData({
         eduList,
