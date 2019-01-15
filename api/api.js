@@ -2,7 +2,8 @@ const url ={
   /** +++++++++++++++++++++++++++  微信小程序接口 ++++++++++++++++++++++++++++++++++++++ */
   userLogin: '/wxAppletsLogin/wxVoteLogin', // post ，根据微信CODE获取微信用户信息
   saveUserInfo: "/frontIndex/wxInfo", // post 用户微信信息存入
-  imgUpOne: "/wxAppletsLogin/imgUpOne",//post 上传图片
+  imgUpOne: "/wxAppletsLogin/imgUpOne",//post 上传图片.
+  decodeUserInfo: "/wxAppletsLogin/decodeUserInfo",//get 解密数据：小程序解密用户敏感数据
 
   /** +++++++++++++++++++++++++++  frontIndex  ++++++++++++++++++++++++++++++++++++++ */
   banner: "/frontIndex/banner",// get 首页轮播图列表获取

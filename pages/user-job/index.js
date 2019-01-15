@@ -46,9 +46,8 @@ Page({
     })
   },
   changeName(e){
-    //TODO:排除数字，特殊字符，空格
     this.setData({
-      name:e.detail.detail.value.trim()
+      name: e.detail.detail.value.excludeSpecial().excludeSpace()
     })
   },
   submit(){

@@ -1,22 +1,25 @@
+require("./utils/string.js")
 App({
   onLaunch: function(options) {
 
   },
   onShow(options) {
+    console.log(options)
     let enterOptions = options
     if (enterOptions.path !== "pages/login/login") {
-      wx.setStorageSync("enterOptions", enterOptions)
-      // wx.redirectTo({
-      //   url: '/pages/login/login',
-      // })
+      wx.setStorageSync("enterOptions", enterOptions)      
     } else {
       enterOptions.path = "pages/index/index"
       wx.setStorageSync("enterOptions", enterOptions)
     }
-    console.log(options)
-    if (options.shareTicket) {
-      this.getShareInfo(options.shareTicket)
-    }
+    // wx.redirectTo({
+    //   url: '/pages/login/login',
+    // })
+
+    //群聊信息
+    // if (options.shareTicket) {
+    //   this.getShareInfo(options.shareTicket)
+    // }
   },
   globalData: {
     userInfo: {

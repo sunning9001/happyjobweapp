@@ -1,6 +1,5 @@
 import { imgServerUrl } from '../../config/config.js'
 import { getCenterInfo } from '../../services/index.js'
-const app = getApp();
 
 Page({
   data: {
@@ -21,7 +20,7 @@ Page({
       })
       if(!phoneNo){
         wx.navigateTo({
-          url: '',
+          url: '../auth/auth',
         })
       }
     })
@@ -52,5 +51,4 @@ Page({
       })
     }
   },  
-  //TODO:手机号获取
 })

@@ -50,16 +50,16 @@ Page({
       endDate: e.detail.value
     })
   },
-  //公司名称 TODO:排除特殊字符，空格
+  //公司名称
   changeComName(e){
     this.setData({
-      comName:e.detail.detail.value.trim()
+      comName: e.detail.detail.value.excludeSpecial().excludeSpace()
     })
   },
-  //工作职位 TODO:排除特殊字符，空格
+  //工作职位
   changeJobName(e){
     this.setData({
-      jobName: e.detail.detail.value.trim()
+      jobName: e.detail.detail.value.excludeSpecial().excludeSpace()
     })
   },
   //验证

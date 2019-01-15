@@ -68,21 +68,21 @@ Page({
     console.log(e)
     let { value } = e.detail.detail
     this.setData({
-      name: value.trim()
+      name: value.excludeSpecial().excludeSpace()
     }) 
   },
   changeYear(e) {
     console.log(e)
     let { value } = e.detail.detail
     this.setData({
-      year: value.trim()
+      year: value.excludeSpecial().excludeSpace()
     })
   },
   changeIphone(e) {
     console.log(e)
     let { value } = e.detail.detail
     this.setData({
-      iphone: value.trim()
+      iphone: value.excludeSpecial().excludeSpace()
     })
   },
   //上传图片

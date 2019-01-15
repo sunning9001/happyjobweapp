@@ -1,6 +1,5 @@
 import { imgServerUrl } from '../../config/config.js'
-import { wxLogin, saveLogin, checkSession } from '../../services/wx.js'
-var app = getApp();
+import { getWxPhone } from '../../services/wx.js'
 
 Page({
   data: {
@@ -19,7 +18,7 @@ Page({
       //用户按了允许授权按钮
       getWxPhone({
         iv: iv,
-        encryptedData: encryptedData,
+        encryptedData: encryptedData,        
       }).then(data=>{
         wx.navigateBack()
       })

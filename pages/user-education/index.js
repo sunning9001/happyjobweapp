@@ -46,10 +46,10 @@ Page({
       endDate: e.detail.value
     })
   },
-  //学校名称 TODO:排除特殊字符，空格
+  //学校名称
   changeName(e) {
     this.setData({
-      name: e.detail.detail.value.trim()
+      name: e.detail.detail.value.excludeSpecial().excludeSpace()
     })
   },
   //获取教育水平

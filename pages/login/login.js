@@ -1,5 +1,5 @@
 import { imgServerUrl } from '../../config/config.js'
-import { wxLogin, saveLogin} from '../../services/wx.js'
+import { saveLogin, quickLogin, authorize} from '../../services/wx.js'
 var app = getApp();
 
 Page({
@@ -34,7 +34,8 @@ Page({
     let enterOptions = wx.getStorageSync("enterOptions")
     let switchTabs = ["pages/index/index", "pages/pt/index", 'pages/mine/index']
     let sceneArr = [1007,1008,1044,1011,1012,1013,1047,1048,1049]
-    this.authorize('scope.userInfo').then(data => {
+
+    this.getUserInfo('scope.userInfo').then(data => {
       if (sceneArr.indexOf(enterOptions.scene)!==-1){
         return this.login(enterOptions.query.storeToken)
       }else{
@@ -65,46 +66,29 @@ Page({
   //用户注册登录
   login(storeToken) {
     return new Promise((resolve, reject) => {
-      wx.login({
-        success: res => {
-          const code = res.code
-          wxLogin({
-            code:code,
-            storeToken: storeToken || null
-          }).then(res=>{
-            app.globalData.oid = res.oid;
-            app.globalData.sid = res.sid;
-            app.globalData.userToken = res.userToken;
-            app.globalData.sessionKey = res.sessionKey;
-            wx.setStorageSync('shareToken', res.shareToken)
-            app.callback && app.callback()
-            resolve(true)
-          })
-        }
+      quickLogin(storeToken).then(data=>{
+        resolve(true)
+      }).catch(data=>{
+        reject(false)
       })
-
     })
   },
   //获取用户信息 判断授权
-  authorize(setting) {
+  getUserInfo(setting) {
     return new Promise((resolve, reject) => {
-      wx.getSetting({
-        success: res => {
-          if (res.authSetting[setting]) {
-            wx.getUserInfo({
-              lang: 'zh_CN',
-              success: res => {
-                console.log(res)
-                app.globalData.userInfo = res.userInfo;
-                wx.setStorageSync('city', res.userInfo.city )
-                resolve(res)
-              }
-            })
-          } else {
-            // 未授权            
-            reject(false)
+      authorize(setting).then(data=>{
+        wx.getUserInfo({
+          lang: 'zh_CN',
+          success: res => {
+            console.log(res)
+            app.globalData.userInfo = res.userInfo;
+            wx.setStorageSync('city', res.userInfo.city)
+            resolve(res)
           }
-        }
+        })
+      }).catch(data=>{
+        // 未授权            
+        reject(false)
       })
     })
   },
@@ -116,14 +100,9 @@ Page({
         gender=3
       }
       saveLogin({
-        header:{
-          oid:app.globalData.oid
-        },
-        data:{
-          headerUrl: app.globalData.userInfo.avatarUrl,
-          nickName: app.globalData.userInfo.nickName,
-          gender: gender,
-        }
+        headerUrl: app.globalData.userInfo.avatarUrl,
+        nickName: app.globalData.userInfo.nickName,
+        gender: gender,
       })
     })
   },
