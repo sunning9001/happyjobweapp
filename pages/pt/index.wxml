@@ -46,7 +46,7 @@
       </view>
       <view class="four">
         <text class="pt-member">已有<text class="number">{{item.groupSccNum}}</text>人拼团成功</text>
-        <text class="endtime">结束时间：{{globalTools.formateDay(item.endTime)}}</text>
+        <text class="endtime">结束时间：{{item.endTime}}</text>
       </view>
     </view>
   </view>

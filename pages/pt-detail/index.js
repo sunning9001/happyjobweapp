@@ -1,40 +1,42 @@
 import { getGroupDetail } from '../../services/index.js'
+import { imgServerUrl } from '../../config/config.js'
 
 Page({
 
   data: {
+    imgServerUrl: imgServerUrl,
     data:'',
   },
 
   onLoad: function (options) {
+    this.data.hpPositionGroupId = options.hpPositionGroupId
     this.fetchData()
   },
   onShareAppMessage: function () {
-
+    return {
+      title: '开心工作参团有奖',
+      path: '/pages/pt-detail/index?shareToken=' + shareToken,
+      imageUrl: ''
+    }
   },
    //获取历史记录
   fetchData() {
     
     getGroupDetail({
-      hpPositionGroupId: this.options.hpPositionGroupId
+      hpPositionGroupId: this.data.hpPositionGroupId
     }).then(data => {
       data.data.leftTime = data.data.leftTime <= 0 ? 0 : (new Date().getTime() + data.data.leftTime * 1000)
-      
 
       let userList = data.data.userList
       if (userList && userList.length<3){
         let i = userList.length;
         for (; i < 3;i++){
-          userList[i] = { headerPic: '../../images/avatar/1.png' }
+          userList[i] = { headerPic: this.data.imgServerUrl+'/images/avatar/1.png' }
         }
       }
-      
-      console.log(data)
-      
       this.setData({
         data:data.data
       })
-      console.log(this.data.leftTime)
     })
   },
 // 拼团倒计时结束

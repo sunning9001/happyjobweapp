@@ -17,7 +17,7 @@ check-iphone 验证码样式
 user-form 获取验证码 倒计时
 
 detail 是否结束 倒计时
-pt-detail 倒计时 样式修改 条件判断 回调处理 情景判断 跳转处理 分享 是否结束
+pt-detail 倒计时
 recommend-share 图片生成
 share 拼团详情生成分享图片
 

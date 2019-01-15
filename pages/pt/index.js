@@ -1,5 +1,6 @@
 import { imgServerUrl } from '../../config/config.js'
 import { getIndexList, getPositionList } from '../../services/index.js'
+import { formatTime} from '../../utils/util.js'
 const app = getApp();
 
 Page({
@@ -30,7 +31,10 @@ Page({
     getIndexList(paramsObj).then(data => {
       console.log(data)
       this.setData({
-        list:data.list
+        list:data.list.map(item=>{
+          item.endTime = formatTime(new Date(item.endTime*1000),'yyyy-MM-dd')
+          return item
+        })
       })
     })
   },

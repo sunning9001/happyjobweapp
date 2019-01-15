@@ -61,14 +61,7 @@ Page({
         groupLeftTime //拼团结束时间
       } = data.data
       let datas = data.data
-      let isOpen;
-      if( this.data.type==0 ){
-        //正常岗位
-        isOpen = Date.parse(new Date())/1000 <endTime
-      }else{
-        //拼团
-        isOpen = Date.parse(new Date()) / 100 < groupLeftTime
-      }
+      let isOpen = Date.parse(new Date()) / 1000 < endTime
       
       this.setData({
         posName,

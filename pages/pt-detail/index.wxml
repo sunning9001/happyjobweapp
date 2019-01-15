@@ -1,6 +1,6 @@
 <view class='panel'>
   <view class='row job'>{{data.comName}}
-    <image wx:if="{{data.comApproveState==1}}" class="auth" src="../../images/detail/auth-has.png" mode="widthFix"/>
+    <image wx:if="{{data.comApproveState==1}}" class="auth" src="{{imgServerUrl}}/images/detail/auth-has.png" mode="widthFix"/>
   </view>
   <view class='row award'>
     <text class='award-info'><text class='money'>{{data.lowerNum}}-{{data.hightNum}}元/月</text></text>
@@ -14,7 +14,7 @@
 
 <view class="card top1" wx:if="{{true}}">
   <view class="card-title">
-    <image class="card-title-icon" src="../../images/detail/icon-box.png" mode="widthFix"></image>
+    <image class="card-title-icon" src="{{imgServerUrl}}/images/detail/icon-box.png" mode="widthFix"></image>
     参团人员
   </view>
   <view class="card-content" >
@@ -35,14 +35,14 @@
 </view>
 
 <view class="btn-group">
-  <i-button wx:if="{{data.groupStatus==0 && data.userIsPart==1}}" bind:click="handleClick" type="success" shape="circle" i-class="primay">邀请朋友参团</i-button>
+  <i-button wx:if="{{data.groupStatus==0 && data.userIsPart==1}}" bind:click="handleClick" type="success" shape="circle" i-class="primay" open-type="share">邀请朋友参团</i-button>
   <i-button wx:if="{{data.groupStatus==0 && data.userIsPart!=1}}" bind:click="joinGroup" type="success" shape="circle" i-class="primay">一键参团</i-button>
   <i-button wx:if="{{data.groupStatus==0 && data.userIsPart==1}}" bind:click="handleClick" type="info" shape="circle" i-class="info">生成分享图片</i-button>
   <i-button wx:if="{{data.groupStatus==1}}" type="success" shape="circle" i-class="info">拼团成功</i-button>
 </view>
 <view class="card">
   <view class="card-title">
-    <image class="card-title-icon" src="../../images/detail/icon-box.png" mode="widthFix"></image>
+    <image class="card-title-icon" src="{{imgServerUrl}}/images/detail/icon-box.png" mode="widthFix"></image>
     招聘简章
   </view>
   <view class='card-content'>
