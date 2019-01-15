@@ -22,9 +22,9 @@
             <image class="icon-sex" wx:else src="{{imgServerUrl}}/images/jianli/sex-woman.png" mode="widthFix"/>
           </view>
           <view class="tags">
-            <text class="tag" wx:if="{{resumeBase.resBornTime}}">{{globalTools.formateym(resumeBase.resBornTime,".")}}</text>
-            <text class="tag" wx:if="{{eduName}}">学历{{eduName}}</text>
-            <text class="tag" wx:if="{{expYear}}">经验{{expYear}}年</text>
+            <text class="tag" wx:if="{{resumeBase.resBornTime}}">{{resumeBase.resBornTime}}</text>
+            <text class="tag" wx:if="{{eduName}}">{{eduName}}</text>
+            <!-- <text class="tag" wx:if="{{expYear}}">经验{{expYear}}年</text> -->
           </view>
         </view>
       </view>
