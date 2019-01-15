@@ -97,6 +97,10 @@ Page({
   },  
   //获取拼团列表
   fetchPtList(){
+    if(!this.data.isOpen){
+      showToast('拼团已结束')
+      return false
+    }
     groupList(this.data.hpPositionId).then(data=>{
       console.log(data)
       this.setData({
