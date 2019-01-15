@@ -2,6 +2,7 @@ import { imgServerUrl } from '../../config/config.js'
 import { resumeBase, eduList } from '../../services/index.js'
 import { uploadImg } from '../../services/uploadFile.js'
 import { showToast } from '../../utils/tips.js'
+import { argusToTimestamp } from '../../utils/util.js'
 const app = getApp();
 
 Page({
@@ -11,7 +12,7 @@ Page({
     sex_index: 0,
     eduList: [],
     eduIndex: 0,
-    avatar: imgServerUrl+"/images/avatar/man.png",
+    avatar: app.globalData.userInfo.avatarUrl,
     name:'',
     year:'',
     iphone:'',
@@ -24,10 +25,19 @@ Page({
         hpUserResumeId
       })
     }
-    //TODO:如果已经认证，自动填写已有信息
-    //TODO:获取已编辑过信息
-    //TODO:手机号绑定
     this.fetchEduList()
+    let resumeBase = wx.getStorageSync('resumeBase')
+    if (resumeBase.hpUserResumeId){
+      this.setData({
+        hpUserResumeId:resumeBase.hpUserResumeId,
+        avatar: resumeBase.resPic,
+        name: resumeBase.resName,
+        sex_index: resumeBase.resGender-1,
+        year: new Date(resumeBase.resBornTime).getFullYear(),
+        iphone:resumeBase.resPhone,
+        eduIndex: resumeBase.hpEducationId ? (Number(resumeBase.hpEducationId)-1):0
+      })
+    }
   },
   //获取教育水平
   fetchEduList(){
@@ -118,7 +128,7 @@ Page({
     resumeBase({
       hpEducationId: eduList[eduIndex].hpEducationId,
       hpUserResumeId: hpUserResumeId,
-      resBornTime: year,
+      resBornTime: argusToTimestamp([year]),
       resGender: sex_index==0?1:2,
       resName: name,
       resPhone: iphone,
@@ -127,8 +137,6 @@ Page({
       console.log(data)
       showToast('保存成功','success')
       wx.navigateBack()
-    }).catch(err=>{
-      showToast(err.message)
     })
   },
 })

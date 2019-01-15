@@ -15,7 +15,21 @@ Page({
     hpUserResumeId: '',//用户简历表id 
   },
   onLoad: function (options) {
-    //TODO:编辑
+    let { hpUserResumeId,index } = options
+    if(typeof index !="undefined"){
+      let expList = wx.getStorageSync('expList')[index]
+      this.setData({
+        comName: expList.comName,
+        jobName:expList.posType,
+        hpUserResumeId: expList.hpUserResumeId,
+        hpUserExpId: expList.hpUserExpId
+      })
+    }else{
+      this.setData({
+        hpUserResumeId
+      })
+    }
+
     let year = new Date().getFullYear()
     let month = formatNumber(new Date().getMonth()+1)
     let day = formatNumber(new Date().getDate())
@@ -50,6 +64,7 @@ Page({
   },
   //验证
   check(){
+    let { comName, jobName, startDate, endDate } = this.data
     if(comName==""){
       showToast('请填写公司名称')
       return false

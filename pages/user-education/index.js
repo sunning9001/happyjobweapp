@@ -1,7 +1,7 @@
 import { resumeEdu, eduList} from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
-import { formatNumber, argusToTimestamp } from '../../utils/util.js'
+import { formatNumber, argusToTimestamp, formateym } from '../../utils/util.js'
 
 Page({
   data: {
@@ -15,8 +15,24 @@ Page({
     hpUserResumeId:''
   },
   onLoad: function (options) {
-    //TODO: 编辑
     this.fetchEduList()
+    console.log(options)
+    let { hpUserResumeId, index } = options
+    if (typeof index != "undefined") {
+      let eduList = wx.getStorageSync('eduList')[index]
+      this.setData({
+        name: eduList.posType,
+        eduIndex: eduList.hpEducationId - 1,
+        hpUserResumeId: eduList.hpUserResumeId,
+        hpUserIntentionId: eduList.hpUserIntentionId,
+        startDate: formateym(eduList.startTime),
+        endDate: formateym(eduList.endTime )
+      })
+    } else {
+      this.setData({
+        hpUserResumeId: hpUserResumeId
+      })
+    }
   },
   //入学时间
   startDateChange(e) {
@@ -54,7 +70,8 @@ Page({
   },
   //验证
   check() {
-    if (comName == "") {
+    let { name, startDate, endDate } = this.data
+    if (name == "") {
       showToast('请填写学校名称')
       return false
     }
@@ -74,15 +91,15 @@ Page({
       return
     }
     let { name, startDate, endDate, eduList, eduIndex, hpUserEducationId, hpUserResumeId } = this.data
-    let startTime = argusToTimestamp(startDate.split("-"))
-    let endTime = argusToTimestamp(endDate.split("-"))
+    let startTime = argusToTimestamp(startDate.split("-"))/1000
+    let endTime = argusToTimestamp(endDate.split("-"))/1000
     
     resumeEdu({
       startTime,
       endTime,
       hpEducationId: eduList[eduIndex].hpEducationId,
       hpUserEducationId,
-      hpUserResumeId,
+      hpUserResumeId: Number(hpUserResumeId),
       schName:name,
     }).then(data => {
       console.log(data)

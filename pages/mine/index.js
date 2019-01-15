@@ -12,13 +12,18 @@ Page({
   fetchData(){
     getCenterInfo().then(data=>{
       console.log(data)
-      let { headerPic, userName, approveState, hpUserId}=data.data
+      let { headerPic, userName, approveState, hpUserId, phoneNo }=data.data
       this.setData({
         headerPic,
         userName,
         approveState,// 认证状态（0、未申请认证，1、认证通过，2、认证不通过，3、认证待审核） ,
         hpUserId,//是否有简历 0，空没有简历，>1有简历        
       })
+      if(!phoneNo){
+        wx.navigateTo({
+          url: '',
+        })
+      }
     })
   },
   //去认证页面

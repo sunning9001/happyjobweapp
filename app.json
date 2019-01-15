@@ -29,7 +29,9 @@
     "pages/search-result/search-result",
     "pages/document/fanxian",
     "pages/document/salary",
-    "pages/document/pt"    
+    "pages/document/pt",
+    "pages/auth/auth",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

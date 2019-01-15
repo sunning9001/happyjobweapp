@@ -1,7 +1,7 @@
 const url ={
   /** +++++++++++++++++++++++++++  微信小程序接口 ++++++++++++++++++++++++++++++++++++++ */
-  wxMallLogin: '/wxAppletsLogin/wxMallLogin', // get 商城小程序，根据微信CODE获取微信用户信息
-  wxLogin: "/wxAppletsLogin/wxLogin", // get 用户微信信息存入
+  userLogin: '/wxAppletsLogin/wxVoteLogin', // post ，根据微信CODE获取微信用户信息
+  saveUserInfo: "/frontIndex/wxInfo", // post 用户微信信息存入
   imgUpOne: "/wxAppletsLogin/imgUpOne",//post 上传图片
 
   /** +++++++++++++++++++++++++++  frontIndex  ++++++++++++++++++++++++++++++++++++++ */

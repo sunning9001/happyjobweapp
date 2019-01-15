@@ -3,7 +3,7 @@
 <view class='app-header'>
   <view class='map' bindtap='toCity'>
     <i-icon type="coordinates_fill" />
-    <text>无锡</text>
+    <text>{{cityName}}</text>
     <i-icon class="arrow-down" type="play_fill" />
   </view>
   <view class='search' bindtap='toSearch'>

@@ -48,7 +48,10 @@ Page({
     })
   },
   onShow: function () {
-    //TODO:获取城市
+    let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
+    this.setData({
+      cityName: cityName
+    })
   },
   onReachBottom: function () {
     var currentPage = this.data.currentPage+1;
