@@ -32,7 +32,7 @@
       </view>
     </block>
 
-    <block wx:if="{{true}}" >
+    <block wx:if="{{isTest}}" >
       <view class="activity-item" bindtap='goTestUrl' >
         <image src="" mode="scaleToFill"></image>
         <text>测试按钮</text>
