@@ -39,6 +39,7 @@ Page({
     isScroll:true,//是否可以滚动
     showCount: 10,//单页展示记录数
     index:3,//岗位类型
+    isTest:false,
   },
   onLoad: function (options) {
     this.fetchBanner()
