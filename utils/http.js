@@ -31,6 +31,7 @@ const http = (params) => {
             }
             resolve(res.data)
           } 
+          //TODO:错误码处理 手机未绑定
           // else if (params.url == "/order/result" && res.data.errorCode == "800020") {//支付结果未知      
           //   //需要特殊处理的接口，可以单独列出来返回数据
           //   resolve(res.data)

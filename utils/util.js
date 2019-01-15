@@ -49,5 +49,6 @@ function formateym(dates, split = ".") {
 module.exports = {
   formatTime: formatTime,
   formatNumber,
+  formateym,
   argusToTimestamp
 }

@@ -55,6 +55,7 @@
 }
 .qiuzhi {
   margin-left: 40rpx;
+  border-bottom: 1px solid #eaeaea;
 }
 .qiuzhi .row {
   margin-bottom: 30rpx;

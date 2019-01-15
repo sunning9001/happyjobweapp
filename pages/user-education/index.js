@@ -11,7 +11,7 @@ Page({
     eduIndex:0,
     startDate:[],
     endDate:[],
-    hpUserEducationId:'',
+    hpUserEducationId:null,
     hpUserResumeId:''
   },
   onLoad: function (options) {
@@ -20,13 +20,16 @@ Page({
     let { hpUserResumeId, index } = options
     if (typeof index != "undefined") {
       let eduList = wx.getStorageSync('eduList')[index]
+      console.log(eduList)
+      console.log(formateym(eduList.startTime))
+      console.log(formateym(eduList.endTime))
       this.setData({
-        name: eduList.posType,
+        name: eduList.schName,
         eduIndex: eduList.hpEducationId - 1,
         hpUserResumeId: eduList.hpUserResumeId,
-        hpUserIntentionId: eduList.hpUserIntentionId,
+        hpUserEducationId: eduList.hpUserEducationId,
         startDate: formateym(eduList.startTime),
-        endDate: formateym(eduList.endTime )
+        endDate: formateym(eduList.endTime)
       })
     } else {
       this.setData({
@@ -91,8 +94,8 @@ Page({
       return
     }
     let { name, startDate, endDate, eduList, eduIndex, hpUserEducationId, hpUserResumeId } = this.data
-    let startTime = argusToTimestamp(startDate.split("-"))/1000
-    let endTime = argusToTimestamp(endDate.split("-"))/1000
+    let startTime = argusToTimestamp(startDate.split("-"))
+    let endTime = argusToTimestamp(endDate.split("-"))
     
     resumeEdu({
       startTime,

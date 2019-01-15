@@ -337,11 +337,16 @@ page {
 .pt-modal .pt-list:last-child {
   border-bottom: none;
 }
+.pt-modal .pt-list .pt-avatar-box {
+  width: 95rpx;
+  height: 95rpx;
+  border-radius: 50%;
+}
 .pt-modal .pt-list .pt-avatar {
   flex: 0 0 auto;
   flex-shrink: 0;
   width: 95rpx;
-  height: 95prx;
+  height: 95rpx;
   border-radius: 50%;
   border: 1px solid #e2e2e2;
   background-color: #f1f1f1;
@@ -349,18 +354,25 @@ page {
 .pt-modal .pt-list .pt-info {
   flex-grow: 1;
   color: #323232;
-  margin-left: 50rpx;
+  margin-left: 30rpx;
+  overflow: hidden;
 }
 .pt-modal .pt-list .pt-info .row {
   display: flex;
+  justify-content: space-between;
 }
 .pt-modal .pt-list .pt-info .name {
   font-size: 33rpx;
   margin-right: 30rpx;
   font-weight: 700;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .pt-modal .pt-list .pt-info .small {
   font-size: 20rpx;
+  white-space: nowrap;
+  padding-right: 20rpx;
 }
 .pt-modal .pt-list .pt-info .small .num {
   font-size: 30rpx;

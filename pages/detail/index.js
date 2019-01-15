@@ -1,6 +1,7 @@
 import { getPositionDetail, positionApply, groupApply, groupList } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 const WxParse = require('../../plugins/wxParse/wxParse.js');
+import { showToast } from '../../utils/tips.js'
 const app = getApp();
 
 Page({
@@ -23,15 +24,18 @@ Page({
   },
 
   onShareAppMessage: function () {
-
+    console.log(options)
+    var shareToken = wx.getStorageSync('shareToken')
+    return {
+      title: '开心工作入职有奖',
+      path: '/pages/detail/index?shareToken=' + shareToken,
+      imageUrl: ''
+    }
   },
   //获取岗位详情
   fetchData(){
     getPositionDetail(this.data.hpPositionId).then(data=>{
       console.log(data)
-      console.log(data.data.reqOther)
-      // data.data.reqOther = data.data.reqOther ? data.data.reqOther.split(",") : []
-
       let { 
         posName, //职位名称
         approveState,//是否认证
@@ -51,11 +55,20 @@ Page({
         fiveMoney, //五人团及以上奖励金额 
         comApplyNum, //用户正在进行的非拼团申请数
         groupApplyNum, //用户正在进行的拼团申请数
-        carDesc,
-        hpPositionGroupId,
+        carDesc,//班车信息
+        hpPositionGroupId,//拼团id
+        endTime,//岗位结束时间
+        groupLeftTime //拼团结束时间
       } = data.data
       let datas = data.data
-
+      let isOpen;
+      if( this.data.type==0 ){
+        //正常岗位
+        isOpen = Date.parse(new Date())/1000 <endTime
+      }else{
+        //拼团
+        isOpen = Date.parse(new Date()) / 100 < groupLeftTime
+      }
       
       this.setData({
         posName,
@@ -68,7 +81,8 @@ Page({
         fiveMoney,
         comApplyNum,
         groupApplyNum,
-        hpPositionGroupId
+        hpPositionGroupId,
+        isOpen
       })
 
       //存储厂车路线
@@ -94,8 +108,14 @@ Page({
       })
     })
   },
-  //TODO:申请开团
-  //是否绑定过手机号 是否有简历，
+  //申请工作
+  applyJob() {
+    positionApply(this.data.hpPositionId).then(data => {
+      //TODO:modal确认提示
+      showToast('申请职位成功', 'success')
+    })
+  },
+  //申请开团
   applyPt(){
     positionApply(this.data.hpPositionId).then(data=>{
       var hpPositionGroupId = data.data.hpPositionGroupId
@@ -104,21 +124,14 @@ Page({
       })
     })
   },
-  //TODO:参与拼团
-  joinTuan() {
-    groupApply(this.data.hpPositionGroupId).then(data => {
-      console.log(data)
+  //参与拼团
+  joinTuan(e) {
+    let {groupid} = e.currentTarget.dataset
+    groupApply(groupid).then(data => {
+      wx.navigateTo({
+        url: '../pt-detail/index?hpPositionGroupId=' + this.data.hpPositionGroupId,
+      })
     })
-  },
-  //TODO:申请职位
-  applyJob(){
-    positionApply(this.data.hpPositionId).then(data => {
-      console.log(data)
-    })
-  },
-  //TODO:查看申请
-  catJob(){
-    console.log("查看申请")
   },
   //查看拼团
   catPt(){
@@ -150,7 +163,7 @@ Page({
       url: '../roadsLine/index',
     })
   },
-  //倒计时回调
+  //TODO:倒计时回调
   myLinsterner() {
     this.fetchPtList()
   },

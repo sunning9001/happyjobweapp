@@ -133,12 +133,13 @@
     <text>以担保或任何理由索取财务，扣押证照，均涉嫌违法，请提高警惕</text>
   </view>
   <!-- btn -->
-  <view class="btn-group">
-    <!--TODO: 需要绑定手机号 -->
-    <i-button bind:click="applyJob" type="primary" shape="circle" i-class="distance" wx:if="{{type==0 && !comApplyNum}}">申请职位</i-button>
-    <i-button bind:click="catJob" type="primary" shape="circle" i-class="distance" wx:if="{{type==0 && comApplyNum}}">已申请</i-button>
+  <view class="btn-group" wx:if="{{isOpen}}">
+    <i-button bind:click="applyJob" type="primary" shape="circle" i-class="distance" wx:if="{{type==0 && !comApplyNum}}">免费申请工作</i-button>
     <i-button bind:click="applyPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && !hpPositionGroupId}}">申请开团</i-button>
-    <i-button bind:click="catPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && hpPositionGroupId}}">查看拼团</i-button>
+    <i-button bind:click="catPt" type="primary" shape="circle" i-class="distance" wx:if="{{type==1 && hpPositionGroupId}}">我的拼团</i-button>
+  </view>
+  <view class='btn-group' wx:if="{{!isOpen}}">
+  <i-button type="primary" shape="circle" i-class="distance">{{type==0?"岗位已结束":"拼团已结束"}}</i-button>
   </view>
 
 <view class='pt-mask nobg' wx:if="{{isShowList}}">
@@ -149,7 +150,9 @@
     </view>
     <view class='pt-modal-body'>
       <view class='pt-list' wx:for="{{ptList}}" wx:key="hpUserId">
-        <image class='pt-avatar' src='{{item.leaderPic}}' mode='widthFix'></image>
+        <view class='pt-avatar-box'>
+          <image class='pt-avatar' src='{{item.leaderPic}}' mode='scaleToFill'></image>
+        </view>
         <view class='pt-info'>
           <view class='row'>
             <view class='name'>{{item.leaderName}}</view>
@@ -166,7 +169,7 @@
             </view>
           </view>
         </view>
-        <view class='btn'>参团</view>
+        <view class='btn' bindtap='joinTuan' data-groupid="{{item.hpPositionGroupId}}">参团</view>
       </view>
       <view class='pt-null' wx:if="{{ptList.length==0}}">暂无拼团</view>
     </view>
