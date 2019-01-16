@@ -35,13 +35,15 @@ Page({
     let switchTabs = ["pages/index/index", "pages/pt/index", 'pages/mine/index']
     let sceneArr = [1007,1008,1044,1011,1012,1013,1047,1048,1049]
 
-    this.getUserInfo('scope.userInfo').then(data => {
-      if (sceneArr.indexOf(enterOptions.scene)!==-1){
-        return this.login(enterOptions.query.storeToken)
-      }else{
-        return this.login()
-      }
-    }).then(data => {
+    if (sceneArr.indexOf(enterOptions.scene) !== -1) {
+      this.login(enterOptions.query.storeToken)
+    } else {
+      this.login()
+    }
+    this.getUserInfo('scope.userInfo')
+    .then(data => {
+      app.globalData.userInfo = data.userInfo;
+      wx.setStorageSync('city', data.userInfo.city)
       this.saveWXInfo()      
       if (switchTabs.indexOf(enterOptions.path) !== -1) {
         wx.switchTab({
@@ -69,7 +71,7 @@ Page({
       quickLogin(storeToken).then(data=>{
         resolve(true)
       }).catch(data=>{
-        reject(false)
+        reject(data)
       })
     })
   },

@@ -1,7 +1,12 @@
 require("./utils/string.js")
+import { quickLogin } from './services/wx.js'
 App({
   onLaunch: function(options) {
-
+    quickLogin().catch(data=>{
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    })
   },
   onShow(options) {
     console.log(options)
@@ -12,9 +17,9 @@ App({
       enterOptions.path = "pages/index/index"
       wx.setStorageSync("enterOptions", enterOptions)
     }
-    // wx.redirectTo({
-    //   url: '/pages/login/login',
-    // })
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
 
     //群聊信息
     // if (options.shareTicket) {
@@ -22,18 +27,21 @@ App({
     // }
   },
   globalData: {
-    userInfo: {
-      avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTITVdksdCsusTicicnhWDib0tjjgW5ASIbpY3xeanBicibz3XLZOPC8CFibWkRyHBzMSz22icQ8Qcrqt6X0g/132",
-      city: "无锡",
-      country: "中国",
-      gender: 1,
-      language: "zh_CN",
-      nickName: "我的小窝",
-      province: "江苏",
-    },
-    oid: '773d8ad1ad9540fc804389a973a54d',
-    sid: '15e5d36a68034a1d8793e5fb76e3ac76',
-    city:wx.getStorageInfoSync('city')
+    // userInfo: {
+    //   avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTITVdksdCsusTicicnhWDib0tjjgW5ASIbpY3xeanBicibz3XLZOPC8CFibWkRyHBzMSz22icQ8Qcrqt6X0g/132",
+    //   city: "无锡",
+    //   country: "中国",
+    //   gender: 1,
+    //   language: "zh_CN",
+    //   nickName: "我的小窝",
+    //   province: "江苏",
+    // },
+    // oid: '773d8ad1ad9540fc804389a973a54d',
+    // sid: '15e5d36a68034a1d8793e5fb76e3ac76',
+    userInfo: {},
+    oid: '',
+    sid: '',
+    city:wx.getStorageInfoSync('city') ||''
   },
   //页面分享
   onShareAppMessage: function() {

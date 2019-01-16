@@ -67,7 +67,6 @@ Page({
   // 获取banner图
   fetchBanner(){
     getBanner().then(data=>{
-      console.log(data)
       this.setData({
         imgList:data.list
       })
@@ -86,7 +85,6 @@ Page({
     Object.assign(paramsObj, params)
 
     getIndexList(paramsObj).then(data => {
-      console.log(data)
       let { currentPage,totalPage } = data.page
       let setData={
         currentPage,
@@ -103,7 +101,6 @@ Page({
       }else{
         setData.list = []
       }
-      console.log(...setData)
       this.setData({
         ...setData
       })

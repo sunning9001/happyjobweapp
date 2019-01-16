@@ -20,5 +20,7 @@
         </view>
         <image src="" class="qycode" mode="widthFix" />
     </view>
-    <button class="create" bindtap='save'>保存图片</button>
+    <button class="create" bindtap='onCreatePoster'>保存图片</button>
 </view>
+<poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+</poster>

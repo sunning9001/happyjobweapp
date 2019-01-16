@@ -9,7 +9,7 @@ Page({
   },
 
   onLoad: function (options) {
-    this.data.hpPositionGroupId = options.hpPositionGroupId
+    this.data.hpPositionGroupId = options.hpPositionGroupId || 4
     this.fetchData()
   },
   onShareAppMessage: function () {

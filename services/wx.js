@@ -43,7 +43,7 @@ function saveLogin(params) {
 }
 
 //后台解密手机号 encryptedData iv sessionKey
-function decodePhone() {
+function decodePhone(params) {
   http({
     url: url.decodeUserInfo,
     method: "GET",
@@ -72,16 +72,17 @@ function checkSession(){
 //一键登录
 function quickLogin(storeToken){
   return new Promise((resolve,reject)=>{
-    getWxCode.then(code=>{
+    getWxCode().then(code=>{
       return wxLogin({
         code: code,
         storeToken: storeToken || null
       })
-    }).then(data=>{
+    }).then(res=>{
+      console.log(res)
       app.globalData.oid = res.oid;
       app.globalData.sid = res.sid;
       app.globalData.userToken = res.userToken;
-      app.globalData.sessionKey = res.sessionKey;
+      app.globalData.sessionKey = res.sessionKey;      
       wx.setStorageSync('shareToken', res.shareToken)//用户识别码
       app.loginCallback && app.loginCallback()
       resolve(true)
@@ -101,7 +102,7 @@ function quickLogin(storeToken){
 function getWxPhone(params){
   let That = this
   return new Promise((resolve, reject) => {
-    checkSession
+    checkSession()
     .then(data=>{
       //checkSession有效
       resolve(decodePhoneCallback(params))
@@ -154,5 +155,6 @@ module.exports = {
   checkSession,
   decodePhone,
   getWxPhone,
-  authorize
+  authorize,
+  quickLogin
 }

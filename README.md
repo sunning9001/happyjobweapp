@@ -20,6 +20,4 @@ detail 是否结束 倒计时
 pt-detail 倒计时
 recommend-share 图片生成
 share 拼团详情生成分享图片
-
-
-
+http 状态码处理
