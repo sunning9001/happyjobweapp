@@ -1,4 +1,5 @@
 import { imgServerUrl } from '../../config/config.js'
+import { showToast } from '../../utils/tips.js'
 import Poster from '../../components/wxa-plugin-canvas/poster/poster';
 
 Page({
@@ -128,12 +129,19 @@ Page({
     }
   },
   onLoad: function (options) {
-
+    
   },
   onPosterSuccess(e) {
     console.log(e)
     const { detail } = e;
     //TODO:获取分享二维码，保存到手机相册 授权
+    wx.saveImageToPhotosAlbum({
+      filePath: detail,
+      success(res) { 
+        console.log(res)
+        showToast('已保存到相册')
+      }
+    })
     // wx.previewImage({
     //   current: detail,
     //   urls: [detail]

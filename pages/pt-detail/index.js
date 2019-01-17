@@ -1,5 +1,6 @@
 import { getGroupDetail } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
+import { showToast } from '../../utils/tips.js'
 
 Page({
 
@@ -9,7 +10,7 @@ Page({
   },
 
   onLoad: function (options) {
-    this.data.hpPositionGroupId = options.hpPositionGroupId || 4
+    this.data.hpPositionGroupId = options.hpPositionGroupId
     this.fetchData()
   },
   onShareAppMessage: function () {
@@ -42,6 +43,7 @@ Page({
 // 拼团倒计时结束
   myLinsterner(e){
     console.log("拼团已结束")
+    showToast('拼团已结束')
   },
 // 一键参团
   joinGroup(e){

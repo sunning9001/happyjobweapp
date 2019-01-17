@@ -1,30 +1,39 @@
 require("./utils/string.js")
-import { quickLogin } from './services/wx.js'
+import { quickLogin, checkSession, getUserInfo } from './services/wx.js'
+import { updataStorageData } from './utils/storage.js'
 App({
   onLaunch: function(options) {
-    quickLogin().catch(data=>{
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
+    // let sceneArr = [1007, 1008, 1044, 1011, 1012, 1013, 1047, 1048, 1049]
+    let storeToken = options.query.storeToken || null
+    checkSession()
+    .then(data=>{
+      if (updataStorageData('userToken')){
+        console.log('checkSession success')
+      }else{
+        throw Error
+      }
     })
+    .catch(()=>{
+      console.log('checkSession fail, start login...')
+      quickLogin(storeToken)
+      .then(data=>{
+        console.log('一键登录成功')
+        getUserInfo().then(data=>{
+          console.log('获取用户信息成功')
+        })
+      })
+      .catch(data => {
+        console.log(`一键登录失败`,data)
+      })
+    })    
   },
   onShow(options) {
     console.log(options)
-    let enterOptions = options
-    if (enterOptions.path !== "pages/login/login") {
-      wx.setStorageSync("enterOptions", enterOptions)      
-    } else {
-      enterOptions.path = "pages/index/index"
-      wx.setStorageSync("enterOptions", enterOptions)
-    }
-    wx.redirectTo({
-      url: '/pages/login/login',
-    })
 
     //群聊信息
-    // if (options.shareTicket) {
-    //   this.getShareInfo(options.shareTicket)
-    // }
+    if (options.shareTicket) {
+      this.getShareInfo(options.shareTicket)
+    }
   },
   globalData: {
     // userInfo: {
@@ -41,7 +50,8 @@ App({
     userInfo: {},
     oid: '',
     sid: '',
-    city:wx.getStorageInfoSync('city') ||''
+    sessionKey:'',
+    city: updataStorageData('city') ||''
   },
   //页面分享
   onShareAppMessage: function() {

@@ -1,6 +1,9 @@
 var api = require('../api/api.js')
 import { http } from '../utils/http.js'
+import { updataStorageData } from '../utils/storage.js'
+require('../app.js')
 var app = getApp()
+console.log(app)
 
 /*******************  请求 ***********************************/
 //api地址
@@ -69,6 +72,38 @@ function checkSession(){
   })
 }
 
+//获取用户信息权限
+function getUserInfo(){
+  return new Promise((resolve,reject)=>{
+    hasAuth('scope.userInfo')
+    .then(()=>{
+      wx.getUserInfo({
+        lang: 'zh_CN',
+        success: res => {
+          console.log(res)
+          console.log('获取用户信息成功')
+          app.globalData.userInfo = res.userInfo;
+          updataStorageData('city', res.userInfo.city)
+          saveWXInfo().then(data=>{console.log('保存信息成功')}).catch(data=>{console.log('上传微信信息失败',data)})
+          resolve(res)
+        },
+        fail: err => {
+          console.log('获取用户信息失败')
+          reject(false)
+        }
+      })
+    })
+    .catch(()=>{
+      console.log('没有用户信息授权')
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      reject(false)
+    })
+    
+  })
+}
+
 //一键登录
 function quickLogin(storeToken){
   return new Promise((resolve,reject)=>{
@@ -79,11 +114,12 @@ function quickLogin(storeToken){
       })
     }).then(res=>{
       console.log(res)
-      app.globalData.oid = res.oid;
-      app.globalData.sid = res.sid;
-      app.globalData.userToken = res.userToken;
-      app.globalData.sessionKey = res.sessionKey;      
-      wx.setStorageSync('shareToken', res.shareToken)//用户识别码
+      console.log(app)
+      app.globalData.oid = res.data.oid;
+      app.globalData.sid = res.data.sid;
+      app.globalData.userToken = res.data.userToken;
+      app.globalData.sessionKey = res.data.sessionKey; 
+      updataStorageData('shareToken', res.data.shareToken || '')//用户识别码
       app.loginCallback && app.loginCallback()
       resolve(true)
     }).catch(data=>{
@@ -100,7 +136,6 @@ function quickLogin(storeToken){
  * 
  */
 function getWxPhone(params){
-  let That = this
   return new Promise((resolve, reject) => {
     checkSession()
     .then(data=>{
@@ -124,8 +159,7 @@ function decodePhoneCallback(params){
       'encryptedData': encodeURIComponent(params.encryptedData),
       'iv': params.iv,
     }).then(data => {
-      wx.setStorageSync('phone', data.phone);
-      resolve(true)
+      resolve(updataStorageData('phone', data.phone))
     }).catch(data=>{
       reject(false)
     })
@@ -133,7 +167,7 @@ function decodePhoneCallback(params){
 }
 
 //获取用户信息 判断授权
-function authorize(setting) {
+function hasAuth(setting) {
   return new Promise((resolve, reject) => {
     wx.getSetting({
       success: res => {
@@ -148,6 +182,21 @@ function authorize(setting) {
   })
 }
 
+//保存用户信息到后台
+function saveWXInfo() {
+  return new Promise((resolve, reject) => {
+    let gender = app.globalData.userInfo.gender
+    if (gender == 0) {
+      gender = 3
+    }
+    saveLogin({
+      headerUrl: app.globalData.userInfo.avatarUrl,
+      nickName: app.globalData.userInfo.nickName,
+      gender: gender,
+    })
+  })
+}
+
 module.exports = {
   getWxCode,
   wxLogin,
@@ -155,6 +204,8 @@ module.exports = {
   checkSession,
   decodePhone,
   getWxPhone,
-  authorize,
-  quickLogin
+  hasAuth,
+  getUserInfo,
+  quickLogin,
+  saveWXInfo,
 }

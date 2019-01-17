@@ -1,2 +1,38 @@
-<!--pages/pt-share/pt-share.wxml-->
-<text>pages/pt-share/pt-share.wxml</text>
+<view class="banner">
+    <image class="banner-img" src="../../images/pt/banner.png" mode="widthFix"/>
+</view>
+<view class="bg">
+    <view class="row">
+        <text class="text-1">推荐奖励</text>
+            <image class="avatar" src="{{imgServerUrl}}/images/avatar/man.png"/>
+        <text class="text-2">诚信企业</text>
+    </view>
+    <view class="name">王明</view>
+    <view class="text-3">我在找好友一起上班</view>
+    <view class="company">
+        <image class="company-logo" src="{{imgServerUrl}}/images/avatar/man.png" />
+        <view class="company-info">
+            <view class="company-name">无锡先导自动化设备股份有限公司</view>
+            <view class="company-tags">
+                <view class="row tags-1">
+                    <text class="tag">男女不限</text>
+                    <text class="tag">18-45周岁</text>
+                    <text class="tag">初中以上</text>
+                    <text class="tag">经验3年</text>
+                </view>
+                <view class="row tags-2">
+                    <text class="tag">26个英文字母</text>
+                    <text class="tag">简单算术</text>
+                    <text class="tag">无纹身烟疤</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="footer">
+        <text class="footer-text-1">立即扫码</text>
+        <image class="code" src="{{imgServerUrl}}/images/avatar/man.png" />
+        <text class="footer-text-2">开心工作</text>
+    </view>
+</view>
+
+<button class="create">生成分享图片</button>

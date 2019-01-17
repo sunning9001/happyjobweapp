@@ -30,8 +30,7 @@ const http = (params) => {
               console.log(res.data.data.sessionId)
               console.log(wx.getStorageSync('sessionid'));
             }
-            resolve(res.data)
-            return
+            return resolve(res.data)
           } else if (errorCode==40001){
             //未获取到用户信息
             wx.navigateTo({
@@ -44,16 +43,10 @@ const http = (params) => {
             })
           } else if (errorCode == 40003) {
             //账号不存在，或token无效
-            wx.navigateTo({
-              url: '/pages/login/login',
-            })
           } else if (errorCode == 40004) {
             //账号已被禁用
-          } else if (errorCode == 40005) {
+          } else if (errorCode == 40005 || errorCode==1) {
             //用户信息和微信信息不匹配
-            wx.navigateTo({
-              url: '/pages/login/login',
-            })
           } else if (errorCode == 40006) {
             //用户尚未创建简历
             wx.navigateTo({
@@ -63,7 +56,7 @@ const http = (params) => {
             //账号类型不符
           } else if (errorCode == 50000) {
             //后台接口异常
-            showToast('后台接口异常')
+            // showToast('后台接口异常')
           } 
           //TODO:错误码处理 手机未绑定
           // else if (params.url == "/order/result" && res.data.errorCode == "800020") {//支付结果未知      
