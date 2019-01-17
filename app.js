@@ -7,16 +7,17 @@ App({
   onLaunch: function(options) {
     // let sceneArr = [1007, 1008, 1044, 1011, 1012, 1013, 1047, 1048, 1049]
     let shareToken = options.query.shareToken || null
-    this.quickLogin(shareToken)
-      .then(data => {
-        console.log('一键登录成功')
-        this.getUserInfo().then(data => {
-          console.log('获取用户信息成功')
-        })
-      })
-      .catch(data => {
-        console.log(`一键登录失败`, data)
-      })   
+    this.globalData.targetShareToken = shareToken
+    // this.quickLogin(shareToken)
+    //   .then(data => {
+    //     console.log('一键登录成功')
+    //     this.getUserInfo().then(data => {
+    //       console.log('获取用户信息成功')
+    //     })
+    //   })
+    //   .catch(data => {
+    //     console.log(`一键登录失败`, data)
+    //   })   
   },
   onShow(options) {
     console.log(options)

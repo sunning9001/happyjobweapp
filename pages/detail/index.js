@@ -83,9 +83,12 @@ Page({
         key: 'carDesc',
         data: carDesc 
       })
-      
-      WxParse.wxParse('base', 'html', posDetail, this);
-      WxParse.wxParse('otherWelfare', 'html', otherWelfare, this);
+      if (posDetail){
+        WxParse.wxParse('base', 'html', posDetail, this);
+      }
+      if (otherWelfare){
+        WxParse.wxParse('otherWelfare', 'html', otherWelfare, this);
+      }
     })
   },  
   //获取拼团列表

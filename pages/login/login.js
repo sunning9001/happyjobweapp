@@ -7,6 +7,20 @@ Page({
   },
   onLoad: function () {
     // this.start()
+    if(!app.globalData.oid){
+      app.quickLogin(app.globalData.targetShareToken)
+        .then(data => {
+          console.log('一键登录成功')
+          app.getUserInfo().then(data => {
+            console.log('获取用户信息成功')
+          })
+          wx.navigateBack()
+        })
+        .catch(data => {
+          console.log(`一键登录失败`, data)
+        })  
+    }
+    
   },
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {

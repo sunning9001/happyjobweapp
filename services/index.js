@@ -243,6 +243,10 @@ module.exports={
   eduList(){
     return http({
       url: url.eduList,
+      header:{
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      }
     })
   },
 
@@ -250,6 +254,10 @@ module.exports={
   getSalaryList(){
     return http({
       url: url.salaryList,
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      }
     })
   },
 

@@ -19,6 +19,7 @@ const url ={
   payroll: "/frontIndex/payroll",// 薪资查询：根据手机号码，短信验证码获取身份信息
   phoneBound: "/frontIndex/phone",// 手机号：用户手机号码绑定、更换
   shareBound: "/frontIndex/share",// 推荐有奖好友参加页面手机号填写接口
+  wxPhoneBound: "/frontIndex/wxPhoneBound",//微信手机号获取解密后绑定
 
 /** +++++++++++++++++++++++++++  frontUser  ++++++++++++++++++++++++++++++++++++++ */
   positionList: "/frontUser/positionList",//post 我的岗位申请列表,
