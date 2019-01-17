@@ -1,6 +1,7 @@
 import { getGroupDetail } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
+import { updataStorageData } from '../../utils/storage.js'
 
 Page({
 
@@ -16,7 +17,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '开心工作参团有奖',
-      path: '/pages/pt-detail/index?shareToken=' + shareToken,
+      path: '/pages/pt-detail/index?shareToken=' + updataStorageData(shareToken),
       imageUrl: ''
     }
   },
@@ -40,7 +41,7 @@ Page({
       })
     })
   },
-// 拼团倒计时结束
+// TODO:拼团倒计时结束
   myLinsterner(e){
     console.log("拼团已结束")
     showToast('拼团已结束')
@@ -50,8 +51,13 @@ Page({
     groupApply(this.options.hpPositionGroupId).then(data=>{
       this.fetchData()
     })
-  }
+  },
 
-  // TODO 拼团分享、分享图片
+  //分享图片
+  toShare(){
+    wx.navigateTo({
+      url: '../pt-share/pt-share',
+    })
+  }
   
 })

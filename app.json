@@ -22,7 +22,6 @@
     "pages/bind-pt/index",
     "pages/recommend/index",
     "pages/recommend-iphone/index",
-    "pages/recommend-share/index",
     "pages/result/index",
     "pages/roadsLine/index",
     "pages/city/index",
@@ -31,8 +30,9 @@
     "pages/document/salary",
     "pages/document/pt",
     "pages/auth/auth",
-    "pages/login/login",
-    "pages/pt-share/pt-share"
+    "pages/recommend-share/index",
+    "pages/pt-share/pt-share",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

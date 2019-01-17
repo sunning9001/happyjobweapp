@@ -4,17 +4,27 @@ page{
     padding: 20rpx 25rpx 0;
     box-sizing: border-box;
 }
-.banner-img{
+/* .banner-img{
     width: 700rpx;
     height: 220rpx;
+} */
+.container{
+    width: 700rpx;
+    height: 950rpx;
+    margin-bottom: 65rpx;
+}
+.canvas-bg{
+    position: absolute;
+    top: 20rpx;
+    left: 25rpx;
+    width: 700rpx;
+    height: 950rpx;
 }
 .bg{
     width:700rpx;
     height:730rpx;
-    background:blue;
     color: #fff;
     font-size: 30rpx;
-    margin-bottom: 65rpx;
 }
 .avatar{
     position: absolute;

@@ -18,9 +18,10 @@
             <view>赚了5块钱</view>
             <view>扫码分享给你</view>
         </view>
-        <image src="" class="qycode" mode="widthFix" />
+        <image src="{{qrCode}}" class="qycode" />
     </view>
-    <button class="create" bindtap='onCreatePoster'>保存图片</button>
+    <button class="create" bindtap='onCreatePoster' wx:if="{{hasAuth}}">保存图片</button>
+    <button class="create" open-type="openSetting" bindopensetting="onCreatePoster" wx:else>打开授权页</button>
 </view>
 <poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
 </poster>

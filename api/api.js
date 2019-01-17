@@ -31,6 +31,9 @@ const url ={
   resumeIntent: "/frontUser/resumeIntent",//post 用户简历：用户求职意向编辑、新增
   resumeExp: "/frontUser/resumeExp",//post 用户简历：用户工作经验编辑、新增
   resumeEdu: "/frontUser/resumeEdu",//post 用户简历：用户教育背景编辑、新增  
+  shareQrCodeA: "/frontUser/shareQrCodeA",//post 二维码生成接口B
+  shareQrCodeB: "/frontUser/shareQrCodeB",//post 二维码生成接口B
+  shareQrCodeC:"/frontUser/shareQrCodeC",//post 二维码生成接口c
 }
 
 module.exports = {

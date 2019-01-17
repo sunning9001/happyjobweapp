@@ -330,4 +330,50 @@ module.exports={
       },
     })
   },
+
+  //二维码生成接口B
+  shareQrCodeA(targetUrl) {
+    return http({
+      url: url.shareQrCodeA,
+      data: {
+        targetUrl: targetUrl
+      },
+      method: "POST",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+    })
+  },
+
+  //二维码生成接口B
+  shareQrCodeB(targetUrl) {
+    return http({
+      url: url.shareQrCodeB,
+      data: {
+        targetUrl: targetUrl
+      },
+      method: "POST",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+    })
+  },
+
+  //二维码生成接口C
+  shareQrCodeC(targetUrl) {
+    return http({
+      url: url.shareQrCodeC,
+      data: {
+        targetUrl: targetUrl
+      },
+      method: "POST",
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+    })
+  },
+  
 }

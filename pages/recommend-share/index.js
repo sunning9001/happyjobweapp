@@ -1,10 +1,15 @@
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
-import Poster from '../../components/wxa-plugin-canvas/poster/poster';
+import Poster from '../../components/wxa-plugin-canvas/poster/poster'
+import { shareQrCodeA } from '../../services/index.js'
+import { updataStorageData } from '../../utils/storage.js'
+var app = getApp()
 
 Page({
   data: {
     imgServerUrl: imgServerUrl,
+    qrCode:'',
+    hasAuth:'',
     posterConfig: {
       width: 750,
       height: 1200,
@@ -129,23 +134,43 @@ Page({
     }
   },
   onLoad: function (options) {
-    
+    this.getCode()
+  },
+  onShow(){
+    this.setData({
+      hasAuth:true
+    })
+  },
+  getCode(){
+    let targetUrl = 'pages/index/index?shareToken=' + updataStorageData('shareToken')
+    shareQrCodeA(targetUrl).then(data=>{
+      this.setData({
+        qrCode:data.data.imgUrl
+      })
+    })
   },
   onPosterSuccess(e) {
     console.log(e)
-    const { detail } = e;
-    //TODO:获取分享二维码，保存到手机相册 授权
-    wx.saveImageToPhotosAlbum({
-      filePath: detail,
-      success(res) { 
-        console.log(res)
-        showToast('已保存到相册')
-      }
-    })
-    // wx.previewImage({
-    //   current: detail,
-    //   urls: [detail]
-    // })
+    const { detail } = e;    
+    app.hasAuth('scope.writePhotosAlbum').then(()=>{
+      wx.saveImageToPhotosAlbum({
+        filePath: detail,
+        success(res) {
+          console.log(res)
+          showToast('已保存到相册,快去分享吧！')
+        }
+      })
+    }).catch(()=>{
+      showToast('请授权保存到相册')
+      this.setData({
+        hasAuth: false
+      })
+      wx.openSetting({
+        success(res) {
+          console.log(res.authSetting)
+        }
+      })
+    })    
   },
   onPosterFail(err) {
     console.error(err);
@@ -155,7 +180,8 @@ Page({
    * 异步生成海报
    */
   onCreatePoster() {
-    this.data.posterConfig.images[this.data.posterConfig.images.length - 1].url =`/images/recommend/qrcode.jpg`
+    //  `/images/recommend/qrcode.jpg`
+    this.data.posterConfig.images[this.data.posterConfig.images.length - 1].url = this.data.qrCode
     this.setData({ 
       posterConfig:this.data.posterConfig
     }, () => {
