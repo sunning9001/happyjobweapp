@@ -1,6 +1,5 @@
 import { imgServerUrl } from '../../config/config.js'
-import { getUserInfo} from '../../services/wx.js'
-
+var app = getApp()
 Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -12,7 +11,7 @@ Page({
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      getUserInfo().then(data => {
+      app.getUserInfo().then(data => {
         wx.navigateBack()
       }).catch(data=>{
         console.log(data)
