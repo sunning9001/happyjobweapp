@@ -19,7 +19,8 @@
   <view class='list'>
     <view class='list-title required'>出生年月</view>
     <view class='list-content'>
-      <view class='input-text'>{{globalTools.formateym(bornYear)}}</view>
+    {{bornYear}}
+      <view class='input-text'>{{globalTools.formateym(bornYear+'000')}}</view>
     </view>
   </view>
 

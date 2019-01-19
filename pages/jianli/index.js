@@ -48,7 +48,7 @@ Page({
       }
       
       if (resumeBase.resBornTime){
-        resumeBase.resBornTime = formatTime(new Date(resumeBase.resBornTime),'yyyy')
+        resumeBase.resBornTime = formatTime(new Date(+(resumeBase.resBornTime+'000')),'yyyy')
       }
       this.setData({
         eduList,

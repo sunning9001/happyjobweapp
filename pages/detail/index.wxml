@@ -4,7 +4,7 @@
 <view class='panel'>
   <!-- <image src="{{imgServerUrl}}/images/detail/detail-bg.jpg" class="bg" mode='widthFix'/> -->
   <view class='row job'>{{posName}}
-    <image class="auth" wx:if="{{approveState}}" src="{{imgServerUrl}}/images/detail/auth-has.png" mode="widthFix"/>
+    <image class="auth" wx:if="{{approveState==1}}" src="{{imgServerUrl}}/images/detail/auth-has.png" mode="widthFix"/>
   </view>
   <view class='row award'>
     <text class='award-info' wx:if="{{type==0}}">入职奖励最高<text class='money'>{{retManMoney}}元</text></text>
@@ -28,7 +28,7 @@
     <image class="company-logo" src="{{imgServerUrl}}/images/temp/men.png"  mode="widthFix"/>
     <view class="company-info">
       <view class="company-name">{{comName}}</view>
-      <view class="color99">100-1999人 | 民营 | 加工制造...</view>
+      <view class="color99">{{comScale}} | {{comType}}</view>
     </view>
   </view>
   <view class="card-footer" wx:if="{{type==0}}">

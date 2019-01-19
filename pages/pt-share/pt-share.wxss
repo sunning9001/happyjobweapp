@@ -54,10 +54,11 @@ page{
 }
 .name{
     position: absolute;
-    left: 306rpx;
     top: 392rpx;
     font-size: 64rpx;
-	line-height: 30rpx;
+    line-height: 30rpx;
+    text-align:center;
+    width:700rpx;
 }
 .text-3{
     position: absolute;

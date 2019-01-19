@@ -1,6 +1,6 @@
 <wxs src="../tools.wxs" module="globalTools" />
 <view class='box-body'>
-  <view class='box-item' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" data-type="{{item.groupOn}}" hover-class="item-hover">
+  <view class='box-item' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" data-type="{{item.groupOn}}" hover-class="item-hover" data-lefttime='{{item.groupLeftTime}}' >
     
     <view class='box-item-info'>
       <view class='one'>

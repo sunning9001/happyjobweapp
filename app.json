@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/pt-share/pt-share",
     "pages/detail/index",
     "pages/search/index",
     "pages/pt/index",
+    "pages/pt-share/pt-share",
     "pages/mine/index",
     "pages/pt-detail/index",
     "pages/identification/index",

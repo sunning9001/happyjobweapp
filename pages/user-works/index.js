@@ -23,8 +23,8 @@ Page({
         jobName:expList.posType,
         hpUserResumeId: expList.hpUserResumeId,
         hpUserExpId: expList.hpUserExpId,
-        startDate: formateym(expList.startTime, '-'),
-        endDate: formateym(expList.endTime,'-')
+        startDate: formateym(+(expList.startTime+'000'), '-'),
+        endDate: formateym(+(expList.endTime+'000'),'-')
       })
     }else{
       this.setData({
@@ -91,8 +91,8 @@ Page({
       return
     }
     let { comName, jobName, startDate, endDate, hpUserExpId, hpUserResumeId } = this.data
-    let startTime = argusToTimestamp(startDate.split("-"))
-    let endTime = argusToTimestamp(endDate.split("-"))
+    let startTime = Math.floor( argusToTimestamp(startDate.split("-"))/1000 )
+    let endTime = Math.floor(argusToTimestamp(endDate.split("-")) / 1000)
     resumeExp({
       comName,
       startTime,

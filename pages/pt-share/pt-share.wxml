@@ -6,16 +6,17 @@
     <view class="bg">
         <view class="row">
             <text class="text-1">推荐奖励</text>
-                <image class="avatar" src="{{wxAvatar}}"/>
+            {{userInfo.avatarUrl}}
+                <image class="avatar" src="{{userInfo.avatarUrl}}"/>
             <text class="text-2">诚信企业</text>
         </view>
-        <view class="name">{{nickName}}</view>
+        <view class="name">{{userInfo.nickName}}</view>
         <view class="text-3">我在找好友一起上班</view>
         <view class="company">
-            <image class="company-logo" src="{{data.comLogo}}" />
+            <image class="company-logo" src="{{comLogo}}" />
             <view class="company-info">
-                <view class="company-name">{{data.comName}}</view>
-                <view class="company-tags">
+                <view class="company-name">{{comName}}</view>
+                <!-- <view class="company-tags">
                     <view class="row tags-1">
                         <text class="tag">男女不限</text>
                         <text class="tag">18-45周岁</text>
@@ -27,7 +28,7 @@
                         <text class="tag">简单算术</text>
                         <text class="tag">无纹身烟疤</text>
                     </view>
-                </view>
+                </view> -->
             </view>
         </view>
         <view class="footer">
@@ -38,7 +39,7 @@
     </view>
 </view>
 
-<button class="create" bindtap='onCreatePoster'>生成分享图片</button>
-<!-- <button class="create" bindtap='onCreatePoster'>生成分享图片</button> -->
-<poster id="poster" hide-loading="{{true}}" preload="{{true}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+<button class="create" bindtap='onCreatePoster' wx:if="hasAuth">生成分享图片</button>
+<button class="create" open-type="openSetting" bindopensetting="onCreatePoster" wx:else>打开授权页</button>
+<poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
 </poster>

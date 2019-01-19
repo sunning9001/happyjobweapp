@@ -128,7 +128,7 @@ Page({
     resumeBase({
       hpEducationId: eduList[eduIndex].hpEducationId,
       hpUserResumeId: hpUserResumeId,
-      resBornTime: argusToTimestamp([year]),
+      resBornTime: Math.floor(argusToTimestamp([year]) / 1000),
       resGender: sex_index==0?1:2,
       resName: name,
       resPhone: iphone,

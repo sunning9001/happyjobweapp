@@ -80,7 +80,7 @@
       <i-steps  direction="vertical">
         <i-step icon="collection" wx:for="{{expList}}" wx:key="hpUserResumeId" bindtap="toUserWorks" data-type="edit" data-index="{{index}}">
             <view slot="content">
-                <view class='row color90'>{{globalTools.formateym(item.startTime,".")}} - {{globalTools.formateym(item.endTime,".")}}</view>
+                <view class='row color90'>{{globalTools.formateym((item.startTime+'000'),".")}} - {{globalTools.formateym((item.endTime+'000'),".")}}</view>
                 <view class='row strong'>{{item.comName}}</view>
                 <view class='row color90'>{{item.posType}}</view>
             </view>
@@ -110,7 +110,7 @@
       <i-steps  direction="vertical">
         <i-step icon="collection" wx:for="{{eduList}}" wx:key="hpEducationId"  bindtap='toUserEdu' data-type="edit" data-index="{{index}}">
             <view slot="content">
-                <view class='row color90'>{{globalTools.formateym(item.startTime,".")}} - {{globalTools.formateym(item.endTime,".")}}</view>
+                <view class='row color90'>{{globalTools.formateym((item.startTime+'000'),".")}} - {{globalTools.formateym((item.endTime+'000'),".")}}</view>
                 <view class='row strong'>{{item.schName}}</view>
                 <view class='row color90'>{{item.eduName}}</view>
             </view>
