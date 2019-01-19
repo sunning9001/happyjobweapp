@@ -8,7 +8,7 @@
   </view>
   <view class='search' bindtap='toSearch'>
     <i-icon type="search" />
-    <text class='search-input'>请输入您要找的职位</text>
+    <text class='search-input'>请输入您要找的职位、企业名</text>
   </view>
 </view>
 
