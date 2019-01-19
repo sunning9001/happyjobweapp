@@ -1,5 +1,5 @@
 import { getPositionList } from '../../services/index.js'
-
+import { showToast } from '../../utils/tips.js'
 Page({
   data: {
     currentPage: 1,//当前分页
@@ -56,8 +56,19 @@ Page({
   //去详情页
   toDetail(e) {
     const { id, type } = e.currentTarget.dataset
-    wx.navigateTo({
-      url: '../detail/index?hpPositionId=' + id + "&type=" + type,
-    })
+
+    if (type != 1 || (e.currentTarget.dataset.lefttime && e.currentTarget.dataset.lefttime>0)){
+      wx.navigateTo({
+        url: '../detail/index?hpPositionId=' + id + "&type=" + type,
+      })
+    }else{
+      showToast('该职位拼团已结束')
+      setTimeout(function(){
+        wx.navigateTo({
+          url: '../detail/index?hpPositionId=' + id + "&type=" + type,
+        })
+      },1000)
+    }
+
   },
 })

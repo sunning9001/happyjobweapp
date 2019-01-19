@@ -1,5 +1,5 @@
 <view class='panel'>
-  <view class='row job'>{{data.comName}}
+  <view class='row job' data-value="{{data.comApproveState}}">{{data.comName}}
     <image wx:if="{{data.comApproveState==1}}" class="auth" src="{{imgServerUrl}}/images/detail/auth-has.png" mode="widthFix"/>
   </view>
   <view class='row award'>

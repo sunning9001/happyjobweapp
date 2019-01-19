@@ -10,7 +10,9 @@ Page({
     hpPositionId:0,
     type:0,//0：正常 1：拼团
     isShowList:false,
-    clearTimer:false
+    clearTimer:false,
+    comScale:'',
+    comType:'',
   },
   onLoad: function (options) {
     console.log(options)
@@ -78,6 +80,11 @@ Page({
         hpPositionGroupId,
         isOpen
       })
+      this.setData({
+        comScale: this.getComScale(data.data.scaleLower, data.data.scaleHigh),
+        comType: data.data.typeName
+      })
+
 
       //存储厂车路线
       wx.setStorage({
@@ -172,4 +179,15 @@ Page({
   myLinsterner() {
     this.fetchPtList()
   },
+  // 获取公司规模描述
+  getComScale(lower,high){
+
+    if (!lower || lower ==0){
+      return high+'人以下'
+    }
+    if (!high || high == 0) {
+      return lower + '人以上'
+    }
+    return lower + '-' + high + '人'
+  }
 })

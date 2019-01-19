@@ -28,7 +28,7 @@
     <image class="company-logo" src="{{imgServerUrl}}/images/temp/men.png"  mode="widthFix"/>
     <view class="company-info">
       <view class="company-name">{{comName}}</view>
-      <view class="color99">100-1999人 | 民营 | 加工制造...</view>
+      <view class="color99">{{comScale}} | {{comType}}</view>
     </view>
   </view>
   <view class="card-footer" wx:if="{{false}}">
