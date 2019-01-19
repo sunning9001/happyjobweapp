@@ -11,7 +11,9 @@ Page({
   },
 
   onLoad: function (options) {
-      this.data.hpPositionGroupId = options.hpPositionGroupId
+    this.setData({
+      hpPositionGroupId : options.hpPositionGroupId
+    })
 
   },
   onShow: function (options) {
@@ -48,7 +50,6 @@ Page({
   },
 // TODO:拼团倒计时结束
   myLinsterner(e){
-    console.log("拼团已结束")
     showToast('拼团已结束')
   },
 // 一键参团

@@ -9,6 +9,7 @@ Page({
     iphone:"",
     yzm:'',  
     leftTime:0,
+    clearTimer:false
     // timeFormat: ['秒'],
   },
 
@@ -19,7 +20,7 @@ Page({
       return
     }
     if (this.data.yzm.length != 4) {
-      showToast('请输入4位手机号码！')
+      showToast('请输入4位验证码！')
       return
     }
     getPayrollId({
@@ -35,11 +36,16 @@ Page({
   },
   // 手机号输入
   bindPhoneInput(e){
-    this.data.iphone = e.detail.detail.value
+    this.setData({
+      iphone: e.detail.detail.value
+    })
   },
   // 验证码号输入
   bindCodeInput(e) {
-    this.data.yzm = e.detail.detail.value
+    this.setData({
+      yzm: e.detail.detail.value
+    })
+
   },
   timeLinsterner(e){
     this.setData({
