@@ -1,15 +1,14 @@
-
 import { sendPhoneCode, getPayrollId } from '../../services/index.js'
 import { showToast } from '../../utils/tips.js'
 import { imgServerUrl} from '../../config/config.js'
+import $wuxCountDown from '../../utils/coutdown.js'
+
 Page({
 
   data: {
     imgServerUrl: imgServerUrl,
     iphone:"",
-    yzm:'',  
-    leftTime:0,
-    // timeFormat: ['秒'],
+    yzm:'', 
   },
 
   //下一步提交
@@ -41,9 +40,22 @@ Page({
   bindCodeInput(e) {
     this.data.yzm = e.detail.detail.value
   },
-  timeLinsterner(e){
-    this.setData({
-      leftTime: 0
+  //倒计时
+  vcode() {
+    if (this.djs && this.djs.interval) return !1
+    this.djs = new $wuxCountDown({
+      date: +(new Date) + 60000,
+      onEnd() {
+        this.setData({
+          djs: '重新获取验证码',
+        })
+      },
+      render(date) {
+        const sec = this.leadingZeros(date.sec, 2) + ' 秒 '
+        date.sec !== 0 && this.setData({
+          djs: '重新发送（' + sec + '）',
+        })
+      },
     })
   },
 // 验证码发送
@@ -52,12 +64,13 @@ Page({
       showToast('请输入11位手机号码！')
       return
     }
+    if (this.data.djs && this.data.djs !== '重新获取验证码') {
+      return false
+    }
     sendPhoneCode({
       phoneNo:this.data.iphone
     }).then(data =>{
-      this.setData({
-        leftTime: new Date().getTime() + 59 * 1000
-      })
+      this.vcode()
     })
   },
 })

@@ -2,11 +2,13 @@ import { getGroupDetail } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
 import { updataStorageData } from '../../utils/storage.js'
+var app = getApp()
 
 Page({
 
   data: {
     imgServerUrl: imgServerUrl,
+    clearTimer:true
   },
 
   onLoad: function (options) {
@@ -45,9 +47,11 @@ Page({
       })
     })
   },
-// TODO:拼团倒计时结束
+// 拼团倒计时结束
   myLinsterner(e){
-    console.log("拼团已结束")
+    this.setData({
+      clearTimer:false
+    })
     showToast('拼团已结束')
   },
 // 一键参团

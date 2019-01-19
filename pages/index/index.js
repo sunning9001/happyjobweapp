@@ -169,5 +169,4 @@ Page({
       url: '../bind-pt/index?hpPositionGroupId=' + 1,
     })
   },
-  // TODO 验证码倒计时样式
 })

@@ -1,4 +1,5 @@
 import { apiUrl } from '../config/config.js'
+import { showToast } from '../utils/tips.js'
 const api = require('../api/api.js')
 const { imgUpOne } = api.url
 var app = getApp()
@@ -25,11 +26,11 @@ module.exports={
             success: function (res) {
               console.log(res)
               let data = JSON.parse(res.data)
-              //TODO:数据状态处理
               resolve(data)
             },
             fail: function (res) {
               console.log(res)
+              showToast(res.data.message)
               reject(res)
             },
           })

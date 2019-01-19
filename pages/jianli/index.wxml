@@ -78,7 +78,6 @@
 
     <view class='card-bd padLeft' wx:if="{{expList.length}}">
       <i-steps  direction="vertical">
-      <!-- TODO:图标要换 -->
         <i-step icon="collection" wx:for="{{expList}}" wx:key="hpUserResumeId" bindtap="toUserWorks" data-type="edit" data-index="{{index}}">
             <view slot="content">
                 <view class='row color90'>{{globalTools.formateym(item.startTime,".")}} - {{globalTools.formateym(item.endTime,".")}}</view>

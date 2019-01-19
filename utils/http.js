@@ -57,7 +57,7 @@ const http = (params) => {
             //后台接口异常
             // showToast('后台接口异常')
           } 
-          //TODO:错误码处理 手机未绑定
+          //错误码处理 手机未绑定
           // else if (params.url == "/order/result" && res.data.errorCode == "800020") {//支付结果未知      
           //   //需要特殊处理的接口，可以单独列出来返回数据
           //   resolve(res.data)

@@ -117,6 +117,7 @@ Page({
   applyJob() {
     positionApply(this.data.hpPositionId).then(data => {
       showToast('申请职位成功', 'success')
+      this.fetchData()
     })
   },
   //申请开团
@@ -167,7 +168,7 @@ Page({
       url: '../roadsLine/index',
     })
   },
-  //TODO:倒计时回调
+  //倒计时回调
   myLinsterner() {
     this.fetchPtList()
   },

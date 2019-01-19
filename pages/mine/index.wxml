@@ -4,7 +4,6 @@
     <view class='person-info'>
         <view class='name'>
           <text class="">{{userName}}</text>
-          <!-- TODO:不用图片改成view -->
           <image class="auth" wx:if="{{approveState==1}}" src="{{imgServerUrl}}/images/mine/auth-has.png" mode="widthFix" />
           <image class="auth" wx:if="{{approveState!=1}}" src="{{imgServerUrl}}/images/mine/auth.png" mode="widthFix" />
           

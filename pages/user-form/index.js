@@ -1,6 +1,8 @@
 import { getCenterInfo, sendPhoneCode, usePhoneBound } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
+import $wuxCountDown from '../../utils/coutdown.js'
+
 const app = getApp();
 Page({
   data: {
@@ -25,16 +27,47 @@ Page({
       })
     })
   },
-  //TODO:倒计时
-
+  vcode() {
+    if (this.djs && this.djs.interval) return !1
+    this.djs = new $wuxCountDown({
+      date: +(new Date) + 60000,
+      onEnd() {
+        this.setData({
+          djs: '重新获取验证码',
+        })
+      },
+      render(date) {
+        const sec = this.leadingZeros(date.sec, 2) + ' 秒 '
+        date.sec !== 0 && this.setData({
+          djs: '重新发送（' + sec +'）',
+        })
+      },
+    })
+  },
+  inputPhone(e){
+    console.log(e.detail.value)
+    this.setData({
+      phone : e.detail.value
+    })
+  },
+  inputYzm(e){  
+    console.log(e.detail.value)
+    this.setData({
+      zym : e.detail.value
+    })
+  },
   sendCode(){
-    if (this.data.phone.lenght!=11 ){
+    if (String(this.data.phone).length!=11 ){
       showToast("请输入11位手机号")
+      return false
+    }
+    if (this.data.djs && this.data.djs !== '重新获取验证码' ){
       return false
     }
     this.setData({
       isShowYzm:true
     })
+    this.vcode()
     sendPhoneCode({
       phoneNo:this.data.phone
     }).then(data=>{
@@ -42,20 +75,21 @@ Page({
     })
   },
   save(){
-    let { phone,yzm } = this.data
-    if( phone.lenght!=11){
+    let { phone, zym } = this.data
+    if (String(phone).length!=11){
       showToast("请输入手机号")
       return false
     }
-    if(yzm.lenght!=4){
+    if (String(zym).length!=4){
       showToast("请输入验证码")
       return false
     }
     usePhoneBound({
       phoneNo: phone,
-      msgCode: yzm
+      msgCode: zym
     }).then(data=>{
       console.log(data)
+      wx.navigateBack()
     })
   }
 })
