@@ -17,8 +17,10 @@ Page({
     
   },
   onShow: function () {
-    this.fetchList()
-    this.fetchPt()
+    if (app.checkUserWxLogin()) {
+      this.fetchList()
+      this.fetchPt()
+    }
   },
   //获取列表数据
   fetchList() {

@@ -12,7 +12,8 @@ module.exports={
     return http({
       url: url.banner,
       header: {
-        oid: app.globalData.oid
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
       },
       data: {
         useOn:1,
@@ -386,5 +387,4 @@ module.exports={
       },
     })
   },
-  
 }

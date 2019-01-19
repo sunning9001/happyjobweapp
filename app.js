@@ -8,16 +8,7 @@ App({
     // let sceneArr = [1007, 1008, 1044, 1011, 1012, 1013, 1047, 1048, 1049]
     let shareToken = options.query.shareToken || null
     this.globalData.targetShareToken = shareToken
-    // this.quickLogin(shareToken)
-    //   .then(data => {
-    //     console.log('一键登录成功')
-    //     this.getUserInfo().then(data => {
-    //       console.log('获取用户信息成功')
-    //     })
-    //   })
-    //   .catch(data => {
-    //     console.log(`一键登录失败`, data)
-    //   })   
+    this.loginCallback && this.loginCallback()
   },
   onShow(options) {
     console.log(options)
@@ -83,7 +74,7 @@ App({
               console.log('获取用户信息成功')
               this.globalData.userInfo = res.userInfo;
               updataStorageData('city', res.userInfo.city)
-              this.saveWXInfo().then(data => { console.log('保存信息成功') }).catch(data => { console.log('上传微信信息失败', data) })
+              this.saveWXInfo(res).then(data => { console.log('保存信息成功') }).catch(data => { console.log('上传微信信息失败', data) })
               resolve(res)
             },
             fail: err => {
@@ -163,16 +154,12 @@ App({
     })
   },
   //保存用户信息到后台
-  saveWXInfo() {
+  saveWXInfo(params) {
     return new Promise((resolve, reject) => {
-      let gender = this.globalData.userInfo.gender
-      if (gender == 0) {
-        gender = 3
-      }
+      
       this.saveLogin({
-        headerUrl: this.globalData.userInfo.avatarUrl,
-        nickName: this.globalData.userInfo.nickName,
-        gender: gender,
+        encryptedData: encodeURIComponent(params.encryptedData),
+        iv: encodeURIComponent(params.iv),
       })
     })
   },
@@ -187,4 +174,35 @@ App({
       data: params
     })
   },
+  // 判断用户是否已微信登录
+  checkUserWxLogin(){
+    console.log("===",this.globalData)
+    console.log(this.globalData["oid"])
+    if (this.globalData.oid) {
+      console.log('存在登录信息')
+      return true
+      
+    }else{
+      console.log('不存在登录信息')
+      this.quickLogin(this.globalData.targetShareToken)
+        .then(data => {
+          console.log('一键登录成功')
+          this.getUserInfo().then(data => {
+            console.log('获取用户信息成功')
+          })
+          console.log('quick login 完成')
+          // wx.navigateBack()
+        })
+        .catch(data => {
+          console.log(`一键登录失败`, data)
+        })
+    }
+
+  },
+  // 跳转登录页面
+  goLogin() {
+    wx.navigateTo({
+      url: '/pages/login/login',
+    })
+  }
 })

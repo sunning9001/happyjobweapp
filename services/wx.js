@@ -65,7 +65,6 @@ function getWxPhone(params){
 function decodePhoneCallback(params){
   return new Promise((resolve,reject)=>{
     decodePhone({
-      'sessionKey':encodeURIComponent(app.globalData.sessionKey),
       'encryptedData': encodeURIComponent(params.encryptedData),
       'iv': encodeURIComponent(params.iv),
     }).then(data => {

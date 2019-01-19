@@ -1,4 +1,4 @@
-import { getBanner, getIndexList } from '../../services/index.js'
+import { getBanner, getIndexList,goLogin } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 const app = getApp();
 
@@ -41,17 +41,25 @@ Page({
     index:3,//岗位类型
     isTest:false,
   },
-  onLoad: function (options) {    
+  onLoad: function (options) {
+    console.log(app.loginCallback)
   },
   onShow: function () {
-    let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
-    this.fetchBanner()
-    this.fetchList({
-      hotOn: 1
-    })
-    this.setData({
-      cityName: cityName
-    })
+    
+    if (app.checkUserWxLogin()) {
+      console.log("进来了")
+      let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
+      this.setData({
+        cityName: cityName
+      })
+      this.fetchBanner()
+      this.fetchList({
+        hotOn: 1
+      })
+      
+    }else{
+      console.log("mei进来了")
+    }
   },
   onReachBottom: function () {
     var currentPage = this.data.currentPage+1;
