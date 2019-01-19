@@ -20,7 +20,10 @@ Page({
     this.data.hpPositionId = options.hpPositionId
   },
   onShow: function () {
-    this.fetchData()
+    if (app.checkUserWxLogin()) {
+
+      this.fetchData()
+    }
   },
 
   onShareAppMessage: function () {

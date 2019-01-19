@@ -11,6 +11,10 @@ module.exports={
   getBanner(){
     return http({
       url: url.banner,
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
       data: {
         useOn:1,
         delOn:0,
@@ -383,5 +387,4 @@ module.exports={
       },
     })
   },
-  
 }

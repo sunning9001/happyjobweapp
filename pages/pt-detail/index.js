@@ -11,8 +11,14 @@ Page({
   },
 
   onLoad: function (options) {
-    this.data.hpPositionGroupId = options.hpPositionGroupId
-    this.fetchData()
+      this.data.hpPositionGroupId = options.hpPositionGroupId
+
+  },
+  onShow: function (options) {
+    if (app.checkUserWxLogin()) {
+      this.fetchData()
+    }
+
   },
   onShareAppMessage: function () {
     return {
