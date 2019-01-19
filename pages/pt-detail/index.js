@@ -2,11 +2,12 @@ import { getGroupDetail } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
 import { updataStorageData } from '../../utils/storage.js'
-
+var app = getApp()
 Page({
 
   data: {
     imgServerUrl: imgServerUrl,
+    clearTimer:false
   },
 
   onLoad: function (options) {
@@ -29,10 +30,10 @@ Page({
    //获取历史记录
   fetchData() {    
     getGroupDetail({
-      hpPositionGroupId: this.data.hpPositionGroupId||4
+      hpPositionGroupId: this.data.hpPositionGroupId
     }).then(data => {
       data.data.leftTime = data.data.leftTime <= 0 ? 0 : (new Date().getTime() + data.data.leftTime * 1000)
-
+      console.log(data.data.leftTime)
       let userList = data.data.userList
       if (userList && userList.length<3){
         let i = userList.length;
