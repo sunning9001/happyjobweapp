@@ -58,9 +58,8 @@ Page({
         carDesc,//班车信息
         hpPositionGroupId,//拼团id
         endTime,//岗位结束时间
-        groupLeftTime //拼团结束时间
       } = data.data
-      let datas = data.data
+
       let isOpen = Date.parse(new Date()) / 1000 < endTime
       
       this.setData({

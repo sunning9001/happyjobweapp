@@ -7,7 +7,6 @@ Page({
 
   data: {
     imgServerUrl: imgServerUrl,
-    data:'',
   },
 
   onLoad: function (options) {
@@ -22,10 +21,9 @@ Page({
     }
   },
    //获取历史记录
-  fetchData() {
-    
+  fetchData() {    
     getGroupDetail({
-      hpPositionGroupId: this.data.hpPositionGroupId
+      hpPositionGroupId: this.data.hpPositionGroupId||4
     }).then(data => {
       data.data.leftTime = data.data.leftTime <= 0 ? 0 : (new Date().getTime() + data.data.leftTime * 1000)
 
@@ -33,7 +31,7 @@ Page({
       if (userList && userList.length<3){
         let i = userList.length;
         for (; i < 3;i++){
-          userList[i] = { headerPic: this.data.imgServerUrl+'/images/avatar/1.png' }
+          userList[i] = { headerPic: this.data.imgServerUrl+'/images/avatar/man.png' }
         }
       }
       this.setData({
@@ -56,7 +54,7 @@ Page({
   //分享图片
   toShare(){
     wx.navigateTo({
-      url: '../pt-share/pt-share',
+      url: '../pt-share/pt-share?hpPositionGroupId='+this.data.hpPositionGroupId,
     })
   }
   

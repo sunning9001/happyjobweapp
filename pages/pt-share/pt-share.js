@@ -1,7 +1,7 @@
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
 import Poster from '../../components/wxa-plugin-canvas/poster/poster';
-import { shareQrCodeB } from '../../services/index.js'
+import { shareQrCodeB, getGroupDetail } from '../../services/index.js'
 import { updataStorageData } from '../../utils/storage.js'
 var app =getApp()
 
@@ -10,6 +10,8 @@ Page({
     imgServerUrl:imgServerUrl,
     qrCode: '',
     hasAuth: '',
+    wxAvatar: app.globalData.userInfo.avatarUrl,
+    nickName: app.globalData.userInfo.nickName,
     posterConfig: {
       width: 700,
       height: 950,
@@ -185,7 +187,22 @@ Page({
     }
   },
   onLoad: function (options) {
-
+    this.setData({
+      hpPositionGroupId:options.hpPositionGroupId
+    })
+    this.fetchData()
+    this.getCode()
+  },
+  //获取历史记录
+  fetchData() {
+    getGroupDetail({
+      hpPositionGroupId: this.data.hpPositionGroupId || 4
+    }).then(data => {
+      console.log(data)
+      this.setData({
+        data: data.data
+      })
+    })
   },
   onPosterSuccess(e) {
     console.log(e)
@@ -230,15 +247,12 @@ Page({
     // });
     Poster.create();
   },
-  create(){
-    // wx.openSetting({
-    //   success(res) {
-    //     console.log(res.authSetting)
-    //     // res.authSetting = {
-    //     //   "scope.userInfo": true,
-    //     //   "scope.userLocation": true
-    //     // }
-    //   }
-    // })
+  getCode(){
+    let targetUrl = 'pages/pt-detail/index?hpPositionGroupId='+this.data.hpPositionGroupId+'&shareToken=' + updataStorageData('shareToken')
+    shareQrCodeB(targetUrl).then(data=>{
+      this.setData({
+        qrCode:data.data.imgUrl
+      })
+    })
   }
 })

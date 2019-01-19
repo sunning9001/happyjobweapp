@@ -41,14 +41,14 @@ Page({
     index:3,//岗位类型
     isTest:false,
   },
-  onLoad: function (options) {
-    this.fetchBanner()
-    this.fetchList({     
-      hotOn:1
-    })
+  onLoad: function (options) {    
   },
   onShow: function () {
     let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
+    this.fetchBanner()
+    this.fetchList({
+      hotOn: 1
+    })
     this.setData({
       cityName: cityName
     })

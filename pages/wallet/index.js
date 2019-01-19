@@ -1,11 +1,8 @@
-// pages/wallet/index.js
+import { imgServerUrl } from '../../config/config.js'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    imgServerUrl: imgServerUrl,
   },
 
   /**
