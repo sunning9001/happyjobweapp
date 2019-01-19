@@ -1,4 +1,5 @@
 import { imgServerUrl } from '../../config/config.js'
+import { updataStorageData } from '../../utils/storage.js'
 
 Page({
   data: {
@@ -18,11 +19,13 @@ Page({
     console.log(options)
 
   },
-  toPhone(){
-    wx.navigateTo({
-      url: '../recommend-iphone/index',
-    })
-  },
+  onShareAppMessage: function () {
+    return {
+      title: '推荐有奖',
+      path: '/pages/recommend-iphone/index?shareToken=' + updataStorageData('shareToken'),
+      imageUrl: ''
+    }
+  }, 
   toShare(){
     wx.navigateTo({
       url: '../recommend-share/index',

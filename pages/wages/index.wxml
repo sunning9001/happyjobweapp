@@ -3,7 +3,7 @@
     <i-input class="row" i-class="self" value="{{realName}}" title="姓名：" disabled/>
   </view>
   <view class='row bd-bottom'>
-    <i-input class="row" i-class="self" value="{{idNum}}" title="身份证号码：" disabled/>
+    <i-input class="row" i-class="self" value="{{idNum}}" title="身份证号：" disabled/>
   </view>
 
   <view class='group row'>

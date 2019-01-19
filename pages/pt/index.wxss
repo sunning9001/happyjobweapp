@@ -163,8 +163,6 @@
   align-items: flex-end;
 }
 .box .box-item .limit {
-  display: flex;
-  flex-grow: 1;
   overflow: hidden;
   margin-right: 10rpx;
 }

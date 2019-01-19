@@ -17,7 +17,9 @@
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff">
     <block wx:for="{{imgList}}" wx:key="picUrl">
       <swiper-item>
-        <image src="{{item.picUrl}}" class="slide-image" mode='widthFix'/>
+        <navigator url='/pages/web-view/web-view?url={{item.targetUrl}}'>
+          <image src="{{item.picUrl}}" class="slide-image" mode='widthFix'/>
+        </navigator>
       </swiper-item>
     </block>
   </swiper>

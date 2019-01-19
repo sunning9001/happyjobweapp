@@ -58,7 +58,7 @@ page {
   font-weight: 400;
 }
 .fan {
-  background: url("https://weapp.hap-job.com/uploadFiles") no-repeat;
+  background: url("https://weapp.hap-job.com/uploadFiles/images/home/fanBg.png") no-repeat;
   background-size: 100% 100%;
   margin-left: 10rpx;
   font-size: 20rpx;

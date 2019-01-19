@@ -30,7 +30,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '开心工作参团有奖',
-      path: '/pages/pt-detail/index?shareToken=' + updataStorageData(shareToken),
+      path: '/pages/pt-detail/index?shareToken=' + updataStorageData('shareToken'),
       imageUrl: ''
     }
   },

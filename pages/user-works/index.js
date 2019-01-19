@@ -1,7 +1,7 @@
 import { resumeExp } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
-import { formatNumber, argusToTimestamp} from '../../utils/util.js'
+import { formatNumber, argusToTimestamp, formateym} from '../../utils/util.js'
 
 Page({
   data: {
@@ -22,7 +22,9 @@ Page({
         comName: expList.comName,
         jobName:expList.posType,
         hpUserResumeId: expList.hpUserResumeId,
-        hpUserExpId: expList.hpUserExpId
+        hpUserExpId: expList.hpUserExpId,
+        startDate: formateym(expList.startTime, '-'),
+        endDate: formateym(expList.endTime,'-')
       })
     }else{
       this.setData({

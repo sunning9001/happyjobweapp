@@ -61,6 +61,8 @@ Page({
         carDesc,//班车信息
         hpPositionGroupId,//拼团id
         endTime,//岗位结束时间
+        cityName,
+        countyName,
       } = data.data
 
       let isOpen = Date.parse(new Date()) / 1000 < endTime
@@ -76,7 +78,9 @@ Page({
         comApplyNum,
         groupApplyNum,
         hpPositionGroupId,
-        isOpen
+        isOpen,
+        cityName,
+        countyName,
       })
 
       //存储厂车路线
@@ -117,7 +121,9 @@ Page({
   applyJob() {
     positionApply(this.data.hpPositionId).then(data => {
       showToast('申请职位成功', 'success')
-      this.fetchData()
+      this.setData({
+        comApplyNum:1
+      })
     })
   },
   //申请开团

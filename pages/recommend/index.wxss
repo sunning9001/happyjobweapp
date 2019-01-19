@@ -7,7 +7,7 @@ page {
   justify-content: center;
   align-items: center;
   height: 330rpx;
-  background: url("https://weapp.hap-job.com/uploadFiles") no-repeat;
+  background: url("https://weapp.hap-job.com/uploadFiles/images/recommend/tuijian-bg.png") no-repeat;
   background-size: 100% 100%;
   border-bottom: 8rpx solid #3f6dd3;
 }

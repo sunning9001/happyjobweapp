@@ -1,5 +1,7 @@
 import { imgServerUrl } from '../../config/config.js'
 import { shareBound } from '../../services/index.js'
+import { showToast } from '../../utils/tips.js'
+import { updataStorageData } from '../../utils/storage.js'
 Page({
   data: {
     imgServerUrl: imgServerUrl,
@@ -8,9 +10,7 @@ Page({
     shareToken: '',
   },
   onLoad: function (options) {
-    this.setData({
-      shareToken: this.options.shareToken,
-    })
+    this.data.shareToken = updataStorageData('shareToken')
   },
 // 手机号输入框
   bindPhoneBlur(e){

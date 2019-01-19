@@ -124,12 +124,13 @@ page {
   height: 100%;
 }
 .card .card-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30rpx 0;
+  text-align: center;
+  padding-bottom: 30rpx;
   font-size: 24rpx;
   color: #58a8ff;
+}
+.djs {
+  display: inline-block;
 }
 .btn-group {
   margin: 60rpx!important;

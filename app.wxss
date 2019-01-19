@@ -12,3 +12,6 @@
 .primary{
   background: #2278a8!important;
 }
+i-count-down{
+    display: inline-block;
+}

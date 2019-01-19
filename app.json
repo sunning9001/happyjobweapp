@@ -1,5 +1,5 @@
 {
-  "pages": [    
+  "pages": [
     "pages/index/index",
     "pages/pt-share/pt-share",
     "pages/detail/index",
@@ -32,7 +32,8 @@
     "pages/document/pt",
     "pages/auth/auth",
     "pages/recommend-share/index",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/web-view/web-view"
   ],
   "window": {
     "backgroundTextStyle": "light",
