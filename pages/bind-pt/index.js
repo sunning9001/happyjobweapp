@@ -12,32 +12,40 @@ Page({
     yzm: '', 
     age:'',
     realName:'',
+    clearTimer:false,
   },
   onLoad: function (options) {
 
   },
   // 姓名输入
   bindNameChange(e){
-    this.data.realName = e.detail.detail.value
+    this.setData({
+      realName : e.detail.detail.value
+    })
   },
   // 年龄输入
   bindAgeChange(e) {
-    this.data.age = e.detail.detail.value
+    this.setData({
+      age : e.detail.detail.value
+    })
   },
   // 性别输入
   bindSexChange(e) {
-    this.data.sex_index = e.detail.value
     this.setData({
-      sex_index:this.data.sex_index
+      sex_index: e.detail.value
     })
   },
   // 手机号输入
   bindPhoneInput(e) {
-    this.data.iphone = e.detail.detail.value
+    this.setData({
+      iphone : e.detail.detail.value
+    })
   },
   // 验证码号输入
   bindCodeInput(e) {
-    this.data.yzm = e.detail.detail.value
+    this.setData({
+      yzm : e.detail.detail.value
+    })
   },
   //倒计时
   vcode() {
@@ -89,7 +97,7 @@ Page({
       return
     }
     var ageTime = argusToTimestamp([this.data.age])/1000
-    var gender = this.data.sex_index=0?1:2
+    var gender = this.data.sex_index==0?1:2
 
     if(!this.data.sid){ // 不是用户先注册用户
       usePhoneBound({

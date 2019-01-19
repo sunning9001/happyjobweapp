@@ -5,14 +5,15 @@ import { updataStorageData } from '../../utils/storage.js'
 var app = getApp()
 
 Page({
-
   data: {
     imgServerUrl: imgServerUrl,
-    clearTimer:true
+    clearTimer:false
   },
 
   onLoad: function (options) {
-      this.data.hpPositionGroupId = options.hpPositionGroupId
+    this.setData({
+      hpPositionGroupId : options.hpPositionGroupId
+    })
 
   },
   onShow: function (options) {
@@ -20,6 +21,11 @@ Page({
       this.fetchData()
     }
 
+  },
+  onUnload:function(){
+    this.setData({
+      clearTimer:true
+    })
   },
   onShareAppMessage: function () {
     return {
@@ -31,10 +37,10 @@ Page({
    //获取历史记录
   fetchData() {    
     getGroupDetail({
-      hpPositionGroupId: this.data.hpPositionGroupId||4
+      hpPositionGroupId: this.data.hpPositionGroupId
     }).then(data => {
       data.data.leftTime = data.data.leftTime <= 0 ? 0 : (new Date().getTime() + data.data.leftTime * 1000)
-
+      console.log(data.data.leftTime)
       let userList = data.data.userList
       if (userList && userList.length<3){
         let i = userList.length;
@@ -50,7 +56,7 @@ Page({
 // 拼团倒计时结束
   myLinsterner(e){
     this.setData({
-      clearTimer:false
+      clearTimer:true
     })
     showToast('拼团已结束')
   },
@@ -66,6 +72,5 @@ Page({
     wx.navigateTo({
       url: '../pt-share/pt-share?hpPositionGroupId='+this.data.hpPositionGroupId,
     })
-  }
-  
+  }  
 })

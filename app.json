@@ -1,6 +1,7 @@
 {
   "pages": [    
     "pages/index/index",
+    "pages/pt-share/pt-share",
     "pages/detail/index",
     "pages/search/index",
     "pages/pt/index",
@@ -30,7 +31,6 @@
     "pages/document/salary",
     "pages/document/pt",
     "pages/auth/auth",
-    "pages/pt-share/pt-share",
     "pages/recommend-share/index",
     "pages/login/login"
   ],
