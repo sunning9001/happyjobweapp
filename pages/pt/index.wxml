@@ -5,7 +5,7 @@
   <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff">
     <block wx:for="{{1}}">
       <swiper-item>
-        <image src="http://jc.yugyg.com/uploadFiles/uploadImgs/index/banners/201809121307020mkh85p.jpg" class="slide-image" mode='widthFix'/>
+        <image src="https://weapp.hap-job.com/uploadFiles/images/pt/pt-banner.jpg" class="slide-image" mode='widthFix'/>
       </swiper-item>
     </block>
   </swiper>

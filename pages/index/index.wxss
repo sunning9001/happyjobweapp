@@ -121,7 +121,7 @@
   font-weight: 400;
 }
 .fan {
-  background: url("//jc.yugyg.com/uploadFiles/images/home/fanBg.png") no-repeat;
+  background: url("https://weapp.hap-job.com/uploadFiles/images/home/fanBg.png") no-repeat;
   background-size: 100% 100%;
   margin-left: 10rpx;
   font-size: 20rpx;
@@ -166,13 +166,13 @@
   right: 30rpx;
   width: 124rpx;
   height: 124rpx;
-  background: url("//jc.yugyg.com/uploadFiles/images/home/kefu.png") no-repeat;
+  background: url("https://weapp.hap-job.com/uploadFiles/images/home/kefu.png") no-repeat;
   background-size: 100% 100%;
   border: none;
   outline: none;
 }
 #kefu.kefu-hover {
-  background-image: url("//jc.yugyg.com/uploadFiles/images/home/kefu1.png");
+  background-image: url("https://weapp.hap-job.com/uploadFiles/images/home/kefu1.png");
 }
 #kefu::after {
   border: none;

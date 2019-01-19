@@ -18,14 +18,10 @@ Page({
     console.log(options)
 
   },
-  onShareAppMessage: function (options) {
-    console.log(options)
-    var shareToken = wx.getStorageSync('shareToken')
-    return {
-      title:'推荐有奖',
-      path: '/pages/recommend-iphone/index?shareToken=' + shareToken,
-      imageUrl:''
-    }
+  toPhone(){
+    wx.navigateTo({
+      url: '../recommend-iphone/index',
+    })
   },
   toShare(){
     wx.navigateTo({

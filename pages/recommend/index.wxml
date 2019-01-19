@@ -14,7 +14,7 @@
     <image class="card" src="{{imgServerUrl}}/images/recommend/step.png" mode="widthFix"/>
     <view class='explain'>本活动最终解释权归开心工作</view>
     <view class='btn-group'>
-        <button class="share" open-type="share">立即邀请</button>
+        <button class="share" bindtap='toPhone'>立即邀请</button>
         <button class="create" bindtap='toShare'>生成分享图片</button>
     </view>
 

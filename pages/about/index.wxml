@@ -6,9 +6,9 @@
   </view>
 
   <view class='shows'>
-    <image class='pic pic1' src='../../images/about/1.png' mode='widthFix'></image>
-    <image class='pic pic2' src='../../images/about/2.png' mode='widthFix'></image>
-    <image class='pic pic3' src='../../images/about/3.png' mode='widthFix'></image>
-    <image class='pic pic4' src='../../images/about/4.png' mode='widthFix'></image>
+    <image class='pic pic1' src='{{imgServerUrl}}/images/about/1.png' mode='widthFix'></image>
+    <image class='pic pic2' src='{{imgServerUrl}}/images/about/2.png' mode='widthFix'></image>
+    <image class='pic pic3' src='{{imgServerUrl}}/images/about/3.png' mode='widthFix'></image>
+    <image class='pic pic4' src='{{imgServerUrl}}/images/about/4.png' mode='widthFix'></image>
   </view>
 </view>

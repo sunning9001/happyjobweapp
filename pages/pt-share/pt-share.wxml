@@ -6,15 +6,15 @@
     <view class="bg">
         <view class="row">
             <text class="text-1">推荐奖励</text>
-                <image class="avatar" src="{{imgServerUrl}}/images/avatar/man.png"/>
+                <image class="avatar" src="{{wxAvatar}}"/>
             <text class="text-2">诚信企业</text>
         </view>
-        <view class="name">王明</view>
+        <view class="name">{{nickName}}</view>
         <view class="text-3">我在找好友一起上班</view>
         <view class="company">
-            <image class="company-logo" src="{{imgServerUrl}}/images/avatar/man.png" />
+            <image class="company-logo" src="{{data.comLogo}}" />
             <view class="company-info">
-                <view class="company-name">无锡先导自动化设备股份有限公司</view>
+                <view class="company-name">{{data.comName}}</view>
                 <view class="company-tags">
                     <view class="row tags-1">
                         <text class="tag">男女不限</text>
@@ -32,7 +32,7 @@
         </view>
         <view class="footer">
             <text class="footer-text-1">立即扫码</text>
-            <image class="code" src="{{imgServerUrl}}/images/avatar/man.png" />
+            <image class="code" src="{{qrCode}}" />
             <text class="footer-text-2">开心工作</text>
         </view>
     </view>

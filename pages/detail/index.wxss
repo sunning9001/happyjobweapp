@@ -1,7 +1,7 @@
 .panel {
   position: relative;
   padding: 0 30rpx 50rpx;
-  background: url('//jc.yugyg.com/uploadFiles/images/detail/detail-bg.jpg') no-repeat;
+  background: url('https://weapp.hap-job.com/uploadFiles/images/detail/detail-bg.jpg') no-repeat;
   background-size: 100% 100%;
   border-bottom: 1px solid #fff;
 }

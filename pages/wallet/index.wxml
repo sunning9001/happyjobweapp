@@ -8,10 +8,10 @@
 <view class='list'>
   <i-cell-group>
     <i-cell i-class="item" title="入职返现" is-link>
-      <image class='icon' src='../../images/wallet/fanxian.png' slot="icon" mode='widthFix'></image>
+      <image class='icon' src='{{imgServerUrl}}/images/wallet/fanxian.png' slot="icon" mode='widthFix'></image>
     </i-cell>
     <i-cell i-class="item" title="推荐有奖" is-link url="../recommend/index">
-      <image class='icon' src='../../images/wallet/red-package.png' slot="icon" mode='widthFix'></image>
+      <image class='icon' src='{{imgServerUrl}}/images/wallet/red-package.png' slot="icon" mode='widthFix'></image>
     </i-cell>
   </i-cell-group>
 </view>
