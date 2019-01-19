@@ -50,7 +50,7 @@ const http = (params) => {
           } else if (errorCode == 40006) {
             //用户尚未创建简历
             wx.navigateTo({
-              url: '/pages/user-info/index',
+              url: '/pages/user-info/user-info',
             })
           } else if (errorCode == 40007) {
             //账号类型不符

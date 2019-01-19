@@ -40,3 +40,5 @@
 
 <button class="create" bindtap='onCreatePoster'>生成分享图片</button>
 <!-- <button class="create" bindtap='onCreatePoster'>生成分享图片</button> -->
+<poster id="poster" hide-loading="{{true}}" preload="{{true}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+</poster>

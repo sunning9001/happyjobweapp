@@ -103,6 +103,7 @@ Page({
         isShowList:true,
         ptList: data.list.map(item => {
           item.leftTime = new Date().getTime() + item.leftTime  * 1000
+          item.leaderName = decodeURIComponent(item.leaderName)
           return item
         })
       })
@@ -111,7 +112,6 @@ Page({
   //申请工作
   applyJob() {
     positionApply(this.data.hpPositionId).then(data => {
-      //TODO:modal确认提示
       showToast('申请职位成功', 'success')
     })
   },

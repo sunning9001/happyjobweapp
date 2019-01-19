@@ -12,6 +12,7 @@ Page({
     getCenterInfo().then(data=>{
       console.log(data)
       let { headerPic, userName, approveState, hpUserId, phoneNo }=data.data
+      userName=decodeURIComponent(userName)
       this.setData({
         headerPic,
         userName,
