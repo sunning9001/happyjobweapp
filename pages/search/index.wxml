@@ -1,7 +1,7 @@
 <view class="header">
   <view class='search'>
     <i-icon class="icon-search" type="search" size='24' color='#aaa'/>
-    <input class='search-input' type='text' confirm-type="search" value="{{searchVal}}" bindinput='bindKeyInput' bindconfirm="toSearchPage" placeholder="请输入您要找的职位" auto-focus/>
+    <input class='search-input' type='text' confirm-type="search" value="{{searchVal}}" bindinput='bindKeyInput' bindconfirm="toSearchPage" placeholder="请输入您要找的职位、企业名" auto-focus/>
   </view>
   <view class='cancel' bindtap='toSearchPage'>搜索</view>
 </view>
