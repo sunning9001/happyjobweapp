@@ -105,7 +105,11 @@
     <i-icon type="enter" />
   </view>
   <!-- 公司介绍 -->
-  <view class='word-break com-desc'  wx:if="{{type==0 && posComDesc}}">{{posComDesc}}</view>
+   
+  <view class='word-break com-desc'  wx:if="{{type==1 && posComDesc}}">
+  <!-- {{posComDesc}} -->
+    <template is="wxParse" data="{{wxParseData:posComDesc.nodes}}"/>
+  </view>
 
   <view class="address-box" wx:if="{{type==1 && false}}">
       <view class="address">

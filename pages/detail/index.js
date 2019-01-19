@@ -70,7 +70,6 @@ Page({
         approveState,
         comName,
         reqAge, reqEducation, reqExp, reqGender, reqSkill, reqWorkYears, reqOther,
-        posComDesc,
         comCustPhone,
         retManMoney,
         fiveMoney,
@@ -90,6 +89,9 @@ Page({
       }
       if (otherWelfare){
         WxParse.wxParse('otherWelfare', 'html', otherWelfare, this);
+      }
+      if (posComDesc){
+        WxParse.wxParse('posComDesc', 'html', posComDesc, this);
       }
     })
   },  
