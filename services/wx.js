@@ -25,7 +25,21 @@ function wxLogin(params) {
     data: params,
   })
 }
+
+//用户微信信息存入
+function saveLogin(params) {
+  return http({
+    url: url.saveUserInfo,
+    method: "POST",
+    header: {
+      oid: getApp().globalData.oid
+    },
+    data: params
+  })
+}
+
 module.exports = {
   decodePhone,
   wxLogin,
+  saveLogin,
 }

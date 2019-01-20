@@ -3,7 +3,7 @@ var api = require('./api/api.js')
 import { http } from './utils/http.js'
 import { updataStorageData } from './utils/storage.js'
 import { getWxCode, hasAuth, getUserInfo } from './utils/wx.js'
-import { wxLogin } from './services/wx.js'
+import { wxLogin, saveLogin } from './services/wx.js'
 
 App({
   onLaunch: function(options) {
@@ -35,11 +35,19 @@ App({
       return getUserInfo()
     })
     .then(data=>{
+      console.log(data)
       this.globalData.userInfo = data.userInfo;
       updataStorageData('city', data.userInfo.city)
+      saveLogin({
+        encryptedData: encodeURIComponent(data.encryptedData),
+        iv: encodeURIComponent(data.iv),
+      }).then(data=>{
+        console.log(data)
+      }).catch(data=>{
+        console.log(data)
+      })
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
-      console.log(this)
       if (this.userInfoReadyCallback) {
         this.userInfoReadyCallback(data)
       }
