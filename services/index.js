@@ -387,4 +387,26 @@ module.exports={
       },
     })
   },
+  //门店列表
+  getStoreList(params){
+    return http({
+      url: url.storeList,
+      data: params,
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+    })
+  },
+  //门店详情
+  getStoreDetail(params) {
+    return http({
+      url: url.store,
+      data: params,
+      header: {
+        oid: app.globalData.oid,
+        sid: app.globalData.sid,
+      },
+    })
+  },
 }

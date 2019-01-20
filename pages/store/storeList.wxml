@@ -1,16 +1,17 @@
 <view class="banner">
-    <image class="banner-img" src="../../images/store/storeBanner.png" mode="widthFix"/>
+    <image class="banner-img" src="{{imgServerUrl}}/images/store/storeBanner.png" mode="widthFix"/>
 </view>
 
-<view class="list">
-    <view class="li" wx:for="{{3}}">
-        <image class="pic" src="../../images/store/storeBanner.png" />
+<view class="list" >
+    <view class="li" wx:for="{{list}}"  wx:key="hpCompanyStoreId" bindtap='toDetail' data-id="{{item.hpCompanyStoreId}}"  >
+        <!-- <image class="pic" src="{{imgServerUrl}}/images/store/storeBanner.png" /> -->
+        <image class="pic" src="{{item.storePic}}" />
         <view class="info">
-            <view class="name">开心工作室1</view>
-            <view class="address">无锡广益路608号</view>
+            <view class="name">{{item.storeName}}</view>
+            <view class="address">{{item.storeAddr}}</view>
             <view class="phone">
-                <image class="phone-icon"  src="../../images/store/icon-phone.png"/>
-                <text class="phone-number">0510-83113554</text>
+                <image class="phone-icon"  src="{{imgServerUrl}}/images/store/icon-phone.png"/>
+                <text class="phone-number" wx:if='{{item.contactNum}}'>{{item.contactNum}}</text>
             </view>
         </view>
     </view>
