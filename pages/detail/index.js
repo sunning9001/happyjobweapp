@@ -147,7 +147,7 @@ Page({
     let {groupid} = e.currentTarget.dataset
     groupApply(groupid).then(data => {
       wx.navigateTo({
-        url: '../pt-detail/index?hpPositionGroupId=' + this.data.hpPositionGroupId,
+        url: '../pt-detail/index?hpPositionGroupId=' + groupid,
       })
     })
   },
