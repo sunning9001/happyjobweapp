@@ -20,7 +20,7 @@ Page({
   fetchData(){
     getCenterInfo().then(data=>{
       console.log(data)
-      let { bornYear='', gender, realName } = data.data
+      let { bornYear, gender, realName } = data.data
       realName = decodeURIComponent(realName)
       this.setData({
         bornYear, gender, realName
