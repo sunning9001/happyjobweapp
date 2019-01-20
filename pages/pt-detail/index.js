@@ -2,7 +2,6 @@ import { getGroupDetail,groupApply } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
 import { updataStorageData } from '../../utils/storage.js'
-import { checkUserWxLogin } from '../../utils/wxUtil.js'
 
 var app = getApp()
 
@@ -19,10 +18,26 @@ Page({
 
   },
   onShow: function (options) {
-    if (checkUserWxLogin()) {
+    if (app.globalData.userInfo) {
+      console.log('有info===', app.globalData)
       this.fetchData()
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        console.log('userInfoReadyCallback===', app.globalData)
+        this.fetchData()
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          console.log('兼容处理===', app.globalData)
+          this.fetchData()
+        }
+      })
     }
-
   },
   onUnload:function(){
     this.setData({

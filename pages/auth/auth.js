@@ -1,5 +1,7 @@
 import { imgServerUrl } from '../../config/config.js'
-import { getWxPhone } from '../../services/wx.js'
+import { decodePhone } from '../../services/wx.js'
+import { updataStorageData } from '../../utils/storage.js'
+var app = getApp()
 
 Page({
   data: {
@@ -16,10 +18,12 @@ Page({
     let encryptedData = e.detail.encryptedData||''
     if (iv) {
       //用户按了允许授权按钮
-      getWxPhone({
+      this.decodePhoneCallback({
         iv: iv,
         encryptedData: encryptedData,        
       }).then(data=>{
+        app.globalData.sid=data.data.sid,
+        updataStorageData('shareToken', data.data.shareToken)
         wx.navigateBack()
       })
     } else {
@@ -37,5 +41,22 @@ Page({
       })
     }
   },
+  // 手机号解密回调 返回成功失败
+  decodePhoneCallback(params){
+    return new Promise((resolve, reject) => {
+      decodePhone({
+        'encryptedData': encodeURIComponent(params.encryptedData),
+        'iv': encodeURIComponent(params.iv),
+      }).then(data => {
+        app.globalData.sid = data.data.sid,
+        app.globalData.oid = data.data.oid,
+        app.globalData.shareToken = data.data.shareToken,
+        updataStorageData('phone', data.data.phoneNumber)
+        resolve(true)
+      }).catch(data => {
+        reject(false)
+      })
+    })
+  }
 
 })

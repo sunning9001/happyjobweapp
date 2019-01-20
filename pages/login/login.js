@@ -1,4 +1,6 @@
 import { imgServerUrl } from '../../config/config.js'
+import { getUserInfo } from '../../utils/wx.js'
+import { updataStorageData } from '../../utils/storage.js'
 var app = getApp()
 Page({
   data: {
@@ -12,7 +14,9 @@ Page({
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      app.getUserInfo().then(data => {
+      getUserInfo().then(data => {
+        app.globalData.userInfo = data.userInfo;
+        updataStorageData('city', data.userInfo.city)
         wx.navigateBack()
       }).catch(data=>{
         console.log(data)

@@ -2,13 +2,51 @@ require("./utils/string.js")
 var api = require('./api/api.js')
 import { http } from './utils/http.js'
 import { updataStorageData } from './utils/storage.js'
-const url = api.url;
+import { getWxCode, hasAuth, getUserInfo } from './utils/wx.js'
+import { wxLogin } from './services/wx.js'
+
 App({
   onLaunch: function(options) {
     // let sceneArr = [1007, 1008, 1044, 1011, 1012, 1013, 1047, 1048, 1049]
     let shareToken = options.query.shareToken || null
-    this.globalData.targetShareToken = shareToken
-    this.loginCallback && this.loginCallback()
+    getWxCode().then(code=>{
+      return wxLogin({
+        code: code,
+        shareToken: shareToken
+      })
+    })
+    .then(res=>{
+      console.log(res)
+      this.globalData.oid = res.data.oid ? res.data.oid : '';
+      this.globalData.sid = res.data.sid ? res.data.sid : '';
+      this.globalData.userToken = res.data.userToken ? res.data.userToken : '';
+      this.globalData.sessionKey = res.data.sessionKey ? res.data.sessionKey : '';
+      updataStorageData('shareToken', res.data.shareToken || '')//用户识别码
+      return hasAuth('scope.userInfo')
+    })
+    .catch(err=>{
+      console.log("没用获取用户信息权限")
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return 
+    })
+    .then(data=>{
+      return getUserInfo()
+    })
+    .then(data=>{
+      this.globalData.userInfo = data.userInfo;
+      updataStorageData('city', data.userInfo.city)
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      console.log(this)
+      if (this.userInfoReadyCallback) {
+        this.userInfoReadyCallback(data)
+      }
+    })
+    .catch(err=>{
+      console.log(err)
+    })
   },
   onShow(options) {
     console.log(options)
@@ -19,18 +57,7 @@ App({
     }
   },
   globalData: {
-    // userInfo: {
-    //   avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTITVdksdCsusTicicnhWDib0tjjgW5ASIbpY3xeanBicibz3XLZOPC8CFibWkRyHBzMSz22icQ8Qcrqt6X0g/132",
-    //   city: "无锡",
-    //   country: "中国",
-    //   gender: 1,
-    //   language: "zh_CN",
-    //   nickName: "我的小窝",
-    //   province: "江苏",
-    // },
-    // oid: '773d8ad1ad9540fc804389a973a54d',
-    // sid: '15e5d36a68034a1d8793e5fb76e3ac76',
-    userInfo: {},
+    userInfo: null,
     oid: '',
     sid: '',
     sessionKey:'',
@@ -68,5 +95,5 @@ App({
     wx.navigateTo({
       url: '/pages/login/login',
     })
-  }
+  },
 })

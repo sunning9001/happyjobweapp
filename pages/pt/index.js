@@ -1,7 +1,6 @@
 import { imgServerUrl } from '../../config/config.js'
 import { getIndexList, getPositionList } from '../../services/index.js'
 import { formatTime} from '../../utils/util.js'
-import { checkUserWxLogin } from '../../utils/wxUtil.js'
 const app = getApp();
 
 Page({
@@ -18,10 +17,8 @@ Page({
     
   },
   onShow: function () {
-    if (checkUserWxLogin()) {
-      this.fetchList()
-      this.fetchPt()
-    }
+    this.fetchList()
+    this.fetchPt()
   },
   //获取列表数据
   fetchList() {
@@ -69,6 +66,10 @@ Page({
     this.fetchPt()
   },
   onShareAppMessage: function () {
-
+    return {
+      title: '快来开心工作看看吧',
+      path: '/pages/index/index?shareToken=' + updataStorageData('shareToken'),
+      imageUrl: ''
+    }
   }
 })

@@ -12,7 +12,7 @@ Page({
     sex_index: 0,
     eduList: [],
     eduIndex: 0,
-    avatar: app.globalData.userInfo.avatarUrl,
+    avatar: '',
     name:'',
     year:'',
     iphone:'',
@@ -25,6 +25,9 @@ Page({
         hpUserResumeId
       })
     }
+    this.setData({
+      avatar: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl:''
+    })
     this.fetchEduList()
     let resumeBase = wx.getStorageSync('resumeBase')
     if (resumeBase.hpUserResumeId){

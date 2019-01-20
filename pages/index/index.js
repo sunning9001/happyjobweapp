@@ -1,6 +1,5 @@
 import { getBanner, getIndexList,goLogin } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
-import { checkUserWxLogin } from '../../utils/wxUtil.js'
 var app = getApp();
 
 Page({
@@ -40,33 +39,43 @@ Page({
     isScroll:true,//是否可以滚动
     showCount: 10,//单页展示记录数
     index:3,//岗位类型
-    isTest:false,
-    oid:'',
-    sid:'',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onLoad: function (options) {
     
   },
-  onShow: function () {
-    app = getApp()
+  start(){
+    let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
     this.setData({
-      oid: app.globalData.oid,
-      sid: app.globalData.sid,
+      cityName: cityName
     })
-    console.log('globaldata===', app.globalData)
-    if (checkUserWxLogin()) {
-      console.log("进来了")
-      let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
-      this.setData({
-        cityName: cityName
+    this.fetchBanner()
+    this.fetchList({
+      hotOn: 1
+    })
+  },
+  onShow: function () {
+    if (app.globalData.userInfo) {
+      console.log('有info===', app.globalData)
+      this.start()
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        console.log('userInfoReadyCallback===', app.globalData)
+        this.start()
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          console.log('兼容处理===', app.globalData)
+          this.start()
+        }
       })
-      this.fetchBanner()
-      this.fetchList({
-        hotOn: 1
-      })
-      
-    }else{
-      console.log("mei进来了")
     }
   },
   onReachBottom: function () {
