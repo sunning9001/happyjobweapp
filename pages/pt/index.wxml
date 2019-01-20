@@ -11,7 +11,7 @@
   </swiper>
 </view>
 
-<view class='box-body' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
+<view class='box-body mg190' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
   <view class='box-item fixedH' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" data-type="{{item.groupOn}}" hover-class="item-hover">
     
     <view class='box-item-info'>
@@ -60,7 +60,8 @@
         <view class='box-item-info'>
           <view class='one'><text class='job'>{{item.posName}}</text><text class='componey'>{{item.comName}}</text></view>
           <view class='three'>
-            <view class='limit'>还差<text class='number'>{{3-item.groupPartNum}}</text>人成团</view>
+            <view class='limit' wx:if="{{(3-item.groupPartNum)>0}}">还差<text class='number'>{{3-item.groupPartNum}}</text>人成团</view>
+            <view class='limit' wx:else>已有<text class='number'>{{item.groupPartNum}}</text>人参团</view>
             <view class='djs'>
               <text>剩余</text>
               <i-count-down

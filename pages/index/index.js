@@ -1,4 +1,4 @@
-import { getBanner, getIndexList,goLogin } from '../../services/index.js'
+import { getBanner, getIndexList } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 var app = getApp();
 

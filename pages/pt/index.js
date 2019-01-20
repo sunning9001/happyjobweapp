@@ -1,20 +1,31 @@
-import { imgServerUrl } from '../../config/config.js'
 import { getIndexList, getPositionList } from '../../services/index.js'
 import { formatTime} from '../../utils/util.js'
+import { updataStorageData } from '../../utils/storage.js'
 const app = getApp();
 
 Page({
   data: {
     cityName: '无锡',
     currentPage: 1,//当前分页
-    showCount: 50,//单页展示记录数,
+    totalPage:1,//总页数
+    isScroll:true,//是否可以滚动
+    showCount: 3,//单页展示记录数,
     clearTimer:false
   },
   onLoad: function (options) {
-    
+    this.setData({
+      cityName:updataStorageData('city') || app.globalData.userInfo.city
+    })
   },
   onReady: function () {
     
+  },
+  onReachBottom: function () {
+    var currentPage = this.data.currentPage+1;
+    this.setData({
+      currentPage
+    })
+    this.fetchList()
   },
   onShow: function () {
     this.fetchList()
@@ -22,6 +33,9 @@ Page({
   },
   //获取列表数据
   fetchList() {
+    if(!this.data.isScroll){
+      return false
+    }
     let paramsObj = {
       cityName: this.data.cityName,
       showCount: this.data.showCount,
@@ -29,13 +43,41 @@ Page({
       groupOn:1
     }
     getIndexList(paramsObj).then(data => {
-      console.log(data)
-      this.setData({
-        list:data.list.map(item=>{
+      console.log(data)      
+      let { currentPage,totalPage } = data.page
+      let setData={
+        currentPage,
+        totalPage,
+      }
+      // 是否可以滚动加载数据
+      if ( totalPage==0 || currentPage==totalPage) {
+        setData.isScroll=false
+      }
+      if(currentPage == 1){
+        setData.list = data.list.map(item=>{
           item.endTime = formatTime(new Date(item.endTime*1000),'yyyy-MM-dd')
           return item
         })
+      } else if (totalPage && currentPage<=totalPage){
+        let list = data.list.map(item=>{
+          item.endTime = formatTime(new Date(item.endTime*1000),'yyyy-MM-dd')
+          return item
+        })
+        setData.list= this.data.list.concat(list)
+      }else{
+        setData.list = []
+      }
+      this.setData({
+        ...setData
       })
+
+      // this.setData({
+      //   list:data.list.map(item=>{
+      //     item.endTime = formatTime(new Date(item.endTime*1000),'yyyy-MM-dd')
+      //     return item
+      //   })
+      // })
+
     })
   },
   //获取我参与的拼团
