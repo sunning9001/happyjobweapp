@@ -33,7 +33,8 @@
     "pages/auth/auth",
     "pages/recommend-share/index",
     "pages/login/login",
-    "pages/web-view/web-view"
+    "pages/web-view/web-view",
+    "pages/store/storeList"
   ],
   "window": {
     "backgroundTextStyle": "light",
