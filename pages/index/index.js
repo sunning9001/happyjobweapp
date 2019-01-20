@@ -1,6 +1,7 @@
 import { getBanner, getIndexList,goLogin } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
-const app = getApp();
+import { checkUserWxLogin } from '../../utils/wxUtil.js'
+var app = getApp();
 
 Page({
   data: {
@@ -40,13 +41,20 @@ Page({
     showCount: 10,//单页展示记录数
     index:3,//岗位类型
     isTest:false,
+    oid:'',
+    sid:'',
   },
   onLoad: function (options) {
-    console.log(app.loginCallback)
+    
   },
   onShow: function () {
-    
-    if (app.checkUserWxLogin()) {
+    app = getApp()
+    this.setData({
+      oid: app.globalData.oid,
+      sid: app.globalData.sid,
+    })
+    console.log('globaldata===', app.globalData)
+    if (checkUserWxLogin()) {
       console.log("进来了")
       let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
       this.setData({

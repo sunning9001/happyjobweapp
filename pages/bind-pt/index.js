@@ -2,6 +2,8 @@ import { sendPhoneCode, usePhoneBound, resumeBase, groupApply } from '../../serv
 import { showToast } from '../../utils/tips.js'
 import { formatTime, argusToTimestamp } from '../../utils/util.js'
 import $wuxCountDown from '../../utils/coutdown.js'
+
+
 var app = getApp()
 Page({
   data: {
