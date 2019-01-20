@@ -42,7 +42,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    isTest:true
+    isTest:false
   },
   onLoad: function (options) {
     
@@ -184,8 +184,8 @@ Page({
   // 页面测试入口
   goTestUrl(){
     wx.navigateTo({
-      // url: '../store/storeList',
-      url: '../store-form/store-form',
+      url: '../store/storeList',
+      // url: '../store-form/store-form',
     })
   },
 })

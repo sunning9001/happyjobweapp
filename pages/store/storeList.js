@@ -8,7 +8,7 @@ Page({
    */
   data: {
     currentPage: 1,//当前分页
-    showCount: 5,//单页展示记录数,
+    showCount: 10,//单页展示记录数,
     isScroll: true,//是否可以滚动
     imgServerUrl: imgServerUrl,
   },
