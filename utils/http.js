@@ -46,7 +46,7 @@ const http = (params) => {
             //账号已被禁用
           } else if (errorCode == 40005) {
             //用户信息和微信信息不匹配
-          } else if (errorCode == 40006 || errorCode ==1) {
+          } else if (errorCode == 40006) {
             //用户尚未创建简历
             wx.navigateTo({
               url: '/pages/user-info/user-info',

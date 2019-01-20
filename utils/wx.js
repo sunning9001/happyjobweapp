@@ -1,3 +1,6 @@
+import { url } from '../api/api.js'
+import { saveLogin } from '../services/wx.js'
+
 //获取code
 function getWxCode(){
   return new Promise((resolve, reject) => {
