@@ -76,10 +76,10 @@ Page({
     if (this.data.djs && this.data.djs !== '重新获取验证码') {
       return false
     }
+    this.vcode()
     sendPhoneCode({
       phoneNo: this.data.iphone
     }).then(data => {
-      this.vcode()
     })
   },
 
