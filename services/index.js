@@ -409,4 +409,12 @@ module.exports={
       },
     })
   },
+  //门店详情
+  comApply(params) {
+    return http({
+      url: url.comApply,
+      data: params,
+      method:'POST'
+    })
+  },
 }

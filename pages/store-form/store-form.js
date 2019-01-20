@@ -1,11 +1,16 @@
 // pages/store-form/store-form.js
+import { comApply } from '../../services/index.js'
+import { showToast } from '../../utils/tips.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    name:'',
+    comName: '',
+    contactNo: '',
+    position: '',
   },
 
   /**
@@ -28,39 +33,59 @@ Page({
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+// 姓名编辑
+  bindNameInput(e){
+    this.setData({
+      name:e.detail.value
+    })
+  },
+  // 公司编辑
+  bindComInput(e) {
+    this.setData({
+      comName: e.detail.value
+    })
+  },
+  // 联系方式编辑
+  bindPhoneInput(e) {
+    this.setData({
+      contactNo: e.detail.value
+    })
+  },
+  // 职务编辑
+  bindPosInput(e) {
+    this.setData({
+      position: e.detail.value
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+  // 提交时间
+  bindSubmit(e) {
+    if (!this.data.name){
+      showToast('请填写姓名')
+      return false
+    }
+    if (!this.data.comName) {
+      showToast('请填写公司')
+      return false
+    }
+    if (!this.data.contactNo) {
+      showToast('请填写联系方式')
+    }
+    if (!this.data.position) {
+      showToast('请填写职务')
+      return false
+    }
 
+    comApply({
+      name: this.data.name,
+      comName: this.data.comName,
+      contactNo: this.data.contactNo,
+      position: this.data.position,
+    }).then(data=>{
+      showToast('提交成功')
+    }).catch(err=>{
+      console.log(err)
+    })
+    
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

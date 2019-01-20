@@ -184,7 +184,8 @@ Page({
   // 页面测试入口
   goTestUrl(){
     wx.navigateTo({
-      url: '../store/storeList',
+      // url: '../store/storeList',
+      url: '../store-form/store-form',
     })
   },
 })
