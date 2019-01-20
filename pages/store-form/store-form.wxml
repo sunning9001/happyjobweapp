@@ -1,0 +1,23 @@
+<view class="title">提交信息，我们为您定制专属方案</view>
+
+<view class="form">
+    <view class="input-box">
+        <view class="label">姓名</view>
+        <input class="input-border" bindinput="bindKeyInput"/>
+    </view>
+    <view class="input-box">
+        <view class="label">公司</view>
+        <input class="input-border" bindinput="bindKeyInput"/>
+    </view>
+    <view class="input-box">
+        <view class="label">联系方式</view>
+        <input class="input-border" bindinput="bindKeyInput"/>
+    </view>
+    <view class="input-box">
+        <view class="label">职务</view>
+        <input class="input-border" bindinput="bindKeyInput"/>
+    </view>
+</view>
+
+
+<button class="submit">提交</button>
