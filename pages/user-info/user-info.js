@@ -26,7 +26,9 @@ Page({
       })
     }
     this.setData({
-      avatar: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl:''
+      avatar: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl:'',
+      endDate: new Date().getFullYear(),
+      year: new Date().getFullYear()
     })
     this.fetchEduList()
     let resumeBase = wx.getStorageSync('resumeBase')
@@ -76,9 +78,9 @@ Page({
   },
   changeYear(e) {
     console.log(e)
-    let { value } = e.detail.detail
+    let { value } = e.detail
     this.setData({
-      year: value.excludeSpecial().excludeSpace()
+      year: value
     })
   },
   changeIphone(e) {
@@ -107,11 +109,6 @@ Page({
     }
     if (name == "") {
       showToast('请输入用户名');
-      return false;
-    }
-    let nowYear = new Date().getFullYear();    
-    if (year == "" || year.length != 4 || Number(year) > nowYear) {
-      showToast('请输入出生年份');
       return false;
     }
     if (this.data.iphone == "" || this.data.iphone.length != 11) {
