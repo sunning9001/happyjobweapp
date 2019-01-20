@@ -1,0 +1,35 @@
+<image class="banner-bg" src="https://weapp.hap-job.com/uploadFiles/images/detail/detail-bg.jpg" mode="widthFix"/>
+
+<view class="card marginT">
+    <view class="card-body pd46">
+        <view class="store-title">
+            <image class="logo" src="{{imgServerUrl}}/images/temp/men.png"></image>
+            <view class="info">
+                <view class="store-title">开心工作门店</view>
+                <view class="work-hour">工作时间：8：30-17：30</view>
+            </view>            
+        </view>
+        <view class="list">
+            <view class="li">
+                <image class="icon icon-address" src="{{imgServerUrl}}/images/detail/map-icon.png" />
+                <text class="lable">门店地址</text>
+                <view class="content">同一医药电子五路</view>
+                <image class="map" src="{{imgServerUrl}}/images/detail/map.png"/>
+            </view>
+            <view class="li">
+                <image class="icon icon-phone" src="{{imgServerUrl}}/images/detail/iphone.png" />
+                <view class="lable">联系电话</view>
+                <text class="content">400-2333-3293</text>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="card marginT">
+    <view class="card-header">
+        <view class="title">交通指引</view>
+    </view>
+    <view class="card-body pd80">
+        <view class="route">开心工作门店交通方便，路线1：乘坐765、76、75、266、765、346、12、502</view>        
+    </view>
+</view>

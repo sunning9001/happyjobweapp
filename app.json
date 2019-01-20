@@ -34,7 +34,8 @@
     "pages/recommend-share/index",
     "pages/login/login",
     "pages/web-view/web-view",
-    "pages/store/storeList"
+    "pages/store/storeList",
+    "pages/store-detail/store-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
