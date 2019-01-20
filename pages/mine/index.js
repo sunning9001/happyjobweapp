@@ -1,6 +1,6 @@
 import { imgServerUrl } from '../../config/config.js'
 import { getCenterInfo } from '../../services/index.js'
-
+var app = getApp()
 Page({
   data: {
     imgServerUrl:imgServerUrl
@@ -11,6 +11,8 @@ Page({
   fetchData(){
     getCenterInfo().then(data=>{
       console.log(data)
+      data.data.userName = data.data.userName || data.data.realName || app.globalData.userInfo.nickName
+      data.data.headerPic = data.data.headerPic || app.globalData.userInfo.avatarUrl
       let { headerPic, userName, approveState, hpUserId, phoneNo }=data.data
       userName=decodeURIComponent(userName)
       this.setData({
@@ -19,6 +21,7 @@ Page({
         approveState,// 认证状态（0、未申请认证，1、认证通过，2、认证不通过，3、认证待审核） ,
         hpUserId,//是否有简历 0，空没有简历，>1有简历        
       })
+      
       if(!phoneNo){
         wx.navigateTo({
           url: '../auth/auth',
