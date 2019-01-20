@@ -4,6 +4,7 @@ const url ={
   saveUserInfo: "/frontIndex/wxInfo", // post 用户微信信息存入
   imgUpOne: "/wxAppletsLogin/imgUpOne",//post 上传图片.
   decodeUserInfo: "/wxAppletsLogin/decodeUserInfo",//get 解密数据：小程序解密用户敏感数据
+  comApply: "/wxAppletsLogin/comApply",//微信手机号获取解密后绑定
 
   /** +++++++++++++++++++++++++++  frontIndex  ++++++++++++++++++++++++++++++++++++++ */
   banner: "/frontIndex/banner",// get 首页轮播图列表获取
@@ -20,8 +21,8 @@ const url ={
   phoneBound: "/frontIndex/phone",// 手机号：用户手机号码绑定、更换
   shareBound: "/frontIndex/share",// 推荐有奖好友参加页面手机号填写接口
   wxPhoneBound: "/frontIndex/wxPhoneBound",//微信手机号获取解密后绑定
-  storeList: "/frontIndex/storeList",//微信手机号获取解密后绑定
-  store: "/frontIndex/store",//微信手机号获取解密后绑定
+  storeList: "/frontIndex/storeList",//门店列表
+  store: "/frontIndex/store",//门店详情
 
 /** +++++++++++++++++++++++++++  frontUser  ++++++++++++++++++++++++++++++++++++++ */
   positionList: "/frontUser/positionList",//post 我的岗位申请列表,

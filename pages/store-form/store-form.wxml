@@ -3,21 +3,21 @@
 <view class="form">
     <view class="input-box">
         <view class="label">姓名</view>
-        <input class="input-border" bindinput="bindKeyInput"/>
+        <input class="input-border" bindinput="bindNameInput" maxlength='50' />
     </view>
     <view class="input-box">
         <view class="label">公司</view>
-        <input class="input-border" bindinput="bindKeyInput"/>
+        <input class="input-border" bindinput="bindComInput" maxlength='50'/>
     </view>
     <view class="input-box">
         <view class="label">联系方式</view>
-        <input class="input-border" bindinput="bindKeyInput"/>
+        <input class="input-border" type='number' bindinput="bindPhoneInput" maxlength='20'/>
     </view>
     <view class="input-box">
         <view class="label">职务</view>
-        <input class="input-border" bindinput="bindKeyInput"/>
+        <input class="input-border" bindinput="bindPosInput" maxlength='50'/>
     </view>
 </view>
 
 
-<button class="submit">提交</button>
+<button class="submit" bind:tap='bindSubmit' >提交</button>
