@@ -1,7 +1,9 @@
-import { getGroupDetail } from '../../services/index.js'
+import { getGroupDetail,groupApply } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
 import { updataStorageData } from '../../utils/storage.js'
+import { checkUserWxLogin } from '../../utils/wxUtil.js'
+
 var app = getApp()
 
 Page({
@@ -17,7 +19,7 @@ Page({
 
   },
   onShow: function (options) {
-    if (app.checkUserWxLogin()) {
+    if (checkUserWxLogin()) {
       this.fetchData()
     }
 

@@ -1,6 +1,7 @@
 import { imgServerUrl } from '../../config/config.js'
 import { getIndexList, getPositionList } from '../../services/index.js'
 import { formatTime} from '../../utils/util.js'
+import { checkUserWxLogin } from '../../utils/wxUtil.js'
 const app = getApp();
 
 Page({
@@ -17,7 +18,7 @@ Page({
     
   },
   onShow: function () {
-    if (app.checkUserWxLogin()) {
+    if (checkUserWxLogin()) {
       this.fetchList()
       this.fetchPt()
     }

@@ -2,6 +2,8 @@ import { getPositionDetail, positionApply, groupApply, groupList } from '../../s
 import { imgServerUrl } from '../../config/config.js'
 const WxParse = require('../../plugins/wxParse/wxParse.js');
 import { showToast } from '../../utils/tips.js'
+import { checkUserWxLogin } from '../../utils/wxUtil.js'
+
 const app = getApp();
 
 Page({
@@ -22,7 +24,7 @@ Page({
     this.data.hpPositionId = options.hpPositionId
   },
   onShow: function () {
-    if (app.checkUserWxLogin()) {
+    if (checkUserWxLogin()) {
 
       this.fetchData()
     }
@@ -93,7 +95,7 @@ Page({
       //存储厂车路线
       wx.setStorage({
         key: 'carDesc',
-        data: carDesc 
+        data: carDesc, 
       })
       if (posDetail){
         WxParse.wxParse('base', 'html', posDetail, this);
