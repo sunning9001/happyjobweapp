@@ -9,12 +9,12 @@
 <view class='input-box'>
   <view class='row'>
     <image class="user" src="{{imgServerUrl}}/images/identification/user.png" mode="widthFix"/>
-    <i-input class="input" value="{{ realName }}" placeholder="请输入姓名" bind:blur="changeName" maxlength="6"/>
+    <i-input class="input" value="{{ realName }}" placeholder="请输入姓名" bind:change="changeName" maxlength="6"/>
   </view>
 
   <view class='row'>
     <image class="idcode" src="{{imgServerUrl}}/images/identification/idcard.png" mode="widthFix"/>
-    <i-input class="input" value="{{ idNum }}" placeholder="请输入身份证号码" bind:blur="changeId" maxlength="18"/>
+    <i-input class="input" value="{{ idNum }}" placeholder="请输入身份证号码" bind:change="changeId" maxlength="18"/>
   </view>
 </view>
 

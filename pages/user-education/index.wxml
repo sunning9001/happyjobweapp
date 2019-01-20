@@ -10,7 +10,7 @@
     <view class='list'>
       <view class='list-title'>学校名称</view>
       <view class='list-content border'>
-        <i-input class="row" value="{{name}}" placeholder="请输入姓名" i-class="input" maxlength='50' bind:blur="changeName"/>
+        <i-input class="row" value="{{name}}" placeholder="请输入姓名" i-class="input" maxlength='50' bind:change="changeName"/>
       </view>
     </view>
 

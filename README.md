@@ -9,8 +9,4 @@
 5. 关于我的4个证书
 
 未完成的功能
-user-form 出生年月bornYear null
 formid 拼团 认证
-基本信息页 出生年月 选择框
-
-http errorCode 1

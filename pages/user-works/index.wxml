@@ -10,14 +10,14 @@
     <view class='list'>
       <view class='list-title'>公司名称</view>
       <view class='list-content border'>
-        <i-input class="row" value="{{ comName }}" placeholder="请输入公司名" maxlength='50' i-class="input" bind:blur="changeComName"/>
+        <i-input class="row" value="{{ comName }}" placeholder="请输入公司名" maxlength='50' i-class="input" bind:change="changeComName"/>
       </view>
     </view>
 
     <view class='list'>
       <view class='list-title'>工作职位</view>
       <view class='list-content border'>
-        <i-input class="row" value="{{ jobName }}" placeholder="请输入职位名" maxlength='50' i-class="input" bind:blur="changeJobName"/>
+        <i-input class="row" value="{{ jobName }}" placeholder="请输入职位名" maxlength='50' i-class="input" bind:change="changeJobName"/>
       </view>
     </view>
 
