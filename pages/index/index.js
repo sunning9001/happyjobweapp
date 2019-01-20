@@ -42,7 +42,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    isTest:false
+    isTest:true
   },
   onLoad: function (options) {
     

@@ -4,7 +4,8 @@
 
 <view class="list" >
     <view class="li" wx:for="{{list}}"  wx:key="hpCompanyStoreId" bindtap='toDetail' data-id="{{item.hpCompanyStoreId}}"  >
-        <image class="pic" src="{{imgServerUrl}}/images/store/storeBanner.png" />
+        <!-- <image class="pic" src="{{imgServerUrl}}/images/store/storeBanner.png" /> -->
+        <image class="pic" src="{{item.storePic}}" />
         <view class="info">
             <view class="name">{{item.storeName}}</view>
             <view class="address">{{item.storeAddr}}</view>

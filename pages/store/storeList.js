@@ -78,9 +78,9 @@ Page({
   toDetail(e){
     var id = e.currentTarget.dataset.id
     console.log(id)
-    // wx.navigateTo({
-    //   url: '../storeDetail/index',
-    // })
+    wx.navigateTo({
+      url: '../store-detail/store-detail?hpCompanyStoreId='+id,
+    })
   },
     
 })
