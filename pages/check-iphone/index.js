@@ -75,7 +75,8 @@ Page({
     sendPhoneCode({
       phoneNo:this.data.iphone
     }).then(data =>{
-      this.vcode()
+      
     })
+    this.vcode()
   },
 })

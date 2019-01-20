@@ -41,7 +41,8 @@ Page({
     index:3,//岗位类型
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    isTest:false
   },
   onLoad: function (options) {
     
@@ -183,7 +184,7 @@ Page({
   // 页面测试入口
   goTestUrl(){
     wx.navigateTo({
-      url: '../bind-pt/index?hpPositionGroupId=' + 1,
+      url: '../store/storeList',
     })
   },
 })
