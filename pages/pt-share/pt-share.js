@@ -3,6 +3,7 @@ import { showToast } from '../../utils/tips.js'
 import Poster from '../../components/wxa-plugin-canvas/poster/poster';
 import { shareQrCodeB, getGroupDetail } from '../../services/index.js'
 import { updataStorageData } from '../../utils/storage.js'
+import { hasAuth } from '../../utils/wx.js'
 var app = getApp()
 
 Page({
@@ -198,25 +199,35 @@ Page({
   onPosterSuccess(e) {
     console.log(e)
     const { detail } = e;
-    app.hasAuth('scope.writePhotosAlbum').then(() => {
-      wx.saveImageToPhotosAlbum({
-        filePath: detail,
-        success(res) {
-          console.log(res)
-          showToast('已保存到相册,快去分享吧！')
-        }
-      })
-    }).catch(() => {
-      showToast('请授权保存到相册')
-      this.setData({
-        hasAuth: false
-      })
-      wx.openSetting({
-        success(res) {
-          console.log(res.authSetting)
-        }
-      })
-    })
+    var that =this
+    wx.saveImageToPhotosAlbum({
+      filePath: detail,
+      success(res) {
+        console.log(res)
+        showToast('已保存到相册,快去分享吧！')
+      },
+      fail(err){
+        hasAuth('scope.writePhotosAlbum').then(() => {
+          wx.saveImageToPhotosAlbum({
+            filePath: detail,
+            success(res) {
+              console.log(res)
+              showToast('已保存到相册,快去分享吧！')
+            }
+          })
+        }).catch(() => {
+          showToast('请授权保存到相册')
+          that.setData({
+            hasAuth: false
+          })
+          wx.openSetting({
+            success(res) {
+              console.log(res.authSetting)
+            }
+          })
+        })
+      }
+    })    
   },
   onPosterFail(err) {
     console.error(err);

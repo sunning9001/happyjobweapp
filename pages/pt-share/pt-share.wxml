@@ -2,7 +2,7 @@
     <image class="banner-img" src="../../images/pt/banner.png" mode="widthFix"/>
 </view> -->
 <view class="container">
-    <image class="canvas-bg" src="../../images/pt/bg.png" />
+    <image class="canvas-bg" src="{{imgServerUrl}}/images/pt/bg.png" />
     <view class="bg">
         <view class="row">
             <text class="text-1">推荐奖励</text>
@@ -39,7 +39,7 @@
     </view>
 </view>
 
-<button class="create" bindtap='onCreatePoster' wx:if="hasAuth">生成分享图片</button>
+<button class="create" bindtap='onCreatePoster' wx:if="{{hasAuth}}">生成分享图片</button>
 <button class="create" open-type="openSetting" bindopensetting="onCreatePoster" wx:else>打开授权页</button>
 <poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
 </poster>
