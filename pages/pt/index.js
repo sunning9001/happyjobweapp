@@ -82,6 +82,9 @@ Page({
   },
   //获取我参与的拼团
   fetchPt(){
+    if(!app.globalData.sid){
+      return false
+    }
     getPositionList({
       groupOn: 1,
       currentPage: 1,
@@ -105,7 +108,7 @@ Page({
   },
   //倒计时结束回调
   myLinsterner(){
-    this.fetchPt()
+    // this.fetchPt()
   },
   onShareAppMessage: function () {
     return {
