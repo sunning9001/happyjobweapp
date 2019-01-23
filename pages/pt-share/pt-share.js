@@ -204,27 +204,12 @@ Page({
       filePath: detail,
       success(res) {
         console.log(res)
-        showToast('已保存到相册,快去分享吧！')
+        showToast('已保存到相册,快去分享吧！','success',3000)
       },
       fail(err){
-        hasAuth('scope.writePhotosAlbum').then(() => {
-          wx.saveImageToPhotosAlbum({
-            filePath: detail,
-            success(res) {
-              console.log(res)
-              showToast('已保存到相册,快去分享吧！')
-            }
-          })
-        }).catch(() => {
-          showToast('请授权保存到相册')
-          that.setData({
-            hasAuth: false
-          })
-          wx.openSetting({
-            success(res) {
-              console.log(res.authSetting)
-            }
-          })
+        showToast('请授权保存到相册')
+        that.setData({
+          hasAuth: false
         })
       }
     })    

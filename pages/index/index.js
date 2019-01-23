@@ -19,7 +19,7 @@ Page({
       },
       {
         src: imgServerUrl + "/images/home/gangwei.png",
-        text: "爆品岗位"
+        text: "福利岗位"
       },
       {
         src: imgServerUrl + "/images/home/jipin.png",
@@ -49,12 +49,13 @@ Page({
   },
   start(){
     let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
+    console.log(cityName)
     this.setData({
       cityName: cityName
     })
     this.fetchBanner()
     this.fetchList({
-      hotOn: 1
+      welfareOn: 1
     })
   },
   onShow: function () {
@@ -175,7 +176,7 @@ Page({
       case 0: data.posNature = 3; break;
       case 1: data.posNature = 2; break;
       case 2: data.retOn = 1; break;
-      case 3: data.hotOn = 1; break;
+      case 3: data.welfareOn = 1; break;
       case 4: data.urgentOn = 1; break;
     }
     return data

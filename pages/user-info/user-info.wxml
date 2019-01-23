@@ -37,7 +37,7 @@
     <view class='list'>
       <view class='list-title required'>出生年份</view>
       <view class='list-content border'>
-        <picker mode="date" fields="year"  value="{{year}}"  end="{{endDate}}"  bindchange="changeYear">
+        <picker mode="date" fields="year"  value="{{year}}"  end="{{endDate}}" start="1900" bindchange="changeYear">
           <view class='picker-full'>{{year}}</view>
         </picker>
       </view>

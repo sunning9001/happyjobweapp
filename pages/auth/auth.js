@@ -10,7 +10,7 @@ Page({
     isShow: true
   },
   onLoad: function (options) {
-    
+    app.globalData.noPhone=true
   },
   getPhoneNumber: function (e) {
     console.log(e)
@@ -22,8 +22,7 @@ Page({
         iv: iv,
         encryptedData: encryptedData,        
       }).then(data=>{
-        app.globalData.sid=data.data.sid,
-        updataStorageData('shareToken', data.data.shareToken)
+        app.globalData.noPhone=false
         wx.navigateBack()
       })
     } else {
@@ -51,6 +50,7 @@ Page({
         app.globalData.sid = data.data.sid,
         app.globalData.oid = data.data.oid,
         app.globalData.shareToken = data.data.shareToken,
+        updataStorageData('shareToken', data.data.shareToken)
         updataStorageData('phone', data.data.phoneNumber)
         resolve(true)
       }).catch(data => {

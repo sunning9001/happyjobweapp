@@ -1,7 +1,8 @@
-function showToast(msg,type){
+function showToast(msg,type,time){
   wx.showToast({
     title: msg,
-    icon:type||'none'
+    icon:type||'none',
+    duration: time || 1500
   })
 }
 

@@ -6,6 +6,14 @@ Page({
     imgServerUrl:imgServerUrl
   },
   onShow: function () {
+    if (app.globalData.noPhone) {
+      app.globalData.noPhone=false
+      wx.switchTab({
+        url: '/pages/index/index',
+      })
+      return
+    }
+    console.log(2)
     this.fetchData()
   },
   fetchData(){

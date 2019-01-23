@@ -7,8 +7,8 @@
     <image class="auth" wx:if="{{approveState==1}}" src="{{imgServerUrl}}/images/detail/auth-has.png" mode="widthFix"/>
   </view>
   <view class='row award'>
-    <text class='award-info' wx:if="{{type==0}}">入职奖励最高<text class='money'>{{retManMoney}}元</text></text>
-    <text class='award-info' wx:if="{{type==1}}">入职奖励最高<text class='money'>{{fiveMoney+retManMoney}}元</text></text>
+    <text class='award-info' wx:if="{{type==0}}">入职奖励最高<text class='money'>{{fiveMoney+retManMoney+urgentMoney}}元</text></text>
+    <text class='award-info' wx:if="{{type==1}}">入职奖励最高<text class='money'>{{fiveMoney+retManMoney+urgentMoney}}元</text></text>
     <navigator url='../document/pt' wx:if="{{type==1}}"><view class="rule">拼团规则</view></navigator>
     <navigator url='../document/fanxian' wx:else><view class="rule">说明</view></navigator>
     
@@ -42,14 +42,18 @@
 
 <view class="box">
   <view class="tabs">
-    <view class="tab">基本信息</view>
-    <view class="tab">岗位要求</view>
-    <view class="tab">其他福利</view>
-    <view class="tab">公司详情</view>
+    <view class="tab" data-top="{{basePos}}" bindtap='scrollTop'>基本信息</view>
+    <view class="tab" data-top="{{requirePos}}" bindtap='scrollTop'>岗位要求</view>
+    <view class="tab" data-top="{{otherWelfarePos}}" bindtap='scrollTop'>其他福利</view>
+    <view class="tab" data-top="{{jieshaoPos}}" bindtap='scrollTop'>公司详情</view>
   </view>
 
   <!-- 基本信息 -->
-  <view class="info-box" id="base">
+  <view class="info-box topic" id="base">
+    <view class="topic-title">
+      <image class="icon-box" src="{{imgServerUrl}}/images/jianli/icon-box.png" mode="widthFix"/>
+      <view class="topic-text">基本信息</view>
+    </view>
     <template is="wxParse" data="{{wxParseData:base.nodes}}"/>
     <!-- <view class='info-row'>
       <view class='info-title'>基本工资</view>
@@ -77,7 +81,11 @@
     </view> -->
   </view>
   <!-- 岗位要求 -->
-  <view class="info-box">
+  <view class="info-box topic" id="require">
+    <view class="topic-title">
+      <image class="icon-box" src="{{imgServerUrl}}/images/jianli/icon-box.png" mode="widthFix"/>
+      <view class="topic-text">岗位要求</view>
+    </view>
     <view class="tags">
       <view class="tag" wx:if="{{reqAge}}">{{reqAge}}</view>
       <view class="tag" wx:if="{{reqEducation}}">{{reqEducation}}</view>
@@ -86,11 +94,14 @@
       <view class="tag" wx:if="{{reqSkill}}">{{reqSkill}}</view>
       <view class="tag" wx:if="{{reqWorkYears}}">{{reqWorkYears}}</view>
       <view class="tag" wx:for="{{globalTools.splitStr(reqOther,',')}}" wx:key="*this">{{item}}</view>
-
     </view>
   </view>
   <!-- 其他福利 -->
-  <view class="info-box" id="otherWelfare">
+  <view class="info-box topic" id="otherWelfare">
+    <view class="topic-title">
+        <image class="icon-box" src="{{imgServerUrl}}/images/jianli/icon-box.png" mode="widthFix"/>
+        <view class="topic-text">其他福利</view>
+      </view>
     <template is="wxParse" data="{{wxParseData:otherWelfare.nodes}}"/>
     <!-- <view class='info-row'>
       <view class='info-title-mini'>面试</view>
@@ -104,11 +115,16 @@
     <text class='path-title' bindtap='toRoadsLine'>查看厂车线路详情</text>
     <i-icon type="enter" />
   </view>
-  <!-- 公司介绍 -->
-   
-  <view class='word-break com-desc'  wx:if="{{posComDesc}}">
-  <!-- {{posComDesc}} -->
-    <template is="wxParse" data="{{wxParseData:posComDesc.nodes}}"/>
+
+  <!-- 公司介绍 -->   
+  <view wx:if="{{posComDesc}}" class="word-break com-desc"  id='jieshao'>
+    <view class='topic'>
+      <view class="topic-title">
+        <image class="icon-box" src="{{imgServerUrl}}/images/jianli/icon-box.png" mode="widthFix"/>
+        <view class="topic-text">公司介绍</view>
+      </view>
+      <template is="wxParse" data="{{wxParseData:posComDesc.nodes}}"/>
+    </view>
   </view>
 
   <view class="address-box" wx:if="{{type==1}}">
@@ -133,7 +149,7 @@
 
   <!-- tips -->
   <view class="tips">
-    <image class="icon-tips" src="{{imgServerUrl}}/images/detail/kefu.png" mode="widthFix"/>
+    <image class="icon-tips" src="{{imgServerUrl}}/images/detail/tips.png" mode="widthFix"/>
     <text>以担保或任何理由索取财务，扣押证照，均涉嫌违法，请提高警惕</text>
   </view>
   <!-- btn -->

@@ -35,6 +35,8 @@ const http = (params) => {
             wx.navigateTo({
               url: '/pages/auth/auth',
             })
+            reject(res.data)
+            return
           } else if (errorCode == 40002) {
             //未获取到微信登录信息
             wx.navigateTo({

@@ -24,24 +24,30 @@
   text-indent: 2em;
   line-height: 38rpx;
 }
+.shows{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 557rpx;
+}
 .pic{
   display: inline-block;
   font-size: 0;
-  margin-bottom: 20rpx;
+  margin-bottom: 14rpx;
 }
 .pic1{
-  width: 223rpx;
-  height: 232rpx;
+  width: 232rpx;
+  height: 230rpx;
 }
 .pic2{
-  width: 326rpx;
-  height: 232rpx;
+  width: 322rpx;
+  height: 230rpx;
 }
 .pic3{
-  width: 276rpx;
-  height: 182rpx;
+  width: 273rpx;
+  height: 186rpx;
 }
 .pic4{
-  width: 282rpx;
-  height: 182rpx;
+  width: 273rpx;
+  height: 186rpx;
 }

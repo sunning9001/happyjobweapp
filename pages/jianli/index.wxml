@@ -1,7 +1,8 @@
 <wxs src="../tools.wxs" module="globalTools" />
 <view class="contanier">
+  <image class="bg" src="{{imgServerUrl}}/images/jianli/jianli_bg.png" mode="widthFix" />
   <!-- 基本信息 -->
-  <view class='card'>
+  <view class='card mgT70'>
     <view class='card-hd'>
       <view class='card-hd-title'>
         <image class='icon-box' src='{{imgServerUrl}}/images/jianli/icon-box.png' mode='widthFix'></image>

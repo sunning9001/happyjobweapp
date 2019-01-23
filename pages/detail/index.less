@@ -152,6 +152,7 @@ page{
     font-size: 28rpx;
     padding: 20rpx 0 0;
     color: #323232;
+    margin-bottom: 84rpx;
     .tab{
         position: relative;
         &::after{
@@ -170,10 +171,7 @@ page{
     font-size: 28rpx;
     color: #828282;
     padding: 40rpx 0;
-    border-bottom: 1px solid #eee;
-    &:last-child{
-        border:0;
-    }
+    // border-bottom: 1px solid #eee;
     .tags{
         display: flex;
         flex-wrap: wrap;
@@ -194,7 +192,7 @@ page{
     color: #4498e8;
     text-align: center;
     font-size: 28rpx;
-    padding: 40rpx 0;
+    padding-bottom:20px;
     background: #fff;
 }
   
@@ -220,14 +218,17 @@ page{
   }
 
   .com-desc{
-      border-top: 1px solid #eee;
+    //   border-top: 1px solid #eee;
       padding: 20rpx 0;
       font-size: 24rpx;
       line-height: 31rpx;
       color: #6b6b6b;
       background: #fff;
-      padding: 30rpx 40rpx;
+      padding: 44rpx 40rpx 0!important;
       box-sizing: border-box;
+      .topic{
+          padding-bottom: 35rpx;
+      }
   }
   .address-box{
       display: flex;
@@ -271,18 +272,19 @@ page{
 
   }
   .tips{
-      background: #fff;
-      display: flex;
-      padding: 30rpx;
-      box-sizing: border-box;
-      font-size: 28rpx;
-      color: #6b6b6b;
-      border-bottom: 1px solid #eee;
-      .icon-tips{
-          width: 60rpx;
-          height: 60rpx;
-          margin-right: 20rpx;
-      }
+    display:flex;
+    align-items:center;
+    background: #fff;
+    padding: 30rpx;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    color: #6b6b6b;
+    border-bottom: 1px solid #eee;
+    .icon-tips{
+        width: 60rpx;
+        height: 60rpx;
+        margin-right: 20rpx;
+    }
   }
   .btn-group{
       background: #fff;
@@ -418,5 +420,25 @@ page{
         height: 120rpx;
         background: #fff;
         border-top: 1px solid #eaeaee;
+    }
+}
+.topic{
+    position: relative;  
+    border-top: 1px solid #eee;
+    padding: 50rpx 0;
+    &-title{
+        position: absolute;
+        top:-23rpx;
+        display: flex;
+        background: #fff;
+    }
+    .icon-box{
+        width: 20px;
+    }
+    &-text{
+        margin-left: 15rpx;
+        margin-right: 20rpx;
+        font-size: 30rpx;
+        color: #323232;
     }
 }

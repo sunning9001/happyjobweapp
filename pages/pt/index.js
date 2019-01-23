@@ -106,6 +106,12 @@ Page({
       url: '../detail/index?hpPositionId=' + id + "&type=" + type,
     })
   },
+  //去申请列表
+  toApplyList() {
+    wx.navigateTo({
+      url: '../apply-list/index'
+    })
+  },
   //倒计时结束回调
   myLinsterner(){
     // this.fetchPt()

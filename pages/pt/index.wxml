@@ -11,7 +11,7 @@
   </swiper>
 </view>
 
-<view class='box-body mg190' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
+<view class='box-body {{myList.length?"mg190":""}}' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
   <view class='box-item fixedH' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" data-type="{{item.groupOn}}" hover-class="item-hover">
     
     <view class='box-item-info'>
@@ -53,7 +53,7 @@
 </view>
 
 <view class='myPT'>
-  <view class="box" wx:for="{{myList}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" data-type="{{item.groupOn}}">
+  <view class="box" wx:for="{{myList}}" wx:key="hpPositionId" bindtap='toApplyList'>
     <view class='box-body'>
       <view class='box-item'>
         <image class='box-item-img' src='{{item.leaderPic}}' mode='aspectFit'></image>

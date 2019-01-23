@@ -38,7 +38,6 @@ function getUserInfo(){
     wx.getUserInfo({
       lang: 'zh_CN',
       success: res => {
-        console.log(res)
         resolve(res)
       },
       fail: err => {

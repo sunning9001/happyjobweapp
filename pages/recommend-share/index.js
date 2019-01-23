@@ -3,7 +3,7 @@ import { showToast } from '../../utils/tips.js'
 import Poster from '../../components/wxa-plugin-canvas/poster/poster'
 import { shareQrCodeA } from '../../services/index.js'
 import { updataStorageData } from '../../utils/storage.js'
-var app = getApp()
+import { hasAuth } from '../../utils/wx.js'
 
 Page({
   data: {
@@ -26,7 +26,7 @@ Page({
         },
         {
           x: 15,
-          y: 345,
+          y: 370,
           width: 720,
           height: 800,
           backgroundColor: '#fffcf7',
@@ -46,26 +46,26 @@ Page({
         }
       ],
       texts: [
-        {
-          x: 220,
-          y: 240,
-          baseLine: 'middle',
-          text: '每邀请1位新用户注册',
-          fontSize: 33,
-          color: '#ffffff',
-          lineHeight: 40,
-          zIndex: 2,
-        },
-        {
-          x: 220,
-          y: 290,
-          baseLine: 'middle',
-          text: '即可得5元现金红包',
-          fontSize: 33,
-          lineHeight: 40,
-          color: '#ffffff',
-          zIndex: 4,
-        },
+        // {
+        //   x: 220,
+        //   y: 240,
+        //   baseLine: 'middle',
+        //   text: '每邀请1位新用户注册',
+        //   fontSize: 33,
+        //   color: '#ffffff',
+        //   lineHeight: 40,
+        //   zIndex: 2,
+        // },
+        // {
+        //   x: 220,
+        //   y: 290,
+        //   baseLine: 'middle',
+        //   text: '即可得5元现金红包',
+        //   fontSize: 33,
+        //   lineHeight: 40,
+        //   color: '#ffffff',
+        //   zIndex: 4,
+        // },
         {
           x: 230,
           y: 880,
@@ -100,23 +100,31 @@ Page({
       images: [
         {
           width: 750,
-          height: 330,
+          height: 325,
           x: 0,
           y: 0,
-          url: `${imgServerUrl}/images/recommend/tuijian-bg.png`,
+          url: `${imgServerUrl}/images/recommend/awardBg.png`,
           zIndex: 1,
         },
-        {
-          x: 80,
-          y: 30,
-          width: 593,
-          height: 172,
-          url: `${imgServerUrl}/images/recommend/title.png`,
-          zIndex: 2,
-        },
+        // {
+        //   width: 750,
+        //   height: 330,
+        //   x: 0,
+        //   y: 0,
+        //   url: `${imgServerUrl}/images/recommend/tuijian-bg.png`,
+        //   zIndex: 1,
+        // },
+        // {
+        //   x: 80,
+        //   y: 30,
+        //   width: 593,
+        //   height: 172,
+        //   url: `${imgServerUrl}/images/recommend/title.png`,
+        //   zIndex: 2,
+        // },
         {
           x: 65,
-          y: 375,
+          y: 400,
           width: 623,
           height: 372,
           url: `${imgServerUrl}/images/recommend/step.png`,
@@ -151,26 +159,21 @@ Page({
   },
   onPosterSuccess(e) {
     console.log(e)
-    const { detail } = e;    
-    app.hasAuth('scope.writePhotosAlbum').then(()=>{
-      wx.saveImageToPhotosAlbum({
-        filePath: detail,
-        success(res) {
-          console.log(res)
-          showToast('已保存到相册,快去分享吧！')
-        }
-      })
-    }).catch(()=>{
-      showToast('请授权保存到相册')
-      this.setData({
-        hasAuth: false
-      })
-      wx.openSetting({
-        success(res) {
-          console.log(res.authSetting)
-        }
-      })
-    })    
+    const { detail } = e; 
+    var that = this
+    wx.saveImageToPhotosAlbum({
+      filePath: detail,
+      success(res) {
+        console.log(res)
+        showToast('已保存到相册,快去分享吧！','success',3000)
+      },
+      fail(err){
+        showToast('请授权保存到相册')
+        that.setData({
+          hasAuth: false
+        })
+      }
+    })     
   },
   onPosterFail(err) {
     console.error(err);

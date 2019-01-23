@@ -74,6 +74,7 @@ Page({
         posDetail, //基本信息 
         otherWelfare, // 其他福利
         retManMoney, //入职返现金额男
+        urgentMoney ,//高薪急聘金额
         fiveMoney, //五人团及以上奖励金额 
         comApplyNum, //用户正在进行的非拼团申请数
         groupApplyNum, //用户正在进行的拼团申请数
@@ -93,6 +94,7 @@ Page({
         reqAge, reqEducation, reqExp, reqGender, reqSkill, reqWorkYears, reqOther,
         comCustPhone,
         retManMoney,
+        urgentMoney,
         fiveMoney,
         comApplyNum,
         groupApplyNum,
@@ -121,6 +123,7 @@ Page({
       if (posComDesc){
         WxParse.wxParse('posComDesc', 'html', posComDesc, this);
       }
+      this.getNodePos()
     })
   },  
   //获取拼团列表
@@ -212,5 +215,32 @@ Page({
       return lower + '人以上'
     }
     return lower + '-' + high + '人'
+  },
+  //获取位置
+  getNodePos(){
+    var query = wx.createSelectorQuery()
+    query.select('#base').boundingClientRect()
+    query.select('#require').boundingClientRect()
+    query.select('#otherWelfare').boundingClientRect()
+    query.select('#jieshao').boundingClientRect()
+    var that = this;
+    query.exec(function (res) {
+      console.log(res)
+      that.setData({
+        basePos:res[0].top-40,
+        requirePos:res[1].top-40,
+        otherWelfarePos:res[2].top-40,
+        jieshaoPos:res[3].top-40
+      })
+    })
+  },
+  //距离页面滚动
+  scrollTop(e){
+    let top = e.currentTarget.dataset.top
+    console.log(top)
+    wx.pageScrollTo({
+      scrollTop: top,
+      duration: 300
+    })
   }
 })

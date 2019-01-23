@@ -1,9 +1,10 @@
 <view class="top-bg">
-    <image class="award-title" src="{{imgServerUrl}}/images/recommend/title.png" mode="widthFix" />
+    <!-- <image class="award-title" src="{{imgServerUrl}}/images/recommend/title.png" mode="widthFix" />
     <view class="desc">
         <view >每邀请1位新用户注册</view>
         <view >即可得5元现金红包</view>
-    </view>
+    </view> -->
+    <image class='awardBg' src='{{imgServerUrl}}/images/recommend/awardBg.png' mode='widthFix'></image>
 </view>
 
 <i-notice-bar icon="systemprompt" loop background-color="#ffc" color="#169bd5" wx:if="{{false}}">
