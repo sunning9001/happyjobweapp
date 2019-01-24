@@ -1,12 +1,17 @@
 require("./utils/string.js")
+const ald = require('./libs/ald-stat.js')
 var api = require('./api/api.js')
 import { http } from './utils/http.js'
 import { updataStorageData } from './utils/storage.js'
 import { getWxCode, hasAuth, getUserInfo } from './utils/wx.js'
 import { wxLogin, saveLogin } from './services/wx.js'
 
+var startTime = Date.now();//启动时间
 App({
   onLaunch: function(options) {
+    this.aldstat.sendEvent('小程序的启动时长', {
+      time: Date.now() - startTime
+    })
     // let sceneArr = [1007, 1008, 1044, 1011, 1012, 1013, 1047, 1048, 1049]
     let shareToken = options.query.shareToken || null
     getWxCode().then(code=>{

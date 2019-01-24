@@ -1,10 +1,13 @@
 import { getIndexList, getPositionList } from '../../services/index.js'
-import { formatTime} from '../../utils/util.js'
+import { formatTime } from '../../utils/util.js'
+import { showToast} from '../../utils/tips.js'
 import { updataStorageData } from '../../utils/storage.js'
+import { imgServerUrl } from '../../config/config.js'
 const app = getApp();
 
 Page({
   data: {
+    imgServerUrl: imgServerUrl,
     cityName: '无锡',
     currentPage: 1,//当前分页
     totalPage:1,//总页数
@@ -99,6 +102,17 @@ Page({
       })
     })
   },
+  imageLoad(){
+    var that = this
+    var query = wx.createSelectorQuery()
+    query.select('.slide-image').boundingClientRect()
+    query.exec(function (res) {
+      console.log(res)
+      that.setData({
+        swiperH: res[0].height
+      })
+    })
+  },
   //去详情页
   toDetail(e) {
     const { id, type } = e.currentTarget.dataset
@@ -114,7 +128,8 @@ Page({
   },
   //倒计时结束回调
   myLinsterner(){
-    // this.fetchPt()
+    this.fetchPt()
+    showToast("恭喜您拼团成功！","success")
   },
   onShareAppMessage: function () {
     return {

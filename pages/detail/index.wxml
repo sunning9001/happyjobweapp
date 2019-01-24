@@ -36,7 +36,7 @@
       <image class="map-icon" src="{{imgServerUrl}}/images/detail/map-icon.png"  mode="widthFix"/>
       <text class="">{{cityName}}{{countyName}}</text>
     </view>
-    <image class="map" src="{{imgServerUrl}}/images/detail/map.png" mode="widthFix" />
+    <image class="map" src="{{imgServerUrl}}/images/detail/map.png" mode="widthFix" bindtap='tomap' />
   </view>
 </view>
 
@@ -132,7 +132,7 @@
         <image class="map-icon" src="{{imgServerUrl}}/images/detail/map-icon.png"  mode="widthFix"/>
         <text class="">{{cityName}}{{countyName}}</text>
       </view>
-      <image class="map" src="{{imgServerUrl}}/images/detail/map.png" mode="widthFix" />
+      <image class="map" src="{{imgServerUrl}}/images/detail/map.png" mode="widthFix" bindtap='tomap'/>
   </view>
       
   <!-- 客服 -->

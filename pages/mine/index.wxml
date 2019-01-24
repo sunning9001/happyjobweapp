@@ -41,7 +41,7 @@
     <i-cell i-class="item" title="推荐有奖" is-link url="../recommend/index">
       <image class="item-icon" src="{{imgServerUrl}}/images/mine/tuijian.png" mode="widthFix" slot="icon" />
     </i-cell>
-    <i-cell i-class="item" title="薪资查询" is-link url="../check-iphone/index">
+    <i-cell i-class="item" title="薪资查询" is-link url="../check-iphone/index?approveState={{approveState}}">
       <image class="item-icon" src="{{imgServerUrl}}/images/mine/salary.png" mode="widthFix" slot="icon" />
     </i-cell>
     <i-cell i-class="item" title="我的申请" is-link url="../apply-list/index">

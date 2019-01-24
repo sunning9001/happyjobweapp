@@ -14,11 +14,11 @@
 
 <!-- 轮播 -->
 <view class="">
-  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff">
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff" style="height:{{swiperH}}px">
     <block wx:for="{{imgList}}" wx:key="picUrl">
       <swiper-item>
         <navigator url='/pages/web-view/web-view?url={{item.targetUrl}}'>
-          <image src="{{item.picUrl}}" class="slide-image" mode='widthFix'/>
+          <image src="{{item.picUrl}}" class="slide-image" mode='widthFix' bindload='imageLoad'/>
         </navigator>
       </swiper-item>
     </block>
@@ -28,7 +28,7 @@
 <view class="activity-box">
   <view class="activity">
     <block wx:for="{{activity}}" wx:key="text">
-      <view class="activity-item" bindtap='changeList' data-index="{{index}}">
+      <view class="activity-item" bindtap='changeList' data-index="{{index}}" hover-class="item-hover">
         <image src="{{item.src}}" mode="scaleToFill"></image>
         <text>{{item.text}}</text>
       </view>

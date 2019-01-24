@@ -10,9 +10,17 @@ Page({
     iphone:"",
     yzm:'', 
   },
-
+  onLoad:function(opts){
+    console.log(opts)
+    this.setData(opts)
+    
+  },
   //下一步提交
   next(e){
+    if (this.data.approveState != 1) {
+      showToast('身份认证成功后才可进行查询！！！')
+      return
+    }
     if (this.data.iphone.length != 11) {
       showToast('请输入11位手机号码！')
       return
@@ -65,6 +73,10 @@ Page({
   },
 // 验证码发送
   sendCode(e){
+    if (this.data.approveState!=1 ){
+      showToast('身份认证成功后才可进行查询！！！')
+      return
+    }
     if(this.data.iphone.length != 11){
       showToast('请输入11位手机号码！')
       return

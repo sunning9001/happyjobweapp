@@ -1,28 +1,37 @@
-import { getPositionDetail, positionApply, groupApply, groupList } from '../../services/index.js'
-import { imgServerUrl } from '../../config/config.js'
+import {
+  getPositionDetail,
+  positionApply,
+  groupApply,
+  groupList
+} from '../../services/index.js'
+import {
+  imgServerUrl
+} from '../../config/config.js'
 const WxParse = require('../../plugins/wxParse/wxParse.js');
-import { showToast } from '../../utils/tips.js'
+import {
+  showToast
+} from '../../utils/tips.js'
 
 const app = getApp();
 
 Page({
   data: {
     imgServerUrl: imgServerUrl,
-    hpPositionId:0,
-    type:0,//0：正常 1：拼团
-    isShowList:false,
-    clearTimer:false,
-    comScale:'',
-    comType:'',
+    hpPositionId: 0,
+    type: 0, //0：正常 1：拼团
+    isShowList: false,
+    clearTimer: false,
+    comScale: '',
+    comType: '',
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log(options)
     this.setData({
       type: options.type || 0
     })
     this.data.hpPositionId = options.hpPositionId
   },
-  onShow: function () {
+  onShow: function() {
     if (app.globalData.userInfo) {
       console.log('有info===', app.globalData)
       this.fetchData()
@@ -45,7 +54,7 @@ Page({
     }
   },
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     console.log(options)
     var shareToken = wx.getStorageSync('shareToken')
     return {
@@ -55,15 +64,15 @@ Page({
     }
   },
   //获取岗位详情
-  fetchData(){
-    getPositionDetail(this.data.hpPositionId).then(data=>{
+  fetchData() {
+    getPositionDetail(this.data.hpPositionId).then(data => {
       console.log(data)
-      let { 
+      let {
         posName, //职位名称
-        approveState,//是否认证
+        approveState, //是否认证
         comName, //公司名
         reqAge, //年龄要求 
-        reqEducation,//学历要求
+        reqEducation, //学历要求
         reqExp, // 工作经验要求
         reqGender, //性别要求
         reqSkill, //专业技能要求 ,
@@ -74,24 +83,30 @@ Page({
         posDetail, //基本信息 
         otherWelfare, // 其他福利
         retManMoney, //入职返现金额男
-        urgentMoney ,//高薪急聘金额
+        urgentMoney, //高薪急聘金额
         fiveMoney, //五人团及以上奖励金额 
         comApplyNum, //用户正在进行的非拼团申请数
         groupApplyNum, //用户正在进行的拼团申请数
-        carDesc,//班车信息
-        hpPositionGroupId,//拼团id
-        endTime,//岗位结束时间
+        carDesc, //班车信息
+        hpPositionGroupId, //拼团id
+        endTime, //岗位结束时间
         cityName,
         countyName,
       } = data.data
 
       let isOpen = Date.parse(new Date()) / 1000 < endTime
-      
+
       this.setData({
         posName,
         approveState,
         comName,
-        reqAge, reqEducation, reqExp, reqGender, reqSkill, reqWorkYears, reqOther,
+        reqAge,
+        reqEducation,
+        reqExp,
+        reqGender,
+        reqSkill,
+        reqWorkYears,
+        reqOther,
         comCustPhone,
         retManMoney,
         urgentMoney,
@@ -112,32 +127,32 @@ Page({
       //存储厂车路线
       wx.setStorage({
         key: 'carDesc',
-        data: carDesc, 
+        data: carDesc,
       })
-      if (posDetail){
+      if (posDetail) {
         WxParse.wxParse('base', 'html', posDetail, this);
       }
-      if (otherWelfare){
+      if (otherWelfare) {
         WxParse.wxParse('otherWelfare', 'html', otherWelfare, this);
       }
-      if (posComDesc){
+      if (posComDesc) {
         WxParse.wxParse('posComDesc', 'html', posComDesc, this);
       }
       this.getNodePos()
     })
-  },  
+  },
   //获取拼团列表
-  fetchPtList(){
-    if(!this.data.isOpen){
+  fetchPtList() {
+    if (!this.data.isOpen) {
       showToast('拼团已结束')
       return false
     }
-    groupList(this.data.hpPositionId).then(data=>{
+    groupList(this.data.hpPositionId).then(data => {
       console.log(data)
       this.setData({
-        isShowList:true,
+        isShowList: true,
         ptList: data.list.map(item => {
-          item.leftTime = new Date().getTime() + item.leftTime  * 1000
+          item.leftTime = new Date().getTime() + item.leftTime * 1000
           item.leaderName = decodeURIComponent(item.leaderName)
           return item
         })
@@ -149,13 +164,13 @@ Page({
     positionApply(this.data.hpPositionId).then(data => {
       showToast('申请职位成功', 'success')
       this.setData({
-        comApplyNum:1
+        comApplyNum: 1
       })
     })
   },
   //申请开团
-  applyPt(){
-    positionApply(this.data.hpPositionId).then(data=>{
+  applyPt() {
+    positionApply(this.data.hpPositionId).then(data => {
       var hpPositionGroupId = data.data.hpPositionGroupId
       wx.navigateTo({
         url: '../result/index?type=pt&status=1&hpPositionGroupId=' + hpPositionGroupId,
@@ -164,7 +179,9 @@ Page({
   },
   //参与拼团
   joinTuan(e) {
-    let {groupid} = e.currentTarget.dataset
+    let {
+      groupid
+    } = e.currentTarget.dataset
     groupApply(groupid).then(data => {
       wx.navigateTo({
         url: '../pt-detail/index?hpPositionGroupId=' + groupid,
@@ -172,31 +189,31 @@ Page({
     })
   },
   //查看拼团
-  catPt(){
+  catPt() {
     wx.navigateTo({
       url: '../pt-detail/index?hpPositionGroupId=' + this.data.hpPositionGroupId,
     })
   },
   //隐藏拼团列表模态框
-  hideModal(){
+  hideModal() {
     this.setData({
-      isShowList:false
+      isShowList: false
     })
   },
   //拨打手机号
-  phoneCall(){
+  phoneCall() {
     wx.makePhoneCall({
       phoneNumber: this.data.comCustPhone,
-      success:function(data){
+      success: function(data) {
         console.log(data)
       },
-      fail:function(data){
+      fail: function(data) {
         console.log(data)
       }
     })
   },
   //查看线路
-  toRoadsLine(){
+  toRoadsLine() {
     wx.navigateTo({
       url: '../roadsLine/index',
     })
@@ -206,10 +223,10 @@ Page({
     this.fetchPtList()
   },
   // 获取公司规模描述
-  getComScale(lower,high){
+  getComScale(lower, high) {
 
-    if (!lower || lower ==0){
-      return high+'人以下'
+    if (!lower || lower == 0) {
+      return high + '人以下'
     }
     if (!high || high == 0) {
       return lower + '人以上'
@@ -217,30 +234,53 @@ Page({
     return lower + '-' + high + '人'
   },
   //获取位置
-  getNodePos(){
+  getNodePos() {
     var query = wx.createSelectorQuery()
     query.select('#base').boundingClientRect()
     query.select('#require').boundingClientRect()
     query.select('#otherWelfare').boundingClientRect()
     query.select('#jieshao').boundingClientRect()
     var that = this;
-    query.exec(function (res) {
+    query.exec(function(res) {
       console.log(res)
       that.setData({
-        basePos:res[0].top-40,
-        requirePos:res[1].top-40,
-        otherWelfarePos:res[2].top-40,
-        jieshaoPos:res[3].top-40
+        basePos: res[0].top - 40,
+        requirePos: res[1].top - 40,
+        otherWelfarePos: res[2].top - 40,
+        jieshaoPos: res[3].top - 40
       })
     })
   },
   //距离页面滚动
-  scrollTop(e){
+  scrollTop(e) {
     let top = e.currentTarget.dataset.top
     console.log(top)
     wx.pageScrollTo({
       scrollTop: top,
-      duration: 300
+      duration: 0
+    })
+  },
+  tomap() {
+    let obj = {
+      POIlatitude: "31.549558",
+      POIlocation: "120.371216,31.549558",
+      POIlongitude: "120.371216",
+      address: "旺庄东路",
+      city: "江苏省",
+      cityd: "江苏省",
+      fromhistory: "1",
+      latitude: "31.490512",
+      longitude: "120.363823",
+      name: "春潮花园",
+      saddress: "无锡市新吴区和风路28号",
+      sname: "我的位置",
+    }
+    let params = ''
+    for(let key in obj){
+      params += key+"="+obj[key]+"&"
+    }
+    wx.navigateTo({
+      url: '../gdmap/index?' + params,
     })
   }
 })

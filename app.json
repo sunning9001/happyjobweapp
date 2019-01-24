@@ -1,4 +1,9 @@
 {
+  "permission": {
+    "scope.userLocation": {
+      "desc": "为了更好的为您服务"
+    }
+  },
   "pages": [
     "pages/index/index",
     "pages/detail/index",
@@ -36,7 +41,8 @@
     "pages/web-view/web-view",
     "pages/store/storeList",
     "pages/store-detail/store-detail",
-    "pages/store-form/store-form"
+    "pages/store-form/store-form",
+    "pages/gdmap/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

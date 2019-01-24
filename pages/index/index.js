@@ -99,6 +99,17 @@ Page({
       })
     })   
   },
+  imageLoad() {
+    var that = this
+    var query = wx.createSelectorQuery()
+    query.select('.slide-image').boundingClientRect()
+    query.exec(function (res) {
+      console.log(res)
+      that.setData({
+        swiperH: res[0].height
+      })
+    })
+  },
   //获取列表数据
   fetchList(params){
     if(!this.data.isScroll){

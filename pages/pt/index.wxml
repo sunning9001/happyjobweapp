@@ -2,10 +2,10 @@
 
 <!-- 轮播 -->
 <view class="">
-  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff">
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff" style="height:{{swiperH}}px">
     <block wx:for="{{1}}">
       <swiper-item>
-        <image src="https://weapp.hap-job.com/uploadFiles/images/pt/pt-banner.jpg" class="slide-image" mode='widthFix'/>
+        <image src="{{imgServerUrl}}/images/pt/pt-banner.jpg" class="slide-image" mode='widthFix' bindload="imageLoad"/>
       </swiper-item>
     </block>
   </swiper>
