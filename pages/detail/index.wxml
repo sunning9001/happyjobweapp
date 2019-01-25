@@ -34,7 +34,7 @@
   <view class="card-footer" wx:if="{{type==0}}">
     <view class="address">
       <image class="map-icon" src="{{imgServerUrl}}/images/detail/map-icon.png"  mode="widthFix"/>
-      <text class="">{{cityName}}{{countyName}}</text>
+      <text class="">{{addrDetail}}</text>
     </view>
     <image class="map" src="{{imgServerUrl}}/images/detail/map.png" mode="widthFix" bindtap='tomap' />
   </view>
@@ -130,7 +130,7 @@
   <view class="address-box" wx:if="{{type==1}}">
       <view class="address">
         <image class="map-icon" src="{{imgServerUrl}}/images/detail/map-icon.png"  mode="widthFix"/>
-        <text class="">{{cityName}}{{countyName}}</text>
+        <text class="">{{addrDetail}}</text>
       </view>
       <image class="map" src="{{imgServerUrl}}/images/detail/map.png" mode="widthFix" bindtap='tomap'/>
   </view>

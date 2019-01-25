@@ -1,16 +1,9 @@
-import {
-  getPositionDetail,
-  positionApply,
-  groupApply,
-  groupList
-} from '../../services/index.js'
-import {
-  imgServerUrl
-} from '../../config/config.js'
+import { getPositionDetail, positionApply, groupApply, groupList } from '../../services/index.js'
+import { imgServerUrl } from '../../config/config.js'
+
 const WxParse = require('../../plugins/wxParse/wxParse.js');
-import {
-  showToast
-} from '../../utils/tips.js'
+import { showToast } from '../../utils/tips.js'
+var $ = require('../../libs/gdconf.js');
 
 const app = getApp();
 
@@ -90,8 +83,11 @@ Page({
         carDesc, //班车信息
         hpPositionGroupId, //拼团id
         endTime, //岗位结束时间
-        cityName,
-        countyName,
+        cityName,//城市名
+        countyName,//区名
+        addrDetail,//具体地址
+        comLocation,//经纬度
+
       } = data.data
 
       let isOpen = Date.parse(new Date()) / 1000 < endTime
@@ -117,6 +113,8 @@ Page({
         isOpen,
         cityName,
         countyName,
+        addrDetail,
+        comLocation
       })
       this.setData({
         comScale: this.getComScale(data.data.scaleLower, data.data.scaleHigh),
@@ -261,26 +259,37 @@ Page({
     })
   },
   tomap() {
-    let obj = {
-      POIlatitude: "31.549558",
-      POIlocation: "120.371216,31.549558",
-      POIlongitude: "120.371216",
-      address: "旺庄东路",
-      city: "江苏省",
-      cityd: "江苏省",
-      fromhistory: "1",
-      latitude: "31.490512",
-      longitude: "120.363823",
-      name: "春潮花园",
-      saddress: "无锡市新吴区和风路28号",
-      sname: "我的位置",
-    }
-    let params = ''
-    for(let key in obj){
-      params += key+"="+obj[key]+"&"
-    }
-    wx.navigateTo({
-      url: '../gdmap/index?' + params,
-    })
+    var that = this
+    wx.showLoading({ title: 'loading', mask: true });
+    //获得当前位置坐标
+    $.map.getRegeo({
+      success(data) {
+        wx.hideLoading();
+        var data = data[0], cityd = data.regeocodeData.addressComponent.province;
+        let POIlongitude = that.data.comLocation.split(",")[0]
+        let POIlatitude = that.data.comLocation.split(",")[1]
+        let obj = {
+          POIlocation: that.data.comLocation,
+          POIlongitude: POIlongitude,
+          POIlatitude: POIlatitude,
+          address: '',
+          city: that.data.cityName,
+          cityd: cityd,
+          fromhistory: "0",
+          latitude: data.latitude,
+          longitude: data.longitude,
+          name: that.data.addrDetail,
+          saddress: data.name,
+          sname: "我的位置",
+        }
+        let params = ''
+        for (let key in obj) {
+          params += key + "=" + obj[key] + "&"
+        }
+        wx.navigateTo({
+          url: '../gdmap/index?' + params,
+        })
+      }
+    });  
   }
 })

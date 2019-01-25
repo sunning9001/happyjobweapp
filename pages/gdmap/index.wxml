@@ -42,7 +42,7 @@
 
 <!-- 公交路线 -->
 <view class="transfer-list" hidden='{{!showBusPaths || transits.length == 0}}'>
-  <view bindtap='alert' class="transfer-item" wx:for="{{transits}}" wx:key>
+  <view class="transfer-item" wx:for="{{transits}}" wx:key>
     <view class="transfer-transport">
       <block wx:for="{{item.transport}}" wx:for-item="sport" wx:key>{{sport}}</block>
     </view>

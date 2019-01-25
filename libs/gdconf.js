@@ -18,8 +18,8 @@ module.exports = {
   navType: [
     { icon: "../../images/gdmap/type-1.png", name: "驾车", url: "https://restapi.amap.com/v3/direction/driving" },
     { icon: "../../images/gdmap/type-2.png", name: "公交", url: "https://restapi.amap.com/v3/direction/transit/integrated" },
-    { icon: "../../images/gdmap/type-3.png", name: "骑行", url: "https://restapi.amap.com/v4/direction/bicycling" },
-    { icon: "../../images/gdmap/type-4.png", name: "步行", url: "https://restapi.amap.com/v3/direction/walking" }
+    // { icon: "../../images/gdmap/type-3.png", name: "骑行", url: "https://restapi.amap.com/v4/direction/bicycling" },
+    // { icon: "../../images/gdmap/type-4.png", name: "步行", url: "https://restapi.amap.com/v3/direction/walking" }
   ],
   //格式化距离
   distance: function (dis) {
