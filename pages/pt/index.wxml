@@ -68,6 +68,8 @@
                 target="{{item.groupLeftTime}}"
                 bindcallback="myLinsterner"
                 clear-timer="{{clearTimer}}"
+                format="{{myFormat}}"
+                show-day="{{true}}"
               ></i-count-down>
             </view>
           </view>

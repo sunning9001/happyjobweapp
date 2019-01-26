@@ -31,7 +31,7 @@
   </view>
   <view class="card-footer">
     <view class='djs' wx:if='{{data.leftTime}}' >倒计时：
-      <i-count-down target="{{data.leftTime}}" bindcallback="myLinsterner" clear-timer="{{clearTimer}}"></i-count-down>
+      <i-count-down target="{{data.leftTime}}" bindcallback="myLinsterner" clear-timer="{{clearTimer}}" format="{{myFormat}}" show-day="{{true}}"></i-count-down>
     </view>
   </view>
 </view>

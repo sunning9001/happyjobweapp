@@ -14,7 +14,8 @@ Page({
     isScroll:true,//是否可以滚动
     showCount: 10,//单页展示记录数,
     clearTimer:false,
-    djsEnd:false
+    djsEnd:false,
+    myFormat: ['天', ':', ':', ' '],
   },
   onLoad: function (options) {
     this.setData({

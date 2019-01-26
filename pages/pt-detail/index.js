@@ -9,7 +9,8 @@ var app = getApp()
 Page({
   data: {
     imgServerUrl: imgServerUrl,
-    clearTimer:false
+    clearTimer:false,
+    myFormat: ['天', ':', ':', ' '],
   },
 
   onLoad: function (options) {
