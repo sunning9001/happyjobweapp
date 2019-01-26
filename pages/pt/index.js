@@ -13,7 +13,8 @@ Page({
     totalPage:1,//总页数
     isScroll:true,//是否可以滚动
     showCount: 10,//单页展示记录数,
-    clearTimer:false
+    clearTimer:false,
+    djsEnd:false
   },
   onLoad: function (options) {
     this.setData({
@@ -128,7 +129,10 @@ Page({
   },
   //倒计时结束回调
   myLinsterner(){
-    this.fetchPt()
+    // this.fetchPt()
+    this.setData({
+      djsEnd:true
+    })
     showToast("恭喜您拼团成功！","success")
   },
   onShareAppMessage: function () {

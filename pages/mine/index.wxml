@@ -28,9 +28,7 @@
     <view class="jianli-title">我的简历</view>
     <view class="jianli-desc">完善简历提高您的录取率</view>
   </view>
-  <navigator url="../jianli/index?hpUserId={{hpUserId}}">
-    <image class="edit-jianli" src="{{imgServerUrl}}/images/mine/jianli.png" mode="widthFix" />
-  </navigator>
+  <image class="edit-jianli" src="{{imgServerUrl}}/images/mine/jianli.png" mode="widthFix" bindtap='tojianli'/>
 </view>
 
 <view class='list'>

@@ -19,7 +19,7 @@ Page({
     hpUserResumeId:''
   },
   onLoad: function (options) {
-    let {hpUserResumeId=""} = options
+    let {hpUserResumeId=null} = options
     if (hpUserResumeId ){
       this.setData({
         hpUserResumeId

@@ -21,13 +21,14 @@ Page({
       console.log(data)
       data.data.userName = data.data.userName || data.data.realName || app.globalData.userInfo.nickName
       data.data.headerPic = data.data.headerPic || app.globalData.userInfo.avatarUrl
-      let { headerPic, userName, approveState, hpUserId, phoneNo }=data.data
+      let { headerPic, userName, approveState, hpUserId, phoneNo, hpUserResumeId }=data.data
       userName=decodeURIComponent(userName)
       this.setData({
         headerPic,
         userName,
         approveState,// 认证状态（0、未申请认证，1、认证通过，2、认证不通过，3、认证待审核） ,
-        hpUserId,//是否有简历 0，空没有简历，>1有简历        
+        hpUserId,//是否有简历 0，空没有简历，>1有简历     
+        hpUserResumeId 
       })
       
       if(!phoneNo){
@@ -36,6 +37,17 @@ Page({
         })
       }
     })
+  },
+  tojianli(){
+    if (this.data.hpUserResumeId ){
+      wx.navigateTo({
+        url: '../jianli/index?hpUserId='+this.data.hpUserId,
+      })
+    }else{
+      wx.navigateTo({
+        url: '../user-info/user-info',
+      })
+    }
   },
   //去认证页面
   toAuth(){

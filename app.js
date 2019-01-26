@@ -12,6 +12,7 @@ App({
     this.aldstat.sendEvent('小程序的启动时长', {
       time: Date.now() - startTime
     })
+    console.log(options)
     // let sceneArr = [1007, 1008, 1044, 1011, 1012, 1013, 1047, 1048, 1049]
     let shareToken = options.query.shareToken || null
     getWxCode().then(code=>{

@@ -252,7 +252,6 @@ Page({
   //距离页面滚动
   scrollTop(e) {
     let top = e.currentTarget.dataset.top
-    console.log(top)
     wx.pageScrollTo({
       scrollTop: top,
       duration: 0

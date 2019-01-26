@@ -1,3 +1,5 @@
+<import src="../../plugins/wxParse/wxParse.wxml"/>
+
 <view class='panel'>
   <view class='row job' data-value="{{data.comApproveState}}">{{data.comName}}
     <image wx:if="{{data.comApproveState==1}}" class="auth" src="{{imgServerUrl}}/images/detail/auth-has.png" mode="widthFix"/>
@@ -46,6 +48,8 @@
     招聘简章
   </view>
   <view class='card-content'>
-    <view class="desc">{{data.posComDesc}}</view> 
+    <view class="desc">
+      <template is="wxParse" data="{{wxParseData:comdesc.nodes}}"/>
+    </view> 
   </view>
 </view>

@@ -2,6 +2,7 @@ import { getGroupDetail,groupApply } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
 import { updataStorageData } from '../../utils/storage.js'
+const WxParse = require('../../plugins/wxParse/wxParse.js');
 
 var app = getApp()
 
@@ -68,6 +69,10 @@ Page({
       this.setData({
         data:data.data
       })
+      let posComDesc = data.data.posComDesc
+      if (posComDesc) {
+        WxParse.wxParse('comdesc', 'html', posComDesc, this);
+      }
     })
   },
 // 拼团倒计时结束

@@ -165,7 +165,7 @@ Page({
       filePath: detail,
       success(res) {
         console.log(res)
-        showToast('已保存到相册,快去分享吧！','success',3000)
+        showToast('已保存到相册!','success',3000)
       },
       fail(err){
         showToast('请授权保存到相册')
