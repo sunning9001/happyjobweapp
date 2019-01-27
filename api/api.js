@@ -38,6 +38,7 @@ const url ={
   shareQrCodeA: "/frontUser/shareQrCodeA",//post 二维码生成接口B
   shareQrCodeB: "/frontUser/shareQrCodeB",//post 二维码生成接口B
   shareQrCodeC:"/frontUser/shareQrCodeC",//post 二维码生成接口c
+  addrdecode: "/wxAppletsLogin/addrEncode",//post 地址编码：城市、详细地址查询经纬度值
 }
 
 module.exports = {

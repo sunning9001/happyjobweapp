@@ -417,4 +417,12 @@ module.exports={
       method:'POST'
     })
   },
+  //地址编码：城市、详细地址查询经纬度值
+  getIp(params){
+    return http({
+      url: url.addrdecode,
+      data: params,
+      method:'POST',
+    })
+  }
 }
