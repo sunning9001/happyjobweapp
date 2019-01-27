@@ -427,3 +427,65 @@ page {
   font-size: 30rpx;
   color: #323232;
 }
+.auth-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 99;
+}
+.auth-modal {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 520rpx;
+  box-shadow: 0px 12px 59px 3px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  border: 1px solid #17a9ff;
+  background: #fff;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  z-index: 99;
+  overflow: hidden;
+}
+.auth-modal .title {
+  font-size: 34rpx;
+  color: #333;
+  text-align: center;
+  padding: 40rpx;
+}
+.auth-modal .content {
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  padding: 0 40rpx 40rpx;
+}
+.auth-modal .footer {
+  display: flex;
+  border-top: 1px solid #eaeaea;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+.auth-modal .footer .btn {
+  width: 50%;
+  flex: 0 0 auto;
+  color: #999;
+  background: #fff;
+  border-right: 1px solid #eaeaea;
+}
+.auth-modal .footer .btn:last-child {
+  border-right: 0;
+}
+.auth-modal .footer button {
+  font-size: 28rpx;
+  padding: 0;
+  line-height: 80rpx;
+  border-radius: 0;
+}
+.auth-modal .footer button::after {
+  border: 0;
+}

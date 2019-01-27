@@ -164,6 +164,9 @@ Page({
           },
         ],
       }
+      if (!this.data.comLogo){
+        posterConfig.images.splice(2,1)
+      }
       console.log(posterConfig)
       this.setData({
         posterConfig

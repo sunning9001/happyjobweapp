@@ -22,7 +22,7 @@
 		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.3",
+	"libVersion": "2.5.1",
 	"appid": "wx1e8ed93850777ffb",
 	"projectname": "kaixin",
 	"debugOptions": {
@@ -50,11 +50,11 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "share",
-					"pathName": "pages/recommend/index",
-					"query": "user=11",
-					"scene": "1008"
+					"pathName": "pages/index/index",
+					"query": "shareToken=b053078af4a642c480263e40e342612f",
+					"scene": "1012"
 				}
 			]
 		}

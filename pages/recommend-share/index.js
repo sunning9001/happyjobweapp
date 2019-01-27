@@ -150,7 +150,7 @@ Page({
     })
   },
   getCode(){
-    let targetUrl = 'pages/index/index?shareToken=' + updataStorageData('shareToken')
+    let targetUrl = 'pages/recommend-iphone/index?shareToken=' + updataStorageData('shareToken')
     shareQrCodeA(targetUrl).then(data=>{
       this.setData({
         qrCode:data.data.imgUrl

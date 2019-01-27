@@ -1,8 +1,8 @@
 import { getPositionDetail, positionApply, groupApply, groupList } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
+import { showToast } from '../../utils/tips.js'
 
 const WxParse = require('../../plugins/wxParse/wxParse.js');
-import { showToast } from '../../utils/tips.js'
 var $ = require('../../libs/gdconf.js');
 
 const app = getApp();
@@ -16,6 +16,8 @@ Page({
     clearTimer: false,
     comScale: '',
     comType: '',
+    myFormat: ['天', ':', ':', ' '],
+    authMask:false,
   },
   onLoad: function(options) {
     console.log(options)
@@ -288,7 +290,18 @@ Page({
         wx.navigateTo({
           url: '../gdmap/index?' + params,
         })
+      },
+      fail(data){
+        wx.hideLoading();
+        that.setData({
+          authMask:true
+        })
       }
     });  
-  }
+  },
+  hideAuth(){
+    this.setData({
+      authMask:false
+    })
+  },
 })

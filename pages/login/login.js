@@ -1,6 +1,7 @@
 import { imgServerUrl } from '../../config/config.js'
 import { getUserInfo } from '../../utils/wx.js'
 import { updataStorageData } from '../../utils/storage.js'
+import { saveLogin } from '../../services/wx.js'
 var app = getApp()
 Page({
   data: {
@@ -17,6 +18,14 @@ Page({
       getUserInfo().then(data => {
         app.globalData.userInfo = data.userInfo;
         updataStorageData('city', data.userInfo.city)
+        saveLogin({
+          encryptedData: encodeURIComponent(data.encryptedData),
+          iv: encodeURIComponent(data.iv),
+        }).then(data => {
+          console.log(data)
+        }).catch(data => {
+          console.log(data)
+        })
         wx.navigateBack()
       }).catch(data=>{
         console.log(data)
