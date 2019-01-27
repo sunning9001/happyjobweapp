@@ -165,9 +165,11 @@ Page({
       filePath: detail,
       success(res) {
         console.log(res)
+        wx.hideLoading();
         showToast('已保存到相册!','success',3000)
       },
       fail(err){
+        wx.hideLoading();
         showToast('请授权保存到相册')
         that.setData({
           hasAuth: false
@@ -184,6 +186,7 @@ Page({
    */
   onCreatePoster() {
     //  `/images/recommend/qrcode.jpg`
+    wx.showLoading({ title: 'loading', mask: true });
     this.data.posterConfig.images[this.data.posterConfig.images.length - 1].url = this.data.qrCode
     this.setData({ 
       posterConfig:this.data.posterConfig

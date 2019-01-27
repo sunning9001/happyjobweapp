@@ -207,9 +207,11 @@ Page({
       filePath: detail,
       success(res) {
         console.log(res)
+        wx.hideLoading();
         showToast('已保存到相册,快去分享吧！','success',3000)
       },
       fail(err){
+        wx.hideLoading();
         showToast('请授权保存到相册')
         that.setData({
           hasAuth: false
@@ -225,6 +227,7 @@ Page({
    * 异步生成海报
    */
   onCreatePoster() {
+    wx.showLoading({ title: 'loading', mask: true });
     Poster.create();
   },
   getCode() {
