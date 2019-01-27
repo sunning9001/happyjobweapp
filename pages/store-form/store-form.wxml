@@ -3,19 +3,19 @@
 <view class="form">
     <view class="input-box">
         <view class="label">姓名</view>
-        <input class="input-border" bindinput="bindNameInput" maxlength='50' />
+        <input class="input-border" bindinput="bindNameInput" maxlength='50' placeholder="姓名必须填写" />
     </view>
     <view class="input-box">
         <view class="label">公司</view>
-        <input class="input-border" bindinput="bindComInput" maxlength='50'/>
+        <input class="input-border" bindinput="bindComInput" maxlength='50' placeholder="公司必须填写"/>
     </view>
     <view class="input-box">
         <view class="label">联系方式</view>
-        <input class="input-border" type='number' bindinput="bindPhoneInput" maxlength='20'/>
+        <input class="input-border" type='number' bindinput="bindPhoneInput" maxlength='20' placeholder="联系方式必须填写" />
     </view>
     <view class="input-box">
         <view class="label">职务</view>
-        <input class="input-border" bindinput="bindPosInput" maxlength='50'/>
+        <input class="input-border" bindinput="bindPosInput" maxlength='50'  maxlength='20' placeholder="非必填项" />
     </view>
 </view>
 
