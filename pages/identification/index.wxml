@@ -45,4 +45,6 @@
   </view>
 </view>
 
-<button class="save" bindtap='submit'>确认提交</button>
+<form bindsubmit="submitInfo" report-submit='true'>
+  <button class="save" bindtap='submit' form-type="submit">确认提交</button>
+</form>

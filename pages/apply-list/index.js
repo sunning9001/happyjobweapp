@@ -55,17 +55,16 @@ Page({
   },
   //去详情页
   toDetail(e) {
-    const { id, type } = e.currentTarget.dataset
-
+    const { id, type,welfare } = e.currentTarget.dataset
     if (type != 1 || (e.currentTarget.dataset.lefttime && e.currentTarget.dataset.lefttime>0)){
       wx.navigateTo({
-        url: '../detail/index?hpPositionId=' + id + "&type=" + type,
+        url: '../detail/index?hpPositionId=' + id+"&type="+type+"&isWelfare="+welfare,
       })
     }else{
       showToast('该职位拼团已结束')
       setTimeout(function(){
         wx.navigateTo({
-          url: '../detail/index?hpPositionId=' + id + "&type=" + type,
+          url: '../detail/index?hpPositionId=' + id+"&type="+type+"&isWelfare="+welfare,
         })
       },1000)
     }

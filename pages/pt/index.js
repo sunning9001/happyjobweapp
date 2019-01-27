@@ -117,9 +117,9 @@ Page({
   },
   //去详情页
   toDetail(e) {
-    const { id, type } = e.currentTarget.dataset
+    const { id, type,welfare } = e.currentTarget.dataset
     wx.navigateTo({
-      url: '../detail/index?hpPositionId=' + id + "&type=" + type,
+      url: '../detail/index?hpPositionId=' + id+"&type="+type+"&isWelfare="+welfare,
     })
   },
   //去申请列表

@@ -15,7 +15,7 @@
                 <image class="icon icon-address" src="{{imgServerUrl}}/images/detail/map-icon.png" />
                 <text class="lable">门店地址</text>
                 <view class="content" wx:if='{{data.storeAddr}}'>{{data.storeAddr}}</view>
-                <image class="map" src="{{imgServerUrl}}/images/detail/map.png"/>
+                <image class="map" src="{{imgServerUrl}}/images/detail/map.png" bindtap='tomap'/>
             </view>
             <view class="li">
                 <image class="icon icon-phone" src="{{imgServerUrl}}/images/detail/iphone.png" />
@@ -33,4 +33,15 @@
     <view class="card-body pd80">
         <view class="route">{{data.storeTraffic}}</view>        
     </view>
+</view>
+
+<view class='auth-mask' wx:if="{{authMask}}">
+  <view class='auth-modal'>
+    <view class='title'>授权提示</view>
+    <view class='content'>当前服务需要获取您的位置信息，请确认授权</view>
+    <view class='footer' bindtap='hideAuth'>
+      <view class='btn'>暂不授权</view>
+      <button class='btn' open-type="openSetting">去授权</button>
+    </view>
+  </view>
 </view>

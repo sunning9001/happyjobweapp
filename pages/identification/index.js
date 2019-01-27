@@ -108,4 +108,7 @@ Page({
       })
     })
   },  
+  submitInfo(e) {
+    console.log('form发生了submit事件，事件数据为：',e)
+  },
 })

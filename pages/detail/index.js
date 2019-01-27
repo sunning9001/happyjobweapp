@@ -22,7 +22,8 @@ Page({
   onLoad: function(options) {
     console.log(options)
     this.setData({
-      type: options.type || 0
+      type: options.type || 0,
+      isWelfare:+options.isWelfare || false,
     })
     this.data.hpPositionId = options.hpPositionId
   },
@@ -89,7 +90,7 @@ Page({
         countyName,//区名
         addrDetail,//具体地址
         comLocation,//经纬度
-
+        welfareDetail
       } = data.data
 
       let isOpen = Date.parse(new Date()) / 1000 < endTime
@@ -116,7 +117,11 @@ Page({
         cityName,
         countyName,
         addrDetail,
-        comLocation
+        comLocation,
+        posDetail,
+        otherWelfare,
+        posComDesc,
+        welfareDetail,
       })
       this.setData({
         comScale: this.getComScale(data.data.scaleLower, data.data.scaleHigh),
@@ -138,7 +143,15 @@ Page({
       if (posComDesc) {
         WxParse.wxParse('posComDesc', 'html', posComDesc, this);
       }
-      this.getNodePos()
+      if(welfareDetail){
+        WxParse.wxParse('welfareDetail', 'html', welfareDetail, this);
+      }  
+
+      if(!this.data.isWelfare ){
+        setTimeout(()=>{
+          this.getNodePos()
+        },800)
+      }
     })
   },
   //获取拼团列表
@@ -303,5 +316,8 @@ Page({
     this.setData({
       authMask:false
     })
+  },
+  submitInfo(e) {
+    console.log('form发生了submit事件，事件数据为：',e)
   },
 })

@@ -42,7 +42,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    isTest:false
+    isTest:true
   },
   onLoad: function (options) {
     
@@ -55,7 +55,7 @@ Page({
     })
     this.fetchBanner()
     this.fetchList({
-      welfareOn: 1
+      hotOn: 1
     })
   },
   onShow: function () {
@@ -162,9 +162,9 @@ Page({
 
   //去详情页
   toDetail(e){
-    const { id, type } = e.currentTarget.dataset
+    const { id, type,welfare } = e.currentTarget.dataset
     wx.navigateTo({
-      url: '../detail/index?hpPositionId=' + id+"&type="+type,
+      url: '../detail/index?hpPositionId=' + id+"&type="+type+"&isWelfare="+welfare,
     })
   },
 
