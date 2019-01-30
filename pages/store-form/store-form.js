@@ -71,10 +71,6 @@ Page({
     if (!this.data.contactNo) {
       showToast('请填写联系方式')
     }
-    if (!this.data.position) {
-      showToast('请填写职务')
-      return false
-    }
 
     comApply({
       name: this.data.name,

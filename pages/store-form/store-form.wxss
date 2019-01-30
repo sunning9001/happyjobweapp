@@ -45,3 +45,7 @@ page {
   color: #fff;
   font-size: 30rpx;
 }
+.label.required::before {
+  content: "*";
+  color: red;
+}
