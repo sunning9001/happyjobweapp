@@ -1,9 +1,14 @@
 .panel {
   position: relative;
-  padding: 0 30rpx 50rpx;
+  padding: 0 30rpx;
+  height: 328rpx;
   background: url('https://weapp.hap-job.com/uploadFiles/images/detail/detail-bg.jpg') no-repeat;
   background-size: 100% 100%;
   border-bottom: 1px solid #fff;
+  box-sizing: border-box;
+}
+.panel.pt {
+  height: 422rpx;
 }
 .panel .bg {
   position: absolute;
@@ -15,6 +20,7 @@
 }
 .panel .row {
   display: flex;
+  align-items: center;
   margin-bottom: 40rpx;
 }
 .panel .job {
@@ -114,6 +120,9 @@ page {
   font-size: 22rpx;
   color: #999;
 }
+.card .card-footer .address {
+  display: flex;
+}
 .color99 {
   font-size: 20rpx;
   color: #999;
@@ -144,10 +153,10 @@ page {
   color: #323232;
   margin-bottom: 84rpx;
 }
-.tabs .tab {
+.tabs .hover-tabs {
   position: relative;
 }
-.tabs .tab::after {
+.tabs .hover-tabs::after {
   content: "";
   position: absolute;
   bottom: -10rpx;

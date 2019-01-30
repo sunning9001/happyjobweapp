@@ -2,10 +2,16 @@
 
 .panel{
     position: relative;
-    padding: 0 30rpx 50rpx;
+    padding: 0 30rpx;
+    // padding: 0 30rpx 50rpx;
+    height: 328rpx;
     background: url('@{baseUrl}/images/detail/detail-bg.jpg') no-repeat;
     background-size: 100% 100%;
     border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    &.pt{
+        height: 422rpx;
+    }
     .bg{
         position: absolute;
         top: 0;
@@ -16,6 +22,7 @@
     }
     .row{
         display: flex;
+        align-items:center;
         margin-bottom: 40rpx; 
       }
     .job{
@@ -121,6 +128,9 @@ page{
         padding: 30rpx 0;
         font-size: 22rpx;
         color: #999;
+        .address{
+            display: flex;
+        }
     }
 }
 .color99{
@@ -153,7 +163,7 @@ page{
     padding: 20rpx 0 0;
     color: #323232;
     margin-bottom: 84rpx;
-    .tab{
+    .hover-tabs{
         position: relative;
         &::after{
             content: "";

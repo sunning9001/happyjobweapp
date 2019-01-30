@@ -51,7 +51,7 @@ Page({
         app.globalData.oid = data.data.oid,
         app.globalData.shareToken = data.data.shareToken,
         updataStorageData('shareToken', data.data.shareToken)
-        updataStorageData('phone', data.data.phoneNumber)
+        updataStorageData('phone', data.data.phoneNo)
         resolve(true)
       }).catch(data => {
         reject(false)

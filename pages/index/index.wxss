@@ -105,6 +105,11 @@
   justify-content: space-between;
   color: #333;
 }
+.box-item .one .left {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
 .job {
   color: #333;
   font-size: 30rpx;

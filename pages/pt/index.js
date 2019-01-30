@@ -125,7 +125,7 @@ Page({
   //去申请列表
   toApplyList() {
     wx.navigateTo({
-      url: '../apply-list/index'
+      url: '../apply-list/index?type=pt'
     })
   },
   //倒计时结束回调

@@ -8,8 +8,7 @@ Page({
 
   onLoad: function (options) {
     console.log(options)
-    let { oid} = options
-    console.log(oid)
+
   },
 
   onReady: function () {

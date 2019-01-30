@@ -49,7 +49,7 @@
 }
 .box-item .one .job {
   color: #333;
-  font-size: 30rpx;
+  font-size: 22rpx;
   font-family: PingFang-SC-Bold;
   font-weight: bold;
   letter-spacing: 4rpx;
@@ -67,7 +67,7 @@
   background: url("https://weapp.hap-job.com/uploadFiles/images/home/fanBg.png") no-repeat;
   background-size: 100% 100%;
   margin-left: 10rpx;
-  font-size: 20rpx;
+  font-size: 16rpx;
   padding: 4rpx 20rpx;
   color: #fff;
 }

@@ -85,7 +85,8 @@ Page({
   },
 // 一键参团
   joinGroup(e){
-    groupApply(this.options.hpPositionGroupId).then(data=>{
+    let { formId } = e.detail
+    groupApply(this.options.hpPositionGroupId,formId).then(data=>{
       this.fetchData()
     })
   },

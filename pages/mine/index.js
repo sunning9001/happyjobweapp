@@ -1,5 +1,6 @@
 import { imgServerUrl } from '../../config/config.js'
 import { getCenterInfo } from '../../services/index.js'
+import { updataStorageData } from '../../utils/storage.js'
 var app = getApp()
 Page({
   data: {
@@ -13,13 +14,12 @@ Page({
       })
       return
     }
-    console.log(2)
     this.fetchData()
   },
   fetchData(){
     getCenterInfo().then(data=>{
       console.log(data)
-      data.data.userName = data.data.userName || data.data.realName || app.globalData.userInfo.nickName
+      data.data.userName = decodeURIComponent( data.data.realName ||  data.data.userName || app.globalData.userInfo.nickName )
       data.data.headerPic = data.data.headerPic || app.globalData.userInfo.avatarUrl
       let { headerPic, userName, approveState, hpUserId, phoneNo, hpUserResumeId }=data.data
       userName=decodeURIComponent(userName)
@@ -35,6 +35,8 @@ Page({
         wx.navigateTo({
           url: '../auth/auth',
         })
+      }else{
+        updataStorageData("phone",phoneNo)
       }
     })
   },

@@ -45,7 +45,9 @@ Page({
       idNum: e.detail.detail.value.trim()
     })
   },
-  submit(){
+  submit(e){
+    console.log('form发生了submit事件，事件数据为：',e)
+    let{ formId } = e.detail
     let { realName,idNum,idFrontPic,idBackPic,idPersonPic } = this.data
     if (realName=="") {
       wx.showToast({
@@ -96,7 +98,8 @@ Page({
       idNum,
       idFrontPic,
       idBackPic,
-      idPersonPic
+      idPersonPic,
+      formId
     }).then(data=>{
       console.log(data)
       wx.hideLoading()
@@ -108,7 +111,4 @@ Page({
       })
     })
   },  
-  submitInfo(e) {
-    console.log('form发生了submit事件，事件数据为：',e)
-  },
 })

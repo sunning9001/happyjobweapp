@@ -122,6 +122,7 @@ Page({
         otherWelfare,
         posComDesc,
         welfareDetail,
+        carDesc
       })
       this.setData({
         comScale: this.getComScale(data.data.scaleLower, data.data.scaleHigh),
@@ -173,8 +174,9 @@ Page({
     })
   },
   //申请工作
-  applyJob() {
-    positionApply(this.data.hpPositionId).then(data => {
+  applyJob(e) {
+    let { formId } = e.detail
+    positionApply(this.data.hpPositionId,formId).then(data => {
       showToast('申请职位成功', 'success')
       this.setData({
         comApplyNum: 1
@@ -183,7 +185,8 @@ Page({
   },
   //申请开团
   applyPt() {
-    positionApply(this.data.hpPositionId).then(data => {
+    let { formId } = e.detail
+    positionApply(this.data.hpPositionId,formId).then(data => {
       var hpPositionGroupId = data.data.hpPositionGroupId
       wx.navigateTo({
         url: '../result/index?type=pt&status=1&hpPositionGroupId=' + hpPositionGroupId,
@@ -192,10 +195,9 @@ Page({
   },
   //参与拼团
   joinTuan(e) {
-    let {
-      groupid
-    } = e.currentTarget.dataset
-    groupApply(groupid).then(data => {
+    let { formId } = e.detail
+    let { groupid } = e.currentTarget.dataset
+    groupApply(groupid,formId).then(data => {
       wx.navigateTo({
         url: '../pt-detail/index?hpPositionGroupId=' + groupid,
       })
@@ -320,4 +322,14 @@ Page({
   submitInfo(e) {
     console.log('form发生了submit事件，事件数据为：',e)
   },
+  toPt(){
+    wx.navigateTo({
+      url:'../document/pt'
+    })
+  },
+  toFanxian(){
+    wx.navigateTo({
+      url:'../document/fanxian'
+    })
+  }
 })

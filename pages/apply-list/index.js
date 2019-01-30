@@ -6,12 +6,23 @@ Page({
     totalPage: 1,//总页数
     isScroll: true,//是否可以滚动
     showCount: 10,//单页展示记录数
+    groupOn:0,
     list:[]
   },
   onLoad: function (options) {
+    console.log(options)
+    let { type } = options
+    if(type){
+      this.data.groupOn=1
+      this.data.showCount=3
+      this.data.isScroll = false
+    }
     this.fetchData()
   },
   onReachBottom: function () {
+    if(this.data.groupOn==1){
+      return false
+    }
     var currentPage = this.data.currentPage + 1;
     this.setData({
       currentPage
@@ -23,13 +34,17 @@ Page({
   },
   //获取我参与的拼团
   fetchData() {
-    if (!this.data.isScroll) {
+    if (!this.data.isScroll && this.data.groupOn ==0 ) {
       return false
     }
-    getPositionList({
+    let json = {
       currentPage: this.data.currentPage,
-      showCount: this.data.showCount
-    }).then(data => {
+      showCount: this.data.showCount,
+    }
+    if( this.data.groupOn ){
+      json.groupOn = 1
+    }
+    getPositionList(json).then(data => {
       console.log(data)
       let { currentPage, totalPage } = data.page
       let setData = {

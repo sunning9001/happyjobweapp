@@ -54,7 +54,11 @@
       <view class='one'>
         <view class='left'>
           <text class='job'>{{item.posName}}</text>
-          <text class='fan' wx:if="{{item.retManMoney}}">返{{item.retManMoney}}元</text>
+          <view class='fan' wx:if="{{item.retManMoney||item.urgentMoney}}">
+            返<text wx:if="{{item.retManMoney}}">{{item.retManMoney}}</text>
+            <text wx:if="{{item.retManMoney&&item.urgentMoney}}">+</text>
+            <text wx:if="{{item.urgentMoney}}">{{item.urgentMoney}}</text>元
+          </view>
         </view>
         <view class='salary'>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
       </view>

@@ -3,6 +3,8 @@ import { resumeBase, eduList } from '../../services/index.js'
 import { uploadImg } from '../../services/uploadFile.js'
 import { showToast } from '../../utils/tips.js'
 import { argusToTimestamp } from '../../utils/util.js'
+import { updataStorageData } from '../../utils/storage.js'
+import { http } from '../../utils/http.js'
 const app = getApp();
 
 Page({
@@ -11,38 +13,45 @@ Page({
     sex: ["男", "女"],
     sex_index: 0,
     eduList: [],
-    eduIndex: 0,
+    eduIndex: 1,
     avatar: '',
     name:'',
     year:'',
     iphone:'',
-    hpUserResumeId:''
+    hpUserResumeId:null
   },
   onLoad: function (options) {
-    let {hpUserResumeId=null} = options
-    if (hpUserResumeId ){
-      this.setData({
-        hpUserResumeId
-      })
-    }
+    let {hpUserResumeId=null,progress=0} = options
+    this.setData({
+      hpUserResumeId
+    })
+    this.data.progress=progress//正在进行中，再次请求
     this.setData({
       avatar: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl:'',
       endDate: new Date().getFullYear(),
-      year: new Date().getFullYear()
+      year: '1993'
     })
     this.fetchEduList()
-    let resumeBase = wx.getStorageSync('resumeBase')
-    if (resumeBase.hpUserResumeId){
+    let phone = updataStorageData('phone')
+    if( phone ){
       this.setData({
-        hpUserResumeId:resumeBase.hpUserResumeId,
-        avatar: resumeBase.resPic,
-        name: resumeBase.resName,
-        sex_index: resumeBase.resGender-1,
-        year: new Date(resumeBase.resBornTime).getFullYear(),
-        iphone:resumeBase.resPhone,
-        eduIndex: resumeBase.hpEducationId ? (Number(resumeBase.hpEducationId)-1):0
+        iphone:phone
       })
     }
+    if( hpUserResumeId ){
+      let resumeBase = wx.getStorageSync('resumeBase')
+      if (resumeBase.hpUserResumeId){
+        this.setData({
+          hpUserResumeId:resumeBase.hpUserResumeId,
+          avatar: resumeBase.resPic,
+          name: resumeBase.resName,
+          sex_index: resumeBase.resGender-1,
+          year: new Date(resumeBase.resBornTime).getFullYear(),
+          iphone:resumeBase.resPhone,
+          eduIndex: resumeBase.hpEducationId ? (Number(resumeBase.hpEducationId)-1):0
+        })
+      }
+    }    
   },
   //获取教育水平
   fetchEduList(){
@@ -136,7 +145,13 @@ Page({
     }).then(data => {
       console.log(data)
       showToast('保存成功','success')
-      wx.navigateBack()
+      if( this.data.progress ){
+        http(updataStorageData('progress')).then(data=>{
+          wx.navigateBack()
+        })
+      }else{
+        wx.navigateBack()
+      }
     })
   },
 })

@@ -1,6 +1,13 @@
 page {
   background: #f4f4f4;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  height: 80rpx;
+  line-height: 90rpx;
+}
 .box {
   display: flex;
   flex-direction: column;

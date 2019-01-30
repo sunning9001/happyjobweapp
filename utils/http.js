@@ -9,6 +9,7 @@ const apiUrl = config.apiUrl;
  */
 const http = (params) => {
   //返回promise 对象
+  wx.showLoading({ title: 'loading', mask: true });
   return new Promise((resolve, reject) => {    
     wx.request({
       url: apiUrl + params.url,//服务器url+参数中携带的接口具体地址
@@ -21,6 +22,7 @@ const http = (params) => {
       responseType: params.responseType,//响应的数据类型
       success: function (res) {
         console.log(res.data)
+        wx.hideLoading()
         if (res.statusCode == 200) {
           var errorCode = res.data.errorCode
           if (errorCode == 0) {
@@ -50,20 +52,25 @@ const http = (params) => {
             //用户信息和微信信息不匹配
           } else if (errorCode == 40006) {
             //用户尚未创建简历
-            wx.navigateTo({
-              url: '/pages/user-info/user-info',
-            })
+            var pages = getCurrentPages()
+            var currentPage = pages[pages.length-1] //获取当前页面的对象
+            var url = currentPage.route //当前页面url
+            if(url=="pages/pt-detail/index"){
+              wx.getStorageSync('progress',params)
+              wx.navigateTo({
+                url: '/pages/user-info/user-info?progress=1',
+              })
+            }else{
+              wx.navigateTo({
+                url: '/pages/user-info/user-info',
+              })
+            }
           } else if (errorCode == 40007) {
             //账号类型不符
           } else if (errorCode == 50000) {
             //后台接口异常
             // showToast('后台接口异常')
           } 
-          //错误码处理 手机未绑定
-          // else if (params.url == "/order/result" && res.data.errorCode == "800020") {//支付结果未知      
-          //   //需要特殊处理的接口，可以单独列出来返回数据
-          //   resolve(res.data)
-          // } 
           showToast(res.data.message)
           reject(res.data)
 
@@ -75,7 +82,8 @@ const http = (params) => {
           })
         }
       },
-      fail: function (e) {   
+      fail: function (e) {  
+        wx.hideLoading() 
         console.log(e)     
         wx.showToast({
           icon: "none",

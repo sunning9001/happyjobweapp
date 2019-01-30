@@ -18,6 +18,7 @@
       <view class='one'>
         <view class='left'>
           <text class='job'>{{item.posName}}</text>
+          <text class='fan' wx:if="{{item.retManMoney}}">返{{item.retManMoney}}元</text>
           <text class='fan' wx:if="{{item.fiveMoney }}">拼团多返{{item.fiveMoney}}元</text>
         </view>
         <view class='salary'>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
@@ -61,7 +62,8 @@
           <view class='one'><text class='job'>{{item.posName}}</text><text class='componey'>{{item.comName}}</text></view>
           <view class='three' wx:if="{{!djsEnd}}">
             <view class='limit' wx:if="{{(3-item.groupPartNum)>0}}">还差<text class='number'>{{3-item.groupPartNum}}</text>人成团</view>
-            <view class='limit' wx:else>已有<text class='number'>{{item.groupPartNum}}</text>人参团</view>
+            <view class='limit' wx:elif="{{ item.groupPartNum<5 }}">已成3人团，可继续拼5人团</view>
+            <view class='limit' wx:else>已成5人团，可继续拼团</view>
             <view class='djs'>
               <text>剩余</text>
               <i-count-down

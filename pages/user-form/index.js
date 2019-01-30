@@ -2,6 +2,7 @@ import { getCenterInfo, sendPhoneCode, usePhoneBound } from '../../services/inde
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
 import $wuxCountDown from '../../utils/coutdown.js'
+import { updataStorageData } from '../../utils/storage.js'
 
 const app = getApp();
 Page({
@@ -15,6 +16,9 @@ Page({
     isShowYzm:false,
   },
   onLoad: function (options) {
+    this.setData({
+      phone: updataStorageData("phone")
+    }) 
     this.fetchData()
   },
   fetchData(){
@@ -71,6 +75,10 @@ Page({
     sendPhoneCode({
       phoneNo:this.data.phone
     }).then(data=>{
+      showToast('短信已发送，请填写新手机号和验证码','none',2500)
+      this.setData({
+        phone:''
+      })
       console.log(data)
     })
   },

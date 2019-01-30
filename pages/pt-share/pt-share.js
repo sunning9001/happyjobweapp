@@ -226,8 +226,7 @@ Page({
   /**
    * 异步生成海报
    */
-  onCreatePoster() {
-    wx.showLoading({ title: 'loading', mask: true });
+  onCreatePoster() {    
     Poster.create();
   },
   getCode() {
@@ -237,7 +236,7 @@ Page({
       shareQrCodeB(targetUrl).then(data => {
         that.setData({
           qrCode: data.data.imgUrl
-        })
+        })        
         resolve(true)
       }).catch(data=>{
         console.log(data)

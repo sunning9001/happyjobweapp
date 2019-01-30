@@ -105,7 +105,7 @@ module.exports={
   },
 
   //POST:岗位申请：用户申请职位或者发起拼团
-  positionApply(id){
+  positionApply(id,formId){
     return http({
       url: url.positionApply,
       method:'POST',
@@ -114,7 +114,8 @@ module.exports={
         sid: app.globalData.sid,
       },
       data: {
-        hpPositionId: id
+        hpPositionId: id,
+        formId:formId,
       }
     })
   },
@@ -149,7 +150,7 @@ module.exports={
   },
 
   //post 岗位申请：用户申请参与职位拼团
-  groupApply(id){
+  groupApply(id,formId){
     return http({
       url: url.groupApply,
       method: 'POST',
@@ -158,7 +159,8 @@ module.exports={
         sid: app.globalData.sid,
       },
       data: {
-        hpPositionGroupId: id
+        hpPositionGroupId: id,
+        formId:formId,
       }
     })
   },

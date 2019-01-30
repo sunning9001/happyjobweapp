@@ -2,6 +2,7 @@ import { imgServerUrl } from '../../config/config.js'
 import { shareBound } from '../../services/index.js'
 import { showToast } from '../../utils/tips.js'
 import { updataStorageData } from '../../utils/storage.js'
+var app = getApp()
 Page({
   data: {
     imgServerUrl: imgServerUrl,
@@ -74,4 +75,14 @@ Page({
       errorFlag: 0,
     })
   },
+  goBack(){
+    wx.navigateTo({
+      url: '../recommend/index',
+    })
+  },
+  goHome(){
+    wx.switchTab({
+      url: '../index/index',
+    })
+  }
 })

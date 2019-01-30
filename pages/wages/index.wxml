@@ -65,7 +65,7 @@
     </view>
   </view>
 
-  <view class='nullpage' wx:if="!detailFlag">
+  <view class='nullpage' wx:if="{{!detailFlag}}">
     <view class='row'>未查到您的工资条</view>
     <view class='row'>请在发薪日2日后查询</view>
     <view class='row'>给您带来不便，敬请谅解</view>
