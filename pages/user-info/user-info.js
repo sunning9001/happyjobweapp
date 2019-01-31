@@ -1,5 +1,5 @@
 import { imgServerUrl } from '../../config/config.js'
-import { resumeBase, eduList } from '../../services/index.js'
+import { resumeBase, eduList,groupApply,positionApply } from '../../services/index.js'
 import { uploadImg } from '../../services/uploadFile.js'
 import { showToast } from '../../utils/tips.js'
 import { argusToTimestamp } from '../../utils/util.js'
@@ -25,7 +25,6 @@ Page({
     this.setData({
       hpUserResumeId
     })
-    this.data.progress=progress//正在进行中，再次请求
     this.setData({
       avatar: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl:'',
       endDate: new Date().getFullYear(),
@@ -143,18 +142,30 @@ Page({
       resPhone: iphone,
       resPic: avatar
     }).then(data => {
+      var hpPositionGroupId = this.options.hpPositionGroupId
+      var hpPositionId = this.options.hpPositionId
+      var formId = this.options.formId
       console.log(data)
       showToast('保存成功','success')
-      if( this.data.progress ){
-        var params = updataStorageData('progress')
-        http(params).then(data=>{
-          if( params.url=="/frontUser/groupApply" ){
+      if(hpPositionGroupId){
+        groupApply(hpPositionGroupId,formId).then(data=>{
+          wx.redirectTo({
+            url:'/pages/pt-detail/index?hpPositionGroupId='+hpPositionGroupId
+          })
+        })
+      }else if(hpPositionId){
+        positionApply(hpPositionId,formId).then(data=>{
+          if(data.data.hpPositionGroupId){
             wx.redirectTo({
-              url:'/pages/pt-detail/index?hpPositionGroupId='+params.data.hpPositionGroupId
+              url:'/pages/pt-detail/index?hpPositionGroupId='+data.data.hpPositionGroupId
             })
           }else{
-            wx.navigateBack()
+            wx.redirectTo({
+              url:'/pages/detail/index?hpPositionId='+hpPositionId
+            })
           }
+            
+          
         })
       }else{
         wx.navigateBack()

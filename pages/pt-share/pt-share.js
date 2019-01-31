@@ -230,6 +230,7 @@ Page({
     Poster.create();
   },
   getCode() {
+    wx.showLoading({ title: 'loading', mask: true });
     var that = this
     return new Promise(function (resolve,reject){
       let targetUrl = 'pages/pt-detail/index?hpPositionGroupId=' + that.data.hpPositionGroupId + '&shareToken=' + updataStorageData('shareToken')
@@ -243,5 +244,8 @@ Page({
         reject(data)
       })
     })    
+  },
+  qrcodeLoad(e){
+    wx.hideLoading()
   }
 })

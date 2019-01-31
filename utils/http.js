@@ -38,8 +38,8 @@ const http = (params) => {
             wx.navigateTo({
               url: '/pages/auth/auth',
             })
-            reject(res.data)
-            return
+            // reject(res.data)
+            // return
           } else if (errorCode == 40002) {
             //未获取到微信登录信息
             wx.navigateTo({
@@ -53,26 +53,13 @@ const http = (params) => {
             //用户信息和微信信息不匹配
           } else if (errorCode == 40006) {
             //用户尚未创建简历            
-            // var pages = getCurrentPages()
-            // var currentPage = pages[pages.length-1] //获取当前页面的对象
-            // var url = currentPage.route //当前页面url
-            // if(url=="pages/pt-detail/index"){
-            //   wx.getStorageSync('progress',params)
-            //   wx.navigateTo({
-            //     url: '/pages/user-info/user-info?progress=1',
-            //   })
-            // }else{
-            // }
-            if( params.url=="/frontUser/positionApply" || params.url=="/frontUser/groupApply" ){
-              wx.setStorageSync('progress',params)
-              wx.navigateTo({
-                url: '/pages/user-info/user-info?progress=1',
-              })
-            }else{
-              wx.navigateTo({
-                url: '/pages/user-info/user-info',
-              })
-            }            
+            var targetUrl = wx.getStorageSync('resumeUrl')
+            if(!targetUrl){
+              targetUrl = '/pages/user-info/user-info'
+            }
+            wx.navigateTo({
+              url: targetUrl,
+            })           
           } else if (errorCode == 40007) {
             //账号类型不符
           } else if (errorCode == 50000) {
