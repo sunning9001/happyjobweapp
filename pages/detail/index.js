@@ -127,16 +127,12 @@ Page({
       })
       this.setData({
         comScale: this.getComScale(data.data.scaleLower, data.data.scaleHigh),
-        comType: data.data.typeName
+        comType: data.data.typeName,
+        isWelfare:welfareOn
       })
       if(hpPositionGroupId){
         this.setData({
           type:1
-        })
-      }
-      if(welfareOn){
-        this.setData({
-          isWelfare:isWelfare
         })
       }
 
