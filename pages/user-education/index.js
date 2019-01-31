@@ -9,8 +9,8 @@ Page({
     name:'',
     eduList:[],
     eduIndex:0,
-    startDate:[],
-    endDate:[],
+    startDate:'',
+    endDate:'',
     hpUserEducationId:null,
     hpUserResumeId:''
   },
@@ -25,8 +25,8 @@ Page({
         eduIndex: eduList.hpEducationId - 1,
         hpUserResumeId: eduList.hpUserResumeId,
         hpUserEducationId: eduList.hpUserEducationId,
-        startDate: formateym(eduList.startTime+'000','/'),
-        endDate: formateym(eduList.endTime+'000','/')
+        startDate: formateym(eduList.startTime+'000','-'),
+        endDate: formateym(eduList.endTime+'000','-')
       })
     } else {
       this.setData({
@@ -37,13 +37,13 @@ Page({
   //入学时间
   startDateChange(e) {
     this.setData({
-      startDate: e.detail.value.replace(/-/g, '/')
+      startDate: e.detail.value
     })
   },
   //毕业时间
   endDateChange(e) {
     this.setData({
-      endDate: e.detail.value.replace(/-/g, '/')
+      endDate: e.detail.value
     })
   },
   //学校名称
@@ -91,8 +91,8 @@ Page({
       return
     }
     let { name, startDate, endDate, eduList, eduIndex, hpUserEducationId, hpUserResumeId } = this.data
-    let startTime = Math.floor(argusToTimestamp(startDate.split("/"))/1000)
-    let endTime = Math.floor(argusToTimestamp(endDate.split("/"))/1000)
+    let startTime = Math.floor(argusToTimestamp(startDate.split("-"))/1000)
+    let endTime = Math.floor(argusToTimestamp(endDate.split("-"))/1000)
     resumeEdu({
       startTime,
       endTime,

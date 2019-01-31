@@ -28,11 +28,10 @@ const formatNumber = n => {
 //将年月日数组转成时间戳
 const argusToTimestamp = arr => {
   var lenth = arr.length;
-  if (lenth< 3) {
-    var i =0
-    for (; i < lenth-3; i++) {
-      arr.push("01")
-    }
+  if (lenth< 3) {                
+      for (var i =0; i < 3-lenth; i++) {
+          arr.push("01")
+      }
   }
   return Date.parse(new Date(arr.join("/")))
 }

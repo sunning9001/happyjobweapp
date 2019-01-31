@@ -76,9 +76,6 @@ Page({
       phoneNo:this.data.phone
     }).then(data=>{
       showToast('短信已发送，请填写新手机号和验证码','none',2500)
-      this.setData({
-        phone:''
-      })
       console.log(data)
     })
   },

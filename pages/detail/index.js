@@ -54,7 +54,7 @@ Page({
     var shareToken = wx.getStorageSync('shareToken')
     return {
       title: '开心工作入职有奖',
-      path: '/pages/detail/index?shareToken=' + shareToken,
+      path: `/pages/detail/index?shareToken=${shareToken}&type=${this.data.type}&isWelfare=${this.data.isWelfare}&hpPositionId=${this.data.hpPositionId}`,
       imageUrl: ''
     }
   },
