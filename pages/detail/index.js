@@ -184,7 +184,7 @@ Page({
     })
   },
   //申请开团
-  applyPt() {
+  applyPt(e) {
     let { formId } = e.detail
     positionApply(this.data.hpPositionId,formId).then(data => {
       var hpPositionGroupId = data.data.hpPositionGroupId
