@@ -21,7 +21,9 @@
           <text class='fan' wx:if="{{item.retManMoney}}">返{{item.retManMoney}}元</text>
           <text class='fan' wx:if="{{item.fiveMoney }}">拼团多返{{item.fiveMoney}}元</text>
         </view>
-        <view class='salary'>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
+        <view class='salary' wx:if="{{item.hpPositionSalaryId==-1}}">不限</view>
+        <view class='salary' wx:elif="{{item.hpPositionSalaryId == 0 }}">面议</view>        
+        <view class='salary' wx:else>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
       </view>
       <view class='two'>
         <view class='commpany'>{{item.comName}}</view>

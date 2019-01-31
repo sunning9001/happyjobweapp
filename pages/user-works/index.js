@@ -23,8 +23,8 @@ Page({
         jobName:expList.posType,
         hpUserResumeId: expList.hpUserResumeId,
         hpUserExpId: expList.hpUserExpId,
-        startDate: formateym(+(expList.startTime+'000'), '-'),
-        endDate: formateym(+(expList.endTime+'000'),'-')
+        startDate: formateym(+(expList.startTime+'000'), '/'),
+        endDate: formateym(+(expList.endTime+'000'),'/')
       })
     }else{
       this.setData({
@@ -34,8 +34,9 @@ Page({
 
     let year = new Date().getFullYear()
     let month = formatNumber(new Date().getMonth()+1)
-    let day = formatNumber(new Date().getDate())
-    let startDateEnd = year + '-' + month + '-' + day
+    // let day = formatNumber(new Date().getDate())
+    // let startDateEnd = year + '/' + month + '/' + day
+    let startDateEnd = year + '/' + month
     this.setData({
       startDateEnd: startDateEnd
     })
@@ -43,13 +44,13 @@ Page({
   //入职时间
   startDateChange(e){
     this.setData({
-      startDate:e.detail.value
+      startDate:e.detail.value.replace(/-/g, '/')
     })
   },
   //离职时间
   endDateChange(e){
     this.setData({
-      endDate: e.detail.value
+      endDate: e.detail.value.replace(/-/g, '/')
     })
   },
   //公司名称
@@ -91,8 +92,8 @@ Page({
       return
     }
     let { comName, jobName, startDate, endDate, hpUserExpId, hpUserResumeId } = this.data
-    let startTime = Math.floor( argusToTimestamp(startDate.split("-"))/1000 )
-    let endTime = Math.floor(argusToTimestamp(endDate.split("-")) / 1000)
+    let startTime = Math.floor( argusToTimestamp(startDate.split("/"))/1000 )
+    let endTime = Math.floor(argusToTimestamp(endDate.split("/")) / 1000)
     resumeExp({
       comName,
       startTime,

@@ -8,7 +8,7 @@ const apiUrl = config.apiUrl;
  * 封装http 请求方法
  */
 const http = (params) => {
-  console.log(params)
+  // console.log(params)
   //返回promise 对象
   wx.showLoading({ title: 'loading', mask: true });
   return new Promise((resolve, reject) => {    

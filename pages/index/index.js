@@ -48,7 +48,7 @@ Page({
     
   },
   start(){
-    let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city
+    let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city || ''
     console.log(cityName)
     this.setData({
       cityName: cityName

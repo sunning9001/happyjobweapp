@@ -19,7 +19,7 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      cityName:updataStorageData('city') || app.globalData.userInfo.city
+      cityName:updataStorageData('city') || app.globalData.userInfo.city || ''
     })
   },
   onReady: function () {

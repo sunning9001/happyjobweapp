@@ -51,7 +51,6 @@ Page({
   },
 
   onShareAppMessage: function() {
-    console.log(options)
     var shareToken = wx.getStorageSync('shareToken')
     return {
       title: '开心工作入职有奖',
