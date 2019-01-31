@@ -146,8 +146,15 @@ Page({
       console.log(data)
       showToast('保存成功','success')
       if( this.data.progress ){
-        http(updataStorageData('progress')).then(data=>{
-          wx.navigateBack()
+        var params = updataStorageData('progress')
+        http(params).then(data=>{
+          if( params.url=="/frontUser/groupApply" ){
+            wx.redirectTo({
+              url:'/pages/pt-detail/index?hpPositionGroupId='+params.data.hpPositionGroupId
+            })
+          }else{
+            wx.navigateBack()
+          }
         })
       }else{
         wx.navigateBack()
