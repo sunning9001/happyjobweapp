@@ -38,7 +38,7 @@ Page({
     totalPage:1,//总页数
     isScroll:true,//是否可以滚动
     showCount: 10,//单页展示记录数
-    index:3,//岗位类型
+    index:-1,//岗位类型
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -54,9 +54,8 @@ Page({
       cityName: cityName
     })
     this.fetchBanner()
-    this.fetchList({
-      hotOn: 1
-    })
+    let data = this.workType(this.data.index)
+    this.fetchList(data)
   },
   onShow: function () {
     if (app.globalData.userInfo) {
@@ -189,6 +188,7 @@ Page({
       case 2: data.retOn = 1; break;
       case 3: data.welfareOn = 1; break;
       case 4: data.urgentOn = 1; break;
+      default: data.hotOn = 1; break;
     }
     return data
   },
