@@ -26,7 +26,7 @@ Page({
         text: "高薪急聘"
       }
     ],
-    cityName:'',
+    cityName:'无锡',
     keyWord:'',
     // posNature: 0,//职位性质（1、实习，2、兼职，3、全职）
     // retOn: 0,//是否入职返现
@@ -48,7 +48,7 @@ Page({
     
   },
   start(){
-    let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city || ''
+    let cityName = wx.getStorageSync('city') || app.globalData.userInfo.city || '无锡'
     console.log(cityName)
     this.setData({
       cityName: cityName
