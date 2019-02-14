@@ -1,6 +1,5 @@
 require("./utils/string.js")
 const ald = require('./libs/ald-stat.js')
-var api = require('./api/api.js')
 import { http } from './utils/http.js'
 import { updataStorageData } from './utils/storage.js'
 import { getWxCode, hasAuth, getUserInfo } from './utils/wx.js'
@@ -67,7 +66,9 @@ App({
     .then(data=>{
       console.log(data)
       this.globalData.userInfo = data.userInfo;
-      updataStorageData('city', data.userInfo.city)
+      if (!updataStorageData('city')){
+        updataStorageData('city', data.userInfo.city)
+      }
       saveLogin({
         encryptedData: encodeURIComponent(data.encryptedData),
         iv: encodeURIComponent(data.iv),
@@ -99,7 +100,7 @@ App({
     oid: '',
     sid: '',
     sessionKey:'',
-    city: updataStorageData('city') ||''
+    city: updataStorageData('city') || '无锡'
   },
   //页面分享
   onShareAppMessage: function() {

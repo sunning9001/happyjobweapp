@@ -31,7 +31,7 @@
             </i-tag>
           </block>
         </view>
-        <view class='time'>{{globalTools.formatemd(item.startTime)}}</view>
+        <view class='time'>{{globalTools.formatemd(item.startTime*1000)}}</view>
       </view>
     </view>
   </view>

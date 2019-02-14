@@ -45,7 +45,7 @@
             </i-tag>
           </block>
         </view>
-        <view class='time'>{{globalTools.formatemd(item.startTime)}}</view>
+        <view class='time'>{{globalTools.formatemd(item.startTime*1000)}}</view>
       </view>
       <view class="four">
         <text class="pt-member">已有<text class="number">{{item.groupSccNum}}</text>人拼团成功</text>
