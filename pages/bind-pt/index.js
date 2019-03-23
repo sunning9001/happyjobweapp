@@ -1,8 +1,7 @@
 import { sendPhoneCode, usePhoneBound, resumeBase, groupApply } from '../../services/index.js'
 import { showToast } from '../../utils/tips.js'
-import { formatTime, argusToTimestamp } from '../../utils/util.js'
+import { argusToTimestamp } from '../../utils/util.js'
 import $wuxCountDown from '../../utils/coutdown.js'
-
 
 var app = getApp()
 Page({
@@ -140,5 +139,10 @@ Page({
         url: '../pt-detail/index?hpPositionGroupId=' + this.options.hpPositionGroupId,
       })
     })
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
   },
 })

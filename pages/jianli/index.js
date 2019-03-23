@@ -110,5 +110,10 @@ Page({
         url: '../user-education/index?hpUserResumeId=' + this.data.hpUserResumeId,
       })
     }
-  }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
+},
 })

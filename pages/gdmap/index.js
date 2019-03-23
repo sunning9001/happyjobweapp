@@ -1,5 +1,5 @@
 var $ = require('../../libs/gdconf.js');
-
+var app = getApp()
 Page({
   data: {
     navType: $.navType,
@@ -275,6 +275,11 @@ Page({
       latitude: Number(this.data.POIlatitude),
       longitude: Number(this.data.POIlongitude)
     })
-  }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
+  },
 
 })

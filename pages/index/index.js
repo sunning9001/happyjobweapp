@@ -200,4 +200,9 @@ Page({
       // url: '../store-form/store-form',
     })
   },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
+  },
 })

@@ -3,7 +3,6 @@ import { showToast } from '../../utils/tips.js'
 import Poster from '../../components/wxa-plugin-canvas/poster/poster';
 import { shareQrCodeB, getGroupDetail } from '../../services/index.js'
 import { updataStorageData } from '../../utils/storage.js'
-import { hasAuth } from '../../utils/wx.js'
 var app = getApp()
 
 Page({
@@ -247,5 +246,11 @@ Page({
   },
   qrcodeLoad(e){
     wx.hideLoading()
-  }
+  },
+
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
+  },
 })

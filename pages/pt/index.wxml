@@ -1,15 +1,16 @@
 <wxs src="../tools.wxs" module="globalTools" />
 
 <!-- 轮播 -->
-<view class="">
-  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true" indicator-active-color="#fff" style="height:{{swiperH}}px">
+<image src="{{imgServerUrl}}/images/pt/pt-banner.jpg" class="slide-image" mode='widthFix'/>
+  <!-- <view class="">
+  <swiper indicator-dots="false" autoplay="false" interval="3000" duration="500" circular="true" indicator-active-color="#fff" style="height:{{swiperH}}px">
     <block wx:for="{{1}}">
       <swiper-item>
         <image src="{{imgServerUrl}}/images/pt/pt-banner.jpg" class="slide-image" mode='widthFix' bindload="imageLoad"/>
       </swiper-item>
     </block>
   </swiper>
-</view>
+</view> -->
 
 <view class='box-body {{myList.length?"mg190":""}}' bindtap='toOrderDetail' data-orderid="{{list.ygfOrderId}}">
   <view class='box-item fixedH' wx:for="{{list}}" wx:key="hpPositionId" bindtap='toDetail' data-id="{{item.hpPositionId}}" data-type="{{item.groupOn}}"  data-welfare="{{item.welfareOn}}" hover-class="item-hover">

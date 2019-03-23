@@ -341,5 +341,10 @@ Page({
     wx.navigateTo({
       url:'../document/fanxian'
     })
-  }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
+  },
 })

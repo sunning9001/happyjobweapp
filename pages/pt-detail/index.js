@@ -96,5 +96,11 @@ Page({
     wx.navigateTo({
       url: '../pt-share/pt-share?hpPositionGroupId='+this.data.hpPositionGroupId,
     })
-  }  
+  },
+  
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
+  },
 })

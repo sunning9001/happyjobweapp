@@ -194,6 +194,11 @@ Page({
         searchList: searchList
       })       
     },
+    onError(err) {
+        app.aldstat.sendEvent('报错',{
+            'err': err
+        });
+    },
 })
 
 //经纬度定位获取站点

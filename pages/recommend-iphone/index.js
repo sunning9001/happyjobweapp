@@ -84,5 +84,10 @@ Page({
     wx.switchTab({
       url: '../index/index',
     })
-  }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
+  },
 })

@@ -68,6 +68,11 @@ Page({
         reject(false)
       })
     })
-  }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
+  },
 
 })

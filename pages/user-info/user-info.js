@@ -4,7 +4,6 @@ import { uploadImg } from '../../services/uploadFile.js'
 import { showToast } from '../../utils/tips.js'
 import { argusToTimestamp } from '../../utils/util.js'
 import { updataStorageData } from '../../utils/storage.js'
-import { http } from '../../utils/http.js'
 const app = getApp();
 
 Page({
@@ -26,7 +25,7 @@ Page({
       hpUserResumeId
     })
     this.setData({
-      avatar: app.globalData.userInfo.avatarUrl ? app.globalData.userInfo.avatarUrl:'',
+      avatar: (app.globalData.userInfo && app.globalData.userInfo.avatarUrl) ? app.globalData.userInfo.avatarUrl: `${imgServerUrl}/images/avatar/man.png`,
       endDate: new Date().getFullYear(),
       year: '1993'
     })
@@ -171,5 +170,10 @@ Page({
         wx.navigateBack()
       }
     })
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
   },
 })
