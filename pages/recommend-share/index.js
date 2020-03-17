@@ -3,8 +3,7 @@ import { showToast } from '../../utils/tips.js'
 import Poster from '../../components/wxa-plugin-canvas/poster/poster'
 import { shareQrCodeA } from '../../services/index.js'
 import { updataStorageData } from '../../utils/storage.js'
-import { hasAuth } from '../../utils/wx.js'
-
+var app = getApp()
 Page({
   data: {
     imgServerUrl: imgServerUrl,
@@ -193,5 +192,10 @@ Page({
     }, () => {
       Poster.create();
     });
-  }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
+  },
 })

@@ -1,6 +1,7 @@
 import { postApprove } from '../../services/index.js'
 import { uploadImg } from '../../services/uploadFile.js'
 import { imgServerUrl } from '../../config/config.js'
+var app = getApp()
    
 Page({
   data: {
@@ -110,5 +111,10 @@ Page({
         url: '../result/index?type=auth&status=2',
       })
     })
-  },  
+  }, 
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
+  }, 
 })

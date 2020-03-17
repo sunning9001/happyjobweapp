@@ -14,6 +14,7 @@ Page({
     zym:'',
     phone:'',
     isShowYzm:false,
+    isShowCode:false,
   },
   onLoad: function (options) {
     this.setData({
@@ -76,16 +77,26 @@ Page({
       phoneNo:this.data.phone
     }).then(data=>{
       showToast('短信已发送，请填写新手机号和验证码','none',2500)
-      this.setData({
-        phone:''
-      })
       console.log(data)
     })
   },
+  showCode(){
+    this.setData({
+      isShowCode:true
+    })
+  },
   save(){
+    if( !this.data.isShowCode ){
+      wx.navigateBack()
+      return
+    }
     let { phone, zym } = this.data
     if (String(phone).length!=11){
       showToast("请输入手机号")
+      return false
+    }
+    if (!this.data.isShowYzm){
+      showToast("请先获取验证码")
       return false
     }
     if (String(zym).length!=4){

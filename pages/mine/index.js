@@ -76,5 +76,10 @@ Page({
         url: '../result/index?type=auth&status=2',
       })
     }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
   },  
 })

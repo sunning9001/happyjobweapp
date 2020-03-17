@@ -30,7 +30,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.5.1",
+	"libVersion": "2.6.2",
 	"appid": "wx1e8ed93850777ffb",
 	"projectname": "kaixin",
 	"debugOptions": {

@@ -9,7 +9,6 @@ Page({
     imgServerUrl: imgServerUrl
   },
   onLoad: function () {
-    // this.start()
     
   },
   bindGetUserInfo: function (e) {
@@ -17,7 +16,9 @@ Page({
       //用户按了允许授权按钮
       getUserInfo().then(data => {
         app.globalData.userInfo = data.userInfo;
-        updataStorageData('city', data.userInfo.city)
+        if(!updataStorageData('city')){
+          updataStorageData('city', data.userInfo.city)
+        }
         saveLogin({
           encryptedData: encodeURIComponent(data.encryptedData),
           iv: encodeURIComponent(data.iv),
@@ -44,5 +45,10 @@ Page({
         }
       })
     }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
   },
 })

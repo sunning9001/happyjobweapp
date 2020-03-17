@@ -1,4 +1,5 @@
 var city = require('./city.js');
+var $ = require('../../libs/gdconf.js');
 var app = getApp()
 Page({
     data: {
@@ -18,7 +19,7 @@ Page({
         searchList:[]
     },
     onLoad: function (options) {
-        var pcity = wx.getStorageSync('city')
+        var pcity = wx.getStorageSync('city') || '无锡'
         var hotList = ['北京','上海','南京','杭州','厦门','南昌','武汉']
         this.setData({
           city: pcity,
@@ -156,11 +157,18 @@ Page({
         wx.navigateBack()
     },
     cxgps: function (e) {
-        var that = this;
-        this.setData({
-          city:app.globalData.userInfo.city
-        })
-      wx.setStorageSync('city', app.globalData.userInfo.city)
+      var that = this;
+      wx.showLoading({ title: 'loading', mask: true });
+      $.map.getRegeo({
+        success(data) {
+          wx.hideLoading();
+          var data = data[0], city = data.regeocodeData.addressComponent.city || "无锡";
+          that.setData({
+            city: city
+          })
+          wx.setStorageSync('city', city)
+        }
+      })
     },
     bindKeyInput(e){
       var value = e.detail.value.trim()
@@ -185,6 +193,11 @@ Page({
       this.setData({
         searchList: searchList
       })       
+    },
+    onError(err) {
+        app.aldstat.sendEvent('报错',{
+            'err': err
+        });
     },
 })
 

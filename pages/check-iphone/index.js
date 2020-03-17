@@ -2,7 +2,7 @@ import { sendPhoneCode, getPayrollId } from '../../services/index.js'
 import { showToast } from '../../utils/tips.js'
 import { imgServerUrl} from '../../config/config.js'
 import $wuxCountDown from '../../utils/coutdown.js'
-
+var app = getApp()
 Page({
 
   data: {
@@ -90,5 +90,10 @@ Page({
       
     })
     this.vcode()
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
   },
 })

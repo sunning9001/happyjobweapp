@@ -33,7 +33,7 @@
         </view>
         <view class="footer">
             <text class="footer-text-1">立即扫码</text>
-            <image class="code" src="{{qrCode}}" />
+            <image class="code" src="{{qrCode}}" bindload="qrcodeLoad"/>
             <text class="footer-text-2">开心工作</text>
         </view>
     </view>

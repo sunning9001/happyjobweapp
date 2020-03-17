@@ -1,6 +1,6 @@
 import { imgServerUrl } from '../../config/config.js'
 import { updataStorageData } from '../../utils/storage.js'
-
+var app = getApp()
 Page({
   data: {
     imgServerUrl: imgServerUrl,
@@ -29,5 +29,11 @@ Page({
     wx.navigateTo({
       url: '../recommend-share/index',
     })
-  }
+  },
+
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
+  },
 })

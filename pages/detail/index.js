@@ -51,11 +51,10 @@ Page({
   },
 
   onShareAppMessage: function() {
-    console.log(options)
     var shareToken = wx.getStorageSync('shareToken')
     return {
       title: '开心工作入职有奖',
-      path: '/pages/detail/index?shareToken=' + shareToken,
+      path: `/pages/detail/index?shareToken=${shareToken}&type=${this.data.type}&isWelfare=${this.data.isWelfare}&hpPositionId=${this.data.hpPositionId}`,
       imageUrl: ''
     }
   },
@@ -90,7 +89,8 @@ Page({
         countyName,//区名
         addrDetail,//具体地址
         comLocation,//经纬度
-        welfareDetail
+        welfareDetail,
+        welfareOn,//是否是福利岗位
       } = data.data
 
       let isOpen = Date.parse(new Date()) / 1000 < endTime
@@ -122,13 +122,19 @@ Page({
         otherWelfare,
         posComDesc,
         welfareDetail,
-        carDesc
+        carDesc,
+        welfareOn
       })
       this.setData({
         comScale: this.getComScale(data.data.scaleLower, data.data.scaleHigh),
-        comType: data.data.typeName
+        comType: data.data.typeName,
+        isWelfare:welfareOn
       })
-
+      if(hpPositionGroupId){
+        this.setData({
+          type:1
+        })
+      }
 
       //存储厂车路线
       wx.setStorage({
@@ -176,16 +182,19 @@ Page({
   //申请工作
   applyJob(e) {
     let { formId } = e.detail
+    wx.setStorageSync('resumeUrl','/pages/user-info/user-info?hpPositionId='+this.data.hpPositionId+"&formId="+formId)
     positionApply(this.data.hpPositionId,formId).then(data => {
       showToast('申请职位成功', 'success')
       this.setData({
         comApplyNum: 1
       })
     })
+    
   },
   //申请开团
-  applyPt() {
+  applyPt(e) {
     let { formId } = e.detail
+    wx.setStorageSync('resumeUrl','/pages/user-info/user-info?hpPositionId='+this.data.hpPositionId+"&formId="+formId)
     positionApply(this.data.hpPositionId,formId).then(data => {
       var hpPositionGroupId = data.data.hpPositionGroupId
       wx.navigateTo({
@@ -197,6 +206,7 @@ Page({
   joinTuan(e) {
     let { formId } = e.detail
     let { groupid } = e.currentTarget.dataset
+    wx.setStorageSync('resumeUrl','/pages/user-info/user-info?hpPositionGroupId='+groupid+"&formId="+formId)
     groupApply(groupid,formId).then(data => {
       wx.navigateTo({
         url: '../pt-detail/index?hpPositionGroupId=' + groupid,
@@ -331,5 +341,10 @@ Page({
     wx.navigateTo({
       url:'../document/fanxian'
     })
-  }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
+  },
 })

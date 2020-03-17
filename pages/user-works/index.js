@@ -34,8 +34,9 @@ Page({
 
     let year = new Date().getFullYear()
     let month = formatNumber(new Date().getMonth()+1)
-    let day = formatNumber(new Date().getDate())
-    let startDateEnd = year + '-' + month + '-' + day
+    // let day = formatNumber(new Date().getDate())
+    // let startDateEnd = year + '/' + month + '/' + day
+    let startDateEnd = year + '/' + month
     this.setData({
       startDateEnd: startDateEnd
     })

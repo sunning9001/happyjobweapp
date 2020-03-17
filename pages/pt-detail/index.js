@@ -1,7 +1,6 @@
 import { getGroupDetail,groupApply } from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
-import { updataStorageData } from '../../utils/storage.js'
 const WxParse = require('../../plugins/wxParse/wxParse.js');
 
 var app = getApp()
@@ -86,6 +85,7 @@ Page({
 // 一键参团
   joinGroup(e){
     let { formId } = e.detail
+    wx.setStorageSync('resumeUrl','/pages/user-info/user-info?hpPositionGroupId='+this.options.hpPositionGroupId+"&formId="+formId)
     groupApply(this.options.hpPositionGroupId,formId).then(data=>{
       this.fetchData()
     })
@@ -96,5 +96,11 @@ Page({
     wx.navigateTo({
       url: '../pt-share/pt-share?hpPositionGroupId='+this.data.hpPositionGroupId,
     })
-  }  
+  },
+  
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+        'err': err
+    });
+  },
 })

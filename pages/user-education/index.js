@@ -1,7 +1,7 @@
 import { resumeEdu, eduList} from '../../services/index.js'
 import { imgServerUrl } from '../../config/config.js'
 import { showToast } from '../../utils/tips.js'
-import { formatNumber, argusToTimestamp, formateym } from '../../utils/util.js'
+import { argusToTimestamp, formateym } from '../../utils/util.js'
 
 Page({
   data: {
@@ -9,8 +9,8 @@ Page({
     name:'',
     eduList:[],
     eduIndex:0,
-    startDate:[],
-    endDate:[],
+    startDate:'',
+    endDate:'',
     hpUserEducationId:null,
     hpUserResumeId:''
   },
@@ -25,8 +25,8 @@ Page({
         eduIndex: eduList.hpEducationId - 1,
         hpUserResumeId: eduList.hpUserResumeId,
         hpUserEducationId: eduList.hpUserEducationId,
-        startDate: formateym(eduList.startTime+'000'),
-        endDate: formateym(eduList.endTime+'000')
+        startDate: formateym(eduList.startTime+'000','-'),
+        endDate: formateym(eduList.endTime+'000','-')
       })
     } else {
       this.setData({
@@ -93,7 +93,6 @@ Page({
     let { name, startDate, endDate, eduList, eduIndex, hpUserEducationId, hpUserResumeId } = this.data
     let startTime = Math.floor(argusToTimestamp(startDate.split("-"))/1000)
     let endTime = Math.floor(argusToTimestamp(endDate.split("-"))/1000)
-    
     resumeEdu({
       startTime,
       endTime,

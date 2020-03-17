@@ -10,6 +10,8 @@ Page({
     isShow: true
   },
   onLoad: function (options) {
+    let { authProgress=0 } = options
+    this.data.authProgress=authProgress
     app.globalData.noPhone=true
   },
   getPhoneNumber: function (e) {
@@ -22,10 +24,18 @@ Page({
         iv: iv,
         encryptedData: encryptedData,        
       }).then(data=>{
-        app.globalData.noPhone=false
-        wx.navigateBack()
+        app.globalData.noPhone=false 
+        var targetUrl = wx.getStorageSync('resumeUrl')
+        if(targetUrl){
+          wx.redirectTo({
+            url: targetUrl,
+          })
+        }else {
+          wx.navigateBack()
+        }
       })
     } else {
+      wx.setStorageSync('resumeUrl','')
       //用户按了拒绝按钮
       wx.showModal({
         title: '警告',
@@ -47,6 +57,7 @@ Page({
         'encryptedData': encodeURIComponent(params.encryptedData),
         'iv': encodeURIComponent(params.iv),
       }).then(data => {
+        console.log('手机号解密：',data)
         app.globalData.sid = data.data.sid,
         app.globalData.oid = data.data.oid,
         app.globalData.shareToken = data.data.shareToken,
@@ -57,6 +68,11 @@ Page({
         reject(false)
       })
     })
-  }
+  },
+  onError(err) {
+    app.aldstat.sendEvent('报错',{
+      'err': err
+    });
+  },
 
 })

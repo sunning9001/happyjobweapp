@@ -1,7 +1,5 @@
 require("./utils/string.js")
 const ald = require('./libs/ald-stat.js')
-var api = require('./api/api.js')
-import { http } from './utils/http.js'
 import { updataStorageData } from './utils/storage.js'
 import { getWxCode, hasAuth, getUserInfo } from './utils/wx.js'
 import { wxLogin, saveLogin } from './services/wx.js'
@@ -12,6 +10,37 @@ App({
     this.aldstat.sendEvent('小程序的启动时长', {
       time: Date.now() - startTime
     })
+    // 小程序版本更新
+    if(wx.getUpdateManager){
+      const updateManager = wx.getUpdateManager()
+      updateManager.onCheckForUpdate(function (res) {
+        // 请求完新版本信息的回调
+        console.log(res.hasUpdate)
+      })
+  
+      updateManager.onUpdateReady(function () {
+        wx.showModal({
+          title: '更新提示',
+          content: '新版本已经准备好，是否重启应用？',
+          success(res) {
+            if (res.confirm) {
+              // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+              updateManager.applyUpdate()
+            }
+          }
+        })
+      })
+  
+      updateManager.onUpdateFailed(function () {
+        // 新版本下载失败
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，部分功能可能无法使用，请升级到最新微信版本后重试。'
+      })
+    }    
+
     console.log(options)
     // let sceneArr = [1007, 1008, 1044, 1011, 1012, 1013, 1047, 1048, 1049]
     let shareToken = options.query.shareToken || null
@@ -43,7 +72,9 @@ App({
     .then(data=>{
       console.log(data)
       this.globalData.userInfo = data.userInfo;
-      updataStorageData('city', data.userInfo.city)
+      if (!updataStorageData('city')){
+        updataStorageData('city', data.userInfo.city)
+      }
       saveLogin({
         encryptedData: encodeURIComponent(data.encryptedData),
         iv: encodeURIComponent(data.iv),
@@ -75,7 +106,7 @@ App({
     oid: '',
     sid: '',
     sessionKey:'',
-    city: updataStorageData('city') ||''
+    city: updataStorageData('city') || '无锡'
   },
   //页面分享
   onShareAppMessage: function() {

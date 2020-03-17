@@ -60,7 +60,9 @@
             <text wx:if="{{item.urgentMoney}}">{{item.urgentMoney}}</text>元
           </view>
         </view>
-        <view class='salary'>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
+        <view class='salary' wx:if="{{item.hpPositionSalaryId==-1}}">不限</view>
+        <view class='salary' wx:elif="{{item.hpPositionSalaryId == 0 }}">面议</view>        
+        <view class='salary' wx:else>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
       </view>
       <view class='two'>
         <view class='commpany'>{{item.comName}}</view>
@@ -82,7 +84,7 @@
             </i-tag>
           </block>
         </view>
-        <view class='time'>{{globalTools.formatemd(item.startTime)}}</view>
+        <view class='time'>{{globalTools.formatemd(item.startTime*1000)}}</view>
       </view>
     </view>
   </view>

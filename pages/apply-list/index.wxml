@@ -18,8 +18,10 @@
         </view>
       </view>
       <view class='three'>
-        <view class='salary'>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
-        <view class='time'>申请日期：{{globalTools.formatemd(item.startTime)}}</view>
+        <view class='salary' wx:if="{{item.hpPositionSalaryId==-1}}">不限</view>
+        <view class='salary' wx:elif="{{item.hpPositionSalaryId == 0 }}">面议</view>        
+        <view class='salary' wx:else>{{item.lowerNum}}-{{item.hightNum}} <text class="danwei">元</text></view>
+        <view class='time'>申请日期：{{globalTools.formatemd(item.startTime*1000)}}</view>
       </view>
     </view>
   </view>
